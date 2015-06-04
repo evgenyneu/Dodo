@@ -1,12 +1,12 @@
 import UIKit
 
 /// Defines styles related to the bar view in general.
-public class SABBarStyle {
+public class DodoBarStyle {
   
   /// The parent style is used to get the property value if the object is missing one.
-  var parent: SABBarStyle?
+  var parent: DodoBarStyle?
   
-  init(parentStyle: SABBarStyle? = nil) {
+  init(parentStyle: DodoBarStyle? = nil) {
     self.parent = parentStyle
   }
   
@@ -36,7 +36,7 @@ public class SABBarStyle {
   public var hideAfterDelaySeconds: NSTimeInterval {
     get {
       return _hideAfterDelaySeconds ?? parent?.hideAfterDelaySeconds ??
-        SABBarDefaultStyles.hideAfterDelaySeconds
+        DodoBarDefaultStyles.hideAfterDelaySeconds
     }
     
     set {
@@ -52,7 +52,7 @@ public class SABBarStyle {
   public var hideOnTap: Bool {
     get {
       return _hideOnTap ?? parent?.hideOnTap ??
-        SABBarDefaultStyles.hideOnTap
+        DodoBarDefaultStyles.hideOnTap
     }
     
     set {
@@ -67,7 +67,7 @@ public class SABBarStyle {
   /// Position of the bar. When true the bar is shown on top of the screen.
   public var locationTop: Bool {
     get {
-      return _locationTop ?? parent?.locationTop ?? SABBarDefaultStyles.locationTop
+      return _locationTop ?? parent?.locationTop ?? DodoBarDefaultStyles.locationTop
     }
     
     set {
@@ -83,7 +83,7 @@ public class SABBarStyle {
   public var marginToSuperview: CGSize {
     get {
       return _marginToSuperview ?? parent?.marginToSuperview ??
-        SABBarDefaultStyles.marginToSuperview
+        DodoBarDefaultStyles.marginToSuperview
     }
     
     set {
@@ -98,7 +98,7 @@ public class SABBarStyle {
   /// Corner radius of bar edges
   public var cornerRadius: CGFloat {
     get {
-      return _cornerRadius ?? parent?.cornerRadius ?? SABBarDefaultStyles.cornerRadius
+      return _cornerRadius ?? parent?.cornerRadius ?? DodoBarDefaultStyles.cornerRadius
     }
     
     set {
@@ -113,7 +113,7 @@ public class SABBarStyle {
   /// Border width of the bar.
   public var borderWidth: CGFloat {
     get {
-      return _borderWidth ?? parent?.borderWidth ?? SABBarDefaultStyles.borderWidth
+      return _borderWidth ?? parent?.borderWidth ?? DodoBarDefaultStyles.borderWidth
     }
     
     set {
@@ -128,7 +128,7 @@ public class SABBarStyle {
   /// Color of toolbar border.
   public var borderColor: UIColor? {
     get {
-      return _borderColor ?? parent?.borderColor ?? SABBarDefaultStyles.borderColor
+      return _borderColor ?? parent?.borderColor ?? DodoBarDefaultStyles.borderColor
     }
     
     set {
@@ -143,7 +143,7 @@ public class SABBarStyle {
   /// Background color of the bar.
   public var backgroundColor: UIColor? {
     get {
-      return _backgroundColor ?? parent?.backgroundColor ?? SABBarDefaultStyles.backgroundColor
+      return _backgroundColor ?? parent?.backgroundColor ?? DodoBarDefaultStyles.backgroundColor
     }
     
     set {
@@ -158,7 +158,7 @@ public class SABBarStyle {
   /// Highlights the view backgrounds for spotting layout issues.
   public var debugMode: Bool {
     get {
-      return _debugMode ?? parent?.debugMode ?? SABBarDefaultStyles.debugMode
+      return _debugMode ?? parent?.debugMode ?? DodoBarDefaultStyles.debugMode
     }
     
     set {

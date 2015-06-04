@@ -6,7 +6,7 @@ Default styles for the bar view.
 Default styles are used when individual element styles are not set.
 
 */
-public struct SABBarDefaultStyles {
+public struct DodoBarDefaultStyles {
   
   /// Revert the property values to their defaults
   public static func resetToDefaults() {

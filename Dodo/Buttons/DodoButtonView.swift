@@ -1,11 +1,11 @@
 
 import UIKit
 
-class SABButtonView: UIImageView {
-  private let style: SABButtonStyle
+class DodoButtonView: UIImageView {
+  private let style: DodoButtonStyle
   var onTap: OnTap?
   
-  init(style: SABButtonStyle) {
+  init(style: DodoButtonStyle) {
     self.style = style
     
     super.init(frame: CGRect())
@@ -16,9 +16,9 @@ class SABButtonView: UIImageView {
   }
   
   // Create button views for given button styles.
-  static func createMany(styles: [SABButtonStyle]) -> [SABButtonView] {
+  static func createMany(styles: [DodoButtonStyle]) -> [DodoButtonView] {
     return styles.map { style in
-      let view = SABButtonView(style: style)
+      let view = DodoButtonView(style: style)
       view.setup()
       return view
     }
@@ -53,7 +53,7 @@ class SABButtonView: UIImageView {
   
   /// Increase the hitsize of the image view if it's less than 44px for easier tapping.
   override func pointInside(point: CGPoint, withEvent event: UIEvent?) -> Bool {
-    let oprimizedBounds = SABTouchTarget.optimize(bounds)
+    let oprimizedBounds = DodoTouchTarget.optimize(bounds)
     return oprimizedBounds.contains(point)
   }
   

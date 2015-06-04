@@ -6,7 +6,7 @@ Default styles for the bar button.
 Default styles are used when individual element styles are not set.
 
 */
-public struct SABButtonDefaultStyles {
+public struct DodoButtonDefaultStyles {
 
   /// Revert the property values to their defaults
   public static func resetToDefaults() {
@@ -43,7 +43,7 @@ public struct SABButtonDefaultStyles {
   // ---------------------------
   
   
-  private static let _onTap: SABButtonOnTap? = nil
+  private static let _onTap: DodoButtonOnTap? = nil
   
   /// Closure that is called when user taps the button.
   public static var onTap = _onTap

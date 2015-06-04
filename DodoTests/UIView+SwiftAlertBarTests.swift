@@ -1,7 +1,7 @@
 import UIKit
 import XCTest
 
-class UIImageViewSwiftAlertBarExtensionTests: XCTestCase {
+class UIImageViewDodoExtensionTests: XCTestCase {
   func testGetCreatesAndStoresMoaInstance() {
     let view = UIView()
     let swiftAlertBar1 = view.swiftAlertBar

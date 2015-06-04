@@ -1,16 +1,16 @@
 import UIKit
 
-/// Combines various styles in the toolbar element.
-public class SABStyle {
+/// Combines various styles for the toolbar element.
+public class DodoStyle {
   
   /// The parent style is used to get the property value if the object is missing one.
-  var parent: SABStyle? {
+  var parent: DodoStyle? {
     didSet {
       changeParent()
     }
   }
   
-  init(parentStyle: SABStyle? = nil) {
+  init(parentStyle: DodoStyle? = nil) {
     self.parent = parentStyle
   }
   
@@ -27,9 +27,9 @@ public class SABStyle {
   
   */
   public static func resetDefaultStyles() {
-    SABBarDefaultStyles.resetToDefaults()
-    SABLabelDefaultStyles.resetToDefaults()
-    SABButtonDefaultStyles.resetToDefaults()
+    DodoBarDefaultStyles.resetToDefaults()
+    DodoLabelDefaultStyles.resetToDefaults()
+    DodoButtonDefaultStyles.resetToDefaults()
   }
   
   
@@ -46,10 +46,10 @@ public class SABStyle {
   Styles for the bar view.
 
   */
-  public lazy var bar: SABBarStyle = self.initBarStyle()
+  public lazy var bar: DodoBarStyle = self.initBarStyle()
   
-  private func initBarStyle() -> SABBarStyle {
-    return SABBarStyle(parentStyle: parent?.bar)
+  private func initBarStyle() -> DodoBarStyle {
+    return DodoBarStyle(parentStyle: parent?.bar)
   }
   
 
@@ -58,10 +58,10 @@ public class SABStyle {
   Styles for the text label.
 
   */
-  public lazy var label: SABLabelStyle = self.initLabelStyle()
+  public lazy var label: DodoLabelStyle = self.initLabelStyle()
   
-  private func initLabelStyle() -> SABLabelStyle {
-    return SABLabelStyle(parentStyle: parent?.label)
+  private func initLabelStyle() -> DodoLabelStyle {
+    return DodoLabelStyle(parentStyle: parent?.label)
   }
   
   /**
@@ -69,10 +69,10 @@ public class SABStyle {
   Styles for the left button.
 
   */
-  public lazy var leftButton: SABButtonStyle = self.initLeftButtonStyle()
+  public lazy var leftButton: DodoButtonStyle = self.initLeftButtonStyle()
   
-  private func initLeftButtonStyle() -> SABButtonStyle {
-    return SABButtonStyle(parentStyle: parent?.leftButton)
+  private func initLeftButtonStyle() -> DodoButtonStyle {
+    return DodoButtonStyle(parentStyle: parent?.leftButton)
   }
   
   /**
@@ -80,9 +80,9 @@ public class SABStyle {
   Styles for the right button.
 
   */
-  public lazy var rightButton: SABButtonStyle = self.initRightButtonStyle()
+  public lazy var rightButton: DodoButtonStyle = self.initRightButtonStyle()
   
-  private func initRightButtonStyle() -> SABButtonStyle {
-    return SABButtonStyle(parentStyle: parent?.rightButton)
+  private func initRightButtonStyle() -> DodoButtonStyle {
+    return DodoButtonStyle(parentStyle: parent?.rightButton)
   }
 }

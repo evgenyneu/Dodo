@@ -1,21 +1,21 @@
 import UIKit
 import XCTest
 
-class SABToolbarTests: XCTestCase {
-  var obj: SABToolbar!
+class DodoToolbarTests: XCTestCase {
+  var obj: DodoToolbar!
   var superview: UIView!
   var animator: MockedAnimator!
   
   override func setUp() {
     super.setUp()
     
-    SABPresets.resetAll()
-    obj = SABToolbar()
+    DodoPresets.resetAll()
+    obj = DodoToolbar()
     superview = UIView()
     
     // Use mocked animator    
     animator = MockedAnimator()
-    SABStyle.resetDefaultStyles()
+    DodoStyle.resetDefaultStyles()
   }
   
   // MARK: - Show
@@ -23,7 +23,7 @@ class SABToolbarTests: XCTestCase {
   func testShow() {
     obj.show(inSuperview: superview, withMessage: "hello", withAnimator: animator)
     
-    let view = superview.subviews[0] as? SABToolbar
+    let view = superview.subviews[0] as? DodoToolbar
     XCTAssert(view != nil)
     XCTAssert(animator.animated)
   }
@@ -59,7 +59,7 @@ class SABToolbarTests: XCTestCase {
   // MARK: - Styling the bar
   
   func testUseDefaultStyle() {
-    SABBarDefaultStyles.cornerRadius = 13
+    DodoBarDefaultStyles.cornerRadius = 13
     obj.show(inSuperview: superview, withMessage: "Hello World!", withAnimator: animator)
     
     let toolbar = sabToolbar(superview)!
@@ -67,9 +67,9 @@ class SABToolbarTests: XCTestCase {
   }
   
   func testUsePresetStyle() {
-    SABBarDefaultStyles.cornerRadius = 13
-    SABPresets.Success.style.bar.cornerRadius = 16
-    obj.style.parent = SABPresets.Success.style
+    DodoBarDefaultStyles.cornerRadius = 13
+    DodoPresets.Success.style.bar.cornerRadius = 16
+    obj.style.parent = DodoPresets.Success.style
     obj.show(inSuperview: superview, withMessage: "Hello World!", withAnimator: animator)
     
     let toolbar = sabToolbar(superview)!
@@ -77,9 +77,9 @@ class SABToolbarTests: XCTestCase {
   }
   
   func testSetItemStyle() {
-    SABBarDefaultStyles.cornerRadius = 13
-    SABPresets.Success.style.bar.cornerRadius = 16
-    obj.style.parent = SABPresets.Success.style
+    DodoBarDefaultStyles.cornerRadius = 13
+    DodoPresets.Success.style.bar.cornerRadius = 16
+    obj.style.parent = DodoPresets.Success.style
     obj.style.bar.cornerRadius = 17
     obj.show(inSuperview: superview, withMessage: "Hello World!", withAnimator: animator)
     

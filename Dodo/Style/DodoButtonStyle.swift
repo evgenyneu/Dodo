@@ -1,12 +1,12 @@
 import UIKit
 
 /// Defines styles for the bar button.
-public class SABButtonStyle {
+public class DodoButtonStyle {
   
   /// The parent style is used to get the property value if the object is missing one.
-  var parent: SABButtonStyle?
+  var parent: DodoButtonStyle?
   
-  init(parentStyle: SABButtonStyle? = nil) {
+  init(parentStyle: DodoButtonStyle? = nil) {
     self.parent = parentStyle
   }
   
@@ -27,7 +27,7 @@ public class SABButtonStyle {
   /// Button image. Button only shown when the image is present. The color of the image can be changes with tintColor property.
   public var image: UIImage? {
     get {
-      return _image ?? parent?.image ?? SABButtonDefaultStyles.image
+      return _image ?? parent?.image ?? DodoButtonDefaultStyles.image
     }
     
     set {
@@ -46,7 +46,7 @@ public class SABButtonStyle {
   */
   public var accessibilityLabel: String? {
     get {
-      return _accessibilityLabel ?? parent?.accessibilityLabel ?? SABButtonDefaultStyles.accessibilityLabel
+      return _accessibilityLabel ?? parent?.accessibilityLabel ?? DodoButtonDefaultStyles.accessibilityLabel
     }
     
     set {
@@ -56,12 +56,12 @@ public class SABButtonStyle {
   
   // -----------------------------
   
-  private var _onTap: SABButtonOnTap?
+  private var _onTap: DodoButtonOnTap?
   
   /// A closure that is called when user taps the button.
-  public var onTap: SABButtonOnTap? {
+  public var onTap: DodoButtonOnTap? {
     get {
-      return _onTap ?? parent?.onTap ?? SABButtonDefaultStyles.onTap
+      return _onTap ?? parent?.onTap ?? DodoButtonDefaultStyles.onTap
     }
     
     set {
@@ -76,7 +76,7 @@ public class SABButtonStyle {
   /// Size of the button
   public var size: CGSize {
     get {
-      return _size ?? parent?.size ?? SABButtonDefaultStyles.size
+      return _size ?? parent?.size ?? DodoButtonDefaultStyles.size
     }
     
     set {
@@ -92,7 +92,7 @@ public class SABButtonStyle {
   public var horizontalMarginToBar: CGFloat {
     get {
       return _horizontalMarginToBar ?? parent?.horizontalMarginToBar ??
-        SABButtonDefaultStyles.horizontalMarginToBar
+        DodoButtonDefaultStyles.horizontalMarginToBar
     }
     
     set {
@@ -107,7 +107,7 @@ public class SABButtonStyle {
   /// Button tint color. When set it is used to replace the image colors.
   public var tintColor: UIColor? {
     get {
-      return _tintColor ?? parent?.tintColor ?? SABButtonDefaultStyles.tintColor
+      return _tintColor ?? parent?.tintColor ?? DodoButtonDefaultStyles.tintColor
     }
     
     set {

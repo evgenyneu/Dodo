@@ -2,7 +2,7 @@
 import UIKit
 import XCTest
 
-class SABStyleTests: XCTestCase {
+class DodoStyleTests: XCTestCase {
   
   var superview: UIView!
   var animator: MockedAnimator!
@@ -14,20 +14,20 @@ class SABStyleTests: XCTestCase {
     
     // Use mocked animator
     animator = MockedAnimator()
-    SABStyle.resetDefaultStyles()
+    DodoStyle.resetDefaultStyles()
   }
   
   func testGetDefaultSetting() {
-    SABBarDefaultStyles.cornerRadius = 25
+    DodoBarDefaultStyles.cornerRadius = 25
 
-    let style = SABStyle()
+    let style = DodoStyle()
     XCTAssertEqual(25, style.bar.cornerRadius)
   }
   
   func testOverideDefaultStyle() {
-    SABBarDefaultStyles.cornerRadius = 25
+    DodoBarDefaultStyles.cornerRadius = 25
     
-    let style = SABStyle()
+    let style = DodoStyle()
     style.bar.cornerRadius = 30
     XCTAssertEqual(30, style.bar.cornerRadius)
   }
@@ -35,30 +35,30 @@ class SABStyleTests: XCTestCase {
   // MARK: - With parent style
   
   func testWithParent_getDefaultStyle() {
-    SABBarDefaultStyles.cornerRadius = 25
+    DodoBarDefaultStyles.cornerRadius = 25
     
-    let parent = SABStyle()
-    let style = SABStyle(parentStyle: parent)
+    let parent = DodoStyle()
+    let style = DodoStyle(parentStyle: parent)
 
     XCTAssertEqual(25, style.bar.cornerRadius)
   }
   
   func testWithParent_overridenInParent() {
-    SABBarDefaultStyles.cornerRadius = 25
+    DodoBarDefaultStyles.cornerRadius = 25
     
-    let parent = SABStyle()
+    let parent = DodoStyle()
     parent.bar.cornerRadius = 30
-    let style = SABStyle(parentStyle: parent)
+    let style = DodoStyle(parentStyle: parent)
     
     XCTAssertEqual(30, style.bar.cornerRadius)
   }
   
   func testWithParent_overrideInObject() {
-    SABBarDefaultStyles.cornerRadius = 25
+    DodoBarDefaultStyles.cornerRadius = 25
     
-    let parent = SABStyle()
+    let parent = DodoStyle()
     parent.bar.cornerRadius = 30
-    let style = SABStyle(parentStyle: parent)
+    let style = DodoStyle(parentStyle: parent)
     style.bar.cornerRadius = 40
     
     XCTAssertEqual(40, style.bar.cornerRadius)
@@ -67,7 +67,7 @@ class SABStyleTests: XCTestCase {
   // MARK: - Change
   
   func testWithParent_changeParent() {
-    let parentOne = SABStyle()
+    let parentOne = DodoStyle()
     parentOne.bar.cornerRadius = 100
     parentOne.label.numberOfLines = 99
     parentOne.leftButton.size = CGSize(width: 88, height: 88)
@@ -76,14 +76,14 @@ class SABStyleTests: XCTestCase {
     // Create a style with one parent
     // -------------------
 
-    let style = SABStyle(parentStyle: parentOne)
+    let style = DodoStyle(parentStyle: parentOne)
     
     XCTAssertEqual(100, style.bar.cornerRadius)
     
     // Now change the parent for the style
     // -------------------
     
-    let parentTwo = SABStyle()
+    let parentTwo = DodoStyle()
     parentTwo.bar.cornerRadius = 1000
     parentTwo.label.numberOfLines = 999
     parentTwo.leftButton.size = CGSize(width: 888, height: 888)
@@ -102,28 +102,28 @@ class SABStyleTests: XCTestCase {
   // MARK: - Reset default styles
   
   func testResetDefaultStyles() {
-    SABBarDefaultStyles.cornerRadius = 213
-    SABLabelDefaultStyles.numberOfLines = 31
-    SABButtonDefaultStyles.horizontalMarginToBar = 41
+    DodoBarDefaultStyles.cornerRadius = 213
+    DodoLabelDefaultStyles.numberOfLines = 31
+    DodoButtonDefaultStyles.horizontalMarginToBar = 41
     
-    SABStyle.resetDefaultStyles()
+    DodoStyle.resetDefaultStyles()
     
-    XCTAssertEqual(20, SABBarDefaultStyles.cornerRadius)
-    XCTAssertEqual(3, SABLabelDefaultStyles.numberOfLines)
-    XCTAssertEqual(41, SABButtonDefaultStyles.horizontalMarginToBar)
+    XCTAssertEqual(20, DodoBarDefaultStyles.cornerRadius)
+    XCTAssertEqual(3, DodoLabelDefaultStyles.numberOfLines)
+    XCTAssertEqual(41, DodoButtonDefaultStyles.horizontalMarginToBar)
   }
   
   // MARK: - Clear
   
   func testClear() {
-    SABBarDefaultStyles.cornerRadius = 3
-    SABLabelDefaultStyles.numberOfLines = 4
-    SABButtonDefaultStyles.horizontalMarginToBar = 5
+    DodoBarDefaultStyles.cornerRadius = 3
+    DodoLabelDefaultStyles.numberOfLines = 4
+    DodoButtonDefaultStyles.horizontalMarginToBar = 5
     
     // Parent styles
     // ------------------
     
-    let parent = SABStyle()
+    let parent = DodoStyle()
     parent.bar.cornerRadius = 30
     parent.label.numberOfLines = 40
     parent.leftButton.horizontalMarginToBar = 50
@@ -132,7 +132,7 @@ class SABStyleTests: XCTestCase {
     // Object styles
     // ------------------
     
-    let style = SABStyle(parentStyle: parent)
+    let style = DodoStyle(parentStyle: parent)
     style.bar.cornerRadius = 300
     style.label.numberOfLines = 400
     style.leftButton.horizontalMarginToBar = 500

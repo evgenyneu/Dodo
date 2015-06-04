@@ -1,17 +1,17 @@
 import UIKit
 
-class SABToolbar: UIView {
+class DodoToolbar: UIView {
   var layoutGuide: UILayoutSupport?
-  var style: SABStyle
+  var style: DodoStyle
   
-  convenience init(witStyle style: SABStyle) {
+  convenience init(witStyle style: DodoStyle) {
     self.init(frame: CGRect())
     
     self.style = style
   }
   
   override init(frame: CGRect) {
-    style = SABStyle()
+    style = DodoStyle()
     
     super.init(frame: frame)
   }
@@ -99,9 +99,9 @@ class SABToolbar: UIView {
   
   // MARK: - Buttons
   
-  private func createButtons() -> [SABButtonView] {
+  private func createButtons() -> [DodoButtonView] {
     let buttonStyles = [style.leftButton, style.rightButton]
-    let buttonViews = SABButtonView.createMany(buttonStyles)
+    let buttonViews = DodoButtonView.createMany(buttonStyles)
     
     for (index, button) in enumerate(buttonViews) {
       addSubview(button)

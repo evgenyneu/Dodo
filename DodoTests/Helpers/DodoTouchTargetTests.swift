@@ -1,14 +1,14 @@
 import UIKit
 import XCTest
 
-class SABTouchTargetTests: XCTestCase {
+class DodoTouchTargetTests: XCTestCase {
   func testIncreaseTheBounds() {
     let bounds = CGRect(
       origin: CGPoint(),
       size: CGSize(width: 30, height: 40)
     )
     
-    let result = SABTouchTarget.optimize(bounds)
+    let result = DodoTouchTarget.optimize(bounds)
     
     XCTAssertEqual(result.width, 44)
     XCTAssertEqual(result.height, 44)
@@ -22,7 +22,7 @@ class SABTouchTargetTests: XCTestCase {
       size: CGSize(width: 50, height: 60)
     )
     
-    let result = SABTouchTarget.optimize(bounds)
+    let result = DodoTouchTarget.optimize(bounds)
     
     XCTAssertEqual(result.width, 50)
     XCTAssertEqual(result.height, 60)

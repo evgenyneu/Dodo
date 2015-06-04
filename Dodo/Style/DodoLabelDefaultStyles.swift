@@ -6,7 +6,7 @@ Default styles for the text label.
 Default styles are used when individual element styles are not set.
 
 */
-public struct SABLabelDefaultStyles {
+public struct DodoLabelDefaultStyles {
   
   /// Revert the property values to their defaults
   public static func resetToDefaults() {

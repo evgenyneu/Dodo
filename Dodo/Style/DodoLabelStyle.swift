@@ -1,12 +1,12 @@
 import UIKit
 
 /// Defines styles related to the text label.
-public class SABLabelStyle {
+public class DodoLabelStyle {
   
   /// The parent style is used to get the property value if the object is missing one.
-  var parent: SABLabelStyle?
+  var parent: DodoLabelStyle?
   
-  init(parentStyle: SABLabelStyle? = nil) {
+  init(parentStyle: DodoLabelStyle? = nil) {
     self.parent = parentStyle
   }
   
@@ -27,7 +27,7 @@ public class SABLabelStyle {
   /// Color of the label text.
   public var font: UIFont {
     get {
-      return _font ?? parent?.font ?? SABLabelDefaultStyles.font
+      return _font ?? parent?.font ?? DodoLabelDefaultStyles.font
     }
     
     set {
@@ -42,7 +42,7 @@ public class SABLabelStyle {
   /// Color of the label text.
   public var color: UIColor {
     get {
-      return _color ?? parent?.color ?? SABLabelDefaultStyles.color
+      return _color ?? parent?.color ?? DodoLabelDefaultStyles.color
     }
     
     set {
@@ -57,7 +57,7 @@ public class SABLabelStyle {
   /// Color of text shadow.
   public var shadowColor: UIColor? {
     get {
-      return _shadowColor ?? parent?.shadowColor ?? SABLabelDefaultStyles.shadowColor
+      return _shadowColor ?? parent?.shadowColor ?? DodoLabelDefaultStyles.shadowColor
     }
     
     set {
@@ -72,7 +72,7 @@ public class SABLabelStyle {
   /// Text shadow offset.
   public var shadowOffset: CGSize {
     get {
-      return _shadowOffset ?? parent?.shadowOffset ?? SABLabelDefaultStyles.shadowOffset
+      return _shadowOffset ?? parent?.shadowOffset ?? DodoLabelDefaultStyles.shadowOffset
     }
     
     set {
@@ -88,7 +88,7 @@ public class SABLabelStyle {
   public var numberOfLines: Int {
     get {
       return _numberOfLines ?? parent?.numberOfLines ??
-        SABLabelDefaultStyles.numberOfLines
+        DodoLabelDefaultStyles.numberOfLines
     }
     
     set {
@@ -106,7 +106,7 @@ public class SABLabelStyle {
   public var horizontalMargin: CGFloat {
     get {
       return _horizontalMargin ?? parent?.horizontalMargin ??
-        SABLabelDefaultStyles.horizontalMargin
+        DodoLabelDefaultStyles.horizontalMargin
     }
     
     set {

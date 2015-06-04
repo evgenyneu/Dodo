@@ -4,7 +4,7 @@
 Defines the style presets for the bar.
 
 */
-public enum SABPresets {
+public enum DodoPresets {
   /// A styling preset used for indicating successful completion of an operation. Usually styled with green color.
   case Success
   
@@ -18,23 +18,23 @@ public enum SABPresets {
   case Error
   
   /// The preset is used by default for the bar if it's not set by the user.
-  static let defaultPreset = SABPresets.Success
+  static let defaultPreset = DodoPresets.Success
   
   /// The preset cache.
-  private static var styles = [SABPresets: SABStyle]()
+  private static var styles = [DodoPresets: DodoStyle]()
   
   /// Returns the style for the preset
-  public var style: SABStyle {
-    var style = SABPresets.styles[self]
+  public var style: DodoStyle {
+    var style = DodoPresets.styles[self]
     
     if style == nil {
-      style = SABPresets.makeStyle(forPreset: self)
-      SABPresets.styles[self] = style
+      style = DodoPresets.makeStyle(forPreset: self)
+      DodoPresets.styles[self] = style
     }
     
     precondition(style != nil, "Failed to create style")
     
-    return style ?? SABStyle()
+    return style ?? DodoStyle()
   }
   
   /// Reset alls preset styles to their initial states.
@@ -44,12 +44,12 @@ public enum SABPresets {
   
   /// Reset the preset style to its initial state.
   public func reset() {
-    SABPresets.styles.removeValueForKey(self)
+    DodoPresets.styles.removeValueForKey(self)
   }
   
-  private static func makeStyle(forPreset preset: SABPresets) -> SABStyle{
+  private static func makeStyle(forPreset preset: DodoPresets) -> DodoStyle{
     
-    let style = SABStyle()
+    let style = DodoStyle()
     
     switch preset {
     case .Success:

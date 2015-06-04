@@ -20,12 +20,12 @@ public extension UIView {
       view.swiftAlertBar.show("Hello World!")
   
   */
-  public var swiftAlertBar: SwiftAlertBar {
+  public var swiftAlertBar: Dodo {
     get {
-      if let value = objc_getAssociatedObject(self, &sabAssociationKey) as? SwiftAlertBar {
+      if let value = objc_getAssociatedObject(self, &sabAssociationKey) as? Dodo {
         return value
       } else {
-        let swiftAlertBar = SwiftAlertBar(superview: self)
+        let swiftAlertBar = Dodo(superview: self)
         
         objc_setAssociatedObject(self, &sabAssociationKey, swiftAlertBar,
           objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))

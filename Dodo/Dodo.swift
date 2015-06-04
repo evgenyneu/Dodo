@@ -1,6 +1,6 @@
 import UIKit
 
-final public class SwiftAlertBar {  
+final public class Dodo {  
   private weak var superview: UIView!
   var animatorShow: DodoAnimator = DodoAnimator_rotate()
   var animatorHide: DodoAnimator = DodoAnimator_swipeToRight()
@@ -16,14 +16,14 @@ final public class SwiftAlertBar {
   public var bottomLayoutGuide: UILayoutSupport?
   
   /// Defines styles for the alert bar.
-  public var style = SABStyle(parentStyle: SABPresets.defaultPreset.style)
+  public var style = DodoStyle(parentStyle: DodoPresets.defaultPreset.style)
 
   init(superview: UIView) {
     self.superview = superview
   }
   
   /// Changes the style preset for the bar.
-  public var preset: SABPresets = SABPresets.defaultPreset {
+  public var preset: DodoPresets = DodoPresets.defaultPreset {
     didSet {
       if preset != oldValue  {
         style.parent = preset.style
@@ -90,7 +90,7 @@ final public class SwiftAlertBar {
     removeExistingBars()
     setupHideTimer()
 
-    var bar = SABToolbar(witStyle: style)
+    var bar = DodoToolbar(witStyle: style)
     setupHideOnTap(bar)
     bar.layoutGuide = style.bar.locationTop ? topLayoutGuide : bottomLayoutGuide
     bar.show(inSuperview: superview, withMessage: message, withAnimator: animatorShow)
@@ -102,15 +102,15 @@ final public class SwiftAlertBar {
     toolbar?.hide(animatorHide, onAnimationCompleted: {})
   }
   
-  private var toolbar: SABToolbar? {
+  private var toolbar: DodoToolbar? {
     get {
-      return superview.subviews.filter { $0 is SABToolbar }.map { $0 as! SABToolbar }.first
+      return superview.subviews.filter { $0 is DodoToolbar }.map { $0 as! DodoToolbar }.first
     }
   }
   
   private func removeExistingBars() {
     for view in superview.subviews {
-      if let existingToolbar = view as? SABToolbar {
+      if let existingToolbar = view as? DodoToolbar {
         existingToolbar.removeFromSuperview()
       }
     }

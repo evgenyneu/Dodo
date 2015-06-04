@@ -1,27 +1,27 @@
 import UIKit
 import XCTest
 
-class SABButtonViewTests: XCTestCase {
+class DodoButtonViewTests: XCTestCase {
   
   override func setUp() {
     super.setUp()
     
-    SABStyle.resetDefaultStyles()
+    DodoStyle.resetDefaultStyles()
   }
   
   // MARK: - Create many
   // ------------------------------
   
   func testCreateMany() {
-    let styleOne = SABButtonStyle(parentStyle: nil)
+    let styleOne = DodoButtonStyle(parentStyle: nil)
     let image = TestBundle.image("96px.png")!
     styleOne.image = image
     
-    let styleTwo = SABButtonStyle(parentStyle: nil)
+    let styleTwo = DodoButtonStyle(parentStyle: nil)
     
     let styles = [styleOne, styleTwo]
 
-    let result = SABButtonView.createMany(styles)
+    let result = DodoButtonView.createMany(styles)
     
     XCTAssertEqual(2, result.count)
     XCTAssertEqual(96, result[0].image!.size.width)
@@ -33,11 +33,11 @@ class SABButtonViewTests: XCTestCase {
   // ------------------------------
   
   func testSetupView_withImage() {
-    let style = SABButtonStyle(parentStyle: nil)
+    let style = DodoButtonStyle(parentStyle: nil)
     let image = TestBundle.image("67px.png")!
     style.image = image
     
-    let view = SABButtonView(style: style)
+    let view = DodoButtonView(style: style)
     view.setup()
     
     XCTAssertEqual(67, view.image!.size.width)
@@ -45,22 +45,22 @@ class SABButtonViewTests: XCTestCase {
   }
   
   func testSetupView_no_image() {
-    let style = SABButtonStyle(parentStyle: nil)
+    let style = DodoButtonStyle(parentStyle: nil)
     style.image = nil
     
-    let view = SABButtonView(style: style)
+    let view = DodoButtonView(style: style)
     view.setup()
     
     XCTAssert(view.image == nil)
   }
   
   func testSetupView_withTintColor() {
-    let style = SABButtonStyle(parentStyle: nil)
+    let style = DodoButtonStyle(parentStyle: nil)
     let image = TestBundle.image("67px.png")!
     style.image = image
     style.tintColor = UIColor.purpleColor()
     
-    let view = SABButtonView(style: style)
+    let view = DodoButtonView(style: style)
     view.setup()
     
     XCTAssertEqual(UIImageRenderingMode.AlwaysTemplate, view.image!.renderingMode)
@@ -68,26 +68,26 @@ class SABButtonViewTests: XCTestCase {
   }
   
   func testSetupView_noOriginalImageColor() {
-    SABButtonDefaultStyles.tintColor = nil
+    DodoButtonDefaultStyles.tintColor = nil
 
-    let style = SABButtonStyle(parentStyle: nil)
+    let style = DodoButtonStyle(parentStyle: nil)
     let image = TestBundle.image("67px.png")!
     style.image = image
     style.tintColor = nil
     
-    let view = SABButtonView(style: style)
+    let view = DodoButtonView(style: style)
     view.setup()
     
     XCTAssertEqual(UIImageRenderingMode.Automatic, view.image!.renderingMode)
   }
   
   func testAccessibility() {
-    let style = SABButtonStyle(parentStyle: nil)
+    let style = DodoButtonStyle(parentStyle: nil)
     let image = TestBundle.image("67px.png")!
     style.image = image
     style.accessibilityLabel = "Test bar button"
     
-    let view = SABButtonView(style: style)
+    let view = DodoButtonView(style: style)
     view.setup()
     
     XCTAssertEqual("Test bar button", view.accessibilityLabel)
@@ -96,12 +96,12 @@ class SABButtonViewTests: XCTestCase {
   }
   
   func testAccessibility_notAccessible() {
-    let style = SABButtonStyle(parentStyle: nil)
+    let style = DodoButtonStyle(parentStyle: nil)
     let image = TestBundle.image("67px.png")!
     style.image = image
     style.accessibilityLabel = nil
     
-    let view = SABButtonView(style: style)
+    let view = DodoButtonView(style: style)
     view.setup()
     
     XCTAssert(view.accessibilityLabel == nil)
@@ -110,14 +110,14 @@ class SABButtonViewTests: XCTestCase {
   }
   
   func testOnTapClosureIsCalledWhenImageIsTapped() {
-    let style = SABButtonStyle(parentStyle: nil)
+    let style = DodoButtonStyle(parentStyle: nil)
     var tapClosureCalledTimes = 0
     
     style.onTap = {
       tapClosureCalledTimes += 1
     }
     
-    let view = SABButtonView(style: style)
+    let view = DodoButtonView(style: style)
     view.setup()
     
     view.onTap?.didTap(UITapGestureRecognizer())

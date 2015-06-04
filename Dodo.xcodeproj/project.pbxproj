@@ -9,41 +9,38 @@
 /* Begin PBXBuildFile section */
 		7EDF78651B2105F300A9597E /* Dodo.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EDF78641B2105F300A9597E /* Dodo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7EDF786B1B2105F300A9597E /* Dodo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EDF785F1B2105F300A9597E /* Dodo.framework */; };
-		7EDF78721B2105F300A9597E /* DodoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78711B2105F300A9597E /* DodoTests.swift */; };
 		7EDF789A1B21068800A9597E /* DodoAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF787C1B21068800A9597E /* DodoAnimator.swift */; };
 		7EDF789B1B21068800A9597E /* DodoAnimator_rotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF787D1B21068800A9597E /* DodoAnimator_rotate.swift */; };
 		7EDF789C1B21068800A9597E /* DodoAnimator_swipeToRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF787E1B21068800A9597E /* DodoAnimator_swipeToRight.swift */; };
-		7EDF789D1B21068800A9597E /* SABButtonInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78801B21068800A9597E /* SABButtonInfo.swift */; };
-		7EDF789E1B21068800A9597E /* SABButtonOnTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78811B21068800A9597E /* SABButtonOnTap.swift */; };
-		7EDF789F1B21068800A9597E /* SABButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78821B21068800A9597E /* SABButtonView.swift */; };
-		7EDF78A01B21068800A9597E /* SABTouchTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78841B21068800A9597E /* SABTouchTarget.swift */; };
-		7EDF78A11B21068800A9597E /* SABConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78851B21068800A9597E /* SABConstants.swift */; };
-		7EDF78A21B21068800A9597E /* SABToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78861B21068800A9597E /* SABToolbar.swift */; };
-		7EDF78A31B21068800A9597E /* SABBarDefaultStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78881B21068800A9597E /* SABBarDefaultStyles.swift */; };
-		7EDF78A41B21068800A9597E /* SABBarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78891B21068800A9597E /* SABBarStyle.swift */; };
-		7EDF78A51B21068800A9597E /* SABButtonDefaultStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF788A1B21068800A9597E /* SABButtonDefaultStyles.swift */; };
-		7EDF78A61B21068800A9597E /* SABButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF788B1B21068800A9597E /* SABButtonStyle.swift */; };
-		7EDF78A71B21068800A9597E /* SABLabelDefaultStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF788C1B21068800A9597E /* SABLabelDefaultStyles.swift */; };
-		7EDF78A81B21068800A9597E /* SABLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF788D1B21068800A9597E /* SABLabelStyle.swift */; };
-		7EDF78A91B21068800A9597E /* SABPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF788E1B21068800A9597E /* SABPresets.swift */; };
-		7EDF78AA1B21068800A9597E /* SABStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF788F1B21068800A9597E /* SABStyle.swift */; };
-		7EDF78AB1B21068800A9597E /* SwiftAlertBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78901B21068800A9597E /* SwiftAlertBar.swift */; };
+		7EDF789E1B21068800A9597E /* DodoButtonOnTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78811B21068800A9597E /* DodoButtonOnTap.swift */; };
+		7EDF789F1B21068800A9597E /* DodoButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78821B21068800A9597E /* DodoButtonView.swift */; };
+		7EDF78A01B21068800A9597E /* DodoTouchTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78841B21068800A9597E /* DodoTouchTarget.swift */; };
+		7EDF78A21B21068800A9597E /* DodoToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78861B21068800A9597E /* DodoToolbar.swift */; };
+		7EDF78A31B21068800A9597E /* DodoBarDefaultStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78881B21068800A9597E /* DodoBarDefaultStyles.swift */; };
+		7EDF78A41B21068800A9597E /* DodoBarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78891B21068800A9597E /* DodoBarStyle.swift */; };
+		7EDF78A51B21068800A9597E /* DodoButtonDefaultStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF788A1B21068800A9597E /* DodoButtonDefaultStyles.swift */; };
+		7EDF78A61B21068800A9597E /* DodoButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF788B1B21068800A9597E /* DodoButtonStyle.swift */; };
+		7EDF78A71B21068800A9597E /* DodoLabelDefaultStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF788C1B21068800A9597E /* DodoLabelDefaultStyles.swift */; };
+		7EDF78A81B21068800A9597E /* DodoLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF788D1B21068800A9597E /* DodoLabelStyle.swift */; };
+		7EDF78A91B21068800A9597E /* DodoPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF788E1B21068800A9597E /* DodoPresets.swift */; };
+		7EDF78AA1B21068800A9597E /* DodoStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF788F1B21068800A9597E /* DodoStyle.swift */; };
+		7EDF78AB1B21068800A9597E /* Dodo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78901B21068800A9597E /* Dodo.swift */; };
 		7EDF78AC1B21068800A9597E /* UIView+SwiftAlertBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78931B21068800A9597E /* UIView+SwiftAlertBar.swift */; };
 		7EDF78AD1B21068800A9597E /* MoaTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78951B21068800A9597E /* MoaTimer.swift */; };
 		7EDF78AE1B21068800A9597E /* OnTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78961B21068800A9597E /* OnTap.swift */; };
 		7EDF78AF1B21068800A9597E /* SpringAnimationCALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78971B21068800A9597E /* SpringAnimationCALayer.swift */; };
 		7EDF78B01B21068800A9597E /* TegAutolayoutConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78981B21068800A9597E /* TegAutolayoutConstraints.swift */; };
 		7EDF78B11B21068800A9597E /* TegUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78991B21068800A9597E /* TegUIColor.swift */; };
-		7EDF78C91B2106CD00A9597E /* SABButtonViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78B31B2106CD00A9597E /* SABButtonViewTests.swift */; };
-		7EDF78CA1B2106CD00A9597E /* SABTouchTargetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78B51B2106CD00A9597E /* SABTouchTargetTests.swift */; };
+		7EDF78C91B2106CD00A9597E /* DodoButtonViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78B31B2106CD00A9597E /* DodoButtonViewTests.swift */; };
+		7EDF78CA1B2106CD00A9597E /* DodoTouchTargetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78B51B2106CD00A9597E /* DodoTouchTargetTests.swift */; };
 		7EDF78CB1B2106CD00A9597E /* 67px.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EDF78B71B2106CD00A9597E /* 67px.png */; };
 		7EDF78CC1B2106CD00A9597E /* 96px.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EDF78B81B2106CD00A9597E /* 96px.png */; };
 		7EDF78CD1B2106CD00A9597E /* red_and_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EDF78B91B2106CD00A9597E /* red_and_green.png */; };
 		7EDF78CE1B2106CD00A9597E /* MockedAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78BB1B2106CD00A9597E /* MockedAnimator.swift */; };
-		7EDF78CF1B2106CD00A9597E /* SABToolbarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78BC1B2106CD00A9597E /* SABToolbarTests.swift */; };
-		7EDF78D01B2106CD00A9597E /* SABPresetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78BE1B2106CD00A9597E /* SABPresetsTests.swift */; };
-		7EDF78D11B2106CD00A9597E /* SABStyleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78BF1B2106CD00A9597E /* SABStyleTests.swift */; };
-		7EDF78D21B2106CD00A9597E /* SwiftAlertBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78C01B2106CD00A9597E /* SwiftAlertBarTests.swift */; };
+		7EDF78CF1B2106CD00A9597E /* DodoToolbarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78BC1B2106CD00A9597E /* DodoToolbarTests.swift */; };
+		7EDF78D01B2106CD00A9597E /* DodoPresetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78BE1B2106CD00A9597E /* DodoPresetsTests.swift */; };
+		7EDF78D11B2106CD00A9597E /* DodoStyleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78BF1B2106CD00A9597E /* DodoStyleTests.swift */; };
+		7EDF78D21B2106CD00A9597E /* DodoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78C01B2106CD00A9597E /* DodoTests.swift */; };
 		7EDF78D31B2106CD00A9597E /* PixelColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78C21B2106CD00A9597E /* PixelColor.swift */; };
 		7EDF78D41B2106CD00A9597E /* PixelColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78C31B2106CD00A9597E /* PixelColorTests.swift */; };
 		7EDF78D51B2106CD00A9597E /* TestBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78C41B2106CD00A9597E /* TestBundle.swift */; };
@@ -53,26 +50,24 @@
 		7EDF78D91B21070500A9597E /* DodoAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF787C1B21068800A9597E /* DodoAnimator.swift */; };
 		7EDF78DA1B21070500A9597E /* DodoAnimator_rotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF787D1B21068800A9597E /* DodoAnimator_rotate.swift */; };
 		7EDF78DB1B21070500A9597E /* DodoAnimator_swipeToRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF787E1B21068800A9597E /* DodoAnimator_swipeToRight.swift */; };
-		7EDF78DC1B21070A00A9597E /* SABButtonInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78801B21068800A9597E /* SABButtonInfo.swift */; };
-		7EDF78DD1B21070A00A9597E /* SABButtonOnTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78811B21068800A9597E /* SABButtonOnTap.swift */; };
-		7EDF78DE1B21070A00A9597E /* SABButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78821B21068800A9597E /* SABButtonView.swift */; };
-		7EDF78DF1B21070E00A9597E /* SABTouchTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78841B21068800A9597E /* SABTouchTarget.swift */; };
-		7EDF78E01B21071500A9597E /* SABBarDefaultStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78881B21068800A9597E /* SABBarDefaultStyles.swift */; };
-		7EDF78E11B21071500A9597E /* SABBarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78891B21068800A9597E /* SABBarStyle.swift */; };
-		7EDF78E21B21071500A9597E /* SABButtonDefaultStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF788A1B21068800A9597E /* SABButtonDefaultStyles.swift */; };
-		7EDF78E31B21071500A9597E /* SABButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF788B1B21068800A9597E /* SABButtonStyle.swift */; };
-		7EDF78E41B21071500A9597E /* SABLabelDefaultStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF788C1B21068800A9597E /* SABLabelDefaultStyles.swift */; };
-		7EDF78E51B21071500A9597E /* SABLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF788D1B21068800A9597E /* SABLabelStyle.swift */; };
-		7EDF78E61B21071500A9597E /* SABPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF788E1B21068800A9597E /* SABPresets.swift */; };
-		7EDF78E71B21071500A9597E /* SABStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF788F1B21068800A9597E /* SABStyle.swift */; };
+		7EDF78DD1B21070A00A9597E /* DodoButtonOnTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78811B21068800A9597E /* DodoButtonOnTap.swift */; };
+		7EDF78DE1B21070A00A9597E /* DodoButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78821B21068800A9597E /* DodoButtonView.swift */; };
+		7EDF78DF1B21070E00A9597E /* DodoTouchTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78841B21068800A9597E /* DodoTouchTarget.swift */; };
+		7EDF78E01B21071500A9597E /* DodoBarDefaultStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78881B21068800A9597E /* DodoBarDefaultStyles.swift */; };
+		7EDF78E11B21071500A9597E /* DodoBarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78891B21068800A9597E /* DodoBarStyle.swift */; };
+		7EDF78E21B21071500A9597E /* DodoButtonDefaultStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF788A1B21068800A9597E /* DodoButtonDefaultStyles.swift */; };
+		7EDF78E31B21071500A9597E /* DodoButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF788B1B21068800A9597E /* DodoButtonStyle.swift */; };
+		7EDF78E41B21071500A9597E /* DodoLabelDefaultStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF788C1B21068800A9597E /* DodoLabelDefaultStyles.swift */; };
+		7EDF78E51B21071500A9597E /* DodoLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF788D1B21068800A9597E /* DodoLabelStyle.swift */; };
+		7EDF78E61B21071500A9597E /* DodoPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF788E1B21068800A9597E /* DodoPresets.swift */; };
+		7EDF78E71B21071500A9597E /* DodoStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF788F1B21068800A9597E /* DodoStyle.swift */; };
 		7EDF78E81B21072200A9597E /* MoaTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78951B21068800A9597E /* MoaTimer.swift */; };
 		7EDF78E91B21072200A9597E /* OnTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78961B21068800A9597E /* OnTap.swift */; };
 		7EDF78EA1B21072200A9597E /* SpringAnimationCALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78971B21068800A9597E /* SpringAnimationCALayer.swift */; };
 		7EDF78EB1B21072200A9597E /* TegAutolayoutConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78981B21068800A9597E /* TegAutolayoutConstraints.swift */; };
 		7EDF78EC1B21072200A9597E /* TegUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78991B21068800A9597E /* TegUIColor.swift */; };
-		7EDF78ED1B21072900A9597E /* SABConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78851B21068800A9597E /* SABConstants.swift */; };
-		7EDF78EE1B21072900A9597E /* SABToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78861B21068800A9597E /* SABToolbar.swift */; };
-		7EDF78EF1B21072900A9597E /* SwiftAlertBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78901B21068800A9597E /* SwiftAlertBar.swift */; };
+		7EDF78EE1B21072900A9597E /* DodoToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78861B21068800A9597E /* DodoToolbar.swift */; };
+		7EDF78EF1B21072900A9597E /* Dodo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78901B21068800A9597E /* Dodo.swift */; };
 		7EDF78F01B21072900A9597E /* UIView+SwiftAlertBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78931B21068800A9597E /* UIView+SwiftAlertBar.swift */; };
 /* End PBXBuildFile section */
 
@@ -92,41 +87,38 @@
 		7EDF78641B2105F300A9597E /* Dodo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dodo.h; sourceTree = "<group>"; };
 		7EDF786A1B2105F300A9597E /* DodoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DodoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EDF78701B2105F300A9597E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7EDF78711B2105F300A9597E /* DodoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DodoTests.swift; sourceTree = "<group>"; };
 		7EDF787C1B21068800A9597E /* DodoAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoAnimator.swift; sourceTree = "<group>"; };
 		7EDF787D1B21068800A9597E /* DodoAnimator_rotate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoAnimator_rotate.swift; sourceTree = "<group>"; };
 		7EDF787E1B21068800A9597E /* DodoAnimator_swipeToRight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoAnimator_swipeToRight.swift; sourceTree = "<group>"; };
-		7EDF78801B21068800A9597E /* SABButtonInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SABButtonInfo.swift; sourceTree = "<group>"; };
-		7EDF78811B21068800A9597E /* SABButtonOnTap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SABButtonOnTap.swift; sourceTree = "<group>"; };
-		7EDF78821B21068800A9597E /* SABButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SABButtonView.swift; sourceTree = "<group>"; };
-		7EDF78841B21068800A9597E /* SABTouchTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SABTouchTarget.swift; sourceTree = "<group>"; };
-		7EDF78851B21068800A9597E /* SABConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SABConstants.swift; sourceTree = "<group>"; };
-		7EDF78861B21068800A9597E /* SABToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SABToolbar.swift; sourceTree = "<group>"; };
-		7EDF78881B21068800A9597E /* SABBarDefaultStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SABBarDefaultStyles.swift; sourceTree = "<group>"; };
-		7EDF78891B21068800A9597E /* SABBarStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SABBarStyle.swift; sourceTree = "<group>"; };
-		7EDF788A1B21068800A9597E /* SABButtonDefaultStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SABButtonDefaultStyles.swift; sourceTree = "<group>"; };
-		7EDF788B1B21068800A9597E /* SABButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SABButtonStyle.swift; sourceTree = "<group>"; };
-		7EDF788C1B21068800A9597E /* SABLabelDefaultStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SABLabelDefaultStyles.swift; sourceTree = "<group>"; };
-		7EDF788D1B21068800A9597E /* SABLabelStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SABLabelStyle.swift; sourceTree = "<group>"; };
-		7EDF788E1B21068800A9597E /* SABPresets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SABPresets.swift; sourceTree = "<group>"; };
-		7EDF788F1B21068800A9597E /* SABStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SABStyle.swift; sourceTree = "<group>"; };
-		7EDF78901B21068800A9597E /* SwiftAlertBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftAlertBar.swift; sourceTree = "<group>"; };
+		7EDF78811B21068800A9597E /* DodoButtonOnTap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoButtonOnTap.swift; sourceTree = "<group>"; };
+		7EDF78821B21068800A9597E /* DodoButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoButtonView.swift; sourceTree = "<group>"; };
+		7EDF78841B21068800A9597E /* DodoTouchTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoTouchTarget.swift; sourceTree = "<group>"; };
+		7EDF78861B21068800A9597E /* DodoToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoToolbar.swift; sourceTree = "<group>"; };
+		7EDF78881B21068800A9597E /* DodoBarDefaultStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoBarDefaultStyles.swift; sourceTree = "<group>"; };
+		7EDF78891B21068800A9597E /* DodoBarStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoBarStyle.swift; sourceTree = "<group>"; };
+		7EDF788A1B21068800A9597E /* DodoButtonDefaultStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoButtonDefaultStyles.swift; sourceTree = "<group>"; };
+		7EDF788B1B21068800A9597E /* DodoButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoButtonStyle.swift; sourceTree = "<group>"; };
+		7EDF788C1B21068800A9597E /* DodoLabelDefaultStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoLabelDefaultStyles.swift; sourceTree = "<group>"; };
+		7EDF788D1B21068800A9597E /* DodoLabelStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoLabelStyle.swift; sourceTree = "<group>"; };
+		7EDF788E1B21068800A9597E /* DodoPresets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoPresets.swift; sourceTree = "<group>"; };
+		7EDF788F1B21068800A9597E /* DodoStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoStyle.swift; sourceTree = "<group>"; };
+		7EDF78901B21068800A9597E /* Dodo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dodo.swift; sourceTree = "<group>"; };
 		7EDF78931B21068800A9597E /* UIView+SwiftAlertBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+SwiftAlertBar.swift"; sourceTree = "<group>"; };
 		7EDF78951B21068800A9597E /* MoaTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoaTimer.swift; sourceTree = "<group>"; };
 		7EDF78961B21068800A9597E /* OnTap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnTap.swift; sourceTree = "<group>"; };
 		7EDF78971B21068800A9597E /* SpringAnimationCALayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringAnimationCALayer.swift; sourceTree = "<group>"; };
 		7EDF78981B21068800A9597E /* TegAutolayoutConstraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TegAutolayoutConstraints.swift; sourceTree = "<group>"; };
 		7EDF78991B21068800A9597E /* TegUIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TegUIColor.swift; sourceTree = "<group>"; };
-		7EDF78B31B2106CD00A9597E /* SABButtonViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SABButtonViewTests.swift; sourceTree = "<group>"; };
-		7EDF78B51B2106CD00A9597E /* SABTouchTargetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SABTouchTargetTests.swift; sourceTree = "<group>"; };
+		7EDF78B31B2106CD00A9597E /* DodoButtonViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoButtonViewTests.swift; sourceTree = "<group>"; };
+		7EDF78B51B2106CD00A9597E /* DodoTouchTargetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoTouchTargetTests.swift; sourceTree = "<group>"; };
 		7EDF78B71B2106CD00A9597E /* 67px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 67px.png; sourceTree = "<group>"; };
 		7EDF78B81B2106CD00A9597E /* 96px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 96px.png; sourceTree = "<group>"; };
 		7EDF78B91B2106CD00A9597E /* red_and_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_and_green.png; sourceTree = "<group>"; };
 		7EDF78BB1B2106CD00A9597E /* MockedAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockedAnimator.swift; sourceTree = "<group>"; };
-		7EDF78BC1B2106CD00A9597E /* SABToolbarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SABToolbarTests.swift; sourceTree = "<group>"; };
-		7EDF78BE1B2106CD00A9597E /* SABPresetsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SABPresetsTests.swift; sourceTree = "<group>"; };
-		7EDF78BF1B2106CD00A9597E /* SABStyleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SABStyleTests.swift; sourceTree = "<group>"; };
-		7EDF78C01B2106CD00A9597E /* SwiftAlertBarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftAlertBarTests.swift; sourceTree = "<group>"; };
+		7EDF78BC1B2106CD00A9597E /* DodoToolbarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoToolbarTests.swift; sourceTree = "<group>"; };
+		7EDF78BE1B2106CD00A9597E /* DodoPresetsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoPresetsTests.swift; sourceTree = "<group>"; };
+		7EDF78BF1B2106CD00A9597E /* DodoStyleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoStyleTests.swift; sourceTree = "<group>"; };
+		7EDF78C01B2106CD00A9597E /* DodoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoTests.swift; sourceTree = "<group>"; };
 		7EDF78C21B2106CD00A9597E /* PixelColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PixelColor.swift; sourceTree = "<group>"; };
 		7EDF78C31B2106CD00A9597E /* PixelColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PixelColorTests.swift; sourceTree = "<group>"; };
 		7EDF78C41B2106CD00A9597E /* TestBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestBundle.swift; sourceTree = "<group>"; };
@@ -180,9 +172,8 @@
 				7EDF78831B21068800A9597E /* Helpers */,
 				7EDF78871B21068800A9597E /* Style */,
 				7EDF78941B21068800A9597E /* Utils */,
-				7EDF78851B21068800A9597E /* SABConstants.swift */,
-				7EDF78861B21068800A9597E /* SABToolbar.swift */,
-				7EDF78901B21068800A9597E /* SwiftAlertBar.swift */,
+				7EDF78861B21068800A9597E /* DodoToolbar.swift */,
+				7EDF78901B21068800A9597E /* Dodo.swift */,
 				7EDF78931B21068800A9597E /* UIView+SwiftAlertBar.swift */,
 				7EDF78641B2105F300A9597E /* Dodo.h */,
 				7EDF78621B2105F300A9597E /* Supporting Files */,
@@ -208,10 +199,9 @@
 				7EDF78BD1B2106CD00A9597E /* Style */,
 				7EDF78C11B2106CD00A9597E /* TestHelpers */,
 				7EDF78C71B2106CD00A9597E /* Utils */,
-				7EDF78BC1B2106CD00A9597E /* SABToolbarTests.swift */,
-				7EDF78C01B2106CD00A9597E /* SwiftAlertBarTests.swift */,
+				7EDF78BC1B2106CD00A9597E /* DodoToolbarTests.swift */,
+				7EDF78C01B2106CD00A9597E /* DodoTests.swift */,
 				7EDF78C61B2106CD00A9597E /* UIView+SwiftAlertBarTests.swift */,
-				7EDF78711B2105F300A9597E /* DodoTests.swift */,
 				7EDF786F1B2105F300A9597E /* Supporting Files */,
 			);
 			path = DodoTests;
@@ -238,9 +228,8 @@
 		7EDF787F1B21068800A9597E /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				7EDF78801B21068800A9597E /* SABButtonInfo.swift */,
-				7EDF78811B21068800A9597E /* SABButtonOnTap.swift */,
-				7EDF78821B21068800A9597E /* SABButtonView.swift */,
+				7EDF78811B21068800A9597E /* DodoButtonOnTap.swift */,
+				7EDF78821B21068800A9597E /* DodoButtonView.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -248,7 +237,7 @@
 		7EDF78831B21068800A9597E /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				7EDF78841B21068800A9597E /* SABTouchTarget.swift */,
+				7EDF78841B21068800A9597E /* DodoTouchTarget.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -256,14 +245,14 @@
 		7EDF78871B21068800A9597E /* Style */ = {
 			isa = PBXGroup;
 			children = (
-				7EDF78881B21068800A9597E /* SABBarDefaultStyles.swift */,
-				7EDF78891B21068800A9597E /* SABBarStyle.swift */,
-				7EDF788A1B21068800A9597E /* SABButtonDefaultStyles.swift */,
-				7EDF788B1B21068800A9597E /* SABButtonStyle.swift */,
-				7EDF788C1B21068800A9597E /* SABLabelDefaultStyles.swift */,
-				7EDF788D1B21068800A9597E /* SABLabelStyle.swift */,
-				7EDF788E1B21068800A9597E /* SABPresets.swift */,
-				7EDF788F1B21068800A9597E /* SABStyle.swift */,
+				7EDF78881B21068800A9597E /* DodoBarDefaultStyles.swift */,
+				7EDF78891B21068800A9597E /* DodoBarStyle.swift */,
+				7EDF788A1B21068800A9597E /* DodoButtonDefaultStyles.swift */,
+				7EDF788B1B21068800A9597E /* DodoButtonStyle.swift */,
+				7EDF788C1B21068800A9597E /* DodoLabelDefaultStyles.swift */,
+				7EDF788D1B21068800A9597E /* DodoLabelStyle.swift */,
+				7EDF788E1B21068800A9597E /* DodoPresets.swift */,
+				7EDF788F1B21068800A9597E /* DodoStyle.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -283,7 +272,7 @@
 		7EDF78B21B2106CD00A9597E /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				7EDF78B31B2106CD00A9597E /* SABButtonViewTests.swift */,
+				7EDF78B31B2106CD00A9597E /* DodoButtonViewTests.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -291,7 +280,7 @@
 		7EDF78B41B2106CD00A9597E /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				7EDF78B51B2106CD00A9597E /* SABTouchTargetTests.swift */,
+				7EDF78B51B2106CD00A9597E /* DodoTouchTargetTests.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -317,8 +306,8 @@
 		7EDF78BD1B2106CD00A9597E /* Style */ = {
 			isa = PBXGroup;
 			children = (
-				7EDF78BE1B2106CD00A9597E /* SABPresetsTests.swift */,
-				7EDF78BF1B2106CD00A9597E /* SABStyleTests.swift */,
+				7EDF78BE1B2106CD00A9597E /* DodoPresetsTests.swift */,
+				7EDF78BF1B2106CD00A9597E /* DodoStyleTests.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -452,30 +441,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7EDF78A41B21068800A9597E /* SABBarStyle.swift in Sources */,
-				7EDF78A81B21068800A9597E /* SABLabelStyle.swift in Sources */,
-				7EDF78A21B21068800A9597E /* SABToolbar.swift in Sources */,
-				7EDF78A51B21068800A9597E /* SABButtonDefaultStyles.swift in Sources */,
-				7EDF78A11B21068800A9597E /* SABConstants.swift in Sources */,
-				7EDF78A61B21068800A9597E /* SABButtonStyle.swift in Sources */,
+				7EDF78A41B21068800A9597E /* DodoBarStyle.swift in Sources */,
+				7EDF78A81B21068800A9597E /* DodoLabelStyle.swift in Sources */,
+				7EDF78A21B21068800A9597E /* DodoToolbar.swift in Sources */,
+				7EDF78A51B21068800A9597E /* DodoButtonDefaultStyles.swift in Sources */,
+				7EDF78A61B21068800A9597E /* DodoButtonStyle.swift in Sources */,
 				7EDF78B01B21068800A9597E /* TegAutolayoutConstraints.swift in Sources */,
-				7EDF78A31B21068800A9597E /* SABBarDefaultStyles.swift in Sources */,
+				7EDF78A31B21068800A9597E /* DodoBarDefaultStyles.swift in Sources */,
 				7EDF78B11B21068800A9597E /* TegUIColor.swift in Sources */,
-				7EDF78A91B21068800A9597E /* SABPresets.swift in Sources */,
-				7EDF78AA1B21068800A9597E /* SABStyle.swift in Sources */,
-				7EDF789E1B21068800A9597E /* SABButtonOnTap.swift in Sources */,
+				7EDF78A91B21068800A9597E /* DodoPresets.swift in Sources */,
+				7EDF78AA1B21068800A9597E /* DodoStyle.swift in Sources */,
+				7EDF789E1B21068800A9597E /* DodoButtonOnTap.swift in Sources */,
 				7EDF78AC1B21068800A9597E /* UIView+SwiftAlertBar.swift in Sources */,
 				7EDF78AF1B21068800A9597E /* SpringAnimationCALayer.swift in Sources */,
-				7EDF78A71B21068800A9597E /* SABLabelDefaultStyles.swift in Sources */,
-				7EDF789D1B21068800A9597E /* SABButtonInfo.swift in Sources */,
+				7EDF78A71B21068800A9597E /* DodoLabelDefaultStyles.swift in Sources */,
 				7EDF789B1B21068800A9597E /* DodoAnimator_rotate.swift in Sources */,
 				7EDF789A1B21068800A9597E /* DodoAnimator.swift in Sources */,
 				7EDF78AD1B21068800A9597E /* MoaTimer.swift in Sources */,
-				7EDF78AB1B21068800A9597E /* SwiftAlertBar.swift in Sources */,
-				7EDF78A01B21068800A9597E /* SABTouchTarget.swift in Sources */,
+				7EDF78AB1B21068800A9597E /* Dodo.swift in Sources */,
+				7EDF78A01B21068800A9597E /* DodoTouchTarget.swift in Sources */,
 				7EDF789C1B21068800A9597E /* DodoAnimator_swipeToRight.swift in Sources */,
 				7EDF78AE1B21068800A9597E /* OnTap.swift in Sources */,
-				7EDF789F1B21068800A9597E /* SABButtonView.swift in Sources */,
+				7EDF789F1B21068800A9597E /* DodoButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,44 +470,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7EDF78EE1B21072900A9597E /* SABToolbar.swift in Sources */,
+				7EDF78EE1B21072900A9597E /* DodoToolbar.swift in Sources */,
 				7EDF78D61B2106CD00A9597E /* XCTestCase+Helpers.swift in Sources */,
-				7EDF78D21B2106CD00A9597E /* SwiftAlertBarTests.swift in Sources */,
-				7EDF78E21B21071500A9597E /* SABButtonDefaultStyles.swift in Sources */,
+				7EDF78D21B2106CD00A9597E /* DodoTests.swift in Sources */,
+				7EDF78E21B21071500A9597E /* DodoButtonDefaultStyles.swift in Sources */,
 				7EDF78DB1B21070500A9597E /* DodoAnimator_swipeToRight.swift in Sources */,
 				7EDF78E91B21072200A9597E /* OnTap.swift in Sources */,
 				7EDF78DA1B21070500A9597E /* DodoAnimator_rotate.swift in Sources */,
-				7EDF78DF1B21070E00A9597E /* SABTouchTarget.swift in Sources */,
+				7EDF78DF1B21070E00A9597E /* DodoTouchTarget.swift in Sources */,
 				7EDF78D71B2106CD00A9597E /* UIView+SwiftAlertBarTests.swift in Sources */,
-				7EDF78E01B21071500A9597E /* SABBarDefaultStyles.swift in Sources */,
-				7EDF78CA1B2106CD00A9597E /* SABTouchTargetTests.swift in Sources */,
+				7EDF78E01B21071500A9597E /* DodoBarDefaultStyles.swift in Sources */,
+				7EDF78CA1B2106CD00A9597E /* DodoTouchTargetTests.swift in Sources */,
 				7EDF78D91B21070500A9597E /* DodoAnimator.swift in Sources */,
 				7EDF78EA1B21072200A9597E /* SpringAnimationCALayer.swift in Sources */,
 				7EDF78EB1B21072200A9597E /* TegAutolayoutConstraints.swift in Sources */,
-				7EDF78E11B21071500A9597E /* SABBarStyle.swift in Sources */,
+				7EDF78E11B21071500A9597E /* DodoBarStyle.swift in Sources */,
 				7EDF78EC1B21072200A9597E /* TegUIColor.swift in Sources */,
-				7EDF78E61B21071500A9597E /* SABPresets.swift in Sources */,
+				7EDF78E61B21071500A9597E /* DodoPresets.swift in Sources */,
 				7EDF78CE1B2106CD00A9597E /* MockedAnimator.swift in Sources */,
-				7EDF78DC1B21070A00A9597E /* SABButtonInfo.swift in Sources */,
-				7EDF78721B2105F300A9597E /* DodoTests.swift in Sources */,
 				7EDF78D51B2106CD00A9597E /* TestBundle.swift in Sources */,
-				7EDF78D11B2106CD00A9597E /* SABStyleTests.swift in Sources */,
-				7EDF78D01B2106CD00A9597E /* SABPresetsTests.swift in Sources */,
-				7EDF78EF1B21072900A9597E /* SwiftAlertBar.swift in Sources */,
+				7EDF78D11B2106CD00A9597E /* DodoStyleTests.swift in Sources */,
+				7EDF78D01B2106CD00A9597E /* DodoPresetsTests.swift in Sources */,
+				7EDF78EF1B21072900A9597E /* Dodo.swift in Sources */,
 				7EDF78D41B2106CD00A9597E /* PixelColorTests.swift in Sources */,
-				7EDF78DD1B21070A00A9597E /* SABButtonOnTap.swift in Sources */,
-				7EDF78E41B21071500A9597E /* SABLabelDefaultStyles.swift in Sources */,
+				7EDF78DD1B21070A00A9597E /* DodoButtonOnTap.swift in Sources */,
+				7EDF78E41B21071500A9597E /* DodoLabelDefaultStyles.swift in Sources */,
 				7EDF78D81B2106CD00A9597E /* TegUIColorTests.swift in Sources */,
-				7EDF78C91B2106CD00A9597E /* SABButtonViewTests.swift in Sources */,
+				7EDF78C91B2106CD00A9597E /* DodoButtonViewTests.swift in Sources */,
 				7EDF78F01B21072900A9597E /* UIView+SwiftAlertBar.swift in Sources */,
-				7EDF78CF1B2106CD00A9597E /* SABToolbarTests.swift in Sources */,
-				7EDF78E71B21071500A9597E /* SABStyle.swift in Sources */,
+				7EDF78CF1B2106CD00A9597E /* DodoToolbarTests.swift in Sources */,
+				7EDF78E71B21071500A9597E /* DodoStyle.swift in Sources */,
 				7EDF78E81B21072200A9597E /* MoaTimer.swift in Sources */,
 				7EDF78D31B2106CD00A9597E /* PixelColor.swift in Sources */,
-				7EDF78DE1B21070A00A9597E /* SABButtonView.swift in Sources */,
-				7EDF78E51B21071500A9597E /* SABLabelStyle.swift in Sources */,
-				7EDF78ED1B21072900A9597E /* SABConstants.swift in Sources */,
-				7EDF78E31B21071500A9597E /* SABButtonStyle.swift in Sources */,
+				7EDF78DE1B21070A00A9597E /* DodoButtonView.swift in Sources */,
+				7EDF78E51B21071500A9597E /* DodoLabelStyle.swift in Sources */,
+				7EDF78E31B21071500A9597E /* DodoButtonStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
