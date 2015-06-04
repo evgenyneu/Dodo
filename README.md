@@ -13,7 +13,7 @@ This is a library for displaying a text notification bar. I can be used to show 
 view.dodo.success("Everybody has won and all must have prizes.")
 view.dodo.info("Extinction is the rule. Survival is the exception.")
 view.dodo.warning("This world is but a canvas to our imagination.")
-view.dodo.error("Goodness is the only investment that never fails.")
+view.dodo.error("The perception of beauty is a moral test.")
 
 ```
 
