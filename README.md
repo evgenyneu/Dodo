@@ -7,7 +7,7 @@ This is a UI widget for showing notification messages in iOS apps.
 * It has built-in style presets for common types of messages: success, info, warning and error.
 * The bar can have buttons with custom tap handlers.
 * Bar styles can be customized.
-* Includes animations for showing and hiding the bar which can be customized.
+* Includes customizable animations for showing and hiding the bar.
 
 ## Usage
 
