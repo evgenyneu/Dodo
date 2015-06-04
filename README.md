@@ -1,6 +1,6 @@
 🔨🔨🔨 This is work in progress 🔨🔨🔨
 
-# Custom notification UI widget for iOS written in Swift
+# A notification bar for iOS written in Swift
 
 This is a library for displaying a text notification bar. I can be used to show success messages and validation errors.
 
