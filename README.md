@@ -1,30 +1,27 @@
 🔨🔨🔨 This is work in progress 🔨🔨🔨
 
-# Text alert toolbar widget for iOS written in Swift
+# Custom notification UI widget for iOS written in Swift
 
-This is a library for displaying a text alert toolbar. The alert have a multiline message text
-and an optional icon button.
+This is a library for displaying a text notification messages. I can be used to show success messages and validation errors.
 
 ## Usage
 
-### Show alert in a UIView
+### Show notification
 
-If there is an existing alert in a UIView it will be replaced by the new one.
 
 ```Swift
-view.swiftAlertBar.show('Hello World!')
+view.dodo.success("Success usually comes to those who are too busy to be looking for it.")
+view.dodo.info("Extinction is the rule. Survival is the exception.")
+view.dodo.warning("This world is but a canvas to our imagination.")
+view.dodo.error("Goodness is the only investment that never fails.")
+
 ```
 
-### Hide alert
+Note: if there is an existing notification message in a UIView it will be replaced by the new one.
+
+
+### Hide notification
 
 ```Swift
-view.swiftAlertBar.hide()
-```
-
-### Show alert with a button
-
-```Swift
-view.swiftAlertBar.show('Hello World!', withButton: SwiftAlertBarButtons.Cancel) {
-  // Button is tapped
-}
+view.dodo.hide()
 ```
