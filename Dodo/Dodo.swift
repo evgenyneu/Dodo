@@ -15,14 +15,14 @@ final public class Dodo {
   /// Specify optional layout guide for positioning the bar view.
   public var bottomLayoutGuide: UILayoutSupport?
   
-  /// Defines styles for the alert bar.
+  /// Defines styles for the bar.
   public var style = DodoStyle(parentStyle: DodoPresets.defaultPreset.style)
 
   init(superview: UIView) {
     self.superview = superview
   }
   
-  /// Changes the style preset for the bar.
+  /// Changes the style preset for the bar widget.
   public var preset: DodoPresets = DodoPresets.defaultPreset {
     didSet {
       if preset != oldValue  {

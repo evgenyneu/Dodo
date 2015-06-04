@@ -4,7 +4,7 @@ private var sabAssociationKey: UInt8 = 0
 
 /**
 
-UIView extension for showing an alert bar.
+UIView extension for showing a notification widget.
 
     let view = UIView()
     view.dodo.show("Hello World!")
@@ -14,7 +14,7 @@ public extension UIView {
   /**
   
   Message bar extension.
-  Call `dodo.show` to shown an alert bar in the view.
+  Call `dodo.show` to shown a notification widget in the view.
   
       let view = UIView()
       view.dodo.show("Hello World!")
