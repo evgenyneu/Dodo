@@ -50,6 +50,30 @@
 		7EDF78D61B2106CD00A9597E /* XCTestCase+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78C51B2106CD00A9597E /* XCTestCase+Helpers.swift */; };
 		7EDF78D71B2106CD00A9597E /* UIView+SwiftAlertBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78C61B2106CD00A9597E /* UIView+SwiftAlertBarTests.swift */; };
 		7EDF78D81B2106CD00A9597E /* TegUIColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78C81B2106CD00A9597E /* TegUIColorTests.swift */; };
+		7EDF78D91B21070500A9597E /* SABAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF787C1B21068800A9597E /* SABAnimator.swift */; };
+		7EDF78DA1B21070500A9597E /* SABAnimator_rotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF787D1B21068800A9597E /* SABAnimator_rotate.swift */; };
+		7EDF78DB1B21070500A9597E /* SABAnimator_swipeToRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF787E1B21068800A9597E /* SABAnimator_swipeToRight.swift */; };
+		7EDF78DC1B21070A00A9597E /* SABButtonInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78801B21068800A9597E /* SABButtonInfo.swift */; };
+		7EDF78DD1B21070A00A9597E /* SABButtonOnTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78811B21068800A9597E /* SABButtonOnTap.swift */; };
+		7EDF78DE1B21070A00A9597E /* SABButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78821B21068800A9597E /* SABButtonView.swift */; };
+		7EDF78DF1B21070E00A9597E /* SABTouchTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78841B21068800A9597E /* SABTouchTarget.swift */; };
+		7EDF78E01B21071500A9597E /* SABBarDefaultStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78881B21068800A9597E /* SABBarDefaultStyles.swift */; };
+		7EDF78E11B21071500A9597E /* SABBarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78891B21068800A9597E /* SABBarStyle.swift */; };
+		7EDF78E21B21071500A9597E /* SABButtonDefaultStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF788A1B21068800A9597E /* SABButtonDefaultStyles.swift */; };
+		7EDF78E31B21071500A9597E /* SABButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF788B1B21068800A9597E /* SABButtonStyle.swift */; };
+		7EDF78E41B21071500A9597E /* SABLabelDefaultStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF788C1B21068800A9597E /* SABLabelDefaultStyles.swift */; };
+		7EDF78E51B21071500A9597E /* SABLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF788D1B21068800A9597E /* SABLabelStyle.swift */; };
+		7EDF78E61B21071500A9597E /* SABPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF788E1B21068800A9597E /* SABPresets.swift */; };
+		7EDF78E71B21071500A9597E /* SABStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF788F1B21068800A9597E /* SABStyle.swift */; };
+		7EDF78E81B21072200A9597E /* MoaTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78951B21068800A9597E /* MoaTimer.swift */; };
+		7EDF78E91B21072200A9597E /* OnTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78961B21068800A9597E /* OnTap.swift */; };
+		7EDF78EA1B21072200A9597E /* SpringAnimationCALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78971B21068800A9597E /* SpringAnimationCALayer.swift */; };
+		7EDF78EB1B21072200A9597E /* TegAutolayoutConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78981B21068800A9597E /* TegAutolayoutConstraints.swift */; };
+		7EDF78EC1B21072200A9597E /* TegUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78991B21068800A9597E /* TegUIColor.swift */; };
+		7EDF78ED1B21072900A9597E /* SABConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78851B21068800A9597E /* SABConstants.swift */; };
+		7EDF78EE1B21072900A9597E /* SABToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78861B21068800A9597E /* SABToolbar.swift */; };
+		7EDF78EF1B21072900A9597E /* SwiftAlertBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78901B21068800A9597E /* SwiftAlertBar.swift */; };
+		7EDF78F01B21072900A9597E /* UIView+SwiftAlertBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78931B21068800A9597E /* UIView+SwiftAlertBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,7 +179,6 @@
 				7EDF787F1B21068800A9597E /* Buttons */,
 				7EDF78831B21068800A9597E /* Helpers */,
 				7EDF78871B21068800A9597E /* Style */,
-				7EDF78921B21068800A9597E /* Type */,
 				7EDF78941B21068800A9597E /* Utils */,
 				7EDF78851B21068800A9597E /* SABConstants.swift */,
 				7EDF78861B21068800A9597E /* SABToolbar.swift */,
@@ -182,12 +205,12 @@
 				7EDF78B41B2106CD00A9597E /* Helpers */,
 				7EDF78B61B2106CD00A9597E /* Image */,
 				7EDF78BA1B2106CD00A9597E /* Mocks */,
-				7EDF78BC1B2106CD00A9597E /* SABToolbarTests.swift */,
 				7EDF78BD1B2106CD00A9597E /* Style */,
-				7EDF78C01B2106CD00A9597E /* SwiftAlertBarTests.swift */,
 				7EDF78C11B2106CD00A9597E /* TestHelpers */,
-				7EDF78C61B2106CD00A9597E /* UIView+SwiftAlertBarTests.swift */,
 				7EDF78C71B2106CD00A9597E /* Utils */,
+				7EDF78BC1B2106CD00A9597E /* SABToolbarTests.swift */,
+				7EDF78C01B2106CD00A9597E /* SwiftAlertBarTests.swift */,
+				7EDF78C61B2106CD00A9597E /* UIView+SwiftAlertBarTests.swift */,
 				7EDF78711B2105F300A9597E /* DodoTests.swift */,
 				7EDF786F1B2105F300A9597E /* Supporting Files */,
 			);
@@ -243,13 +266,6 @@
 				7EDF788F1B21068800A9597E /* SABStyle.swift */,
 			);
 			path = Style;
-			sourceTree = "<group>";
-		};
-		7EDF78921B21068800A9597E /* Type */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Type;
 			sourceTree = "<group>";
 		};
 		7EDF78941B21068800A9597E /* Utils */ = {
@@ -467,20 +483,44 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EDF78EE1B21072900A9597E /* SABToolbar.swift in Sources */,
 				7EDF78D61B2106CD00A9597E /* XCTestCase+Helpers.swift in Sources */,
 				7EDF78D21B2106CD00A9597E /* SwiftAlertBarTests.swift in Sources */,
+				7EDF78E21B21071500A9597E /* SABButtonDefaultStyles.swift in Sources */,
+				7EDF78DB1B21070500A9597E /* SABAnimator_swipeToRight.swift in Sources */,
+				7EDF78E91B21072200A9597E /* OnTap.swift in Sources */,
+				7EDF78DA1B21070500A9597E /* SABAnimator_rotate.swift in Sources */,
+				7EDF78DF1B21070E00A9597E /* SABTouchTarget.swift in Sources */,
 				7EDF78D71B2106CD00A9597E /* UIView+SwiftAlertBarTests.swift in Sources */,
+				7EDF78E01B21071500A9597E /* SABBarDefaultStyles.swift in Sources */,
 				7EDF78CA1B2106CD00A9597E /* SABTouchTargetTests.swift in Sources */,
+				7EDF78D91B21070500A9597E /* SABAnimator.swift in Sources */,
+				7EDF78EA1B21072200A9597E /* SpringAnimationCALayer.swift in Sources */,
+				7EDF78EB1B21072200A9597E /* TegAutolayoutConstraints.swift in Sources */,
+				7EDF78E11B21071500A9597E /* SABBarStyle.swift in Sources */,
+				7EDF78EC1B21072200A9597E /* TegUIColor.swift in Sources */,
+				7EDF78E61B21071500A9597E /* SABPresets.swift in Sources */,
 				7EDF78CE1B2106CD00A9597E /* MockedAnimator.swift in Sources */,
+				7EDF78DC1B21070A00A9597E /* SABButtonInfo.swift in Sources */,
 				7EDF78721B2105F300A9597E /* DodoTests.swift in Sources */,
 				7EDF78D51B2106CD00A9597E /* TestBundle.swift in Sources */,
 				7EDF78D11B2106CD00A9597E /* SABStyleTests.swift in Sources */,
 				7EDF78D01B2106CD00A9597E /* SABPresetsTests.swift in Sources */,
+				7EDF78EF1B21072900A9597E /* SwiftAlertBar.swift in Sources */,
 				7EDF78D41B2106CD00A9597E /* PixelColorTests.swift in Sources */,
+				7EDF78DD1B21070A00A9597E /* SABButtonOnTap.swift in Sources */,
+				7EDF78E41B21071500A9597E /* SABLabelDefaultStyles.swift in Sources */,
 				7EDF78D81B2106CD00A9597E /* TegUIColorTests.swift in Sources */,
 				7EDF78C91B2106CD00A9597E /* SABButtonViewTests.swift in Sources */,
+				7EDF78F01B21072900A9597E /* UIView+SwiftAlertBar.swift in Sources */,
 				7EDF78CF1B2106CD00A9597E /* SABToolbarTests.swift in Sources */,
+				7EDF78E71B21071500A9597E /* SABStyle.swift in Sources */,
+				7EDF78E81B21072200A9597E /* MoaTimer.swift in Sources */,
 				7EDF78D31B2106CD00A9597E /* PixelColor.swift in Sources */,
+				7EDF78DE1B21070A00A9597E /* SABButtonView.swift in Sources */,
+				7EDF78E51B21071500A9597E /* SABLabelStyle.swift in Sources */,
+				7EDF78ED1B21072900A9597E /* SABConstants.swift in Sources */,
+				7EDF78E31B21071500A9597E /* SABButtonStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
