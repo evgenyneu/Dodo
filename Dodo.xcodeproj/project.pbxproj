@@ -83,6 +83,7 @@
 		7EDF79221B210DC500A9597E /* Dodo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EDF785F1B2105F300A9597E /* Dodo.framework */; };
 		7EDF79231B210DC500A9597E /* Dodo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7EDF785F1B2105F300A9597E /* Dodo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7EDF79271B210DEE00A9597E /* SpringAnimationCALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78971B21068800A9597E /* SpringAnimationCALayer.swift */; };
+		7EDF79291B210F6D00A9597E /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF79281B210F6D00A9597E /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -180,6 +181,7 @@
 		7EDF791A1B210C1000A9597E /* black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = black.png; sourceTree = "<group>"; };
 		7EDF791B1B210C1000A9597E /* flowers.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = flowers.jpg; sourceTree = "<group>"; };
 		7EDF791C1B210C1000A9597E /* white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white.png; sourceTree = "<group>"; };
+		7EDF79281B210F6D00A9597E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +226,7 @@
 				7EDF78F61B210BBC00A9597E /* Demo */,
 				7EDF790C1B210BBD00A9597E /* DemoTests */,
 				7EDF78601B2105F300A9597E /* Products */,
+				7EDF79281B210F6D00A9597E /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -702,6 +705,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EDF79291B210F6D00A9597E /* README.md in Sources */,
 				7EDF79211B210CD100A9597E /* TegAutolayoutConstraints.swift in Sources */,
 				7EDF78FC1B210BBC00A9597E /* ViewController.swift in Sources */,
 				7EDF79201B210C5300A9597E /* MoaTimer.swift in Sources */,
