@@ -131,6 +131,11 @@ class ViewController: UIViewController {
     view.dodo.style.bar.debugMode = debugModeSwitch.on
     view.dodo.style.bar.hideOnTap = hideOnTapSwitch.on
     
+    view.dodo.style.label.color = UIColor.whiteColor()
+    view.dodo.style.label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+    view.dodo.style.bar.backgroundColor = DodoColor.fromHexString("#00000090")
+    view.dodo.style.bar.cornerRadius = 10
+    
     addButtons()
     
     view.dodo.show(message)

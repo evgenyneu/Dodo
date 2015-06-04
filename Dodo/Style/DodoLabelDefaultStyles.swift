@@ -39,7 +39,7 @@ public struct DodoLabelDefaultStyles {
   // ---------------------------
   
 
-  private static let _shadowColor = TegUIColor.fromHexString("#00000050")
+  private static let _shadowColor: UIColor? = nil
   
   /// Color of text shadow.
   public static var shadowColor = _shadowColor

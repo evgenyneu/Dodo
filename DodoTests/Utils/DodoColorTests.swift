@@ -1,13 +1,13 @@
 import UIKit
 import XCTest
 
-class TegUIColorTests: XCTestCase {
+class DodoColorTests: XCTestCase {
 
   // fromHexString
   // -----------------
   
   func testFromHexString_withoutAlpha() {
-    let result = TegUIColor.fromHexString("#102030")
+    let result = DodoColor.fromHexString("#102030")
     var red: CGFloat = 0
     var green: CGFloat = 0
     var blue: CGFloat = 0
@@ -22,7 +22,7 @@ class TegUIColorTests: XCTestCase {
   }
   
   func testFromHexString_withAlpha() {
-    let result = TegUIColor.fromHexString("#f1a2b3a6")
+    let result = DodoColor.fromHexString("#f1a2b3a6")
     var red: CGFloat = 0
     var green: CGFloat = 0
     var blue: CGFloat = 0
@@ -37,7 +37,7 @@ class TegUIColorTests: XCTestCase {
   }
   
   func testFromHexString_doesNotStartWithHash() {    
-    let result = TegUIColor.fromHexString("f1a2b3a6")
+    let result = DodoColor.fromHexString("f1a2b3a6")
     var red: CGFloat = 0
     var green: CGFloat = 0
     var blue: CGFloat = 0
@@ -52,7 +52,7 @@ class TegUIColorTests: XCTestCase {
   }
   
   func testFromHexString_doesNotContainHex() {
-    let result = TegUIColor.fromHexString("#😵not_a_hex_")
+    let result = DodoColor.fromHexString("#😵not_a_hex_")
     var red: CGFloat = 0
     var green: CGFloat = 0
     var blue: CGFloat = 0
@@ -67,7 +67,7 @@ class TegUIColorTests: XCTestCase {
   }
   
   func testFromHexString_incorrectLength() {
-    let result = TegUIColor.fromHexString("#12")
+    let result = DodoColor.fromHexString("#12")
     var red: CGFloat = 0
     var green: CGFloat = 0
     var blue: CGFloat = 0

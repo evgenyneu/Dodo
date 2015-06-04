@@ -30,7 +30,7 @@
 		7EDF78AE1B21068800A9597E /* OnTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78961B21068800A9597E /* OnTap.swift */; };
 		7EDF78AF1B21068800A9597E /* SpringAnimationCALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78971B21068800A9597E /* SpringAnimationCALayer.swift */; };
 		7EDF78B01B21068800A9597E /* TegAutolayoutConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78981B21068800A9597E /* TegAutolayoutConstraints.swift */; };
-		7EDF78B11B21068800A9597E /* TegUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78991B21068800A9597E /* TegUIColor.swift */; };
+		7EDF78B11B21068800A9597E /* DodoColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78991B21068800A9597E /* DodoColor.swift */; };
 		7EDF78C91B2106CD00A9597E /* DodoButtonViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78B31B2106CD00A9597E /* DodoButtonViewTests.swift */; };
 		7EDF78CA1B2106CD00A9597E /* DodoTouchTargetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78B51B2106CD00A9597E /* DodoTouchTargetTests.swift */; };
 		7EDF78CB1B2106CD00A9597E /* 67px.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EDF78B71B2106CD00A9597E /* 67px.png */; };
@@ -46,7 +46,7 @@
 		7EDF78D51B2106CD00A9597E /* TestBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78C41B2106CD00A9597E /* TestBundle.swift */; };
 		7EDF78D61B2106CD00A9597E /* XCTestCase+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78C51B2106CD00A9597E /* XCTestCase+Helpers.swift */; };
 		7EDF78D71B2106CD00A9597E /* UIView+SwiftAlertBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78C61B2106CD00A9597E /* UIView+SwiftAlertBarTests.swift */; };
-		7EDF78D81B2106CD00A9597E /* TegUIColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78C81B2106CD00A9597E /* TegUIColorTests.swift */; };
+		7EDF78D81B2106CD00A9597E /* DodoColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78C81B2106CD00A9597E /* DodoColorTests.swift */; };
 		7EDF78D91B21070500A9597E /* DodoAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF787C1B21068800A9597E /* DodoAnimator.swift */; };
 		7EDF78DA1B21070500A9597E /* DodoAnimator_rotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF787D1B21068800A9597E /* DodoAnimator_rotate.swift */; };
 		7EDF78DB1B21070500A9597E /* DodoAnimator_swipeToRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF787E1B21068800A9597E /* DodoAnimator_swipeToRight.swift */; };
@@ -65,7 +65,7 @@
 		7EDF78E91B21072200A9597E /* OnTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78961B21068800A9597E /* OnTap.swift */; };
 		7EDF78EA1B21072200A9597E /* SpringAnimationCALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78971B21068800A9597E /* SpringAnimationCALayer.swift */; };
 		7EDF78EB1B21072200A9597E /* TegAutolayoutConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78981B21068800A9597E /* TegAutolayoutConstraints.swift */; };
-		7EDF78EC1B21072200A9597E /* TegUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78991B21068800A9597E /* TegUIColor.swift */; };
+		7EDF78EC1B21072200A9597E /* DodoColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78991B21068800A9597E /* DodoColor.swift */; };
 		7EDF78EE1B21072900A9597E /* DodoToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78861B21068800A9597E /* DodoToolbar.swift */; };
 		7EDF78EF1B21072900A9597E /* Dodo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78901B21068800A9597E /* Dodo.swift */; };
 		7EDF78F01B21072900A9597E /* UIView+SwiftAlertBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78931B21068800A9597E /* UIView+SwiftAlertBar.swift */; };
@@ -151,7 +151,7 @@
 		7EDF78961B21068800A9597E /* OnTap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnTap.swift; sourceTree = "<group>"; };
 		7EDF78971B21068800A9597E /* SpringAnimationCALayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringAnimationCALayer.swift; sourceTree = "<group>"; };
 		7EDF78981B21068800A9597E /* TegAutolayoutConstraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TegAutolayoutConstraints.swift; sourceTree = "<group>"; };
-		7EDF78991B21068800A9597E /* TegUIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TegUIColor.swift; sourceTree = "<group>"; };
+		7EDF78991B21068800A9597E /* DodoColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoColor.swift; sourceTree = "<group>"; };
 		7EDF78B31B2106CD00A9597E /* DodoButtonViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoButtonViewTests.swift; sourceTree = "<group>"; };
 		7EDF78B51B2106CD00A9597E /* DodoTouchTargetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoTouchTargetTests.swift; sourceTree = "<group>"; };
 		7EDF78B71B2106CD00A9597E /* 67px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 67px.png; sourceTree = "<group>"; };
@@ -167,7 +167,7 @@
 		7EDF78C41B2106CD00A9597E /* TestBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestBundle.swift; sourceTree = "<group>"; };
 		7EDF78C51B2106CD00A9597E /* XCTestCase+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Helpers.swift"; sourceTree = "<group>"; };
 		7EDF78C61B2106CD00A9597E /* UIView+SwiftAlertBarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+SwiftAlertBarTests.swift"; sourceTree = "<group>"; };
-		7EDF78C81B2106CD00A9597E /* TegUIColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TegUIColorTests.swift; sourceTree = "<group>"; };
+		7EDF78C81B2106CD00A9597E /* DodoColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoColorTests.swift; sourceTree = "<group>"; };
 		7EDF78F51B210BBC00A9597E /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EDF78F81B210BBC00A9597E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7EDF78F91B210BBC00A9597E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -341,7 +341,7 @@
 				7EDF78961B21068800A9597E /* OnTap.swift */,
 				7EDF78971B21068800A9597E /* SpringAnimationCALayer.swift */,
 				7EDF78981B21068800A9597E /* TegAutolayoutConstraints.swift */,
-				7EDF78991B21068800A9597E /* TegUIColor.swift */,
+				7EDF78991B21068800A9597E /* DodoColor.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -403,7 +403,7 @@
 		7EDF78C71B2106CD00A9597E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				7EDF78C81B2106CD00A9597E /* TegUIColorTests.swift */,
+				7EDF78C81B2106CD00A9597E /* DodoColorTests.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -641,7 +641,7 @@
 				7EDF78A61B21068800A9597E /* DodoButtonStyle.swift in Sources */,
 				7EDF78B01B21068800A9597E /* TegAutolayoutConstraints.swift in Sources */,
 				7EDF78A31B21068800A9597E /* DodoBarDefaultStyles.swift in Sources */,
-				7EDF78B11B21068800A9597E /* TegUIColor.swift in Sources */,
+				7EDF78B11B21068800A9597E /* DodoColor.swift in Sources */,
 				7EDF78A91B21068800A9597E /* DodoPresets.swift in Sources */,
 				7EDF78AA1B21068800A9597E /* DodoStyle.swift in Sources */,
 				7EDF789E1B21068800A9597E /* DodoButtonOnTap.swift in Sources */,
@@ -678,7 +678,7 @@
 				7EDF78EA1B21072200A9597E /* SpringAnimationCALayer.swift in Sources */,
 				7EDF78EB1B21072200A9597E /* TegAutolayoutConstraints.swift in Sources */,
 				7EDF78E11B21071500A9597E /* DodoBarStyle.swift in Sources */,
-				7EDF78EC1B21072200A9597E /* TegUIColor.swift in Sources */,
+				7EDF78EC1B21072200A9597E /* DodoColor.swift in Sources */,
 				7EDF78E61B21071500A9597E /* DodoPresets.swift in Sources */,
 				7EDF78CE1B2106CD00A9597E /* MockedAnimator.swift in Sources */,
 				7EDF78D51B2106CD00A9597E /* TestBundle.swift in Sources */,
@@ -688,7 +688,7 @@
 				7EDF78D41B2106CD00A9597E /* PixelColorTests.swift in Sources */,
 				7EDF78DD1B21070A00A9597E /* DodoButtonOnTap.swift in Sources */,
 				7EDF78E41B21071500A9597E /* DodoLabelDefaultStyles.swift in Sources */,
-				7EDF78D81B2106CD00A9597E /* TegUIColorTests.swift in Sources */,
+				7EDF78D81B2106CD00A9597E /* DodoColorTests.swift in Sources */,
 				7EDF78C91B2106CD00A9597E /* DodoButtonViewTests.swift in Sources */,
 				7EDF78F01B21072900A9597E /* UIView+SwiftAlertBar.swift in Sources */,
 				7EDF78CF1B2106CD00A9597E /* DodoToolbarTests.swift in Sources */,

@@ -61,25 +61,25 @@ class DodoTests: XCTestCase {
   func testSuccess() {
     obj.success("Hello world!")
     let bar = sabToolbar(superview)
-    XCTAssertEqual(TegUIColor.fromHexString("#00CC03C9"), bar!.backgroundColor!)
+    XCTAssertEqual(DodoColor.fromHexString("#00CC03C9"), bar!.backgroundColor!)
   }
   
   func testInfo() {
     obj.info("Hello world!")
     let bar = sabToolbar(superview)
-    XCTAssertEqual(TegUIColor.fromHexString("#0057FF96"), bar!.backgroundColor!)
+    XCTAssertEqual(DodoColor.fromHexString("#0057FF96"), bar!.backgroundColor!)
   }
   
   func testWarning() {
     obj.warning("Hello world!")
     let bar = sabToolbar(superview)
-    XCTAssertEqual(TegUIColor.fromHexString("#CEC411DD"), bar!.backgroundColor!)
+    XCTAssertEqual(DodoColor.fromHexString("#CEC411DD"), bar!.backgroundColor!)
   }
   
   func testError() {
     obj.error("Hello world!")
     let bar = sabToolbar(superview)
-    XCTAssertEqual(TegUIColor.fromHexString("#FF0B0BCC"), bar!.backgroundColor!)
+    XCTAssertEqual(DodoColor.fromHexString("#FF0B0BCC"), bar!.backgroundColor!)
   }
   
   // MARK: - Style

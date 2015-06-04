@@ -2,11 +2,11 @@
 
 # Custom notification UI widget for iOS written in Swift
 
-This is a library for displaying a text notification messages. I can be used to show success messages and validation errors.
+This is a library for displaying a text notification bar. I can be used to show success messages and validation errors.
 
 ## Usage
 
-### Show notification
+### Show notification bar
 
 
 ```Swift
@@ -17,11 +17,20 @@ view.dodo.error("Goodness is the only investment that never fails.")
 
 ```
 
-Note: if there is an existing notification message in a UIView it will be replaced by the new one.
+Note: if there is an existing notification bar in a UIView it will be replaced by the new one.
 
 
-### Hide notification
+### Hide notification bar
 
 ```Swift
 view.dodo.hide()
+```
+
+### Syling
+
+```Swift
+view.dodo.style.label.color = UIColor.whiteColor()
+view.dodo.style.label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+view.dodo.style.bar.backgroundColor = DodoColor.fromHexString("#00000090")
+view.dodo.style.bar.cornerRadius = 10
 ```

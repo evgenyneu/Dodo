@@ -53,24 +53,26 @@ public enum DodoPresets {
     
     switch preset {
     case .Success:
-      style.bar.backgroundColor = TegUIColor.fromHexString("#00CC03C9")
-      style.bar.borderColor = TegUIColor.fromHexString("#003C00")
+      style.bar.backgroundColor = DodoColor.fromHexString("#00CC03C9")
+      style.bar.borderColor = DodoColor.fromHexString("#003C00")
 
       
     case .Info:
-      style.bar.backgroundColor = TegUIColor.fromHexString("#0057FF96")
-      style.bar.borderColor = TegUIColor.fromHexString("#132066")
+      style.bar.backgroundColor = DodoColor.fromHexString("#0057FF96")
+      style.bar.borderColor = DodoColor.fromHexString("#132066")
 
       
     case .Warning:
-      style.bar.backgroundColor = TegUIColor.fromHexString("#CEC411DD")
-      style.bar.borderColor = TegUIColor.fromHexString("#574608")
+      style.bar.backgroundColor = DodoColor.fromHexString("#CEC411DD")
+      style.bar.borderColor = DodoColor.fromHexString("#574608")
       
       
     case .Error:
-      style.bar.backgroundColor = TegUIColor.fromHexString("#FF0B0BCC")
-      style.bar.borderColor = TegUIColor.fromHexString("#691716")
+      style.bar.backgroundColor = DodoColor.fromHexString("#FF0B0BCC")
+      style.bar.borderColor = DodoColor.fromHexString("#691716")
     }
+    
+    style.label.shadowColor = DodoColor.fromHexString("#00000050")
     
     return style
   }

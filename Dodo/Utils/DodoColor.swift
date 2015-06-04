@@ -3,13 +3,13 @@
 //
 //  Examples:
 //
-//    TegUIColor.fromHexString('#340f9a')
-//    TegUIColor.fromHexString('#f1a2b3a6') // With alpha channel
+//    DodoColor.fromHexString('#340f9a')
+//    DodoColor.fromHexString('#f1a2b3a6') // With alpha channel
 //
 
 import UIKit
 
-public class TegUIColor {
+public class DodoColor {
   public class func fromHexString(rgba: String) -> UIColor {
     var red: CGFloat   = 0.0
     var green: CGFloat = 0.0
@@ -17,7 +17,7 @@ public class TegUIColor {
     var alpha: CGFloat = 1.0
     
     if !rgba.hasPrefix("#") {
-      println("Warning: TegUIColor.fromHexString, # character missing")
+      println("Warning: DodoColor.fromHexString, # character missing")
       return UIColor()
     }
     
@@ -27,7 +27,7 @@ public class TegUIColor {
     var hexValue: CUnsignedLongLong = 0
     
     if !scanner.scanHexLongLong(&hexValue) {
-      println("Warning: TegUIColor.fromHexString, error scanning hex value")
+      println("Warning: DodoColor.fromHexString, error scanning hex value")
       return UIColor()
     }
 
@@ -41,7 +41,7 @@ public class TegUIColor {
       blue  = CGFloat((hexValue & 0x0000FF00) >> 8)  / 255.0
       alpha = CGFloat(hexValue & 0x000000FF)         / 255.0
     } else {
-      println("Warning: TegUIColor.fromHexString, invalid rgb string, length should be 7 or 9")
+      println("Warning: DodoColor.fromHexString, invalid rgb string, length should be 7 or 9")
       return UIColor()
     }
    
