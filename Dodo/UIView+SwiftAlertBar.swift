@@ -7,30 +7,30 @@ private var sabAssociationKey: UInt8 = 0
 UIView extension for showing an alert bar.
 
     let view = UIView()
-    view.swiftAlertBar.show("Hello World!")
+    view.dodo.show("Hello World!")
 
 */
 public extension UIView {
   /**
   
   Message bar extension.
-  Call `swiftAlertBar.show` to shown an alert bar in the view.
+  Call `dodo.show` to shown an alert bar in the view.
   
       let view = UIView()
-      view.swiftAlertBar.show("Hello World!")
+      view.dodo.show("Hello World!")
   
   */
-  public var swiftAlertBar: Dodo {
+  public var dodo: Dodo {
     get {
       if let value = objc_getAssociatedObject(self, &sabAssociationKey) as? Dodo {
         return value
       } else {
-        let swiftAlertBar = Dodo(superview: self)
+        let dodo = Dodo(superview: self)
         
-        objc_setAssociatedObject(self, &sabAssociationKey, swiftAlertBar,
+        objc_setAssociatedObject(self, &sabAssociationKey, dodo,
           objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
         
-        return swiftAlertBar
+        return dodo
       }
     }
     

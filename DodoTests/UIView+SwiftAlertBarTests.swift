@@ -4,9 +4,9 @@ import XCTest
 class UIImageViewDodoExtensionTests: XCTestCase {
   func testGetCreatesAndStoresMoaInstance() {
     let view = UIView()
-    let swiftAlertBar1 = view.swiftAlertBar
-    let swiftAlertBar2 = view.swiftAlertBar
+    let dodo1 = view.dodo
+    let dodo2 = view.dodo
     
-    XCTAssert(swiftAlertBar1 === swiftAlertBar2)
+    XCTAssert(dodo1 === dodo2)
   }
 }
