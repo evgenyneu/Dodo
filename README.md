@@ -26,7 +26,7 @@ Note: if there is an existing notification bar in a UIView it will be replaced b
 view.dodo.hide()
 ```
 
-### Syling
+### Styling
 
 ```Swift
 view.dodo.style.label.color = UIColor.whiteColor()
