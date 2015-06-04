@@ -2,8 +2,8 @@ import UIKit
 
 final public class SwiftAlertBar {  
   private weak var superview: UIView!
-  var animatorShow: SABAnimator = SABAnimator_rotate()
-  var animatorHide: SABAnimator = SABAnimator_swipeToRight()
+  var animatorShow: DodoAnimator = DodoAnimator_rotate()
+  var animatorHide: DodoAnimator = DodoAnimator_swipeToRight()
   private var hideTimer: MoaTimer?
   
  // Gesture handler that hides the bar when it is tapped

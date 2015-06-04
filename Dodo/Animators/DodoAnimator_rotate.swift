@@ -5,7 +5,7 @@ import UIKit
 Rotates the bar around X axis in perspective.
 
 */
-struct SABAnimator_rotate: SABAnimator {
+struct DodoAnimator_rotate: DodoAnimator {
   func animate(view: UIView, onAnimationCompleted: (()->())? = nil) {
     let myCALayer = view.layer
     

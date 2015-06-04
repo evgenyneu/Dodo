@@ -1,6 +1,6 @@
 import UIKit
 
-class MockedAnimator: SABAnimator {
+class MockedAnimator: DodoAnimator {
   var animated = false
   
   func animate(view: UIView, onAnimationCompleted: (()->())? = nil) {

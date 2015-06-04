@@ -22,7 +22,7 @@ class SABToolbar: UIView {
   
   func show(inSuperview parentView: UIView,
     withMessage message: String,
-    withAnimator animator: SABAnimator) {
+    withAnimator animator: DodoAnimator) {
       
     if superview != nil { return } // already being shown
   
@@ -37,7 +37,7 @@ class SABToolbar: UIView {
     animator.animate(self, onAnimationCompleted: nil)
   }
   
-  func hide(animator: SABAnimator, onAnimationCompleted: ()->()) {
+  func hide(animator: DodoAnimator, onAnimationCompleted: ()->()) {
     animator.animate(self, onAnimationCompleted: {
       self.removeFromSuperview()
       onAnimationCompleted()

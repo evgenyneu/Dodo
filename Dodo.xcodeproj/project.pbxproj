@@ -10,9 +10,9 @@
 		7EDF78651B2105F300A9597E /* Dodo.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EDF78641B2105F300A9597E /* Dodo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7EDF786B1B2105F300A9597E /* Dodo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EDF785F1B2105F300A9597E /* Dodo.framework */; };
 		7EDF78721B2105F300A9597E /* DodoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78711B2105F300A9597E /* DodoTests.swift */; };
-		7EDF789A1B21068800A9597E /* SABAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF787C1B21068800A9597E /* SABAnimator.swift */; };
-		7EDF789B1B21068800A9597E /* SABAnimator_rotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF787D1B21068800A9597E /* SABAnimator_rotate.swift */; };
-		7EDF789C1B21068800A9597E /* SABAnimator_swipeToRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF787E1B21068800A9597E /* SABAnimator_swipeToRight.swift */; };
+		7EDF789A1B21068800A9597E /* DodoAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF787C1B21068800A9597E /* DodoAnimator.swift */; };
+		7EDF789B1B21068800A9597E /* DodoAnimator_rotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF787D1B21068800A9597E /* DodoAnimator_rotate.swift */; };
+		7EDF789C1B21068800A9597E /* DodoAnimator_swipeToRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF787E1B21068800A9597E /* DodoAnimator_swipeToRight.swift */; };
 		7EDF789D1B21068800A9597E /* SABButtonInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78801B21068800A9597E /* SABButtonInfo.swift */; };
 		7EDF789E1B21068800A9597E /* SABButtonOnTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78811B21068800A9597E /* SABButtonOnTap.swift */; };
 		7EDF789F1B21068800A9597E /* SABButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78821B21068800A9597E /* SABButtonView.swift */; };
@@ -50,9 +50,9 @@
 		7EDF78D61B2106CD00A9597E /* XCTestCase+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78C51B2106CD00A9597E /* XCTestCase+Helpers.swift */; };
 		7EDF78D71B2106CD00A9597E /* UIView+SwiftAlertBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78C61B2106CD00A9597E /* UIView+SwiftAlertBarTests.swift */; };
 		7EDF78D81B2106CD00A9597E /* TegUIColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78C81B2106CD00A9597E /* TegUIColorTests.swift */; };
-		7EDF78D91B21070500A9597E /* SABAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF787C1B21068800A9597E /* SABAnimator.swift */; };
-		7EDF78DA1B21070500A9597E /* SABAnimator_rotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF787D1B21068800A9597E /* SABAnimator_rotate.swift */; };
-		7EDF78DB1B21070500A9597E /* SABAnimator_swipeToRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF787E1B21068800A9597E /* SABAnimator_swipeToRight.swift */; };
+		7EDF78D91B21070500A9597E /* DodoAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF787C1B21068800A9597E /* DodoAnimator.swift */; };
+		7EDF78DA1B21070500A9597E /* DodoAnimator_rotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF787D1B21068800A9597E /* DodoAnimator_rotate.swift */; };
+		7EDF78DB1B21070500A9597E /* DodoAnimator_swipeToRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF787E1B21068800A9597E /* DodoAnimator_swipeToRight.swift */; };
 		7EDF78DC1B21070A00A9597E /* SABButtonInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78801B21068800A9597E /* SABButtonInfo.swift */; };
 		7EDF78DD1B21070A00A9597E /* SABButtonOnTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78811B21068800A9597E /* SABButtonOnTap.swift */; };
 		7EDF78DE1B21070A00A9597E /* SABButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78821B21068800A9597E /* SABButtonView.swift */; };
@@ -93,9 +93,9 @@
 		7EDF786A1B2105F300A9597E /* DodoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DodoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EDF78701B2105F300A9597E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7EDF78711B2105F300A9597E /* DodoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DodoTests.swift; sourceTree = "<group>"; };
-		7EDF787C1B21068800A9597E /* SABAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SABAnimator.swift; sourceTree = "<group>"; };
-		7EDF787D1B21068800A9597E /* SABAnimator_rotate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SABAnimator_rotate.swift; sourceTree = "<group>"; };
-		7EDF787E1B21068800A9597E /* SABAnimator_swipeToRight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SABAnimator_swipeToRight.swift; sourceTree = "<group>"; };
+		7EDF787C1B21068800A9597E /* DodoAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoAnimator.swift; sourceTree = "<group>"; };
+		7EDF787D1B21068800A9597E /* DodoAnimator_rotate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoAnimator_rotate.swift; sourceTree = "<group>"; };
+		7EDF787E1B21068800A9597E /* DodoAnimator_swipeToRight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoAnimator_swipeToRight.swift; sourceTree = "<group>"; };
 		7EDF78801B21068800A9597E /* SABButtonInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SABButtonInfo.swift; sourceTree = "<group>"; };
 		7EDF78811B21068800A9597E /* SABButtonOnTap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SABButtonOnTap.swift; sourceTree = "<group>"; };
 		7EDF78821B21068800A9597E /* SABButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SABButtonView.swift; sourceTree = "<group>"; };
@@ -228,9 +228,9 @@
 		7EDF787B1B21068800A9597E /* Animators */ = {
 			isa = PBXGroup;
 			children = (
-				7EDF787C1B21068800A9597E /* SABAnimator.swift */,
-				7EDF787D1B21068800A9597E /* SABAnimator_rotate.swift */,
-				7EDF787E1B21068800A9597E /* SABAnimator_swipeToRight.swift */,
+				7EDF787C1B21068800A9597E /* DodoAnimator.swift */,
+				7EDF787D1B21068800A9597E /* DodoAnimator_rotate.swift */,
+				7EDF787E1B21068800A9597E /* DodoAnimator_swipeToRight.swift */,
 			);
 			path = Animators;
 			sourceTree = "<group>";
@@ -468,12 +468,12 @@
 				7EDF78AF1B21068800A9597E /* SpringAnimationCALayer.swift in Sources */,
 				7EDF78A71B21068800A9597E /* SABLabelDefaultStyles.swift in Sources */,
 				7EDF789D1B21068800A9597E /* SABButtonInfo.swift in Sources */,
-				7EDF789B1B21068800A9597E /* SABAnimator_rotate.swift in Sources */,
-				7EDF789A1B21068800A9597E /* SABAnimator.swift in Sources */,
+				7EDF789B1B21068800A9597E /* DodoAnimator_rotate.swift in Sources */,
+				7EDF789A1B21068800A9597E /* DodoAnimator.swift in Sources */,
 				7EDF78AD1B21068800A9597E /* MoaTimer.swift in Sources */,
 				7EDF78AB1B21068800A9597E /* SwiftAlertBar.swift in Sources */,
 				7EDF78A01B21068800A9597E /* SABTouchTarget.swift in Sources */,
-				7EDF789C1B21068800A9597E /* SABAnimator_swipeToRight.swift in Sources */,
+				7EDF789C1B21068800A9597E /* DodoAnimator_swipeToRight.swift in Sources */,
 				7EDF78AE1B21068800A9597E /* OnTap.swift in Sources */,
 				7EDF789F1B21068800A9597E /* SABButtonView.swift in Sources */,
 			);
@@ -487,14 +487,14 @@
 				7EDF78D61B2106CD00A9597E /* XCTestCase+Helpers.swift in Sources */,
 				7EDF78D21B2106CD00A9597E /* SwiftAlertBarTests.swift in Sources */,
 				7EDF78E21B21071500A9597E /* SABButtonDefaultStyles.swift in Sources */,
-				7EDF78DB1B21070500A9597E /* SABAnimator_swipeToRight.swift in Sources */,
+				7EDF78DB1B21070500A9597E /* DodoAnimator_swipeToRight.swift in Sources */,
 				7EDF78E91B21072200A9597E /* OnTap.swift in Sources */,
-				7EDF78DA1B21070500A9597E /* SABAnimator_rotate.swift in Sources */,
+				7EDF78DA1B21070500A9597E /* DodoAnimator_rotate.swift in Sources */,
 				7EDF78DF1B21070E00A9597E /* SABTouchTarget.swift in Sources */,
 				7EDF78D71B2106CD00A9597E /* UIView+SwiftAlertBarTests.swift in Sources */,
 				7EDF78E01B21071500A9597E /* SABBarDefaultStyles.swift in Sources */,
 				7EDF78CA1B2106CD00A9597E /* SABTouchTargetTests.swift in Sources */,
-				7EDF78D91B21070500A9597E /* SABAnimator.swift in Sources */,
+				7EDF78D91B21070500A9597E /* DodoAnimator.swift in Sources */,
 				7EDF78EA1B21072200A9597E /* SpringAnimationCALayer.swift in Sources */,
 				7EDF78EB1B21072200A9597E /* TegAutolayoutConstraints.swift in Sources */,
 				7EDF78E11B21071500A9597E /* SABBarStyle.swift in Sources */,

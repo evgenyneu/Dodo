@@ -1,5 +1,5 @@
 import UIKit
 
-protocol SABAnimator {
+protocol DodoAnimator {
   func animate(view: UIView, onAnimationCompleted: (()->())?)
 }

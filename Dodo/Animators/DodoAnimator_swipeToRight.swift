@@ -5,7 +5,7 @@ import UIKit
 Swipes the bar to the right with fade-out effect.
 
 */
-struct SABAnimator_swipeToRight: SABAnimator {
+struct DodoAnimator_swipeToRight: DodoAnimator {
   func animate(view: UIView, onAnimationCompleted: (()->())? = nil) {
     UIView.animateWithDuration(0.4, delay: 0,
       options: UIViewAnimationOptions.CurveEaseOut,
