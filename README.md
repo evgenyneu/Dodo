@@ -10,7 +10,7 @@ This is a library for displaying a text notification bar. I can be used to show 
 
 
 ```Swift
-view.dodo.success("Success is not a good teacher, failure makes you humble.")
+view.dodo.success("Everybody has won and all must have prizes.")
 view.dodo.info("Extinction is the rule. Survival is the exception.")
 view.dodo.warning("This world is but a canvas to our imagination.")
 view.dodo.error("Goodness is the only investment that never fails.")
