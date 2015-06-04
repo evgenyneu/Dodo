@@ -1,0 +1,143 @@
+import UIKit
+
+final public class SwiftAlertBar {  
+  private weak var superview: UIView!
+  var animatorShow: SABAnimator = SABAnimator_rotate()
+  var animatorHide: SABAnimator = SABAnimator_swipeToRight()
+  private var hideTimer: MoaTimer?
+  
+ // Gesture handler that hides the bar when it is tapped
+  var onTap: OnTap?
+  
+  /// Specify optional layout guide for positioning the bar view.
+  public var topLayoutGuide: UILayoutSupport?
+  
+  /// Specify optional layout guide for positioning the bar view.
+  public var bottomLayoutGuide: UILayoutSupport?
+  
+  /// Defines styles for the alert bar.
+  public var style = SABStyle(parentStyle: SABPresets.defaultPreset.style)
+
+  init(superview: UIView) {
+    self.superview = superview
+  }
+  
+  /// Changes the style preset for the bar.
+  public var preset: SABPresets = SABPresets.defaultPreset {
+    didSet {
+      if preset != oldValue  {
+        style.parent = preset.style
+      }
+    }
+  }
+  
+  /**
+  
+  Shows the message bar with *.Success* preset. It can be used to indicate successful completion of an operation.
+  
+  :param: message The text message to be shown.
+  
+  */
+  public func success(message: String) {
+    preset = .Success
+    show(message)
+  }
+  
+  /**
+  
+  Shows the message bar with *.Info* preset. It can be used for showing information messages that have neutral emotional value.
+  
+  :param: message The text message to be shown.
+  
+  */
+  public func info(message: String) {
+    preset = .Info
+    show(message)
+  }
+  
+  /**
+  
+  Shows the message bar with *.Warning* preset. It can be used for for showing warning messages.
+  
+  :param: message The text message to be shown.
+  
+  */
+  public func warning(message: String) {
+    preset = .Warning
+    show(message)
+  }
+  
+  /**
+  
+  Shows the message bar with *.Warning* preset. It can be used for showing critical error messages
+  
+  :param: message The text message to be shown.
+  
+  */
+  public func error(message: String) {
+    preset = .Error
+    show(message)
+  }
+  
+  /**
+    
+  Shows the message bar. Set `preset` property to change the appearance of the message bar, or use the shortcut methods: `success`, `info`, `warning` and `error`.
+    
+  :param: message The text message to be shown.
+    
+  */
+  public func show(message: String) {
+    removeExistingBars()
+    setupHideTimer()
+
+    var bar = SABToolbar(witStyle: style)
+    setupHideOnTap(bar)
+    bar.layoutGuide = style.bar.locationTop ? topLayoutGuide : bottomLayoutGuide
+    bar.show(inSuperview: superview, withMessage: message, withAnimator: animatorShow)
+  }
+  
+  public func hide() {
+    hideTimer?.cancel()
+    
+    toolbar?.hide(animatorHide, onAnimationCompleted: {})
+  }
+  
+  private var toolbar: SABToolbar? {
+    get {
+      return superview.subviews.filter { $0 is SABToolbar }.map { $0 as! SABToolbar }.first
+    }
+  }
+  
+  private func removeExistingBars() {
+    for view in superview.subviews {
+      if let existingToolbar = view as? SABToolbar {
+        existingToolbar.removeFromSuperview()
+      }
+    }
+  }
+  
+  // MARK: - Hiding after delay
+  
+  private func setupHideTimer() {
+    hideTimer?.cancel()
+    
+    if style.bar.hideAfterDelaySeconds > 0 {
+      hideTimer = MoaTimer.runAfter(style.bar.hideAfterDelaySeconds) { [weak self] timer in
+        
+        dispatch_async(dispatch_get_main_queue()) {
+          self?.hide()
+        }
+      }
+    }
+  }
+  
+  // MARK: - Hiding the bar on tap
+  
+  private func setupHideOnTap(toolbar: UIView) {
+    if style.bar.hideOnTap {
+      onTap = OnTap(view: toolbar, gesture: UITapGestureRecognizer()) { [weak self] in
+        self?.hide()
+      }
+    }
+  }
+}
