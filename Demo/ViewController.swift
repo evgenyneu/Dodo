@@ -132,22 +132,22 @@ class ViewController: UIViewController {
     view.dodo.style.bar.hideOnTap = hideOnTapSwitch.on
     view.dodo.style.label.shadowColor = DodoColor.fromHexString("#00000050")
     
-//    let buttonTintColor = DodoColor.fromHexString("#FFFFFF90")
-//    view.dodo.style.leftButton.tintColor = buttonTintColor
-//    view.dodo.style.rightButton.tintColor = buttonTintColor
+    let buttonTintColor = DodoColor.fromHexString("#FFFFFF90")
+    view.dodo.style.leftButton.tintColor = buttonTintColor
+    view.dodo.style.rightButton.tintColor = buttonTintColor
     
-    view.dodo.style.label.color = UIColor.whiteColor()
-    view.dodo.style.label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
-    view.dodo.style.bar.backgroundColor = DodoColor.fromHexString("#00000090")
-    view.dodo.style.bar.cornerRadius = 0
-    view.dodo.style.bar.marginToSuperview = CGSize(width: 0, height: 0)
+//    view.dodo.style.label.color = UIColor.whiteColor()
+//    view.dodo.style.label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+//    view.dodo.style.bar.backgroundColor = DodoColor.fromHexString("#00000090")
+//    view.dodo.style.bar.cornerRadius = 0
+//    view.dodo.style.bar.marginToSuperview = CGSize(width: 0, height: 0)
     
     
     addButtons()
 
-    view.dodo.style.leftButton.image = UIImage(named: "CloseIcon")
-    view.dodo.style.leftButton.onTap = { /* Button tapped */ }
-    view.dodo.style.leftButton.tintColor = DodoColor.fromHexString("#FFFFFF90")
+//    view.dodo.style.leftButton.image = UIImage(named: "CloseIcon")
+//    view.dodo.style.leftButton.onTap = { /* Button tapped */ }
+//    view.dodo.style.leftButton.tintColor = DodoColor.fromHexString("#FFFFFF90")
     
     
     view.dodo.show(message)
