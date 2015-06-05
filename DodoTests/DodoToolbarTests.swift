@@ -13,7 +13,7 @@ class DodoToolbarTests: XCTestCase {
     obj = DodoToolbar()
     superview = UIView()
     
-    // Use mocked animator    
+    // Use mocked animator   
     animator = MockedAnimator()
     DodoStyle.resetDefaultStyles()
   }

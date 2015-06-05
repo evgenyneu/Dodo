@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7E4066B61B212BCB00E0AC41 /* DodoAnimatorX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4066B51B212BCB00E0AC41 /* DodoAnimatorX.swift */; };
 		7E4066B81B212C7000E0AC41 /* DodoAnimators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4066B71B212C7000E0AC41 /* DodoAnimators.swift */; };
+		7E4066B91B2131F900E0AC41 /* DodoAnimators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4066B71B212C7000E0AC41 /* DodoAnimators.swift */; };
+		7E4066BA1B2131FE00E0AC41 /* DodoAnimatorX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4066B51B212BCB00E0AC41 /* DodoAnimatorX.swift */; };
 		7EDF78651B2105F300A9597E /* Dodo.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EDF78641B2105F300A9597E /* Dodo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7EDF786B1B2105F300A9597E /* Dodo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EDF785F1B2105F300A9597E /* Dodo.framework */; };
 		7EDF789A1B21068800A9597E /* DodoAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF787C1B21068800A9597E /* DodoAnimator.swift */; };
@@ -684,6 +686,7 @@
 				7EDF78D91B21070500A9597E /* DodoAnimator.swift in Sources */,
 				7EDF78EA1B21072200A9597E /* SpringAnimationCALayer.swift in Sources */,
 				7EDF78EB1B21072200A9597E /* TegAutolayoutConstraints.swift in Sources */,
+				7E4066B91B2131F900E0AC41 /* DodoAnimators.swift in Sources */,
 				7EDF78E11B21071500A9597E /* DodoBarStyle.swift in Sources */,
 				7EDF78EC1B21072200A9597E /* DodoColor.swift in Sources */,
 				7EDF78E61B21071500A9597E /* DodoPresets.swift in Sources */,
@@ -703,6 +706,7 @@
 				7EDF78E81B21072200A9597E /* MoaTimer.swift in Sources */,
 				7EDF78D31B2106CD00A9597E /* PixelColor.swift in Sources */,
 				7EDF78DE1B21070A00A9597E /* DodoButtonView.swift in Sources */,
+				7E4066BA1B2131FE00E0AC41 /* DodoAnimatorX.swift in Sources */,
 				7EDF78E51B21071500A9597E /* DodoLabelStyle.swift in Sources */,
 				7EDF78E31B21071500A9597E /* DodoButtonStyle.swift in Sources */,
 			);

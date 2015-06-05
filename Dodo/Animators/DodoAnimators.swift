@@ -5,8 +5,15 @@ Collection of animation presets that can be assigned to `style.showAnimator` and
 */
 public struct DodoAnimators {
   
-  /// Rotates the bar around X axis in perspective with spring effect. Used for showing the bar.
-  public static func rotateIn(view: UIView, onAnimationCompleted: DodoAnimationCompleted) {
+  /**
+
+  Animation that rotates the bar around X axis in perspective with spring effect. Used for showing the bar.
+
+  :param: view View supplied for animation.
+  :param: completed A closure to be called after animation completes.
+  
+  */
+  public static func rotateIn(view: UIView, completed: DodoAnimationCompleted) {
     let myCALayer = view.layer
     
     var transform = CATransform3DIdentity
@@ -21,11 +28,18 @@ public struct DodoAnimators {
       initialSpringVelocity: 1,
       fromValue: Double(M_PI / 2),
       toValue: Double(0),
-      onFinished: onAnimationCompleted)
+      onFinished: completed)
   }
   
-  /// Swipes the bar to the right with fade-out effect. Used for hiding the bar.
-  public static func moveToRightOut(view: UIView, onAnimationCompleted: DodoAnimationCompleted) {
+  /**
+
+  Animation that swipes the bar to the right with fade-out effect. Used for hiding the bar.
+  
+  :param: view View supplied for animation.
+  :param: completed A closure to be called after animation completes.
+
+  */
+  public static func moveToRightOut(view: UIView, completed: DodoAnimationCompleted) {
     UIView.animateWithDuration(0.4, delay: 0,
       options: UIViewAnimationOptions.CurveEaseOut,
       animations: {
@@ -37,8 +51,21 @@ public struct DodoAnimators {
         view.alpha = 0.2
       },
       completion: { finished in
-        onAnimationCompleted()
+        completed()
       }
     )
+  }
+  
+  /**
+
+  A empty animator which is used when no animation is supplied.
+  Used to call the completion closure without animation.
+  
+  :param: view View supplied for animation.
+  :param: completed A closure to be called after animation completes.
+
+  */
+  public static func noAnimation(view: UIView, completed: DodoAnimationCompleted) {
+    completed()
   }
 }
