@@ -70,7 +70,7 @@ public struct DodoButtonDefaultStyles {
   // ---------------------------
 
   
-  public static let _tintColor: UIColor? =  DodoColor.fromHexString("#FFFFFF90")
+  public static let _tintColor: UIColor? = nil
   
   /// Button tint color. When set it is used to replace the image colors.
   public static var tintColor = _tintColor

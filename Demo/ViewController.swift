@@ -130,11 +130,17 @@ class ViewController: UIViewController {
     view.dodo.style.bar.hideAfterDelaySeconds = hideAfterDelaySwitch.on ? 3 : 0
     view.dodo.style.bar.debugMode = debugModeSwitch.on
     view.dodo.style.bar.hideOnTap = hideOnTapSwitch.on
+    view.dodo.style.label.shadowColor = DodoColor.fromHexString("#00000050")
     
-    view.dodo.style.label.color = UIColor.whiteColor()
-    view.dodo.style.label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
-    view.dodo.style.bar.backgroundColor = DodoColor.fromHexString("#00000090")
-    view.dodo.style.bar.cornerRadius = 10
+    let buttonTintColor = DodoColor.fromHexString("#FFFFFF90")
+    view.dodo.style.leftButton.tintColor = buttonTintColor
+    view.dodo.style.rightButton.tintColor = buttonTintColor
+
+    
+//    view.dodo.style.label.color = UIColor.whiteColor()
+//    view.dodo.style.label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+//    view.dodo.style.bar.backgroundColor = DodoColor.fromHexString("#00000090")
+//    view.dodo.style.bar.cornerRadius = 10
     
     addButtons()
     
