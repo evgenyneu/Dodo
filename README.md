@@ -69,3 +69,37 @@ alt='Dodo bar with left buttons' width='414'>
 <img src='https://raw.githubusercontent.com/exchangegroup/Dodo/master/Graphics/buttons/left_and_right_button.jpg'
 alt='Dodo bar with right and left buttons' width='414'>
 
+### Customize animation
+
+```Swift
+// Use existing animations
+view.dodo.style.bar.animationShow = DodoAnimations.fadeIn
+view.dodo.style.bar.animationHide = DodoAnimations.fadeOut
+```
+
+```Swift
+// Turn off animation
+view.dodo.style.bar.animationShow = DodoAnimations.noAnimation
+view.dodo.style.bar.animationHide = DodoAnimations.noAnimation
+```
+
+```Swift
+// Privide custom animation
+
+view.dodo.style.bar.animationShow = { view, locationTop, completed in
+  view.transform = CGAffineTransformMakeTranslation(0, locationTop ? -100 : 100)
+
+  UIView.animateWithDuration(0.5,
+    delay: 0,
+    usingSpringWithDamping: 1,
+    initialSpringVelocity: 1,
+    options: nil,
+    animations: {
+      view.transform = CGAffineTransformIdentity
+    },
+    completion: { finished in
+      completed()
+    }
+  )
+}
+```

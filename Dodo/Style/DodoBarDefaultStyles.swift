@@ -111,7 +111,7 @@ public struct DodoBarDefaultStyles {
   // ---------------------------
   
   
-  private static let _animationShow: DodoAnimation = DodoAnimations.rotateIn
+  private static let _animationShow: DodoAnimation = DodoAnimationsShow.rotate
   
   /// Callback for animating the bar when it is shown.
   public static var animationShow: DodoAnimation = _animationShow
@@ -120,7 +120,7 @@ public struct DodoBarDefaultStyles {
   // ---------------------------
   
   
-  private static let _animationHide: DodoAnimation = DodoAnimations.moveOutRight
+  private static let _animationHide: DodoAnimation = DodoAnimationsHide.slideRight
   
   /// Callback for animating the bar when it is hidden.
   public static var animationHide: DodoAnimation = _animationHide
