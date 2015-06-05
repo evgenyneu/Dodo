@@ -5,15 +5,12 @@ import XCTest
 class DodoStyleTests: XCTestCase {
   
   var superview: UIView!
-  var animator: MockedAnimator!
   
   override func setUp() {
     super.setUp()
 
     superview = UIView()
-    
-    // Use mocked animator
-    animator = MockedAnimator()
+
     DodoStyle.resetDefaultStyles()
   }
   

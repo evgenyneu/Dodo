@@ -5,8 +5,8 @@ class DodoTests: XCTestCase {
   
   var obj: Dodo!
   var superview: UIView!
-  var animatorShow: MockedAnimator!
-  var animatorHide: MockedAnimator!
+  var animationShowCompleted = false
+  var animationHideCompleted = false
 
   override func setUp() {
     super.setUp()
@@ -14,17 +14,23 @@ class DodoTests: XCTestCase {
     DodoPresets.resetAll()
     superview = UIView()
     obj = Dodo(superview: superview)
+
+    // Mock animation
+    
+    animationShowCompleted = false
+    animationHideCompleted = false
+    
+    obj.style.bar.animationShow = { view, onComplete in
+      onComplete()
+      self.animationShowCompleted = true
+    }
+    
+    obj.style.bar.animationHide = { view, onComplete in
+      onComplete()
+      self.animationHideCompleted = true
+    }
     
     DodoStyle.resetDefaultStyles()
-    
-    // Use mocked animator
-    // ------------
-    
-    animatorShow = MockedAnimator()
-    animatorHide = MockedAnimator()
-    
-    obj.animatorShow = animatorShow
-    obj.animatorHide = animatorHide
   }
   
   // MARK: - Show
@@ -33,7 +39,7 @@ class DodoTests: XCTestCase {
     obj.show("Hello world!")
     let label = sabLabel(superview)
     XCTAssertEqual("Hello world!", label!.text!)
-    XCTAssert(animatorShow.animated)
+    XCTAssert(animationShowCompleted)
   }
   
   func testShow_removeExsitingBar() {
@@ -53,7 +59,7 @@ class DodoTests: XCTestCase {
     
     let toolbar = self.sabToolbar(self.superview)
     XCTAssert(toolbar == nil)
-    XCTAssert(animatorHide.animated)
+    XCTAssert(animationHideCompleted)
   }
   
   // MARK: - Show shortcut methods
@@ -143,7 +149,7 @@ class DodoTests: XCTestCase {
     let toolbar = sabToolbar(superview)
     
     XCTAssert(toolbar == nil)
-    XCTAssert(animatorHide.animated)
+    XCTAssert(animationHideCompleted)
   }
   
   func testDoesNotHideBarAfterDelayWhenValueIsZero() {
@@ -160,7 +166,7 @@ class DodoTests: XCTestCase {
     let toolbar = sabToolbar(superview)
     
     XCTAssert(toolbar != nil)
-    XCTAssertFalse(animatorHide.animated)
+    XCTAssertFalse(animationHideCompleted)
   }
   
   // MARK: - Hide on tap
@@ -174,6 +180,6 @@ class DodoTests: XCTestCase {
     
     let toolbar = self.sabToolbar(self.superview)
     XCTAssert(toolbar == nil)
-    XCTAssert(animatorHide.animated)
+    XCTAssert(animationHideCompleted)
   }
 }

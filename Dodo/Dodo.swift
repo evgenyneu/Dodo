@@ -2,8 +2,6 @@ import UIKit
 
 final public class Dodo {  
   private weak var superview: UIView!
-  var animatorShow: DodoAnimator = DodoAnimator_rotate()
-  var animatorHide: DodoAnimator = DodoAnimator_swipeToRight()
   private var hideTimer: MoaTimer?
   
  // Gesture handler that hides the bar when it is tapped
@@ -93,13 +91,13 @@ final public class Dodo {
     var bar = DodoToolbar(witStyle: style)
     setupHideOnTap(bar)
     bar.layoutGuide = style.bar.locationTop ? topLayoutGuide : bottomLayoutGuide
-    bar.show(inSuperview: superview, withMessage: message, withAnimator: animatorShow)
+    bar.show(inSuperview: superview, withMessage: message)
   }
   
   public func hide() {
     hideTimer?.cancel()
     
-    toolbar?.hide(animatorHide, onAnimationCompleted: {})
+    toolbar?.hide(onAnimationCompleted: {})
   }
   
   private var toolbar: DodoToolbar? {

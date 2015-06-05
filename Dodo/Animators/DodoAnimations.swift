@@ -1,3 +1,5 @@
+import UIKit
+
 /**
 
 Collection of animation effects.

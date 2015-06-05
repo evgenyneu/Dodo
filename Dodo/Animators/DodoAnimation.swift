@@ -1,3 +1,5 @@
+import UIKit
+
 /// A closure that is called for animation of the bar when it is being shown or hidden.
 public typealias DodoAnimation = (UIView, completed: DodoAnimationCompleted)->()
 

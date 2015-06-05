@@ -4,7 +4,8 @@ import XCTest
 class DodoToolbarTests: XCTestCase {
   var obj: DodoToolbar!
   var superview: UIView!
-  var animator: MockedAnimator!
+  var animationShowCompleted = false
+  var animationHideCompleted = false
   
   override func setUp() {
     super.setUp()
@@ -13,19 +14,32 @@ class DodoToolbarTests: XCTestCase {
     obj = DodoToolbar()
     superview = UIView()
     
-    // Use mocked animator   
-    animator = MockedAnimator()
+    // Mock animation
+    
+    animationShowCompleted = false
+    animationHideCompleted = false
+    
+    obj.style.bar.animationShow = { view, onComplete in
+      onComplete()
+      self.animationShowCompleted = true
+    }
+    
+    obj.style.bar.animationHide = { view, onComplete in
+      onComplete()
+      self.animationHideCompleted = true
+    }
+    
     DodoStyle.resetDefaultStyles()
   }
   
   // MARK: - Show
   
   func testShow() {
-    obj.show(inSuperview: superview, withMessage: "hello", withAnimator: animator)
+    obj.show(inSuperview: superview, withMessage: "hello")
     
     let view = superview.subviews[0] as? DodoToolbar
     XCTAssert(view != nil)
-    XCTAssert(animator.animated)
+    XCTAssert(animationShowCompleted)
   }
   
   // MARK: - Hide
@@ -35,19 +49,19 @@ class DodoToolbarTests: XCTestCase {
     
     var completeHandlerCalled = false
     
-    obj.hide(animator, onAnimationCompleted: {
+    obj.hide(onAnimationCompleted: {
       completeHandlerCalled = true
     })
     
     XCTAssert(superview.subviews.isEmpty)
-    XCTAssert(animator.animated)
+    XCTAssert(animationHideCompleted)
     XCTAssert(completeHandlerCalled)
   }
   
   // MARK: - Show message
   
   func testUpdateMessage() {
-    obj.show(inSuperview: superview, withMessage: "Hello World!", withAnimator: animator)
+    obj.show(inSuperview: superview, withMessage: "Hello World!")
     
     let labels = sabToolbar(superview)!.subviews.filter { $0 is UILabel }.map { $0 as! UILabel }
     let label = labels[0]
@@ -60,7 +74,7 @@ class DodoToolbarTests: XCTestCase {
   
   func testUseDefaultStyle() {
     DodoBarDefaultStyles.cornerRadius = 13
-    obj.show(inSuperview: superview, withMessage: "Hello World!", withAnimator: animator)
+    obj.show(inSuperview: superview, withMessage: "Hello World!")
     
     let toolbar = sabToolbar(superview)!
     XCTAssertEqual(13, toolbar.layer.cornerRadius)
@@ -70,7 +84,7 @@ class DodoToolbarTests: XCTestCase {
     DodoBarDefaultStyles.cornerRadius = 13
     DodoPresets.Success.style.bar.cornerRadius = 16
     obj.style.parent = DodoPresets.Success.style
-    obj.show(inSuperview: superview, withMessage: "Hello World!", withAnimator: animator)
+    obj.show(inSuperview: superview, withMessage: "Hello World!")
     
     let toolbar = sabToolbar(superview)!
     XCTAssertEqual(16, toolbar.layer.cornerRadius)
@@ -81,7 +95,7 @@ class DodoToolbarTests: XCTestCase {
     DodoPresets.Success.style.bar.cornerRadius = 16
     obj.style.parent = DodoPresets.Success.style
     obj.style.bar.cornerRadius = 17
-    obj.show(inSuperview: superview, withMessage: "Hello World!", withAnimator: animator)
+    obj.show(inSuperview: superview, withMessage: "Hello World!")
     
     let toolbar = sabToolbar(superview)!
     XCTAssertEqual(17, toolbar.layer.cornerRadius)
@@ -94,7 +108,7 @@ class DodoToolbarTests: XCTestCase {
     obj.style.leftButton.image = image
     obj.style.rightButton.image = nil
     
-    obj.show(inSuperview: superview, withMessage: "hello", withAnimator: animator)
+    obj.show(inSuperview: superview, withMessage: "hello")
     
     let buttons = sabButtons(superview)
     
@@ -108,7 +122,7 @@ class DodoToolbarTests: XCTestCase {
     obj.style.leftButton.image = nil
     obj.style.rightButton.image = image
     
-    obj.show(inSuperview: superview, withMessage: "hello", withAnimator: animator)
+    obj.show(inSuperview: superview, withMessage: "hello")
     
     let buttons = sabButtons(superview)
     
@@ -124,7 +138,7 @@ class DodoToolbarTests: XCTestCase {
     obj.style.leftButton.image = imageLeft
     obj.style.rightButton.image = imageRight
     
-    obj.show(inSuperview: superview, withMessage: "hello", withAnimator: animator)
+    obj.show(inSuperview: superview, withMessage: "hello")
     
     let buttons = sabButtons(superview)
     
@@ -140,7 +154,7 @@ class DodoToolbarTests: XCTestCase {
     var tappedRightButton = false
     obj.style.rightButton.onTap = { tappedRightButton = true }
     
-    obj.show(inSuperview: superview, withMessage: "hello", withAnimator: animator)
+    obj.show(inSuperview: superview, withMessage: "hello")
     
     let buttons = sabButtons(superview)
     
