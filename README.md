@@ -84,17 +84,19 @@ view.dodo.style.bar.animationHide = DodoAnimations.NoAnimation.hide
 ```
 
 ```Swift
+// Customize duration of the animation
+view.dodo.style.bar.animationShowDuration = 0.5
+view.dodo.style.bar.animationHideDuration = 1
+```
+
+```Swift
 // Privide custom animation
-view.dodo.style.bar.animationShow = { view, locationTop, completed in
-  view.transform = CGAffineTransformMakeTranslation(0, locationTop ? -100 : 100)
+view.dodo.style.bar.animationShow = { view, duration, locationTop, completed in
+  view.alpha = 0
 
   UIView.animateWithDuration(0.5,
-    delay: 0,
-    usingSpringWithDamping: 1,
-    initialSpringVelocity: 1,
-    options: nil,
     animations: {
-      view.transform = CGAffineTransformIdentity
+      view.alpha = 1
     },
     completion: { finished in
       completed()
