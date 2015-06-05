@@ -37,5 +37,4 @@ view.dodo.hide()
 view.dodo.style.label.color = UIColor.whiteColor()
 view.dodo.style.label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
 view.dodo.style.bar.backgroundColor = DodoColor.fromHexString("#00000090")
-view.dodo.style.bar.cornerRadius = 10
 ```
