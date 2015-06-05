@@ -73,14 +73,14 @@ alt='Dodo bar with right and left buttons' width='414'>
 
 ```Swift
 // Use existing animations
-view.dodo.style.bar.animationShow = DodoAnimations.fadeIn
-view.dodo.style.bar.animationHide = DodoAnimations.fadeOut
+view.dodo.style.bar.animationShow = DodoAnimations.Rotate.show
+view.dodo.style.bar.animationHide = DodoAnimations.SlideRight.hide
 ```
 
 ```Swift
 // Turn off animation
-view.dodo.style.bar.animationShow = DodoAnimations.noAnimation
-view.dodo.style.bar.animationHide = DodoAnimations.noAnimation
+view.dodo.style.bar.animationShow = DodoAnimations.NoAnimation.show
+view.dodo.style.bar.animationHide = DodoAnimations.NoAnimation.hide
 ```
 
 ```Swift
