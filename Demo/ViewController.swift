@@ -135,11 +135,6 @@ class ViewController: UIViewController {
     let buttonTintColor = DodoColor.fromHexString("#FFFFFF90")
     view.dodo.style.leftButton.tintColor = buttonTintColor
     view.dodo.style.rightButton.tintColor = buttonTintColor
-
-    
-    view.dodo.style.label.color = UIColor.whiteColor()
-    view.dodo.style.label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
-    view.dodo.style.bar.backgroundColor = DodoColor.fromHexString("#00000090")
     
     addButtons()
     
