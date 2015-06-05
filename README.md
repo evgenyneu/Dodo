@@ -67,3 +67,10 @@ view.dodo.style.leftButton.image = UIImage(named: "CloseIcon")
 view.dodo.style.leftButton.tintColor = DodoColor.fromHexString("#FFFFFF90")
 view.dodo.style.leftButton.onTap = { /* Button tapped */ }
 ```
+
+<img src='https://raw.githubusercontent.com/exchangegroup/Dodo/master/Graphics/buttons/left_button.jpg'
+alt='Dodo bar with left buttons' width='414'>
+
+<img src='https://raw.githubusercontent.com/exchangegroup/Dodo/master/Graphics/buttons/left_and_right_button.jpg'
+alt='Dodo bar with right and left buttons' width='414'>
+
