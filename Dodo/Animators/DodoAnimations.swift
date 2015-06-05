@@ -1,9 +1,9 @@
 /**
 
-Collection of animation presets that can be assigned to `style.showAnimator` and `shile.hideAnimator'
+Collection of animation effects.
 
 */
-public struct DodoAnimators {
+public struct DodoAnimations {
   
   /**
 
@@ -39,7 +39,7 @@ public struct DodoAnimators {
   :param: completed A closure to be called after animation completes.
 
   */
-  public static func moveToRightOut(view: UIView, completed: DodoAnimationCompleted) {
+  public static func moveOutRight(view: UIView, completed: DodoAnimationCompleted) {
     UIView.animateWithDuration(0.4, delay: 0,
       options: UIViewAnimationOptions.CurveEaseOut,
       animations: {

@@ -20,8 +20,8 @@ public class DodoBarStyle {
     _borderColor = nil
     _backgroundColor = nil
     _debugMode = nil
-    _showAnimator = nil
-    _hideAnimator = nil
+    _animationShow = nil
+    _animationHide = nil
   }
   
   
@@ -171,31 +171,31 @@ public class DodoBarStyle {
   
   // ---------------------------
   
-  private var _showAnimator: DodoAnimatorX?
+  private var _animationShow: DodoAnimation?
   
   /// Callback for animating the bar when it is shown.
-  public var showAnimator: DodoAnimatorX {
+  public var animationShow: DodoAnimation {
     get {
-      return (_showAnimator ?? parent?.showAnimator) ?? DodoBarDefaultStyles.showAnimator
+      return (_animationShow ?? parent?.animationShow) ?? DodoBarDefaultStyles.animationShow
     }
     
     set {
-      _showAnimator = newValue
+      _animationShow = newValue
     }
   }
 
   // ---------------------------
   
-  private var _hideAnimator: DodoAnimatorX?
+  private var _animationHide: DodoAnimation?
   
   /// Callback for animating the bar when it is hidden.
-  public var hideAnimator: DodoAnimatorX {
+  public var animationHide: DodoAnimation {
     get {
-      return (_hideAnimator ?? parent?.hideAnimator) ?? DodoBarDefaultStyles.hideAnimator
+      return (_animationHide ?? parent?.animationHide) ?? DodoBarDefaultStyles.animationHide
     }
     
     set {
-      _hideAnimator = newValue
+      _animationHide = newValue
     }
   }
   

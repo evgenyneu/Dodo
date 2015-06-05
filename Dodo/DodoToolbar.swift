@@ -34,11 +34,11 @@ class DodoToolbar: UIView {
 
     createLabel(message, withButtons: buttons)
     
-    style.bar.showAnimator(self, completed: {})
+    style.bar.animationShow(self, completed: {})
   }
   
   func hide(animator: DodoAnimator, onAnimationCompleted: ()->()) {
-    style.bar.hideAnimator(self, completed: { [weak self] in
+    style.bar.animationHide(self, completed: { [weak self] in
       self?.removeFromSuperview()
       onAnimationCompleted()
     })

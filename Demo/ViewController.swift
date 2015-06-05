@@ -11,6 +11,7 @@ class ViewController: UIViewController {
   @IBOutlet weak var leftButtonSwitch: UISwitch!
   @IBOutlet weak var rightButtonSwitch: UISwitch!
   @IBOutlet weak var debugModeSwitch: UISwitch!
+  @IBOutlet weak var animateSwitch: UISwitch!
   
   var timer: MoaTimer?
   
@@ -109,6 +110,10 @@ class ViewController: UIViewController {
     show()
   }
   
+  @IBAction func onAnimateSwitchChanged(sender: AnyObject) {
+    show()
+  }
+  
   @IBAction func onLeftButtonSwitchChanged(sender: AnyObject) {
     show()
   }
@@ -136,6 +141,9 @@ class ViewController: UIViewController {
     view.dodo.style.leftButton.tintColor = buttonTintColor
     view.dodo.style.rightButton.tintColor = buttonTintColor
     
+    view.dodo.style.bar.animationShow = animateSwitch.on ? DodoAnimations.rotateIn : DodoAnimations.noAnimation
+    view.dodo.style.bar.animationHide = animateSwitch.on ? DodoAnimations.moveOutRight : DodoAnimations.noAnimation
+
     addButtons()
     
     view.dodo.show(message)

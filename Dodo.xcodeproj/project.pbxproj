@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7E4066B61B212BCB00E0AC41 /* DodoAnimatorX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4066B51B212BCB00E0AC41 /* DodoAnimatorX.swift */; };
-		7E4066B81B212C7000E0AC41 /* DodoAnimators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4066B71B212C7000E0AC41 /* DodoAnimators.swift */; };
-		7E4066B91B2131F900E0AC41 /* DodoAnimators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4066B71B212C7000E0AC41 /* DodoAnimators.swift */; };
-		7E4066BA1B2131FE00E0AC41 /* DodoAnimatorX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4066B51B212BCB00E0AC41 /* DodoAnimatorX.swift */; };
+		7E4066B61B212BCB00E0AC41 /* DodoAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4066B51B212BCB00E0AC41 /* DodoAnimation.swift */; };
+		7E4066B81B212C7000E0AC41 /* DodoAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4066B71B212C7000E0AC41 /* DodoAnimations.swift */; };
+		7E4066B91B2131F900E0AC41 /* DodoAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4066B71B212C7000E0AC41 /* DodoAnimations.swift */; };
+		7E4066BA1B2131FE00E0AC41 /* DodoAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4066B51B212BCB00E0AC41 /* DodoAnimation.swift */; };
 		7EDF78651B2105F300A9597E /* Dodo.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EDF78641B2105F300A9597E /* Dodo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7EDF786B1B2105F300A9597E /* Dodo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EDF785F1B2105F300A9597E /* Dodo.framework */; };
 		7EDF789A1B21068800A9597E /* DodoAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF787C1B21068800A9597E /* DodoAnimator.swift */; };
@@ -128,8 +128,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7E4066B51B212BCB00E0AC41 /* DodoAnimatorX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoAnimatorX.swift; sourceTree = "<group>"; };
-		7E4066B71B212C7000E0AC41 /* DodoAnimators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoAnimators.swift; sourceTree = "<group>"; };
+		7E4066B51B212BCB00E0AC41 /* DodoAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoAnimation.swift; sourceTree = "<group>"; };
+		7E4066B71B212C7000E0AC41 /* DodoAnimations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoAnimations.swift; sourceTree = "<group>"; };
 		7EDF785F1B2105F300A9597E /* Dodo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Dodo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EDF78631B2105F300A9597E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7EDF78641B2105F300A9597E /* Dodo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dodo.h; sourceTree = "<group>"; };
@@ -301,10 +301,10 @@
 			isa = PBXGroup;
 			children = (
 				7EDF787C1B21068800A9597E /* DodoAnimator.swift */,
-				7E4066B71B212C7000E0AC41 /* DodoAnimators.swift */,
+				7E4066B71B212C7000E0AC41 /* DodoAnimations.swift */,
 				7EDF787D1B21068800A9597E /* DodoAnimator_rotate.swift */,
 				7EDF787E1B21068800A9597E /* DodoAnimator_swipeToRight.swift */,
-				7E4066B51B212BCB00E0AC41 /* DodoAnimatorX.swift */,
+				7E4066B51B212BCB00E0AC41 /* DodoAnimation.swift */,
 			);
 			path = Animators;
 			sourceTree = "<group>";
@@ -643,9 +643,9 @@
 			files = (
 				7EDF78A41B21068800A9597E /* DodoBarStyle.swift in Sources */,
 				7EDF78A81B21068800A9597E /* DodoLabelStyle.swift in Sources */,
-				7E4066B81B212C7000E0AC41 /* DodoAnimators.swift in Sources */,
+				7E4066B81B212C7000E0AC41 /* DodoAnimations.swift in Sources */,
 				7EDF78A21B21068800A9597E /* DodoToolbar.swift in Sources */,
-				7E4066B61B212BCB00E0AC41 /* DodoAnimatorX.swift in Sources */,
+				7E4066B61B212BCB00E0AC41 /* DodoAnimation.swift in Sources */,
 				7EDF78A51B21068800A9597E /* DodoButtonDefaultStyles.swift in Sources */,
 				7EDF78A61B21068800A9597E /* DodoButtonStyle.swift in Sources */,
 				7EDF78B01B21068800A9597E /* TegAutolayoutConstraints.swift in Sources */,
@@ -686,7 +686,7 @@
 				7EDF78D91B21070500A9597E /* DodoAnimator.swift in Sources */,
 				7EDF78EA1B21072200A9597E /* SpringAnimationCALayer.swift in Sources */,
 				7EDF78EB1B21072200A9597E /* TegAutolayoutConstraints.swift in Sources */,
-				7E4066B91B2131F900E0AC41 /* DodoAnimators.swift in Sources */,
+				7E4066B91B2131F900E0AC41 /* DodoAnimations.swift in Sources */,
 				7EDF78E11B21071500A9597E /* DodoBarStyle.swift in Sources */,
 				7EDF78EC1B21072200A9597E /* DodoColor.swift in Sources */,
 				7EDF78E61B21071500A9597E /* DodoPresets.swift in Sources */,
@@ -706,7 +706,7 @@
 				7EDF78E81B21072200A9597E /* MoaTimer.swift in Sources */,
 				7EDF78D31B2106CD00A9597E /* PixelColor.swift in Sources */,
 				7EDF78DE1B21070A00A9597E /* DodoButtonView.swift in Sources */,
-				7E4066BA1B2131FE00E0AC41 /* DodoAnimatorX.swift in Sources */,
+				7E4066BA1B2131FE00E0AC41 /* DodoAnimation.swift in Sources */,
 				7EDF78E51B21071500A9597E /* DodoLabelStyle.swift in Sources */,
 				7EDF78E31B21071500A9597E /* DodoButtonStyle.swift in Sources */,
 			);
