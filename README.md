@@ -35,6 +35,15 @@ view.dodo.error("The perception of beauty is a moral test.")
 <img src='https://raw.githubusercontent.com/exchangegroup/Dodo/master/Graphics/presets/success.jpg'
 alt='Dodo success presets' width='414'>
 
+<img src='https://raw.githubusercontent.com/exchangegroup/Dodo/master/Graphics/presets/info.jpg'
+alt='Dodo info presets' width='414'>
+
+<img src='https://raw.githubusercontent.com/exchangegroup/Dodo/master/Graphics/presets/warning.jpg'
+alt='Dodo warning presets' width='414'>
+
+<img src='https://raw.githubusercontent.com/exchangegroup/Dodo/master/Graphics/presets/error.jpg'
+alt='Dodo error presets' width='414'>
+
 ### Hide notification bar
 
 ```Swift
