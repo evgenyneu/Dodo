@@ -11,8 +11,22 @@ class ViewController: UIViewController {
   @IBOutlet weak var leftButtonSwitch: UISwitch!
   @IBOutlet weak var rightButtonSwitch: UISwitch!
   @IBOutlet weak var debugModeSwitch: UISwitch!
-  @IBOutlet weak var animateSwitch: UISwitch!
+  @IBOutlet weak var showAnimationButton: UIButton!
+  @IBOutlet weak var hideAnimationButton: UIButton!
+
   
+  let animations = [
+    DodoAnimations.Fade,
+    DodoAnimations.NoAnimation,
+    DodoAnimations.Rotate,
+    DodoAnimations.SlideLeft,
+    DodoAnimations.SlideRight,
+    DodoAnimations.SlideVertically
+  ]
+  
+  var currentShowAnimationIndex = 2
+  var currentHideAnimationIndex = 4
+
   var timer: MoaTimer?
   
   var message = "Failure is success if we learn from it."
@@ -30,6 +44,7 @@ class ViewController: UIViewController {
     super.viewDidLoad()
     
     view.dodo.topLayoutGuide = topLayoutGuide
+    updateShowAnimationButtonTitle()
   }
   
   private func changeBackgroundImage() {
@@ -110,10 +125,6 @@ class ViewController: UIViewController {
     show()
   }
   
-  @IBAction func onAnimateSwitchChanged(sender: AnyObject) {
-    show()
-  }
-  
   @IBAction func onLeftButtonSwitchChanged(sender: AnyObject) {
     show()
   }
@@ -141,10 +152,8 @@ class ViewController: UIViewController {
     view.dodo.style.leftButton.tintColor = buttonTintColor
     view.dodo.style.rightButton.tintColor = buttonTintColor
     
-    let animation = animateSwitch.on ? DodoAnimations.Rotate : DodoAnimations.NoAnimation
-
-    view.dodo.style.bar.animationShow = animation.show
-    view.dodo.style.bar.animationHide = animation.hide
+    view.dodo.style.bar.animationShow = currentShowAnimation.show
+    view.dodo.style.bar.animationHide = currentHideAnimation.hide
     
     addButtons()
     
@@ -192,6 +201,45 @@ class ViewController: UIViewController {
       fromValue: Double(0),
       toValue: Double(2 * M_PI),
       onFinished: nil)
+  }
+  
+  // MARK: - Change animation
+  
+  @IBAction func onShowAnimationButtonTapped(sender: AnyObject) {
+    currentShowAnimationIndex += 1
+    if currentShowAnimationIndex >= animations.count { currentShowAnimationIndex = 0 }
+    updateShowAnimationButtonTitle()
+    show()
+  }
+  
+  @IBAction func onHideAnimationButtonTapped(sender: AnyObject) {
+    currentHideAnimationIndex += 1
+    if currentHideAnimationIndex >= animations.count { currentHideAnimationIndex = 0 }
+    updateHideAnimationButtonTitle()
+    show()
+  }
+  
+  private func updateShowAnimationButtonTitle() {
+    let text = currentShowAnimation.rawValue
+    showAnimationButton.setTitle(text, forState: UIControlState.Normal)
+  }
+  
+  private func updateHideAnimationButtonTitle() {
+    let text = currentHideAnimation.rawValue
+    hideAnimationButton.setTitle(text, forState: UIControlState.Normal)
+  }
+  
+  var currentShowAnimation: DodoAnimations {
+    return animationForIndex(currentShowAnimationIndex)
+  }
+  
+  var currentHideAnimation: DodoAnimations {
+    return animationForIndex(currentHideAnimationIndex)
+  }
+  
+  private func animationForIndex(index: Int) -> DodoAnimations {
+    if index >= (animations.count - 1) { animations[0] }
+    return animations[index]
   }
 }
 

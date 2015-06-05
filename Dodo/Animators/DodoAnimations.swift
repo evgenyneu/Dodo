@@ -1,24 +1,24 @@
 import UIKit
 
 /// Collection of animation effects use for showing and hiding the notification bar.
-public enum DodoAnimations {
+public enum DodoAnimations: String {
   /// Animation that fades the bar in/out.
-  case Fade
+  case Fade = "Fade"
   
   /// Used for showing notification without animation.
-  case NoAnimation
+  case NoAnimation = "No animation"
   
   /// Animation that rotates the bar around X axis in perspective with spring effect.
-  case Rotate
+  case Rotate = "Rotate"
   
-  /// Animation that swipes the bar to/from the left with fade-in effect.
-  case SlideLeft
+  /// Animation that swipes the bar to/from the left with fade effect.
+  case SlideLeft = "Slide left"
   
-  /// Animation that swipes the bar to/from the right with fade-in effect.
-  case SlideRight
+  /// Animation that swipes the bar to/from the right with fade effect.
+  case SlideRight = "Slide right"
   
   /// Animation that slides the bar vertically into view.
-  case SlideVertically
+  case SlideVertically = "Slide vertically"
   
   /**
   
