@@ -47,6 +47,8 @@ alt='Dodo error presets' width='414'>
 
 ### Styling
 
+Notification can be styled before it is shown by settings the `view.dodo.style` properties.
+
 ```Swift
 view.dodo.style.label.color = UIColor.whiteColor()
 view.dodo.style.label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
