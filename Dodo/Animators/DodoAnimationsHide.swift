@@ -1,7 +1,7 @@
 import UIKit
 
 /// Collection of animation effects use for hiding the notification bar.
-public struct DodoAnimationsHide {
+struct DodoAnimationsHide {
   /**
   
   Animation that rotates the bar around X axis in perspective with spring effect.
@@ -10,7 +10,7 @@ public struct DodoAnimationsHide {
   :param: completed A closure to be called after animation completes.
   
   */
-  public static func rotate(view: UIView, locationTop: Bool, completed: DodoAnimationCompleted) {
+  static func rotate(view: UIView, locationTop: Bool, completed: DodoAnimationCompleted) {
     DodoAnimations.rotate(false, view: view, completed: completed)
   }
   
@@ -22,7 +22,7 @@ public struct DodoAnimationsHide {
   :param: completed A closure to be called after animation completes.
   
   */
-  public static func slideLeft(view: UIView, locationTop: Bool, completed: DodoAnimationCompleted) {
+  static func slideLeft(view: UIView, locationTop: Bool, completed: DodoAnimationCompleted) {
     DodoAnimations.slide(false, showView: false, view: view, completed: completed)
   }
   
@@ -34,7 +34,7 @@ public struct DodoAnimationsHide {
   :param: completed A closure to be called after animation completes.
   
   */
-  public static func slideRight(view: UIView, locationTop: Bool, completed: DodoAnimationCompleted) {
+  static func slideRight(view: UIView, locationTop: Bool, completed: DodoAnimationCompleted) {
     DodoAnimations.slide(true, showView: false, view: view, completed: completed)
   }
   
@@ -46,7 +46,7 @@ public struct DodoAnimationsHide {
   :param: completed A closure to be called after animation completes.
   
   */
-  public static func fade(view: UIView, locationTop: Bool, completed: DodoAnimationCompleted) {
+  static func fade(view: UIView, locationTop: Bool, completed: DodoAnimationCompleted) {
     DodoAnimations.fade(false, view: view, completed: completed)
   }
   
@@ -58,7 +58,7 @@ public struct DodoAnimationsHide {
   :param: completed A closure to be called after animation completes.
   
   */
-  public static func slideVertically(view: UIView, locationTop: Bool,
+  static func slideVertically(view: UIView, locationTop: Bool,
     completed: DodoAnimationCompleted) {
       
     DodoAnimations.slideVertically(false, view: view, locationTop: locationTop, completed: completed)

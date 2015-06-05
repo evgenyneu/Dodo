@@ -2,6 +2,82 @@ import UIKit
 
 /// Collection of animation effects use for showing and hiding the notification bar.
 public enum DodoAnimations {
+  /// Animation that fades the bar in/out.
+  case Fade
+  
+  /// Used for showing notification without animation.
+  case NoAnimation
+  
+  /// Animation that rotates the bar around X axis in perspective with spring effect.
+  case Rotate
+  
+  /// Animation that swipes the bar to/from the left with fade-in effect.
+  case SlideLeft
+  
+  /// Animation that swipes the bar to/from the right with fade-in effect.
+  case SlideRight
+  
+  /// Animation that slides the bar vertically into view.
+  case SlideVertically
+  
+  /**
+  
+  Get animation function that can be used for showing notification bar.
+  
+  :returns: Animation function.
+  
+  */
+  public var show: DodoAnimation {
+    switch self {
+    case .Fade:
+      return DodoAnimationsShow.fade
+      
+    case .NoAnimation:
+      return DodoAnimations.noAnimation
+      
+    case .Rotate:
+      return DodoAnimationsShow.rotate
+      
+    case .SlideLeft:
+      return DodoAnimationsShow.slideLeft
+      
+    case .SlideRight:
+      return DodoAnimationsShow.slideRight
+      
+    case .SlideVertically:
+      return DodoAnimationsShow.slideVertically
+    }
+  }
+  
+  /**
+  
+  Get animation function that can be used for hiding notification bar.
+  
+  :returns: Animation function.
+  
+  */
+  public var hide: DodoAnimation {
+    switch self {
+    case .Fade:
+      return DodoAnimationsHide.fade
+      
+    case .NoAnimation:
+      return DodoAnimations.noAnimation
+      
+    case .Rotate:
+      return DodoAnimationsHide.rotate
+      
+    case .SlideLeft:
+      return DodoAnimationsHide.slideLeft
+      
+    case .SlideRight:
+      return DodoAnimationsHide.slideRight
+      
+    case .SlideVertically:
+      return DodoAnimationsHide.slideVertically
+    }
+  }
+  
   /**
 
   A empty animator which is used when no animation is supplied.
@@ -11,7 +87,7 @@ public enum DodoAnimations {
   :param: completed A closure to be called after animation completes.
 
   */
-  public static func noAnimation(view: UIView, locationTop: Bool, completed: DodoAnimationCompleted) {
+  static func noAnimation(view: UIView, locationTop: Bool, completed: DodoAnimationCompleted) {
     completed()
   }
   
@@ -84,7 +160,7 @@ public enum DodoAnimations {
   }
   
   /// Animation that swipes the bar to the right with fade-out effect.
-  public static func slide(right: Bool, showView: Bool, view: UIView, completed: DodoAnimationCompleted) {
+  static func slide(right: Bool, showView: Bool, view: UIView, completed: DodoAnimationCompleted) {
     
     let distance = UIScreen.mainScreen().bounds.width
     var transform = CGAffineTransformMakeTranslation(right ? distance : -distance, 0)

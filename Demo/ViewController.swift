@@ -141,11 +141,11 @@ class ViewController: UIViewController {
     view.dodo.style.leftButton.tintColor = buttonTintColor
     view.dodo.style.rightButton.tintColor = buttonTintColor
     
-    view.dodo.style.bar.animationShow = animateSwitch.on ? DodoAnimationsShow.rotate : DodoAnimations.noAnimation
-    view.dodo.style.bar.animationHide = animateSwitch.on ? DodoAnimationsHide.slideRight : DodoAnimations.noAnimation
+    let animation = animateSwitch.on ? DodoAnimations.Rotate : DodoAnimations.NoAnimation
+
+    view.dodo.style.bar.animationShow = animation.show
+    view.dodo.style.bar.animationHide = animation.hide
     
-    view.dodo.style.bar.animationShow = DodoAnimationsShow.slideLeft
-    view.dodo.style.bar.animationHide = DodoAnimationsHide.slideLeft
     addButtons()
     
     view.dodo.show(message)
