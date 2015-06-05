@@ -81,26 +81,29 @@ public enum DodoAnimations: String {
   /**
 
   A empty animator which is used when no animation is supplied.
-  Used to call the completion closure without animation.
+  It simply calls the completion closure.
   
   :param: view View supplied for animation.
   :param: completed A closure to be called after animation completes.
 
   */
-  static func noAnimation(view: UIView, locationTop: Bool, completed: DodoAnimationCompleted) {
+  static func noAnimation(view: UIView, duration: NSTimeInterval?, locationTop: Bool,
+    completed: DodoAnimationCompleted) {
+      
     completed()
   }
   
   /// Helper function for fading the view in and out.
-  static func fade(showView: Bool, view: UIView,
+  static func fade(duration: NSTimeInterval?, showView: Bool, view: UIView,
     completed: DodoAnimationCompleted) {
       
+    let actualDuration = duration ?? 0.5
     let startAlpha: CGFloat = showView ? 0 : 1
     let endAlpha: CGFloat = showView ? 1 : 0
 
     view.alpha = startAlpha
     
-    UIView.animateWithDuration(0.5,
+    UIView.animateWithDuration(actualDuration,
       animations: {
         view.alpha = endAlpha
       },
@@ -111,17 +114,28 @@ public enum DodoAnimations: String {
   }
   
   /// Helper function for sliding the view vertically
-  static func slideVertically(showView: Bool, view: UIView, locationTop: Bool,
-    completed: DodoAnimationCompleted) {
+  static func slideVertically(duration: NSTimeInterval?, showView: Bool, view: UIView,
+    locationTop: Bool, completed: DodoAnimationCompleted) {
     
-    var transform = CGAffineTransformMakeTranslation(0, locationTop ? -100 : 100)
+    let actualDuration = duration ?? 0.5
+    view.layoutIfNeeded()
+    
+    var distance: CGFloat = 0
+      
+    if locationTop {
+      distance = view.frame.height + view.frame.origin.y
+    } else {
+      distance = UIScreen.mainScreen().bounds.height - view.frame.origin.y
+    }
+            
+    var transform = CGAffineTransformMakeTranslation(0, locationTop ? -distance : distance)
       
     var start: CGAffineTransform = showView ? transform : CGAffineTransformIdentity
     var end: CGAffineTransform = showView ? CGAffineTransformIdentity : transform
     
     view.transform = start
     
-    UIView.animateWithDuration(0.5,
+    UIView.animateWithDuration(actualDuration,
       delay: 0,
       usingSpringWithDamping: 1,
       initialSpringVelocity: 1,
@@ -135,9 +149,10 @@ public enum DodoAnimations: String {
     )
   }
   
-  ///  Animation that rotates the bar around X axis in perspective with spring effect.
-  static func rotate(showView: Bool, view: UIView, completed: DodoAnimationCompleted) {
+  /// Animation that rotates the bar around X axis in perspective with spring effect.
+  static func rotate(duration: NSTimeInterval?, showView: Bool, view: UIView, completed: DodoAnimationCompleted) {
     
+    let actualDuration = duration ?? 2.0
     var start: Double = showView ? Double(M_PI / 2) : 0
     var end: Double = showView ? 0 : Double(M_PI / 2)
     var damping = showView ? 0.85 : 3
@@ -151,7 +166,7 @@ public enum DodoAnimations: String {
     
     SpringAnimation.animate(myCALayer,
       keypath: "transform.rotation.x",
-      duration: 2.0,
+      duration: actualDuration,
       usingSpringWithDamping: damping,
       initialSpringVelocity: 1,
       fromValue: start,
@@ -160,8 +175,10 @@ public enum DodoAnimations: String {
   }
   
   /// Animation that swipes the bar to the right with fade-out effect.
-  static func slide(right: Bool, showView: Bool, view: UIView, completed: DodoAnimationCompleted) {
-    
+  static func slide(duration: NSTimeInterval?, right: Bool, showView: Bool,
+    view: UIView, completed: DodoAnimationCompleted) {
+      
+    let actualDuration = duration ?? 0.4
     let distance = UIScreen.mainScreen().bounds.width
     var transform = CGAffineTransformMakeTranslation(right ? distance : -distance, 0)
     
@@ -174,7 +191,8 @@ public enum DodoAnimations: String {
     view.transform = start
     view.alpha = alphaStart
       
-    UIView.animateWithDuration(0.4, delay: 0,
+    UIView.animateWithDuration(actualDuration,
+      delay: 0,
       options: UIViewAnimationOptions.CurveEaseOut,
       animations: {
         view.transform = end

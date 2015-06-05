@@ -85,7 +85,6 @@ view.dodo.style.bar.animationHide = DodoAnimations.NoAnimation.hide
 
 ```Swift
 // Privide custom animation
-
 view.dodo.style.bar.animationShow = { view, locationTop, completed in
   view.transform = CGAffineTransformMakeTranslation(0, locationTop ? -100 : 100)
 

@@ -155,8 +155,7 @@ class ViewController: UIViewController {
     view.dodo.style.bar.animationShow = currentShowAnimation.show
     view.dodo.style.bar.animationHide = currentHideAnimation.hide
     
-    view.dodo.style.bar.animationShow = DodoAnimations.NoAnimation.show
-    view.dodo.style.bar.animationHide = DodoAnimations.NoAnimation.hide
+//    view.dodo.style.bar.animationShowDuration = 2
     
     addButtons()
     

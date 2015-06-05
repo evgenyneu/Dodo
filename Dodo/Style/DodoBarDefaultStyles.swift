@@ -20,7 +20,9 @@ public struct DodoBarDefaultStyles {
     backgroundColor = _backgroundColor
     debugMode = _debugMode
     animationShow = _animationShow
+    animationShowDuration = _animationShowDuration
     animationHide = _animationHide
+    animationHideDuration = _animationHideDuration
   }
   
   // ---------------------------
@@ -120,6 +122,15 @@ public struct DodoBarDefaultStyles {
   // ---------------------------
   
   
+  private static let _animationShowDuration: NSTimeInterval? = nil
+  
+  /// Duration of show animation. When nil it uses default duration for selected animation function.
+  public static var animationShowDuration: NSTimeInterval? = _animationShowDuration
+  
+  
+  // ---------------------------
+  
+  
   private static let _animationHide: DodoAnimation = DodoAnimationsHide.slideRight
   
   /// Callback for animating the bar when it is hidden.
@@ -127,4 +138,14 @@ public struct DodoBarDefaultStyles {
 
   
   // ---------------------------
+  
+  
+  private static let _animationHideDuration: NSTimeInterval? = nil
+  
+  /// Duration of hide animation. When nil it uses default duration for selected animation function.
+  public static var animationHideDuration: NSTimeInterval? = _animationHideDuration
+  
+  
+  // ---------------------------
+
 }

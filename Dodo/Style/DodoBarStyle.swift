@@ -21,7 +21,9 @@ public class DodoBarStyle {
     _backgroundColor = nil
     _debugMode = nil
     _animationShow = nil
+    _animationShowDuration = nil
     _animationHide = nil
+    _animationHideDuration = nil
   }
   
   
@@ -183,6 +185,22 @@ public class DodoBarStyle {
       _animationShow = newValue
     }
   }
+  
+  // ---------------------------
+  
+  private var _animationShowDuration: NSTimeInterval?
+  
+  /// Duration of show animation. When nil it uses default duration for selected animation function.
+  public var animationShowDuration: NSTimeInterval? {
+    get {
+      return (_animationShowDuration ?? parent?.animationShowDuration) ??
+        DodoBarDefaultStyles.animationShowDuration
+    }
+    
+    set {
+      _animationShowDuration = newValue
+    }
+  }
 
   // ---------------------------
   
@@ -196,6 +214,22 @@ public class DodoBarStyle {
     
     set {
       _animationHide = newValue
+    }
+  }
+  
+  // ---------------------------
+  
+  private var _animationHideDuration: NSTimeInterval?
+  
+  /// Duration of hide animation. When nil it uses default duration for selected animation function.
+  public var animationHideDuration: NSTimeInterval? {
+    get {
+      return (_animationHideDuration ?? parent?.animationHideDuration) ??
+        DodoBarDefaultStyles.animationHideDuration
+    }
+    
+    set {
+      _animationHideDuration = newValue
     }
   }
   

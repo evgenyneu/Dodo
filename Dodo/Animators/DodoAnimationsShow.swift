@@ -10,8 +10,10 @@ struct DodoAnimationsShow {
   :param: completed A closure to be called after animation completes.
   
   */
-  static func rotate(view: UIView, locationTop: Bool, completed: DodoAnimationCompleted) {
-    DodoAnimations.rotate(true, view: view, completed: completed)
+  static func rotate(view: UIView, duration: NSTimeInterval?,
+    locationTop: Bool, completed: DodoAnimationCompleted) {
+      
+    DodoAnimations.rotate(duration, showView: true, view: view, completed: completed)
   }
   
   /**
@@ -22,8 +24,10 @@ struct DodoAnimationsShow {
   :param: completed A closure to be called after animation completes.
   
   */
-  static func slideLeft(view: UIView, locationTop: Bool, completed: DodoAnimationCompleted) {
-    DodoAnimations.slide(false, showView: true, view: view, completed: completed)
+  static func slideLeft(view: UIView, duration: NSTimeInterval?, locationTop: Bool,
+    completed: DodoAnimationCompleted) {
+      
+    DodoAnimations.slide(duration, right: false, showView: true, view: view, completed: completed)
   }
   
   /**
@@ -34,8 +38,10 @@ struct DodoAnimationsShow {
   :param: completed A closure to be called after animation completes.
   
   */
-  static func slideRight(view: UIView, locationTop: Bool, completed: DodoAnimationCompleted) {
-    DodoAnimations.slide(true, showView: true, view: view, completed: completed)
+  static func slideRight(view: UIView, duration: NSTimeInterval?, locationTop: Bool,
+    completed: DodoAnimationCompleted) {
+      
+    DodoAnimations.slide(duration, right: true, showView: true, view: view, completed: completed)
   }
   
   /**
@@ -46,8 +52,10 @@ struct DodoAnimationsShow {
   :param: completed A closure to be called after animation completes.
   
   */
-  static func fade(view: UIView, locationTop: Bool, completed: DodoAnimationCompleted) {
-    DodoAnimations.fade(true, view: view, completed: completed)
+  static func fade(view: UIView, duration: NSTimeInterval?, locationTop: Bool,
+    completed: DodoAnimationCompleted) {
+      
+    DodoAnimations.fade(duration, showView: true, view: view, completed: completed)
   }
   
   /**
@@ -58,9 +66,10 @@ struct DodoAnimationsShow {
   :param: completed A closure to be called after animation completes.
   
   */
-  static func slideVertically(view: UIView, locationTop: Bool,
+  static func slideVertically(view: UIView, duration: NSTimeInterval?, locationTop: Bool,
     completed: DodoAnimationCompleted) {
       
-    DodoAnimations.slideVertically(true, view: view, locationTop: locationTop, completed: completed)
+    DodoAnimations.slideVertically(duration, showView: true, view: view,
+      locationTop: locationTop,completed: completed)
   }
 }
