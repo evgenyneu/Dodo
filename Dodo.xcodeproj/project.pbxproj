@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E4066B61B212BCB00E0AC41 /* DodoAnimatorX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4066B51B212BCB00E0AC41 /* DodoAnimatorX.swift */; };
+		7E4066B81B212C7000E0AC41 /* DodoAnimators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4066B71B212C7000E0AC41 /* DodoAnimators.swift */; };
 		7EDF78651B2105F300A9597E /* Dodo.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EDF78641B2105F300A9597E /* Dodo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7EDF786B1B2105F300A9597E /* Dodo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EDF785F1B2105F300A9597E /* Dodo.framework */; };
 		7EDF789A1B21068800A9597E /* DodoAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF787C1B21068800A9597E /* DodoAnimator.swift */; };
@@ -83,7 +85,6 @@
 		7EDF79221B210DC500A9597E /* Dodo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EDF785F1B2105F300A9597E /* Dodo.framework */; };
 		7EDF79231B210DC500A9597E /* Dodo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7EDF785F1B2105F300A9597E /* Dodo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7EDF79271B210DEE00A9597E /* SpringAnimationCALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78971B21068800A9597E /* SpringAnimationCALayer.swift */; };
-		7EDF79291B210F6D00A9597E /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF79281B210F6D00A9597E /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +126,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7E4066B51B212BCB00E0AC41 /* DodoAnimatorX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoAnimatorX.swift; sourceTree = "<group>"; };
+		7E4066B71B212C7000E0AC41 /* DodoAnimators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoAnimators.swift; sourceTree = "<group>"; };
 		7EDF785F1B2105F300A9597E /* Dodo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Dodo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EDF78631B2105F300A9597E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7EDF78641B2105F300A9597E /* Dodo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dodo.h; sourceTree = "<group>"; };
@@ -296,8 +299,10 @@
 			isa = PBXGroup;
 			children = (
 				7EDF787C1B21068800A9597E /* DodoAnimator.swift */,
+				7E4066B71B212C7000E0AC41 /* DodoAnimators.swift */,
 				7EDF787D1B21068800A9597E /* DodoAnimator_rotate.swift */,
 				7EDF787E1B21068800A9597E /* DodoAnimator_swipeToRight.swift */,
+				7E4066B51B212BCB00E0AC41 /* DodoAnimatorX.swift */,
 			);
 			path = Animators;
 			sourceTree = "<group>";
@@ -636,7 +641,9 @@
 			files = (
 				7EDF78A41B21068800A9597E /* DodoBarStyle.swift in Sources */,
 				7EDF78A81B21068800A9597E /* DodoLabelStyle.swift in Sources */,
+				7E4066B81B212C7000E0AC41 /* DodoAnimators.swift in Sources */,
 				7EDF78A21B21068800A9597E /* DodoToolbar.swift in Sources */,
+				7E4066B61B212BCB00E0AC41 /* DodoAnimatorX.swift in Sources */,
 				7EDF78A51B21068800A9597E /* DodoButtonDefaultStyles.swift in Sources */,
 				7EDF78A61B21068800A9597E /* DodoButtonStyle.swift in Sources */,
 				7EDF78B01B21068800A9597E /* TegAutolayoutConstraints.swift in Sources */,
@@ -705,7 +712,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7EDF79291B210F6D00A9597E /* README.md in Sources */,
 				7EDF79211B210CD100A9597E /* TegAutolayoutConstraints.swift in Sources */,
 				7EDF78FC1B210BBC00A9597E /* ViewController.swift in Sources */,
 				7EDF79201B210C5300A9597E /* MoaTimer.swift in Sources */,
@@ -983,6 +989,7 @@
 				7EDF78771B2105F300A9597E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7EDF78781B2105F300A9597E /* Build configuration list for PBXNativeTarget "DodoTests" */ = {
 			isa = XCConfigurationList;
@@ -991,6 +998,7 @@
 				7EDF787A1B2105F300A9597E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7EDF79111B210BBD00A9597E /* Build configuration list for PBXNativeTarget "Demo" */ = {
 			isa = XCConfigurationList;
@@ -999,6 +1007,7 @@
 				7EDF79131B210BBD00A9597E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7EDF79141B210BBD00A9597E /* Build configuration list for PBXNativeTarget "DemoTests" */ = {
 			isa = XCConfigurationList;
@@ -1007,6 +1016,7 @@
 				7EDF79161B210BBD00A9597E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

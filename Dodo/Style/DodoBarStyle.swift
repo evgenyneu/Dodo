@@ -20,10 +20,13 @@ public class DodoBarStyle {
     _borderColor = nil
     _backgroundColor = nil
     _debugMode = nil
+    _showAnimator = nil
+    _hideAnimator = nil
   }
   
+  
   // -----------------------------
-
+  
   
   private var _hideAfterDelaySeconds: NSTimeInterval?
   
@@ -165,4 +168,36 @@ public class DodoBarStyle {
       _debugMode = newValue
     }
   }
+  
+  // ---------------------------
+  
+  private var _showAnimator: DodoAnimatorX?
+  
+  /// Callback for animating the bar when it is shown. No animation when nil.
+  public var showAnimator: DodoAnimatorX? {
+    get {
+      return _showAnimator ?? parent?.showAnimator ?? DodoBarDefaultStyles.showAnimator
+    }
+    
+    set {
+      _showAnimator = newValue
+    }
+  }
+
+  // ---------------------------
+  
+  private var _hideAnimator: DodoAnimatorX?
+  
+  /// Callback for animating the bar when it is hidden. No animation when nil.
+  public var hideAnimator: DodoAnimatorX? {
+    get {
+      return _hideAnimator ?? parent?.hideAnimator ?? DodoBarDefaultStyles.hideAnimator
+    }
+    
+    set {
+      _hideAnimator = newValue
+    }
+  }
+  
+  // ---------------------------
 }

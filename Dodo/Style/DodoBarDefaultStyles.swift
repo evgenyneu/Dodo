@@ -19,6 +19,8 @@ public struct DodoBarDefaultStyles {
     borderColor = _borderColor
     backgroundColor = _backgroundColor
     debugMode = _debugMode
+    showAnimator = _showAnimator
+    hideAnimator = _hideAnimator
   }
   
   // ---------------------------
@@ -107,5 +109,22 @@ public struct DodoBarDefaultStyles {
   
   
   // ---------------------------
+  
+  
+  private static let _showAnimator: DodoAnimatorX? = DodoAnimators.rotateIn
+  
+  /// Callback for animating the bar when it is shown. No animation when nil.
+  public static var showAnimator = _showAnimator
+  
+  
+  // ---------------------------
+  
+  
+  private static let _hideAnimator: DodoAnimatorX? = DodoAnimators.moveToRightOut
+  
+  /// Callback for animating the bar when it is hidden. No animation when nil.
+  public static var hideAnimator = _hideAnimator
 
+  
+  // ---------------------------
 }
