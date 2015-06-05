@@ -19,7 +19,7 @@ From *Alice's Adventures in Wonderland*.
 
 ## Usage
 
-### Show notification bar
+### Show and hide notification bar
 
 
 ```Swift
@@ -28,6 +28,7 @@ view.dodo.info("Extinction is the rule. Survival is the exception.")
 view.dodo.warning("This world is but a canvas to our imagination.")
 view.dodo.error("The perception of beauty is a moral test.")
 
+view.dodo.hide()
 ```
 
 **Note**: if there is an existing notification bar in a UIView it will be replaced by the new one.
@@ -43,12 +44,6 @@ alt='Dodo warning presets' width='414'>
 
 <img src='https://raw.githubusercontent.com/exchangegroup/Dodo/master/Graphics/presets/error.jpg'
 alt='Dodo error presets' width='414'>
-
-### Hide notification bar
-
-```Swift
-view.dodo.hide()
-```
 
 ### Styling
 
