@@ -1,10 +1,6 @@
 import UIKit
 
-/**
-
-Collection of animation effects.
-
-*/
+/// Collection of animation effects use for showing and hiding the notification bar.
 public struct DodoAnimations {
   
   /**
@@ -69,5 +65,46 @@ public struct DodoAnimations {
   */
   public static func noAnimation(view: UIView, completed: DodoAnimationCompleted) {
     completed()
+  }
+  
+  /**
+  
+  Animation that fades the bar in.
+  
+  :param: view View supplied for animation.
+  :param: completed A closure to be called after animation completes.
+  
+  */
+  public static func fadeIn(view: UIView, completed: DodoAnimationCompleted) {
+    fade(true, view: view, completed: completed)
+  }
+  
+  /**
+  
+  Animation that fades the bar out.
+  
+  :param: view View supplied for animation.
+  :param: completed A closure to be called after animation completes.
+  
+  */
+  public static func fadeOut(view: UIView, completed: DodoAnimationCompleted) {
+    fade(false, view: view, completed: completed)
+  }
+  
+  /// Helper function for fading the view in and out.
+  private static func fade(showView: Bool, view: UIView, completed: DodoAnimationCompleted) {
+    let startAlpha: CGFloat = showView ? 0 : 1
+    let endAlpha: CGFloat = showView ? 1 : 0
+
+    view.alpha = startAlpha
+    
+    UIView.animateWithDuration(0.5,
+      animations: {
+        view.alpha = endAlpha
+      },
+      completion: { finished in
+        completed()
+      }
+    )
   }
 }
