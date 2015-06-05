@@ -19,12 +19,12 @@ class DodoToolbarTests: XCTestCase {
     animationShowCompleted = false
     animationHideCompleted = false
     
-    obj.style.bar.animationShow = { view, onComplete in
+    obj.style.bar.animationShow = { view, duration, locationTop, onComplete in
       onComplete()
       self.animationShowCompleted = true
     }
     
-    obj.style.bar.animationHide = { view, onComplete in
+    obj.style.bar.animationHide = { view, duration, locationTop, onComplete in
       onComplete()
       self.animationHideCompleted = true
     }

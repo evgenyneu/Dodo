@@ -7,6 +7,12 @@ class DodoTests: XCTestCase {
   var superview: UIView!
   var animationShowCompleted = false
   var animationHideCompleted = false
+  
+  var animationShowDuration: NSTimeInterval? = nil
+  var animationHideDuration: NSTimeInterval? = nil
+  
+  var animationShowTop: Bool? = nil
+  var animationHideTop: Bool? = nil
 
   override func setUp() {
     super.setUp()
@@ -20,13 +26,17 @@ class DodoTests: XCTestCase {
     animationShowCompleted = false
     animationHideCompleted = false
     
-    obj.style.bar.animationShow = { view, onComplete in
+    obj.style.bar.animationShow = { view, duration, locationTop, onComplete in
       onComplete()
+      self.animationShowDuration = duration
+      self.animationShowTop = locationTop
       self.animationShowCompleted = true
     }
     
-    obj.style.bar.animationHide = { view, onComplete in
+    obj.style.bar.animationHide = { view, duration, locationTop, onComplete in
       onComplete()
+      self.animationHideDuration = duration
+      self.animationHideTop = locationTop
       self.animationHideCompleted = true
     }
     
@@ -181,5 +191,38 @@ class DodoTests: XCTestCase {
     let toolbar = self.sabToolbar(self.superview)
     XCTAssert(toolbar == nil)
     XCTAssert(animationHideCompleted)
+  }
+  
+  // MARK: - Animation
+  
+  func testShowPassAnimationDuration() {
+    obj.style.bar.animationShowDuration = 77
+    obj.style.bar.animationHideDuration = 88
+
+    obj.show("Hello world!")
+    obj.hide()
+
+    XCTAssertEqual(77, animationShowDuration!)
+    XCTAssertEqual(88, animationHideDuration!)
+  }
+  
+  func testPassTopLocationToAnimationCallback() {
+    obj.style.bar.locationTop = true
+    
+    obj.show("Hello world!")
+    obj.hide()
+    
+    XCTAssert(animationShowTop!)
+    XCTAssert(animationHideTop!)
+  }
+  
+  func testPassBottomLocationToAnimationCallback() {
+    obj.style.bar.locationTop = false
+    
+    obj.show("Hello world!")
+    obj.hide()
+    
+    XCTAssertFalse(animationShowTop!)
+    XCTAssertFalse(animationHideTop!)
   }
 }
