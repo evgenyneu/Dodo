@@ -30,8 +30,10 @@ view.dodo.error("The perception of beauty is a moral test.")
 
 ```
 
-Note: if there is an existing notification bar in a UIView it will be replaced by the new one.
+**Note**: if there is an existing notification bar in a UIView it will be replaced by the new one.
 
+<img src='https://raw.githubusercontent.com/exchangegroup/Dodo/master/Graphics/presets/success.jpg'
+alt='Dodo success presets' width='414'>
 
 ### Hide notification bar
 
