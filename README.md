@@ -13,7 +13,9 @@ This is a UI widget for showing notification messages in iOS apps.
 width='300' alt="Dodo, from  Alice's Adventures in Wonderland" >
 
 
-> "At last the Dodo said, `EVERYBODY has won, and all must have prizes.'" - From *Alice's Adventures in Wonderland*.
+> At last the Dodo said, `EVERYBODY has won, and all must have prizes.'
+
+From *Alice's Adventures in Wonderland*.
 
 ## Usage
 
