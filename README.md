@@ -77,35 +77,9 @@ alt='Dodo bar with right and left buttons' width='414'>
 // Use existing animations
 view.dodo.style.bar.animationShow = DodoAnimations.Rotate.show
 view.dodo.style.bar.animationHide = DodoAnimations.SlideRight.hide
-```
 
-```Swift
 // Turn off animation
 view.dodo.style.bar.animationShow = DodoAnimations.NoAnimation.show
-view.dodo.style.bar.animationHide = DodoAnimations.NoAnimation.hide
 ```
 
-```Swift
-// Customize duration of the animation
-view.dodo.style.bar.animationShowDuration = 0.5
-view.dodo.style.bar.animationHideDuration = 1
-```
-
-```Swift
-// Privide custom animation
-view.dodo.style.bar.animationShow = { view, duration, locationTop, onCompleted in
-  let actualDuration = duration ?? 0.5
-  view.alpha = 0
-
-  UIView.animateWithDuration(actualDuration,
-    animations: {
-      view.alpha = 1
-    },
-    completion: { finished in
-      onCompleted()
-    }
-  )
-}
-```
-
-**Note**: The `onCompleted` argument callback needs to be called from your custom animation handler at some point.
+See [configuring animation wiki page](https://github.com/exchangegroup/Dodo/wiki/Configuring-animation) for more information.
