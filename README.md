@@ -94,9 +94,10 @@ view.dodo.style.bar.animationHideDuration = 1
 ```Swift
 // Privide custom animation
 view.dodo.style.bar.animationShow = { view, duration, locationTop, onCompleted in
+  let actualDuration = duration ?? 0.5
   view.alpha = 0
 
-  UIView.animateWithDuration(0.5,
+  UIView.animateWithDuration(actualDuration,
     animations: {
       view.alpha = 1
     },

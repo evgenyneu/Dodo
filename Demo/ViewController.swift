@@ -154,6 +154,20 @@ class ViewController: UIViewController {
     
     view.dodo.style.bar.animationShow = currentShowAnimation.show
     view.dodo.style.bar.animationHide = currentHideAnimation.hide
+    
+    view.dodo.style.bar.animationShow = { view, duration, locationTop, onCompleted in
+      let actualDuration = duration ?? 0.5
+      view.alpha = 0
+      
+      UIView.animateWithDuration(actualDuration,
+        animations: {
+          view.alpha = 1
+        },
+        completion: { finished in
+          onCompleted()
+        }
+      )
+    }
 
     addButtons()
     
