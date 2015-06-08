@@ -93,7 +93,7 @@ view.dodo.style.bar.animationHideDuration = 1
 
 ```Swift
 // Privide custom animation
-view.dodo.style.bar.animationShow = { view, duration, locationTop, completed in
+view.dodo.style.bar.animationShow = { view, duration, locationTop, onCompleted in
   view.alpha = 0
 
   UIView.animateWithDuration(0.5,
@@ -101,8 +101,10 @@ view.dodo.style.bar.animationShow = { view, duration, locationTop, completed in
       view.alpha = 1
     },
     completion: { finished in
-      completed()
+      onCompleted()
     }
   )
 }
 ```
+
+**Note**: The `onCompleted` argument callback needs to be called from your custom animation handler at some point.
