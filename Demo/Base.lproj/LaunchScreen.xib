@@ -10,16 +10,18 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreen.png" translatesAutoresizingMaskIntoConstraints="NO" id="4sg-3s-WPm">
-                    <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dodo.png" translatesAutoresizingMaskIntoConstraints="NO" id="eW2-sM-IIF">
+                    <rect key="frame" x="140" y="140" width="200" height="200"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="hgo-On-heD"/>
+                        <constraint firstAttribute="height" constant="200" id="kft-dK-cUS"/>
+                    </constraints>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.54117647058823526" green="0.62745098039215685" blue="0.023529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="4sg-3s-WPm" secondAttribute="trailing" id="GYf-tM-inx"/>
-                <constraint firstItem="4sg-3s-WPm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="POi-ZE-fd9"/>
-                <constraint firstAttribute="bottom" secondItem="4sg-3s-WPm" secondAttribute="bottom" id="TCm-F1-i50"/>
-                <constraint firstItem="4sg-3s-WPm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="bbj-ED-pOQ"/>
+                <constraint firstAttribute="centerX" secondItem="eW2-sM-IIF" secondAttribute="centerX" id="6bo-qD-CID"/>
+                <constraint firstAttribute="centerY" secondItem="eW2-sM-IIF" secondAttribute="centerY" id="ipO-9O-P41"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -27,6 +29,6 @@
         </view>
     </objects>
     <resources>
-        <image name="LaunchScreen.png" width="1500" height="1500"/>
+        <image name="Dodo.png" width="440" height="440"/>
     </resources>
 </document>

@@ -19,7 +19,7 @@
 		7E4946541B26942000915DB3 /* DodoButtonViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4946531B26942000915DB3 /* DodoButtonViewDelegate.swift */; };
 		7E4946551B26942C00915DB3 /* DodoButtonViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4946531B26942000915DB3 /* DodoButtonViewDelegate.swift */; };
 		7E4946581B26955600915DB3 /* ButtonViewDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4946571B26955600915DB3 /* ButtonViewDelegateMock.swift */; };
-		7E49465A1B26B0B100915DB3 /* LaunchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E4946591B26B0B100915DB3 /* LaunchScreen.png */; };
+		7E49465C1B26C41600915DB3 /* Dodo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E49465B1B26C41600915DB3 /* Dodo.png */; };
 		7EC51DA41B215C070070019F /* DodoAnimationsShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC51DA31B215C070070019F /* DodoAnimationsShow.swift */; };
 		7EC51DA61B215C9D0070019F /* DodoAnimationsHide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC51DA51B215C9D0070019F /* DodoAnimationsHide.swift */; };
 		7EC51DA71B215D450070019F /* DodoAnimationsShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC51DA31B215C070070019F /* DodoAnimationsShow.swift */; };
@@ -141,7 +141,7 @@
 		7E4946511B267E6B00915DB3 /* happy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = happy.png; sourceTree = "<group>"; };
 		7E4946531B26942000915DB3 /* DodoButtonViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoButtonViewDelegate.swift; sourceTree = "<group>"; };
 		7E4946571B26955600915DB3 /* ButtonViewDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonViewDelegateMock.swift; sourceTree = "<group>"; };
-		7E4946591B26B0B100915DB3 /* LaunchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchScreen.png; sourceTree = "<group>"; };
+		7E49465B1B26C41600915DB3 /* Dodo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Dodo.png; sourceTree = "<group>"; };
 		7EC51DA31B215C070070019F /* DodoAnimationsShow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoAnimationsShow.swift; sourceTree = "<group>"; };
 		7EC51DA51B215C9D0070019F /* DodoAnimationsHide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoAnimationsHide.swift; sourceTree = "<group>"; };
 		7EDF785F1B2105F300A9597E /* Dodo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Dodo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -477,7 +477,7 @@
 		7EDF79191B210C1000A9597E /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				7E4946591B26B0B100915DB3 /* LaunchScreen.png */,
+				7E49465B1B26C41600915DB3 /* Dodo.png */,
 				7E4946511B267E6B00915DB3 /* happy.png */,
 				7EDF791A1B210C1000A9597E /* black.png */,
 				7EDF791B1B210C1000A9597E /* flowers.jpg */,
@@ -643,12 +643,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EDF791E1B210C1000A9597E /* flowers.jpg in Resources */,
+				7E49465C1B26C41600915DB3 /* Dodo.png in Resources */,
 				7EDF79181B210BFE00A9597E /* Main.storyboard in Resources */,
 				7EDF791D1B210C1000A9597E /* black.png in Resources */,
 				7EDF79041B210BBC00A9597E /* LaunchScreen.xib in Resources */,
 				7EDF79011B210BBC00A9597E /* Images.xcassets in Resources */,
 				7EDF791F1B210C1000A9597E /* white.png in Resources */,
-				7E49465A1B26B0B100915DB3 /* LaunchScreen.png in Resources */,
 				7E4946521B267E6B00915DB3 /* happy.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
