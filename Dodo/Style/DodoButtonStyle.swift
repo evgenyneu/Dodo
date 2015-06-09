@@ -12,48 +12,18 @@ public class DodoButtonStyle {
   
   /// Clears the styles for all properties for this style object. The styles will be taken from parent and default properties.
   public func clear() {
-    _image = nil
-    _icon = nil
     _accessibilityLabel = nil
+    _hideOnTap = nil
+    _horizontalMarginToBar = nil
+    _icon = nil
+    _image = nil
     _onTap = nil
     _size = nil
-    _horizontalMarginToBar = nil
     _tintColor = nil
-    _hideOnTap = nil
   }
   
   // -----------------------------
   
-  private var _image: UIImage?
-  
-  /// Button image. Button only shown when the image is present. The color of the image can be changes with tintColor property.
-  public var image: UIImage? {
-    get {
-      return _image ?? parent?.image ?? DodoButtonDefaultStyles.image
-    }
-    
-    set {
-      _image = newValue
-    }
-  }
-  
-  // ---------------------------
-  
-  private var _icon: DodoIcons?
-  
-  /// Icon that will be shown in the button.
-  public var icon: DodoIcons? {
-    get {
-      return _icon ?? parent?.icon ?? DodoButtonDefaultStyles.icon
-    }
-    
-    set {
-      _icon = newValue
-    }
-  }
-  
-  // -----------------------------
-
   private var _accessibilityLabel: String?
   
   /**
@@ -72,6 +42,67 @@ public class DodoButtonStyle {
   }
   
   // -----------------------------
+  
+  private var _hideOnTap: Bool?
+  
+  /// When true it hides the bar when the button is tapped
+  public var hideOnTap: Bool {
+    get {
+      return _hideOnTap ?? parent?.hideOnTap ?? DodoButtonDefaultStyles.hideOnTap
+    }
+    
+    set {
+      _hideOnTap = newValue
+    }
+  }
+  
+  // -----------------------------
+  
+  private var _horizontalMarginToBar: CGFloat?
+  
+  /// Horizontal margin between the bar edge and the button.
+  public var horizontalMarginToBar: CGFloat {
+    get {
+      return _horizontalMarginToBar ?? parent?.horizontalMarginToBar ??
+        DodoButtonDefaultStyles.horizontalMarginToBar
+    }
+    
+    set {
+      _horizontalMarginToBar = newValue
+    }
+  }
+  
+  // -----------------------------
+  
+  private var _icon: DodoIcons?
+  
+  /// Icon that will be shown in the button.
+  public var icon: DodoIcons? {
+    get {
+      return _icon ?? parent?.icon ?? DodoButtonDefaultStyles.icon
+    }
+    
+    set {
+      _icon = newValue
+    }
+  }
+  
+  // -----------------------------
+
+  private var _image: UIImage?
+  
+  /// Button image. Button only shown when the image is present. The color of the image can be changes with tintColor property.
+  public var image: UIImage? {
+    get {
+      return _image ?? parent?.image ?? DodoButtonDefaultStyles.image
+    }
+    
+    set {
+      _image = newValue
+    }
+  }
+  
+  // ---------------------------
   
   private var _onTap: DodoButtonOnTap?
   
@@ -103,22 +134,6 @@ public class DodoButtonStyle {
   
   // -----------------------------
   
-  private var _horizontalMarginToBar: CGFloat?
-  
-  /// Horizontal margin between the bar edge and the button.
-  public var horizontalMarginToBar: CGFloat {
-    get {
-      return _horizontalMarginToBar ?? parent?.horizontalMarginToBar ??
-        DodoButtonDefaultStyles.horizontalMarginToBar
-    }
-    
-    set {
-      _horizontalMarginToBar = newValue
-    }
-  }
-  
-  // -----------------------------
-  
   private var _tintColor: UIColor?
   
   /// Button tint color. When set it is used to replace the image colors.
@@ -134,17 +149,4 @@ public class DodoButtonStyle {
   
   
   // -----------------------------
-  
-  private var _hideOnTap: Bool?
-  
-  /// When true it hides the bar when the button is tapped
-  public var hideOnTap: Bool {
-    get {
-      return _hideOnTap ?? parent?.hideOnTap ?? DodoButtonDefaultStyles.hideOnTap
-    }
-    
-    set {
-      _hideOnTap = newValue
-    }
-  }
 }

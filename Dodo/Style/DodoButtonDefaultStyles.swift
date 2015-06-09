@@ -10,27 +10,49 @@ public struct DodoButtonDefaultStyles {
 
   /// Revert the property values to their defaults
   public static func resetToDefaults() {
-    image = _image
-    icon = _icon
     accessibilityLabel = _accessibilityLabel
+    hideOnTap = _hideOnTap
+    horizontalMarginToBar = _horizontalMarginToBar
+    icon = _icon
+    image = _image
     onTap = _onTap
     size = _size
     tintColor = _tintColor
-    hideOnTap = _hideOnTap
   }
   
   
   // ---------------------------
   
-
-  private static let _image: UIImage? = nil
-
-  /// Button image. Button only shown when the image is present. The color of the image can be changes with tintColor property.
-  public static var image = _image
-
+  
+  private static let _accessibilityLabel: String? = nil
+  
+  /**
+  
+  This text is spoken by the device when it is in accessibility mode. It is recommended to always set the accessibility label for your button. The text can be a short localized description of the button function, for example: "Close", "Reload" etc.
+  
+  */
+  public static var accessibilityLabel = _accessibilityLabel
+  
   
   // ---------------------------
   
+  
+  private static let _hideOnTap = false
+  
+  /// When true it hides the bar when the button is tapped
+  public static var hideOnTap = _hideOnTap
+  
+  
+  // ---------------------------
+  
+  
+  public static let _horizontalMarginToBar: CGFloat = 10
+  
+  /// Margin between the bar edge and the button
+  public static var horizontalMarginToBar = _horizontalMarginToBar
+  
+  
+  // ---------------------------
   
   private static let _icon: DodoIcons? = nil
   
@@ -41,18 +63,14 @@ public struct DodoButtonDefaultStyles {
   // ---------------------------
   
   
-  private static let _accessibilityLabel: String? = nil
+  private static let _image: UIImage? = nil
   
-  /**
-
-  This text is spoken by the device when it is in accessibility mode. It is recommended to always set the accessibility label for your button. The text can be a short localized description of the button function, for example: "Close", "Reload" etc.
-
-  */
-  public static var accessibilityLabel = _accessibilityLabel
+  /// Button image. Button only shown when the image is present. The color of the image can be changes with tintColor property.
+  public static var image = _image
   
   
   // ---------------------------
-  
+
   
   private static let _onTap: DodoButtonOnTap? = nil
   
@@ -70,30 +88,12 @@ public struct DodoButtonDefaultStyles {
   
   
   // ---------------------------
-  
-  
-  public static let _horizontalMarginToBar: CGFloat = 10
-  
-  /// Margin between the bar edge and the button
-  public static var horizontalMarginToBar = _horizontalMarginToBar
-  
-  
-  // ---------------------------
 
   
   public static let _tintColor: UIColor? = nil
   
   /// Button tint color. When set it is used to replace the image colors.
   public static var tintColor = _tintColor
-  
-  
-  // ---------------------------
-  
-  
-  private static let _hideOnTap = false
-  
-  /// When true it hides the bar when the button is tapped
-  public static var hideOnTap = _hideOnTap
   
   
   // ---------------------------
