@@ -23,18 +23,18 @@ There are three ways you can add Dodo to your project.
 
 **Add source (iOS 7+)**
 
-Simply add [DodoDistrib.swift](https://github.com/evgenyneu/moa/blob/master/Distrib/MoaDistrib.swift) file into your Xcode project.
+Simply add [DodoDistrib.swift](https://github.com/exchangegroup/Dodo/blob/master/Distrib/DodoDistrib.swift) file into your Xcode project.
 
 **Setup with Carthage (iOS 8+)**
 
-Alternatively, add `github "evgenyneu/moa" ~> 1.0` to your Cartfile and run `carthage update`.
+Alternatively, add `github "exchangegroup/Dodo" ~> 1.0` to your Cartfile and run `carthage update`.
 
 **Setup with CocoaPods (iOS 8+)**
 
 If you are using CocoaPods add this text to your Podfile and run `pod install`.
 
     use_frameworks!
-    pod 'moa', '~> 1.0'
+    pod 'Dodo', '~> 1.0'
 
 
 ## Usage
