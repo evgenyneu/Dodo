@@ -9,8 +9,8 @@ This is a UI widget for showing notification messages in iOS apps.
 * Bar styles can be customized.
 * Includes customizable animations for showing and hiding the bar.
 
-<img src='https://raw.githubusercontent.com/exchangegroup/Dodo/master/Graphics/alices_adventures_in_wonderland.png'
-width='300' alt="Dodo, from  Alice's Adventures in Wonderland" >
+<img src='https://raw.githubusercontent.com/exchangegroup/Dodo/master/Graphics/Paintings/alices_adventures_in_wonderland.png'
+width='300' alt="Illustration fromAlice's Adventures in Wonderland by John Tenniel" >
 
 
 > At last the Dodo said, `EVERYBODY has won, and all must have prizes.'
