@@ -29,6 +29,46 @@ class DodoButtonViewTests: XCTestCase {
     XCTAssert(result[1].image == nil)
   }
   
+  
+  func testDoNotCreateButtonsWhenImagesAreNotSupplied() {
+    let styleOne = DodoButtonStyle(parentStyle: nil)
+    let styleTwo = DodoButtonStyle(parentStyle: nil)
+    
+    let styles = [styleOne, styleTwo]
+    
+    let result = DodoButtonView.createMany(styles)
+    
+    XCTAssert(result.isEmpty)
+  }
+  
+  // MARK: - Check if we have buttons
+  // ------------------------------
+
+  func testHaveButtons_yesHasOneButtonImage() {
+    let styleOne = DodoButtonStyle(parentStyle: nil)
+    let image = TestBundle.image("96px.png")!
+    styleOne.image = image
+    
+    let styleTwo = DodoButtonStyle(parentStyle: nil)
+    
+    let styles = [styleOne, styleTwo]
+    
+    let result = DodoButtonView.haveButtons(styles)
+    
+    XCTAssert(result)
+  }
+  
+  func testHaveButtons_noHasNoButtonImages() {
+    let styleOne = DodoButtonStyle(parentStyle: nil)
+    let styleTwo = DodoButtonStyle(parentStyle: nil)
+    
+    let styles = [styleOne, styleTwo]
+    
+    let result = DodoButtonView.haveButtons(styles)
+    
+    XCTAssertFalse(result)
+  }
+  
   // MARK: - Setup image view
   // ------------------------------
   

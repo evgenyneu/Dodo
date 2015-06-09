@@ -164,4 +164,28 @@ class DodoToolbarTests: XCTestCase {
     XCTAssert(tappedLeftButton)
     XCTAssert(tappedRightButton)
   }
+  
+  func testCreateNoButtonsWhenImagesAreNotSupplied() {
+    obj.style.leftButton.image = nil
+    obj.style.rightButton.image = nil
+    
+    obj.show(inSuperview: superview, withMessage: "hello")
+    
+    let buttons = sabButtons(superview)
+    XCTAssert(buttons.isEmpty)
+  }
+  
+  // MARK: - Use button with a bundled icon
+  
+  func testUseBundledIcon() {
+    obj.style.leftButton.icon = DodoIcons.Close
+    
+    obj.show(inSuperview: superview, withMessage: "hello")
+    
+    let buttons = sabButtons(superview)
+    
+    XCTAssertEqual(2, buttons.count)
+//    XCTAssertEqual(256, buttons[0].image!.size.width)
+//    XCTAssert(buttons[1].image == nil)
+  }
 }

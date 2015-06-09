@@ -13,6 +13,7 @@ public class DodoButtonStyle {
   /// Clears the styles for all properties for this style object. The styles will be taken from parent and default properties.
   public func clear() {
     _image = nil
+    _icon = nil
     _accessibilityLabel = nil
     _onTap = nil
     _size = nil
@@ -32,6 +33,21 @@ public class DodoButtonStyle {
     
     set {
       _image = newValue
+    }
+  }
+  
+  // ---------------------------
+  
+  private var _icon: DodoIcons?
+  
+  /// Icon that will be shown in the button.
+  public var icon: DodoIcons? {
+    get {
+      return _icon ?? parent?.icon ?? DodoButtonDefaultStyles.icon
+    }
+    
+    set {
+      _icon = newValue
     }
   }
   

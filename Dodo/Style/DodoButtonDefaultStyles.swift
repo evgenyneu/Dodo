@@ -11,6 +11,7 @@ public struct DodoButtonDefaultStyles {
   /// Revert the property values to their defaults
   public static func resetToDefaults() {
     image = _image
+    icon = _icon
     accessibilityLabel = _accessibilityLabel
     onTap = _onTap
     size = _size
@@ -26,6 +27,15 @@ public struct DodoButtonDefaultStyles {
   /// Button image. Button only shown when the image is present. The color of the image can be changes with tintColor property.
   public static var image = _image
 
+  
+  // ---------------------------
+  
+  
+  private static let _icon: DodoIcons? = nil
+  
+  /// Icon that will be shown in the button.
+  public static var icon = _icon
+  
   
   // ---------------------------
   

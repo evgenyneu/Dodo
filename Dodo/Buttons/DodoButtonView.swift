@@ -17,11 +17,18 @@ class DodoButtonView: UIImageView {
   
   // Create button views for given button styles.
   static func createMany(styles: [DodoButtonStyle]) -> [DodoButtonView] {
+    if !haveButtons(styles) { return [] }
+    
     return styles.map { style in
       let view = DodoButtonView(style: style)
       view.setup()
       return view
     }
+  }
+  
+  static func haveButtons(styles: [DodoButtonStyle]) -> Bool {
+    let hasImages = styles.filter({ $0.image != nil }).count > 0
+    return hasImages
   }
   
   func doLayout(#onLeftSide: Bool) {
