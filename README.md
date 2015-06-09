@@ -2,12 +2,14 @@
 
 # A notification bar for iOS written in Swift
 
-This is a UI widget for showing notification messages in iOS apps.
+This is a UI widget for showing notification messages in iOS apps. It is useful for showing short messages to the user. Something like: "Message sent", "Note saved", "No Internet connection". 
 
+* A message is shown in the top or the bottom possition of the view.
 * It has built-in style presets for common types of messages: success, info, warning and error.
 * The bar can have buttons with custom tap handlers.
 * Bar styles can be customized.
 * Includes customizable animations for showing and hiding the bar.
+* There can only be one message displayed at a time.
 
 <img src='https://raw.githubusercontent.com/exchangegroup/Dodo/master/Graphics/Paintings/alices_adventures_in_wonderland.png'
 width='300' alt="Illustration fromAlice's Adventures in Wonderland by John Tenniel" >
@@ -71,6 +73,9 @@ view.dodo.style.leftButton.tintColor = DodoColor.fromHexString("#FFFFFF90")
 
 // Do something on tap
 view.dodo.style.leftButton.onTap = { /* Button tapped */ }
+
+// Close the bar when the button is tapped
+view.dodo.style.leftButton.hideOnTap = true
 ```
 
 <img src='https://raw.githubusercontent.com/exchangegroup/Dodo/master/Graphics/buttons/left_button.jpg'
