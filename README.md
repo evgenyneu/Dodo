@@ -60,8 +60,16 @@ view.dodo.style.bar.marginToSuperview = CGSize(width: 0, height: 0)
 ### Add buttons or icons
 
 ```Swift
+// Use an icon
+view.dodo.style.leftButton.icon = DodoIcons.close
+
+// Supply your image
 view.dodo.style.leftButton.image = UIImage(named: "CloseIcon")
+
+// Change button's image color
 view.dodo.style.leftButton.tintColor = DodoColor.fromHexString("#FFFFFF90")
+
+// Do something on tap
 view.dodo.style.leftButton.onTap = { /* Button tapped */ }
 ```
 
