@@ -56,7 +56,7 @@ class DodoButtonView: UIImageView {
   }
   
   func setup() {
-    style.image.map { applyStyle($0) }
+    DodoButtonView.image(style).map { applyStyle($0) }
     setupTap()
   }
   
@@ -66,6 +66,7 @@ class DodoButtonView: UIImageView {
     return oprimizedBounds.contains(point)
   }
   
+  /// Returns the image supplied by user or create one from the icon
   class func image(style: DodoButtonStyle) -> UIImage? {
     if style.image != nil {
       return style.image

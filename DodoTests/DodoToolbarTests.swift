@@ -149,6 +149,7 @@ class DodoToolbarTests: XCTestCase {
   
   func testRunTapCallbackClosures() {
     var tappedLeftButton = false
+    obj.style.leftButton.icon = DodoIcons.Close
     obj.style.leftButton.onTap = { tappedLeftButton = true }
     
     var tappedRightButton = false

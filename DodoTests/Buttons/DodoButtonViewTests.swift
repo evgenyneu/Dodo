@@ -206,4 +206,11 @@ class DodoButtonViewTests: XCTestCase {
     let actualImage = DodoButtonView.image(style)!
     XCTAssertEqual(256, actualImage.size.width)
   }
+  
+  func testButtonImage_noImageOrIcon() {
+    let style = DodoButtonStyle(parentStyle: nil)
+    
+    let actualImage = DodoButtonView.image(style)
+    XCTAssert(actualImage == nil)
+  }
 }
