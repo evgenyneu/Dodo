@@ -9,8 +9,8 @@ This is a UI widget for showing notification messages in iOS apps.
 * Bar styles can be customized.
 * Includes customizable animations for showing and hiding the bar.
 
-<img src='https://raw.githubusercontent.com/exchangegroup/Dodo/master/Graphics/alices_adventures_in_wonderland.png'
-width='300' alt="Dodo, from  Alice's Adventures in Wonderland" >
+<img src='https://raw.githubusercontent.com/exchangegroup/Dodo/master/Graphics/Paintings/alices_adventures_in_wonderland.png'
+width='300' alt="Illustration fromAlice's Adventures in Wonderland by John Tenniel" >
 
 
 > At last the Dodo said, `EVERYBODY has won, and all must have prizes.'
@@ -97,4 +97,5 @@ See [configuring animation wiki page](https://github.com/exchangegroup/Dodo/wiki
 * Original illustration of Alice's Adventures in Wonderland by John Tenniel, 1865. Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Alice_par_John_Tenniel_09.png).
 * Drawing of White Dodo byFrederick William Frohawk, 1907. Source: [Wikipedia](http://en.m.wikipedia.org/wiki/File:Dodo_reunion-Rothschild_original.jpg).
 * Painting of a dodo by Jan Saverij, 1651. Source: [Wikimedia Commons](https://commons.m.wikimedia.org/wiki/File:Jan_Savery_Dodo.jpg#mw-jump-to-license).
+* Painting of a dodo head by Cornelis Saftleven, 1638. Source: [Wikimedia Commons](https://commons.m.wikimedia.org/wiki/File:Saftleven_dodo.jpg#mw-jump-to-license).
 
