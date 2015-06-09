@@ -25,7 +25,7 @@ class ViewController: UIViewController {
   ]
   
   var currentShowAnimationIndex = 2
-  var currentHideAnimationIndex = 4
+  var currentHideAnimationIndex = 2
 
   var timer: MoaTimer?
   
@@ -45,6 +45,7 @@ class ViewController: UIViewController {
     
     view.dodo.topLayoutGuide = topLayoutGuide
     updateShowAnimationButtonTitle()
+    updateHideAnimationButtonTitle()
   }
   
   private func changeBackgroundImage() {

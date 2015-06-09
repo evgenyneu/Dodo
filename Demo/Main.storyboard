@@ -110,7 +110,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3PP-07-tvo">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3PP-07-tvo">
                                                     <rect key="frame" x="276" y="71" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="onHideAfterDelaySwitchChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="CEm-Wz-FNs"/>
@@ -128,7 +128,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fM9-aN-ygo">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fM9-aN-ygo">
                                                     <rect key="frame" x="276" y="122" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="onHideOnTapSwitchChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="LMM-sd-fN5"/>

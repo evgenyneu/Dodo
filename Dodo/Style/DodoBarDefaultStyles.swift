@@ -28,7 +28,7 @@ public struct DodoBarDefaultStyles {
   // ---------------------------
 
   
-  private static let _hideAfterDelaySeconds: NSTimeInterval = 3
+  private static let _hideAfterDelaySeconds: NSTimeInterval = 0
   
   /**
   
@@ -42,7 +42,7 @@ public struct DodoBarDefaultStyles {
   // ---------------------------
 
   
-  private static let _hideOnTap = true
+  private static let _hideOnTap = false
   
   /// When true it hides the bar when it is tapped
   public static var hideOnTap = _hideOnTap
@@ -131,7 +131,7 @@ public struct DodoBarDefaultStyles {
   // ---------------------------
   
   
-  private static let _animationHide: DodoAnimation = DodoAnimationsHide.slideRight
+  private static let _animationHide: DodoAnimation = DodoAnimationsHide.rotate
   
   /// Callback for animating the bar when it is hidden.
   public static var animationHide: DodoAnimation = _animationHide
