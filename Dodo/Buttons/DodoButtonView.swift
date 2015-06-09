@@ -28,7 +28,9 @@ class DodoButtonView: UIImageView {
   
   static func haveButtons(styles: [DodoButtonStyle]) -> Bool {
     let hasImages = styles.filter({ $0.image != nil }).count > 0
-    return hasImages
+    let hasIcons = styles.filter({ $0.icon != nil }).count > 0
+
+    return hasImages || hasIcons
   }
   
   func doLayout(#onLeftSide: Bool) {
@@ -62,6 +64,20 @@ class DodoButtonView: UIImageView {
   override func pointInside(point: CGPoint, withEvent event: UIEvent?) -> Bool {
     let oprimizedBounds = DodoTouchTarget.optimize(bounds)
     return oprimizedBounds.contains(point)
+  }
+  
+  class func image(style: DodoButtonStyle) -> UIImage? {
+    if style.image != nil {
+      return style.image
+    }
+    
+    if let icon = style.icon {
+      let bundle = NSBundle(forClass: self)
+      let imageName = icon.rawValue
+      return UIImage(named: imageName, inBundle: bundle, compatibleWithTraitCollection: nil)
+    }
+    
+    return nil
   }
   
   private func applyStyle(imageIn: UIImage) {

@@ -44,7 +44,7 @@ class DodoButtonViewTests: XCTestCase {
   // MARK: - Check if we have buttons
   // ------------------------------
 
-  func testHaveButtons_yesHasOneButtonImage() {
+  func testHaveButtons_yesHasOneImage() {
     let styleOne = DodoButtonStyle(parentStyle: nil)
     let image = TestBundle.image("96px.png")!
     styleOne.image = image
@@ -58,7 +58,20 @@ class DodoButtonViewTests: XCTestCase {
     XCTAssert(result)
   }
   
-  func testHaveButtons_noHasNoButtonImages() {
+  func testHaveButtons_yesHasOneIcon() {
+    let styleOne = DodoButtonStyle(parentStyle: nil)
+    styleOne.icon = DodoIcons.Close
+    
+    let styleTwo = DodoButtonStyle(parentStyle: nil)
+  
+    let styles = [styleOne, styleTwo]
+    
+    let result = DodoButtonView.haveButtons(styles)
+    
+    XCTAssert(result)
+  }
+  
+  func testHaveButtons_noHasNoImagesOrIcons() {
     let styleOne = DodoButtonStyle(parentStyle: nil)
     let styleTwo = DodoButtonStyle(parentStyle: nil)
     
@@ -121,6 +134,16 @@ class DodoButtonViewTests: XCTestCase {
     XCTAssertEqual(UIImageRenderingMode.Automatic, view.image!.renderingMode)
   }
   
+  func testSetupView_withIcon() {
+    let style = DodoButtonStyle(parentStyle: nil)
+    style.icon = DodoIcons.Close
+    
+    let view = DodoButtonView(style: style)
+    view.setup()
+    
+    XCTAssertEqual(256, view.image!.size.width)
+  }
+  
   func testAccessibility() {
     let style = DodoButtonStyle(parentStyle: nil)
     let image = TestBundle.image("67px.png")!
@@ -163,5 +186,24 @@ class DodoButtonViewTests: XCTestCase {
     view.onTap?.didTap(UITapGestureRecognizer())
     
     XCTAssertEqual(1, tapClosureCalledTimes)
+  }
+  
+  // MARK: - Get button image 
+  
+  func testButtonImage_withSuppliedImage() {
+    let style = DodoButtonStyle(parentStyle: nil)
+    let image = TestBundle.image("67px.png")!
+    style.image = image
+    
+    let actualImage = DodoButtonView.image(style)!
+    XCTAssertEqual(67, actualImage.size.width)
+  }
+  
+  func testButtonImage_withIcon() {
+    let style = DodoButtonStyle(parentStyle: nil)
+    style.icon = DodoIcons.Close
+    
+    let actualImage = DodoButtonView.image(style)!
+    XCTAssertEqual(256, actualImage.size.width)
   }
 }
