@@ -39,8 +39,10 @@ If you are using CocoaPods add this text to your Podfile and run `pod install`.
 
 ## Usage
 
-### Show and hide notification bar
+Add `import Dodo` to your source code if you used Carthage or CocoaPods setup methods.
 
+
+### Show and hide notification bar
 
 ```Swift
 view.dodo.success("Everybody has won and all must have prizes.")
@@ -50,8 +52,6 @@ view.dodo.error("The perception of beauty is a moral test.")
 
 view.dodo.hide()
 ```
-
-###
 
 If you are showing the bar in the top view you may need to provide top or bottom layout guides. This will prevent the message from overlapping with the status or the tab bar.
 
