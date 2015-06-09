@@ -190,7 +190,8 @@ class ViewController: UIViewController {
     
     if rightButtonSwitch.on {
       // Use supplied image
-      view.dodo.style.rightButton.image = UIImage(named: "ReloadIcon")
+//      view.dodo.style.rightButton.image = UIImage(named: "ReloadIcon")
+      view.dodo.style.rightButton.icon = DodoIcons.Reload
       view.dodo.style.rightButton.accessibilityLabel = "Reload"
       
       view.dodo.style.rightButton.onTap = { [weak self] bar in
