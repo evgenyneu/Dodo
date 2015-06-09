@@ -147,6 +147,19 @@ class DodoToolbarTests: XCTestCase {
     XCTAssertEqual(96, buttons[1].image!.size.width)
   }
   
+  func testCreateLeftButtonWithIcon() {
+    let image = TestBundle.image("67px.png")!
+    obj.style.leftButton.icon = DodoIcons.Close
+    obj.style.rightButton.image = nil
+    
+    obj.show(inSuperview: superview, withMessage: "hello")
+    
+    let buttons = sabButtons(superview)
+    
+    XCTAssertEqual(2, buttons.count)
+    XCTAssertEqual(256, buttons[0].image!.size.width)
+  }
+  
   func testRunTapCallbackClosures() {
     var tappedLeftButton = false
     obj.style.leftButton.icon = DodoIcons.Close
