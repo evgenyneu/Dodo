@@ -51,7 +51,15 @@ view.dodo.error("The perception of beauty is a moral test.")
 view.dodo.hide()
 ```
 
-**Note**: if there is an existing notification bar in a UIView it will be replaced by the new one.
+###
+
+If you are showing the bar in the top view you may need to provide top or bottom layout guides. This will prevent the message from overlapping with the status or the tab bar.
+
+```Swift
+view.dodo.topLayoutGuide = topLayoutGuide
+view.dodo.bottomLayoutGuide = bottomLayoutGuide
+view.dodo.success("Success is how high you bounce when you hit bottom.")
+```
 
 <img src='https://raw.githubusercontent.com/exchangegroup/Dodo/master/Graphics/presets/success.jpg'
 alt='Dodo success presets' width='414'>
