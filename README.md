@@ -47,7 +47,7 @@ alt='Dodo error presets' width='414'>
 
 ### Styling
 
-Notification can be styled before it is shown by settings the `view.dodo.style` properties.
+Use `dodo.style` property to style the notification bar. See the [styling manual](https://github.com/exchangegroup/Dodo/wiki/Styling) for the complete list of configuration options.
 
 ```Swift
 view.dodo.style.label.color = UIColor.whiteColor()
@@ -56,8 +56,6 @@ view.dodo.style.bar.backgroundColor = DodoColor.fromHexString("#00000090")
 view.dodo.style.bar.cornerRadius = 0
 view.dodo.style.bar.marginToSuperview = CGSize(width: 0, height: 0)
 ```
-
-See the [styling manual](https://github.com/exchangegroup/Dodo/wiki/Styling) for the list of all available configuration options.
 
 ### Add buttons or icons
 
