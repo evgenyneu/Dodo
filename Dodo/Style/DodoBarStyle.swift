@@ -32,7 +32,7 @@ public class DodoBarStyle {
   
   private var _animationHide: DodoAnimation?
   
-  /// Callback for animating the bar when it is hidden.
+  /// Specify a function for animating the bar when it is hidden.
   public var animationHide: DodoAnimation {
     get {
       return (_animationHide ?? parent?.animationHide) ?? DodoBarDefaultStyles.animationHide
@@ -63,7 +63,7 @@ public class DodoBarStyle {
   
   private var _animationShow: DodoAnimation?
   
-  /// Callback for animating the bar when it is shown.
+  /// Specify a function for animating the bar when it is shown.
   public var animationShow: DodoAnimation {
     get {
       return (_animationShow ?? parent?.animationShow) ?? DodoBarDefaultStyles.animationShow
@@ -109,7 +109,7 @@ public class DodoBarStyle {
   
   private var _borderColor: UIColor?
   
-  /// Color of toolbar border.
+  /// Color of the bar's border.
   public var borderColor: UIColor? {
     get {
       return _borderColor ?? parent?.borderColor ?? DodoBarDefaultStyles.borderColor
@@ -139,7 +139,7 @@ public class DodoBarStyle {
   
   private var _cornerRadius: CGFloat?
   
-  /// Corner radius of bar edges
+  /// Corner radius of the bar view.
   public var cornerRadius: CGFloat {
     get {
       return _cornerRadius ?? parent?.cornerRadius ?? DodoBarDefaultStyles.cornerRadius
@@ -154,7 +154,7 @@ public class DodoBarStyle {
   
   private var _debugMode: Bool?
   
-  /// Highlights the view backgrounds for spotting layout issues.
+  /// When true it highlights the view background for spotting layout issues.
   public var debugMode: Bool {
     get {
       return _debugMode ?? parent?.debugMode ?? DodoBarDefaultStyles.debugMode
@@ -190,7 +190,7 @@ public class DodoBarStyle {
 
   private var _hideOnTap: Bool?
   
-  /// When true it hides the bar when it is tapped
+  /// When true the bar is hidden when user taps on it.
   public var hideOnTap: Bool {
     get {
       return _hideOnTap ?? parent?.hideOnTap ??
@@ -221,7 +221,7 @@ public class DodoBarStyle {
   
   private var _marginToSuperview: CGSize?
 
-  /// Margin between the bar edge and its superiew.
+  /// Margin between the bar edge and its superview.
   public var marginToSuperview: CGSize {
     get {
       return _marginToSuperview ?? parent?.marginToSuperview ??

@@ -30,7 +30,7 @@ public struct DodoBarDefaultStyles {
   
   private static let _animationHide: DodoAnimation = DodoAnimationsHide.rotate
   
-  /// Callback for animating the bar when it is hidden.
+  /// Specify a function for animating the bar when it is hidden.
   public static var animationHide: DodoAnimation = _animationHide
   
   
@@ -48,7 +48,7 @@ public struct DodoBarDefaultStyles {
   
   private static let _animationShow: DodoAnimation = DodoAnimationsShow.rotate
   
-  /// Callback for animating the bar when it is shown.
+  /// Specify a function for animating the bar when it is shown.
   public static var animationShow: DodoAnimation = _animationShow
   
   
@@ -75,7 +75,7 @@ public struct DodoBarDefaultStyles {
   
   private static let _borderColor: UIColor? = nil
   
-  /// Color of toolbar border.
+  /// Color of the bar's border.
   public static var borderColor = _borderColor
   
   
@@ -93,7 +93,7 @@ public struct DodoBarDefaultStyles {
   
   private static let _cornerRadius: CGFloat = 20
   
-  /// Corner radius of bar edges.
+  /// Corner radius of the bar view.
   public static var cornerRadius = _cornerRadius
   
   
@@ -102,7 +102,7 @@ public struct DodoBarDefaultStyles {
   
   private static let _debugMode = false
   
-  /// Highlights the view backgrounds for spotting layout issues.
+  /// When true it highlights the view background for spotting layout issues.
   public static var debugMode = _debugMode
   
   
@@ -125,7 +125,7 @@ public struct DodoBarDefaultStyles {
   
   private static let _hideOnTap = false
   
-  /// When true it hides the bar when it is tapped
+  /// When true the bar is hidden when user taps on it.
   public static var hideOnTap = _hideOnTap
   
   
@@ -143,7 +143,7 @@ public struct DodoBarDefaultStyles {
   
   private static let _marginToSuperview = CGSize(width: 5, height: 5)
   
-  /// Margin between the bar edge and its superiew.
+  /// Margin between the bar edge and its superview.
   public static var marginToSuperview = _marginToSuperview
   
 
