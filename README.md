@@ -2,7 +2,7 @@
 
 # A notification bar for iOS written in Swift
 
-This is a UI widget for showing notification messages in iOS apps. It is useful for showing short messages to the user, something like: "Message sent", "Note saved", "No Internet connection". 
+This is a UI widget for showing notification messages in iOS apps. It is useful for showing short messages to the user, something like: "Message sent", "Note saved", "No Internet connection".
 
 * Dodo includes styles for success, info, warning and error type messages.
 * The bar can have buttons with custom tap handlers.
@@ -16,6 +16,26 @@ width='300' alt="Illustration fromAlice's Adventures in Wonderland by John Tenni
 > At last the Dodo said, `EVERYBODY has won, and all must have prizes.'
 
 From *Alice's Adventures in Wonderland*.
+
+## Setup
+
+There are three ways you can add Dodo to your project.
+
+**Add source (iOS 7+)**
+
+Simply add [DodoDistrib.swift](https://github.com/evgenyneu/moa/blob/master/Distrib/MoaDistrib.swift) file into your Xcode project.
+
+**Setup with Carthage (iOS 8+)**
+
+Alternatively, add `github "evgenyneu/moa" ~> 1.0` to your Cartfile and run `carthage update`.
+
+**Setup with CocoaPods (iOS 8+)**
+
+If you are using CocoaPods add this text to your Podfile and run `pod install`.
+
+    use_frameworks!
+    pod 'moa', '~> 1.0'
+
 
 ## Usage
 
