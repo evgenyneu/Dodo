@@ -179,7 +179,8 @@ class ViewController: UIViewController {
     view.dodo.style.rightButton.image = nil
     
     if leftButtonSwitch.on {
-      view.dodo.style.leftButton.image = UIImage(named: "CloseIcon")
+      // Use the icon
+      view.dodo.style.leftButton.icon = DodoIcons.Close
       view.dodo.style.leftButton.accessibilityLabel = "Close"
       
       view.dodo.style.leftButton.onTap = { [weak self] bar in
@@ -188,6 +189,7 @@ class ViewController: UIViewController {
     }
     
     if rightButtonSwitch.on {
+      // Use supplied image
       view.dodo.style.rightButton.image = UIImage(named: "ReloadIcon")
       view.dodo.style.rightButton.accessibilityLabel = "Reload"
       
