@@ -39,7 +39,7 @@ public struct DodoButtonDefaultStyles {
   
   private static let _hideOnTap = false
   
-  /// When true it hides the bar when the button is tapped
+  /// When true it hides the bar when the button is tapped.
   public static var hideOnTap = _hideOnTap
   
   
@@ -56,7 +56,7 @@ public struct DodoButtonDefaultStyles {
   
   private static let _icon: DodoIcons? = nil
   
-  /// Icon that will be shown in the button.
+  /// When set it shows one of the default Dodo icons. Use `image` property to supply a custom image. The color of the image can be changed with `tintColor` property.
   public static var icon = _icon
   
   
@@ -65,7 +65,7 @@ public struct DodoButtonDefaultStyles {
   
   private static let _image: UIImage? = nil
   
-  /// Button image. Button only shown when the image is present. The color of the image can be changes with tintColor property.
+  /// Custom image for the button. One can also use the `icon` property to show one of the default Dodo icons. The color of the image can be changed with `tintColor` property.
   public static var image = _image
   
   
@@ -74,7 +74,7 @@ public struct DodoButtonDefaultStyles {
   
   private static let _onTap: DodoButtonOnTap? = nil
   
-  /// Closure that is called when user taps the button.
+  /// Supply a function that will be called when user taps the button.
   public static var onTap = _onTap
   
   
@@ -92,7 +92,7 @@ public struct DodoButtonDefaultStyles {
   
   public static let _tintColor: UIColor? = nil
   
-  /// Button tint color. When set it is used to replace the image colors.
+  /// Replaces the color of the image or icon. The original colors are used when nil.
   public static var tintColor = _tintColor
   
   

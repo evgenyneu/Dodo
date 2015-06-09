@@ -45,7 +45,7 @@ public class DodoButtonStyle {
   
   private var _hideOnTap: Bool?
   
-  /// When true it hides the bar when the button is tapped
+  /// When true it hides the bar when the button is tapped.
   public var hideOnTap: Bool {
     get {
       return _hideOnTap ?? parent?.hideOnTap ?? DodoButtonDefaultStyles.hideOnTap
@@ -76,7 +76,7 @@ public class DodoButtonStyle {
   
   private var _icon: DodoIcons?
   
-  /// Icon that will be shown in the button.
+  /// When set it shows one of the default Dodo icons. Use `image` property to supply a custom image. The color of the image can be changed with `tintColor` property.
   public var icon: DodoIcons? {
     get {
       return _icon ?? parent?.icon ?? DodoButtonDefaultStyles.icon
@@ -91,7 +91,7 @@ public class DodoButtonStyle {
 
   private var _image: UIImage?
   
-  /// Button image. Button only shown when the image is present. The color of the image can be changes with tintColor property.
+  /// Custom image for the button. One can also use the `icon` property to show one of the default Dodo icons. The color of the image can be changed with `tintColor` property.
   public var image: UIImage? {
     get {
       return _image ?? parent?.image ?? DodoButtonDefaultStyles.image
@@ -106,7 +106,7 @@ public class DodoButtonStyle {
   
   private var _onTap: DodoButtonOnTap?
   
-  /// A closure that is called when user taps the button.
+  /// Supply a function that will be called when user taps the button.
   public var onTap: DodoButtonOnTap? {
     get {
       return _onTap ?? parent?.onTap ?? DodoButtonDefaultStyles.onTap
@@ -121,7 +121,7 @@ public class DodoButtonStyle {
   
   private var _size: CGSize?
   
-  /// Size of the button
+  /// Size of the button.
   public var size: CGSize {
     get {
       return _size ?? parent?.size ?? DodoButtonDefaultStyles.size
@@ -136,7 +136,7 @@ public class DodoButtonStyle {
   
   private var _tintColor: UIColor?
   
-  /// Button tint color. When set it is used to replace the image colors.
+  /// Replaces the color of the image or icon. The original colors are used when nil.
   public var tintColor: UIColor? {
     get {
       return _tintColor ?? parent?.tintColor ?? DodoButtonDefaultStyles.tintColor
