@@ -54,7 +54,7 @@ public class DodoLabelStyle {
   
   private var _horizontalMargin: CGFloat?
   
-  /// Margin between the bar/button edge and the label
+  /// Margin between the bar/button edge and the label.
   public var horizontalMargin: CGFloat {
     get {
       return _horizontalMargin ?? parent?.horizontalMargin ??
@@ -70,7 +70,7 @@ public class DodoLabelStyle {
   
   private var _numberOfLines: Int?
   
-  /// The number of lines in the label.
+  /// The maximum number of lines in the label.
   public var numberOfLines: Int {
     get {
       return _numberOfLines ?? parent?.numberOfLines ??

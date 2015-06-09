@@ -41,7 +41,7 @@ public struct DodoLabelDefaultStyles {
   
   public static let _horizontalMargin: CGFloat = 10
   
-  /// Margin between the bar/button edge and the label
+  /// Margin between the bar/button edge and the label.
   public static var horizontalMargin = _horizontalMargin
   
   
@@ -50,7 +50,7 @@ public struct DodoLabelDefaultStyles {
   
   private static let _numberOfLines: Int = 3
   
-  /// The number of lines in the label.
+  /// The maximum number of lines in the label.
   public static var numberOfLines = _numberOfLines
   
   

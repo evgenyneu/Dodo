@@ -153,6 +153,8 @@ class ViewController: UIViewController {
     view.dodo.style.bar.hideOnTap = hideOnTapSwitch.on
     view.dodo.style.label.shadowColor = DodoColor.fromHexString("#00000050")
     
+    view.dodo.style.label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+    
     let buttonTintColor = DodoColor.fromHexString("#FFFFFF90")
     view.dodo.style.leftButton.tintColor = buttonTintColor
     view.dodo.style.rightButton.tintColor = buttonTintColor
