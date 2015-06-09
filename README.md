@@ -57,6 +57,8 @@ view.dodo.style.bar.cornerRadius = 0
 view.dodo.style.bar.marginToSuperview = CGSize(width: 0, height: 0)
 ```
 
+See the [styling manual](https://github.com/exchangegroup/Dodo/wiki/Styling) for the list of all available configuration options.
+
 ### Add buttons or icons
 
 ```Swift
