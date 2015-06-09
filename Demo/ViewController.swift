@@ -13,7 +13,7 @@ class ViewController: UIViewController {
   @IBOutlet weak var debugModeSwitch: UISwitch!
   @IBOutlet weak var showAnimationButton: UIButton!
   @IBOutlet weak var hideAnimationButton: UIButton!
-
+  @IBOutlet weak var customButtonImageSwitch: UISwitch!
   
   let animations = [
     DodoAnimations.Fade,
@@ -133,6 +133,10 @@ class ViewController: UIViewController {
     show()
   }
   
+  @IBAction func onCustomImageSwitchChanged(sender: AnyObject) {
+    show()
+  }
+  
   @IBAction func onDebugModeSwitchChanged(sender: AnyObject) {
     show()
   }
@@ -190,13 +194,23 @@ class ViewController: UIViewController {
     
     if rightButtonSwitch.on {
       // Use supplied image
-//      view.dodo.style.rightButton.image = UIImage(named: "ReloadIcon")
       view.dodo.style.rightButton.icon = DodoIcons.Reload
       view.dodo.style.rightButton.accessibilityLabel = "Reload"
       
       view.dodo.style.rightButton.onTap = { [weak self] bar in
         self?.rotateTheView()
       }
+    }
+    
+    // Use custom image for both buttons
+    if customButtonImageSwitch.on {
+      let customImage = UIImage(named: "happy.png")
+      view.dodo.style.leftButton.image = customImage
+      view.dodo.style.rightButton.image = customImage
+      view.dodo.style.leftButton.tintColor = nil
+      view.dodo.style.rightButton.tintColor = nil
+      view.dodo.style.leftButton.onTap = nil
+      view.dodo.style.rightButton.onTap = nil
     }
   }
   
