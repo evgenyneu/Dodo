@@ -15,6 +15,7 @@
 		7E49464E1B26664B00915DB3 /* DodoIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E49464D1B26664B00915DB3 /* DodoIcons.swift */; };
 		7E49464F1B2666DF00915DB3 /* DodoIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E49464D1B26664B00915DB3 /* DodoIcons.swift */; };
 		7E4946501B26705F00915DB3 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E49464B1B2665FF00915DB3 /* Icons.xcassets */; };
+		7E4946521B267E6B00915DB3 /* happy.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E4946511B267E6B00915DB3 /* happy.png */; };
 		7EC51DA41B215C070070019F /* DodoAnimationsShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC51DA31B215C070070019F /* DodoAnimationsShow.swift */; };
 		7EC51DA61B215C9D0070019F /* DodoAnimationsHide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC51DA51B215C9D0070019F /* DodoAnimationsHide.swift */; };
 		7EC51DA71B215D450070019F /* DodoAnimationsShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC51DA31B215C070070019F /* DodoAnimationsShow.swift */; };
@@ -133,6 +134,7 @@
 		7E4066B71B212C7000E0AC41 /* DodoAnimations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoAnimations.swift; sourceTree = "<group>"; };
 		7E49464B1B2665FF00915DB3 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		7E49464D1B26664B00915DB3 /* DodoIcons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoIcons.swift; sourceTree = "<group>"; };
+		7E4946511B267E6B00915DB3 /* happy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = happy.png; sourceTree = "<group>"; };
 		7EC51DA31B215C070070019F /* DodoAnimationsShow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoAnimationsShow.swift; sourceTree = "<group>"; };
 		7EC51DA51B215C9D0070019F /* DodoAnimationsHide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoAnimationsHide.swift; sourceTree = "<group>"; };
 		7EDF785F1B2105F300A9597E /* Dodo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Dodo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -458,6 +460,7 @@
 		7EDF79191B210C1000A9597E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7E4946511B267E6B00915DB3 /* happy.png */,
 				7EDF791A1B210C1000A9597E /* black.png */,
 				7EDF791B1B210C1000A9597E /* flowers.jpg */,
 				7EDF791C1B210C1000A9597E /* white.png */,
@@ -627,6 +630,7 @@
 				7EDF79041B210BBC00A9597E /* LaunchScreen.xib in Resources */,
 				7EDF79011B210BBC00A9597E /* Images.xcassets in Resources */,
 				7EDF791F1B210C1000A9597E /* white.png in Resources */,
+				7E4946521B267E6B00915DB3 /* happy.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
