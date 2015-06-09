@@ -12,14 +12,29 @@ public class DodoLabelStyle {
   
   /// Clears the styles for all properties for this style object. The styles will be taken from parent and default properties.
   public func clear() {
-    _font = nil
     _color = nil
+    _font = nil
+    _horizontalMargin = nil
+    _numberOfLines = nil
     _shadowColor = nil
     _shadowOffset = nil
-    _numberOfLines = nil
-    _horizontalMargin = nil
   }
 
+  // -----------------------------
+  
+  private var _color: UIColor?
+  
+  /// Color of the label text.
+  public var color: UIColor {
+    get {
+      return _color ?? parent?.color ?? DodoLabelDefaultStyles.color
+    }
+    
+    set {
+      _color = newValue
+    }
+  }
+  
   // -----------------------------
   
   private var _font: UIFont?
@@ -37,16 +52,33 @@ public class DodoLabelStyle {
   
   // -----------------------------
   
-  private var _color: UIColor?
+  private var _horizontalMargin: CGFloat?
   
-  /// Color of the label text.
-  public var color: UIColor {
+  /// Margin between the bar/button edge and the label
+  public var horizontalMargin: CGFloat {
     get {
-      return _color ?? parent?.color ?? DodoLabelDefaultStyles.color
+      return _horizontalMargin ?? parent?.horizontalMargin ??
+        DodoLabelDefaultStyles.horizontalMargin
     }
     
     set {
-      _color = newValue
+      _horizontalMargin = newValue
+    }
+  }
+  
+  // -----------------------------
+  
+  private var _numberOfLines: Int?
+  
+  /// The number of lines in the label.
+  public var numberOfLines: Int {
+    get {
+      return _numberOfLines ?? parent?.numberOfLines ??
+        DodoLabelDefaultStyles.numberOfLines
+    }
+    
+    set {
+      _numberOfLines = newValue
     }
   }
   
@@ -81,36 +113,4 @@ public class DodoLabelStyle {
   }
   
   // -----------------------------
-  
-  private var _numberOfLines: Int?
-  
-  /// The number of lines in the label.
-  public var numberOfLines: Int {
-    get {
-      return _numberOfLines ?? parent?.numberOfLines ??
-        DodoLabelDefaultStyles.numberOfLines
-    }
-    
-    set {
-      _numberOfLines = newValue
-    }
-  }
-  
-  
-  // -----------------------------
-  
-  
-  private var _horizontalMargin: CGFloat?
-  
-  /// Margin between the bar/button edge and the label
-  public var horizontalMargin: CGFloat {
-    get {
-      return _horizontalMargin ?? parent?.horizontalMargin ??
-        DodoLabelDefaultStyles.horizontalMargin
-    }
-    
-    set {
-      _horizontalMargin = newValue
-    }
-  }
 }

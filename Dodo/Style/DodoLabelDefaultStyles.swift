@@ -10,16 +10,25 @@ public struct DodoLabelDefaultStyles {
   
   /// Revert the property values to their defaults
   public static func resetToDefaults() {
-    font = _font
     color = _color
+    font = _font
+    horizontalMargin = _horizontalMargin
+    numberOfLines = _numberOfLines
     shadowColor = _shadowColor
     shadowOffset = _shadowOffset
-    numberOfLines = _numberOfLines
-    horizontalMargin = _horizontalMargin
   }
   
   // ---------------------------
-
+  
+  
+  private static let _color = UIColor.whiteColor()
+  
+  /// Color of the label text.
+  public static var color = _color
+  
+  
+  // ---------------------------
+  
   
   private static let _font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
   
@@ -30,15 +39,24 @@ public struct DodoLabelDefaultStyles {
   // ---------------------------
 
   
-  private static let _color = UIColor.whiteColor()
+  public static let _horizontalMargin: CGFloat = 10
   
-  /// Color of the label text.
-  public static var color = _color
+  /// Margin between the bar/button edge and the label
+  public static var horizontalMargin = _horizontalMargin
   
   
   // ---------------------------
   
-
+  
+  private static let _numberOfLines: Int = 3
+  
+  /// The number of lines in the label.
+  public static var numberOfLines = _numberOfLines
+  
+  
+  // ---------------------------
+  
+  
   private static let _shadowColor: UIColor? = nil
   
   /// Color of text shadow.
@@ -55,19 +73,4 @@ public struct DodoLabelDefaultStyles {
   
   
   // ---------------------------
-
-  
-  private static let _numberOfLines: Int = 3
-  
-  /// The number of lines in the label.
-  public static var numberOfLines = _numberOfLines
-  
-  
-  // ---------------------------
-
-  
-  public static let _horizontalMargin: CGFloat = 10
-  
-  /// Margin between the bar/button edge and the label
-  public static var horizontalMargin = _horizontalMargin
 }
