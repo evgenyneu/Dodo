@@ -4,7 +4,7 @@
 
 This is a UI widget for showing notification messages in iOS apps. It is useful for showing short messages to the user. Something like: "Message sent", "Note saved", "No Internet connection". 
 
-* A message is shown in the top or the bottom possition of the view.
+* A message is shown on top or bottom of the screen.
 * It has built-in style presets for common types of messages: success, info, warning and error.
 * The bar can have buttons with custom tap handlers.
 * Bar styles can be customized.
@@ -57,6 +57,9 @@ view.dodo.style.label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBod
 view.dodo.style.bar.backgroundColor = DodoColor.fromHexString("#00000090")
 view.dodo.style.bar.cornerRadius = 0
 view.dodo.style.bar.marginToSuperview = CGSize(width: 0, height: 0)
+view.dodo.style.bar.hideAfterDelaySeconds = 3
+view.dodo.style.bar.hideOnTap = true
+view.dodo.style.bar.locationTop = false
 ```
 
 ### Add buttons or icons
