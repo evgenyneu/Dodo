@@ -143,6 +143,8 @@ final public class Dodo: DodoButtonViewDelegate {
   // MARK: - DodoButtonViewDelegate
   
   public func buttonDelegateDidTap(buttonStyle: DodoButtonStyle) {
-    
+    if buttonStyle.hideOnTap {
+      hide()
+    }
   }
 }

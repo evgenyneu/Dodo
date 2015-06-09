@@ -179,7 +179,40 @@ class DodoTests: XCTestCase {
     XCTAssertFalse(animationHideCompleted)
   }
   
-  // MARK: - Hide on tap
+  // MARK: - Hiding when button is tapped
+  
+  func testHideWhenButtonIsTapped() {
+    obj.style.leftButton.icon = DodoIcons.Close
+    obj.style.leftButton.hideOnTap = true
+    
+    obj.show("Hello world!")
+    
+    // Tap left button
+    let leftButton = sabButtons(superview)[0]
+    leftButton.onTap?.didTap(UITapGestureRecognizer())
+    
+    // Ensure bar is hidden
+    let toolbar = sabToolbar(superview)
+    XCTAssert(toolbar == nil)
+    XCTAssert(animationHideCompleted)
+  }
+  
+  func testDoNotHideWhenButtonIsTapped() {
+    obj.style.leftButton.icon = DodoIcons.Close
+    obj.style.leftButton.hideOnTap = false
+    
+    obj.show("Hello world!")
+    
+    // Tap left button
+    let leftButton = sabButtons(superview)[0]
+    leftButton.onTap?.didTap(UITapGestureRecognizer())
+    
+    // Ensure bar is hidden
+    let toolbar = sabToolbar(superview)
+    XCTAssert(toolbar != nil)
+  }
+  
+  // MARK: - Hide when toolbar is tapped
   
   func testHideOnTap() {
     obj.style.bar.hideOnTap = true
