@@ -12,23 +12,160 @@ public class DodoBarStyle {
   
   /// Clears the styles for all properties for this style object. The styles will be taken from parent and default properties.
   public func clear() {
-    _hideAfterDelaySeconds = nil
-    _locationTop = nil
-    _marginToSuperview = nil
-    _cornerRadius = nil
-    _borderWidth = nil
-    _borderColor = nil
-    _backgroundColor = nil
-    _debugMode = nil
-    _animationShow = nil
-    _animationShowDuration = nil
     _animationHide = nil
     _animationHideDuration = nil
+    _animationShow = nil
+    _animationShowDuration = nil
+    _backgroundColor = nil
+    _borderColor = nil
+    _borderWidth = nil
+    _cornerRadius = nil
+    _debugMode = nil
+    _hideAfterDelaySeconds = nil
+    _hideOnTap = nil
+    _locationTop = nil
+    _marginToSuperview = nil
   }
   
   
   // -----------------------------
   
+  private var _animationHide: DodoAnimation?
+  
+  /// Callback for animating the bar when it is hidden.
+  public var animationHide: DodoAnimation {
+    get {
+      return (_animationHide ?? parent?.animationHide) ?? DodoBarDefaultStyles.animationHide
+    }
+    
+    set {
+      _animationHide = newValue
+    }
+  }
+  
+  // ---------------------------
+  
+  private var _animationHideDuration: NSTimeInterval?
+  
+  /// Duration of hide animation. When nil it uses default duration for selected animation function.
+  public var animationHideDuration: NSTimeInterval? {
+    get {
+      return (_animationHideDuration ?? parent?.animationHideDuration) ??
+        DodoBarDefaultStyles.animationHideDuration
+    }
+    
+    set {
+      _animationHideDuration = newValue
+    }
+  }
+  
+  // ---------------------------
+  
+  private var _animationShow: DodoAnimation?
+  
+  /// Callback for animating the bar when it is shown.
+  public var animationShow: DodoAnimation {
+    get {
+      return (_animationShow ?? parent?.animationShow) ?? DodoBarDefaultStyles.animationShow
+    }
+    
+    set {
+      _animationShow = newValue
+    }
+  }
+  
+  // ---------------------------
+  
+  private var _animationShowDuration: NSTimeInterval?
+  
+  /// Duration of show animation. When nil it uses default duration for selected animation function.
+  public var animationShowDuration: NSTimeInterval? {
+    get {
+      return (_animationShowDuration ?? parent?.animationShowDuration) ??
+        DodoBarDefaultStyles.animationShowDuration
+    }
+    
+    set {
+      _animationShowDuration = newValue
+    }
+  }
+  
+  // ---------------------------
+  
+  private var _backgroundColor: UIColor?
+  
+  /// Background color of the bar.
+  public var backgroundColor: UIColor? {
+    get {
+      return _backgroundColor ?? parent?.backgroundColor ?? DodoBarDefaultStyles.backgroundColor
+    }
+    
+    set {
+      _backgroundColor = newValue
+    }
+  }
+  
+  // -----------------------------
+  
+  private var _borderColor: UIColor?
+  
+  /// Color of toolbar border.
+  public var borderColor: UIColor? {
+    get {
+      return _borderColor ?? parent?.borderColor ?? DodoBarDefaultStyles.borderColor
+    }
+    
+    set {
+      _borderColor = newValue
+    }
+  }
+  
+  // -----------------------------
+  
+  private var _borderWidth: CGFloat?
+  
+  /// Border width of the bar.
+  public var borderWidth: CGFloat {
+    get {
+      return _borderWidth ?? parent?.borderWidth ?? DodoBarDefaultStyles.borderWidth
+    }
+    
+    set {
+      _borderWidth = newValue
+    }
+  }
+  
+  // -----------------------------
+  
+  private var _cornerRadius: CGFloat?
+  
+  /// Corner radius of bar edges
+  public var cornerRadius: CGFloat {
+    get {
+      return _cornerRadius ?? parent?.cornerRadius ?? DodoBarDefaultStyles.cornerRadius
+    }
+    
+    set {
+      _cornerRadius = newValue
+    }
+  }
+  
+  // -----------------------------
+  
+  private var _debugMode: Bool?
+  
+  /// Highlights the view backgrounds for spotting layout issues.
+  public var debugMode: Bool {
+    get {
+      return _debugMode ?? parent?.debugMode ?? DodoBarDefaultStyles.debugMode
+    }
+    
+    set {
+      _debugMode = newValue
+    }
+  }
+  
+  // ---------------------------
   
   private var _hideAfterDelaySeconds: NSTimeInterval?
   
@@ -50,7 +187,7 @@ public class DodoBarStyle {
   }
   
   // -----------------------------
-  
+
   private var _hideOnTap: Bool?
   
   /// When true it hides the bar when it is tapped
@@ -97,141 +234,4 @@ public class DodoBarStyle {
   }
   
   // -----------------------------
-  
-  private var _cornerRadius: CGFloat?
-  
-  /// Corner radius of bar edges
-  public var cornerRadius: CGFloat {
-    get {
-      return _cornerRadius ?? parent?.cornerRadius ?? DodoBarDefaultStyles.cornerRadius
-    }
-    
-    set {
-      _cornerRadius = newValue
-    }
-  }
-  
-  // -----------------------------
-  
-  private var _borderWidth: CGFloat?
-  
-  /// Border width of the bar.
-  public var borderWidth: CGFloat {
-    get {
-      return _borderWidth ?? parent?.borderWidth ?? DodoBarDefaultStyles.borderWidth
-    }
-    
-    set {
-      _borderWidth = newValue
-    }
-  }
-  
-  // -----------------------------
-  
-  private var _borderColor: UIColor?
-  
-  /// Color of toolbar border.
-  public var borderColor: UIColor? {
-    get {
-      return _borderColor ?? parent?.borderColor ?? DodoBarDefaultStyles.borderColor
-    }
-    
-    set {
-      _borderColor = newValue
-    }
-  }
-  
-  // -----------------------------
-  
-  private var _backgroundColor: UIColor?
-  
-  /// Background color of the bar.
-  public var backgroundColor: UIColor? {
-    get {
-      return _backgroundColor ?? parent?.backgroundColor ?? DodoBarDefaultStyles.backgroundColor
-    }
-    
-    set {
-      _backgroundColor = newValue
-    }
-  }
-  
-  // -----------------------------
-  
-  private var _debugMode: Bool?
-  
-  /// Highlights the view backgrounds for spotting layout issues.
-  public var debugMode: Bool {
-    get {
-      return _debugMode ?? parent?.debugMode ?? DodoBarDefaultStyles.debugMode
-    }
-    
-    set {
-      _debugMode = newValue
-    }
-  }
-  
-  // ---------------------------
-  
-  private var _animationShow: DodoAnimation?
-  
-  /// Callback for animating the bar when it is shown.
-  public var animationShow: DodoAnimation {
-    get {
-      return (_animationShow ?? parent?.animationShow) ?? DodoBarDefaultStyles.animationShow
-    }
-    
-    set {
-      _animationShow = newValue
-    }
-  }
-  
-  // ---------------------------
-  
-  private var _animationShowDuration: NSTimeInterval?
-  
-  /// Duration of show animation. When nil it uses default duration for selected animation function.
-  public var animationShowDuration: NSTimeInterval? {
-    get {
-      return (_animationShowDuration ?? parent?.animationShowDuration) ??
-        DodoBarDefaultStyles.animationShowDuration
-    }
-    
-    set {
-      _animationShowDuration = newValue
-    }
-  }
-
-  // ---------------------------
-  
-  private var _animationHide: DodoAnimation?
-  
-  /// Callback for animating the bar when it is hidden.
-  public var animationHide: DodoAnimation {
-    get {
-      return (_animationHide ?? parent?.animationHide) ?? DodoBarDefaultStyles.animationHide
-    }
-    
-    set {
-      _animationHide = newValue
-    }
-  }
-  
-  // ---------------------------
-  
-  private var _animationHideDuration: NSTimeInterval?
-  
-  /// Duration of hide animation. When nil it uses default duration for selected animation function.
-  public var animationHideDuration: NSTimeInterval? {
-    get {
-      return (_animationHideDuration ?? parent?.animationHideDuration) ??
-        DodoBarDefaultStyles.animationHideDuration
-    }
-    
-    set {
-      _animationHideDuration = newValue
-    }
-  }
-  
-  // ---------------------------
 }
