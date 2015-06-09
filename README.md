@@ -91,3 +91,10 @@ view.dodo.style.bar.animationShow = DodoAnimations.NoAnimation.show
 ```
 
 See [configuring animation wiki page](https://github.com/exchangegroup/Dodo/wiki/Animating) for more information.
+
+## Credits
+
+* Original illustration of Alice's Adventures in Wonderland by John Tenniel, 1865. Source: Wikimedia Commons.
+* Drawing of White Dodo byFrederick William Frohawk, 1907. Source: Wikimedia Commons.
+* Painting of a dodo by Jan Saverij, 1651. Source: Wikimedia Commons.
+
