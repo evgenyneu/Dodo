@@ -75,7 +75,7 @@ alt='Dodo error presets' width='414'>
 
 ### Styling
 
-Use `dodo.style` property to style the notification bar. See the [styling manual](https://github.com/exchangegroup/Dodo/wiki/Styling) for the complete list of configuration options.
+Set `dodo.style` property to style the notification bar before it is shown. See the [styling manual](https://github.com/exchangegroup/Dodo/wiki/Styling) for the complete list of configuration options.
 
 ```Swift
 view.dodo.style.label.color = UIColor.whiteColor()
@@ -112,6 +112,9 @@ alt='Dodo bar with right and left buttons' width='414'>
 
 ### Customize animation
 
+Configure the bar animation before it is shown. See [configuring animation wiki page](https://github.com/exchangegroup/Dodo/wiki/Animating) for more information.
+
+
 ```Swift
 // Use existing animations
 view.dodo.style.bar.animationShow = DodoAnimations.Rotate.show
@@ -120,8 +123,6 @@ view.dodo.style.bar.animationHide = DodoAnimations.SlideRight.hide
 // Turn off animation
 view.dodo.style.bar.animationShow = DodoAnimations.NoAnimation.show
 ```
-
-See [configuring animation wiki page](https://github.com/exchangegroup/Dodo/wiki/Animating) for more information.
 
 ## Credits
 
