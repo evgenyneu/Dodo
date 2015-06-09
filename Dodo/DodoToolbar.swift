@@ -3,6 +3,7 @@ import UIKit
 class DodoToolbar: UIView {
   var layoutGuide: UILayoutSupport?
   var style: DodoStyle
+  weak var buttonViewDelegate: DodoButtonViewDelegate?
   
   convenience init(witStyle style: DodoStyle) {
     self.init(frame: CGRect())
@@ -101,12 +102,15 @@ class DodoToolbar: UIView {
   // MARK: - Buttons
   
   private func createButtons() -> [DodoButtonView] {
+    precondition(buttonViewDelegate != nil, "Button view delegate can not be nil")
     let buttonStyles = [style.leftButton, style.rightButton]
+    
     let buttonViews = DodoButtonView.createMany(buttonStyles)
     
     for (index, button) in enumerate(buttonViews) {
       addSubview(button)
       button.doLayout(onLeftSide: index == 0)
+      button.delegate = buttonViewDelegate
 
       if style.bar.debugMode {
         button.backgroundColor = UIColor.yellowColor()

@@ -19,6 +19,7 @@ public class DodoButtonStyle {
     _size = nil
     _horizontalMarginToBar = nil
     _tintColor = nil
+    _hideOnTap = nil
   }
   
   // -----------------------------
@@ -128,6 +129,22 @@ public class DodoButtonStyle {
     
     set {
       _tintColor = newValue
+    }
+  }
+  
+  
+  // -----------------------------
+  
+  private var _hideOnTap: Bool?
+  
+  /// When true it hides the bar when the button is tapped
+  public var hideOnTap: Bool {
+    get {
+      return _hideOnTap ?? parent?.hideOnTap ?? DodoButtonDefaultStyles.hideOnTap
+    }
+    
+    set {
+      _hideOnTap = newValue
     }
   }
 }

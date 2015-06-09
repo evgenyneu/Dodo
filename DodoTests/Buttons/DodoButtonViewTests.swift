@@ -3,10 +3,13 @@ import XCTest
 
 class DodoButtonViewTests: XCTestCase {
   
+  var buttonDelegate: ButtonViewDelegateMock!
+  
   override func setUp() {
     super.setUp()
     
     DodoStyle.resetDefaultStyles()
+    buttonDelegate = ButtonViewDelegateMock()
   }
   
   // MARK: - Create many

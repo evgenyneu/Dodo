@@ -6,12 +6,15 @@ class DodoToolbarTests: XCTestCase {
   var superview: UIView!
   var animationShowCompleted = false
   var animationHideCompleted = false
+  var buttonDelegate: ButtonViewDelegateMock!
   
   override func setUp() {
     super.setUp()
     
+    buttonDelegate = ButtonViewDelegateMock()
     DodoPresets.resetAll()
     obj = DodoToolbar()
+    obj.buttonViewDelegate = buttonDelegate
     superview = UIView()
     
     // Mock animation

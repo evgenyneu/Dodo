@@ -1,6 +1,6 @@
 import UIKit
 
-final public class Dodo {  
+final public class Dodo: DodoButtonViewDelegate {
   private weak var superview: UIView!
   private var hideTimer: MoaTimer?
   
@@ -91,6 +91,7 @@ final public class Dodo {
     var bar = DodoToolbar(witStyle: style)
     setupHideOnTap(bar)
     bar.layoutGuide = style.bar.locationTop ? topLayoutGuide : bottomLayoutGuide
+    bar.buttonViewDelegate = self
     bar.show(inSuperview: superview, withMessage: message)
   }
   
@@ -137,5 +138,11 @@ final public class Dodo {
         self?.hide()
       }
     }
+  }
+  
+  // MARK: - DodoButtonViewDelegate
+  
+  public func buttonDelegateDidTap(buttonStyle: DodoButtonStyle) {
+    
   }
 }

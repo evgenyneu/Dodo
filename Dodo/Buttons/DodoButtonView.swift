@@ -3,6 +3,7 @@ import UIKit
 
 class DodoButtonView: UIImageView {
   private let style: DodoButtonStyle
+  weak var delegate: DodoButtonViewDelegate?
   var onTap: OnTap?
   
   init(style: DodoButtonStyle) {
@@ -17,6 +18,7 @@ class DodoButtonView: UIImageView {
   
   // Create button views for given button styles.
   static func createMany(styles: [DodoButtonStyle]) -> [DodoButtonView] {
+      
     if !haveButtons(styles) { return [] }
     
     return styles.map { style in

@@ -16,6 +16,7 @@ public struct DodoButtonDefaultStyles {
     onTap = _onTap
     size = _size
     tintColor = _tintColor
+    hideOnTap = _hideOnTap
   }
   
   
@@ -84,4 +85,16 @@ public struct DodoButtonDefaultStyles {
   
   /// Button tint color. When set it is used to replace the image colors.
   public static var tintColor = _tintColor
+  
+  
+  // ---------------------------
+  
+  
+  private static let _hideOnTap = false
+  
+  /// When true it hides the bar when the button is tapped
+  public static var hideOnTap = _hideOnTap
+  
+  
+  // ---------------------------
 }
