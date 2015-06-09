@@ -90,4 +90,4 @@ view.dodo.style.bar.animationHide = DodoAnimations.SlideRight.hide
 view.dodo.style.bar.animationShow = DodoAnimations.NoAnimation.show
 ```
 
-See [configuring animation wiki page](https://github.com/exchangegroup/Dodo/wiki/Configuring-animation) for more information.
+See [configuring animation wiki page](https://github.com/exchangegroup/Dodo/wiki/Animating) for more information.
