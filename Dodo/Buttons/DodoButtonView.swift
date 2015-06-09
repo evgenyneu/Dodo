@@ -36,6 +36,7 @@ class DodoButtonView: UIImageView {
   }
   
   func doLayout(#onLeftSide: Bool) {
+    precondition(delegate != nil, "Button view delegate can not be nil")
     setTranslatesAutoresizingMaskIntoConstraints(false)
     
     // Set button's size
@@ -103,8 +104,13 @@ class DodoButtonView: UIImageView {
   }
   
   private func setupTap() {
-    if let tapCallback = style.onTap {
-      onTap = OnTap(view: self, gesture: UITapGestureRecognizer(), closure: tapCallback)
+    onTap = OnTap(view: self, gesture: UITapGestureRecognizer()) { [weak self] in
+      self?.didTap()
     }
+  }
+  
+  private func didTap() {
+    self.delegate?.buttonDelegateDidTap(self.style)
+    style.onTap?()
   }
 }

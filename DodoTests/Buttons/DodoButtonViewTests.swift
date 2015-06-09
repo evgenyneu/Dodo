@@ -191,6 +191,18 @@ class DodoButtonViewTests: XCTestCase {
     XCTAssertEqual(1, tapClosureCalledTimes)
   }
   
+  func testOnTapDelegateIsCalled() {
+    let style = DodoButtonStyle(parentStyle: nil)
+    style.size = CGSize(width: 81, height: 81)
+    
+    let view = DodoButtonView(style: style)
+    view.setup()
+    view.delegate = buttonDelegate
+    view.onTap?.didTap(UITapGestureRecognizer())
+    
+    XCTAssertEqual(81, buttonDelegate.didTapCalledWithStyle!.size.width)
+  }
+  
   // MARK: - Get button image 
   
   func testButtonImage_withSuppliedImage() {

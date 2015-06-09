@@ -109,8 +109,8 @@ class DodoToolbar: UIView {
     
     for (index, button) in enumerate(buttonViews) {
       addSubview(button)
-      button.doLayout(onLeftSide: index == 0)
       button.delegate = buttonViewDelegate
+      button.doLayout(onLeftSide: index == 0)
 
       if style.bar.debugMode {
         button.backgroundColor = UIColor.yellowColor()
