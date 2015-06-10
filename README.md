@@ -1,6 +1,9 @@
 🔨🔨🔨 This is work in progress 🔨🔨🔨
 
-# A notification bar for iOS written in Swift
+<img src='https://raw.githubusercontent.com/exchangegroup/Dodo/master/Graphics/buttons/dodo_ios_message_widget_written_in_swift.jpg' alt='Dodo, a message widget for iOS' width='414'>
+
+
+# Dodo, a message widget for iOS written in Swift
 
 This is a UI widget for showing notification messages in iOS apps. It is useful for showing short messages to the user, something like: "Message sent", "Note saved", "No Internet connection".
 
