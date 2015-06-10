@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name        = "Dodo"
-  s.version     = "1.0.4"
+  s.version     = "1.0.5"
   s.license     = { :type => "MIT" }
   s.homepage    = "https://github.com/exchangegroup/Dodo"
   s.summary     = "A message bar written in Swift."
@@ -15,6 +15,7 @@ Pod::Spec.new do |s|
   s.authors     = { "Evgenii Neumerzhitckii" => "sausageskin@gmail.com" }
   s.source      = { :git => "https://github.com/exchangegroup/Dodo.git", :tag => s.version }
   s.screenshots  = "https://raw.githubusercontent.com/exchangegroup/Dodo/master/Graphics/Paintings/alices_adventures_in_wonderland.png"
-  s.source_files = "Dodo/**/*.{swift,xcassets}"
+  s.source_files = "Dodo/**/*.swift"
+  s.resources  = "Dodo/**/*.xcassets"
   s.ios.deployment_target = "8.0"
 end
