@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name        = "moa"
+  s.name        = "Dodo"
   s.version     = "1.0.3"
   s.license     = { :type => "MIT" }
   s.homepage    = "https://github.com/exchangegroup/Dodo"
