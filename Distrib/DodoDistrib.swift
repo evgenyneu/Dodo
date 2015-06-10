@@ -1,7 +1,7 @@
 //
 // Dodo
 //
-// UI widget for showing notification messages in iOS apps.
+// A message bar for iOS.
 //
 // https://github.com/exchangegroup/Dodo
 //
