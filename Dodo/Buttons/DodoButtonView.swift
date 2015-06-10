@@ -92,6 +92,7 @@ class DodoButtonView: UIImageView {
       tintColor = tintColorToShow
     }
     
+    layer.minificationFilter = kCAFilterTrilinear // make the image crisp
     image = imageToShow
     contentMode = UIViewContentMode.ScaleAspectFit
     

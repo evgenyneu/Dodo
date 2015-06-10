@@ -107,7 +107,7 @@ class DodoStyleTests: XCTestCase {
     
     XCTAssertEqual(20, DodoBarDefaultStyles.cornerRadius)
     XCTAssertEqual(3, DodoLabelDefaultStyles.numberOfLines)
-    XCTAssertEqual(41, DodoButtonDefaultStyles.horizontalMarginToBar)
+    XCTAssertEqual(10, DodoButtonDefaultStyles.horizontalMarginToBar)
   }
   
   // MARK: - Clear
