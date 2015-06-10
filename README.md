@@ -97,7 +97,7 @@ view.dodo.style.bar.locationTop = false
 ### Add buttons or icons
 
 ```Swift
-// Use an icon
+// Use a built-in icon
 view.dodo.style.leftButton.icon = DodoIcons.close
 
 // Supply your image
