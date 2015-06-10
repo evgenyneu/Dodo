@@ -175,7 +175,7 @@ public enum DodoAnimations: String {
       toValue: end,
       onFinished: showView ? completed : nil)
     
-    // Hide the bar manually after show period for better looks
+    // Hide the bar prematurely for better looks
     timer?.cancel()
     if !showView {
       timer = MoaTimer.runAfter(0.3) { timer in

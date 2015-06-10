@@ -86,7 +86,7 @@ class ViewController: UIViewController {
   }
   
   @IBAction func onSuccessButtonTapped(sender: AnyObject) {
-    message = "Dodo, a message bar for iOS"
+    message = "Dodo, a message bar for iOS."
     view.dodo.preset = DodoPresets.Success
     show()
   }
