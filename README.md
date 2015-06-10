@@ -9,7 +9,7 @@
 
 <img src='https://raw.githubusercontent.com/exchangegroup/Dodo/master/Graphics/buttons/dodo_a_message_widget_for_ios_written_in_swift.jpg' alt='Dodo, a message widget for iOS' width='414'>
 
-This is a UI widget for showing notification messages in iOS apps. It is useful for showing short messages to the user, something like: "Message sent", "Note saved", "No Internet connection".
+This is a UI widget for showing text messages in iOS apps. It is useful for showing short messages to the user, something like: "Message sent", "Note saved", "No Internet connection".
 
 * Dodo includes styles for success, info, warning and error type messages.
 * The bar can have buttons with custom tap handlers.
@@ -49,7 +49,7 @@ If you are using CocoaPods add this text to your Podfile and run `pod install`.
 Add `import Dodo` to your source code if you used Carthage or CocoaPods setup methods.
 
 
-### Show and hide notification bar
+### Show and hide message bar
 
 ```Swift
 view.dodo.success("Everybody has won and all must have prizes.")
@@ -82,7 +82,7 @@ alt='Dodo error presets' width='414'>
 
 ### Styling
 
-Set `dodo.style` property to style the notification bar before it is shown. See the [styling manual](https://github.com/exchangegroup/Dodo/wiki/Styling) for the complete list of configuration options.
+Set `dodo.style` property to style the message bar before it is shown. See the [styling manual](https://github.com/exchangegroup/Dodo/wiki/Styling) for the complete list of configuration options.
 
 ```Swift
 // Set the text color
@@ -102,6 +102,8 @@ view.dodo.style.bar.locationTop = false
 ```
 
 ### Add buttons or icons
+
+Set `style.leftButton` and `style.rightButton` property to show buttons/icons.
 
 ```Swift
 // Use a built-in icon
