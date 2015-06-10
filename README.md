@@ -1,4 +1,4 @@
-<img src='https://raw.githubusercontent.com/exchangegroup/Dodo/master/Graphics/buttons/dodo_ios_message_widget_written_in_swift.jpg' alt='Dodo, a message widget for iOS' width='414'>
+<img src='https://raw.githubusercontent.com/exchangegroup/Dodo/master/Graphics/buttons/dodo_a_message_widget_for_ios_written_in_swift.jpg' alt='Dodo, a message widget for iOS' width='414'>
 
 
 # Dodo, a message widget for iOS written in Swift
