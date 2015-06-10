@@ -149,6 +149,8 @@ public enum DodoAnimations: String {
     )
   }
   
+  static weak var timer: MoaTimer?
+  
   /// Animation that rotates the bar around X axis in perspective with spring effect.
   static func rotate(duration: NSTimeInterval?, showView: Bool, view: UIView, completed: DodoAnimationCompleted) {
     
@@ -171,7 +173,15 @@ public enum DodoAnimations: String {
       initialSpringVelocity: 1,
       fromValue: start,
       toValue: end,
-      onFinished: completed)
+      onFinished: showView ? completed : nil)
+    
+    // Hide the bar manually after show period for better looks
+    timer?.cancel()
+    if !showView {
+      timer = MoaTimer.runAfter(0.3) { timer in
+        completed()
+      }
+    }
   }
   
   /// Animation that swipes the bar to the right with fade-out effect.

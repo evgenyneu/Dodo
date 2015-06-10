@@ -87,7 +87,8 @@ class ViewController: UIViewController {
   }
   
   @IBAction func onSuccessButtonTapped(sender: AnyObject) {
-    message = "When you win, nothing hurts."
+    message = "Dodo"
+//    message = "When you win, nothing hurts."
     view.dodo.preset = DodoPresets.Success
     show()
   }
