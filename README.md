@@ -1,4 +1,4 @@
-# Dodo, a message widget for iOS written in Swift
+# Dodo, a message bar for iOS written in Swift
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)][carthage]
 [![CocoaPods Version](https://img.shields.io/cocoapods/v/Dodo.svg?style=flat)][cocoadocs]
