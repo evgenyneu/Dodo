@@ -93,9 +93,9 @@
                                         </connections>
                                     </button>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="udm-1g-Xra">
-                                        <rect key="frame" x="0.0" y="520" width="600" height="521"/>
+                                        <rect key="frame" x="0.0" y="520" width="600" height="470"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="rBF-4q-y2m">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="521"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="470"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="epZ-dt-Pfc">
@@ -147,7 +147,7 @@
                                                     </connections>
                                                 </switch>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pG9-Yb-cLy">
-                                                    <rect key="frame" x="276" y="422" width="51" height="31"/>
+                                                    <rect key="frame" x="276" y="371" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="onDebugModeSwitchChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="0FI-XP-g20"/>
                                                     </connections>
@@ -158,14 +158,8 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="aKL-xM-Qha">
-                                                    <rect key="frame" x="276" y="371" width="51" height="31"/>
-                                                    <connections>
-                                                        <action selector="onCustomImageSwitchChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="XsX-I7-7Ma"/>
-                                                    </connections>
-                                                </switch>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="czJ-jW-CkY">
-                                                    <rect key="frame" x="196" y="473" width="206" height="28"/>
+                                                    <rect key="frame" x="196" y="422" width="206" height="28"/>
                                                     <color key="backgroundColor" red="0.20959623540607555" green="0.21188020924877282" blue="0.22234059343434343" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                                                     <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
                                                     <state key="normal" title="Change background image">
@@ -177,7 +171,7 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Debug mode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLt-hZ-haS">
-                                                    <rect key="frame" x="156" y="427" width="99.5" height="20.5"/>
+                                                    <rect key="frame" x="156" y="376" width="99.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -224,29 +218,18 @@
                                                         <action selector="onHideAnimationButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w6q-bP-a8f"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Custom image" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i5H-qk-ds2">
-                                                    <rect key="frame" x="144" y="376" width="112" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="aKL-xM-Qha" firstAttribute="centerX" secondItem="pmK-7c-OPS" secondAttribute="centerX" priority="700" id="1AT-Nq-0x9"/>
-                                                <constraint firstItem="aKL-xM-Qha" firstAttribute="top" secondItem="pmK-7c-OPS" secondAttribute="bottom" constant="20" id="2Zj-I7-OBk"/>
                                                 <constraint firstItem="fM9-aN-ygo" firstAttribute="leading" secondItem="nnn-Rc-jTv" secondAttribute="trailing" constant="20" id="4Iw-Z5-bjM"/>
                                                 <constraint firstAttribute="centerX" secondItem="fM9-aN-ygo" secondAttribute="centerX" constant="-0.5" id="6tJ-LJ-mbh"/>
                                                 <constraint firstItem="8hK-3s-uzp" firstAttribute="centerX" secondItem="pmK-7c-OPS" secondAttribute="centerX" constant="-1" id="7to-eV-4Uk"/>
                                                 <constraint firstItem="x6P-ij-naQ" firstAttribute="top" secondItem="fM9-aN-ygo" secondAttribute="bottom" constant="20" id="81n-0w-hbO"/>
                                                 <constraint firstItem="3PP-07-tvo" firstAttribute="leading" secondItem="AJZ-lc-74A" secondAttribute="trailing" constant="20" id="885-My-cwK"/>
-                                                <constraint firstItem="i5H-qk-ds2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rBF-4q-y2m" secondAttribute="leading" id="8uA-Hl-ENW"/>
                                                 <constraint firstItem="epZ-dt-Pfc" firstAttribute="top" secondItem="rBF-4q-y2m" secondAttribute="top" constant="20" id="9IY-NW-4Go"/>
                                                 <constraint firstItem="x6P-ij-naQ" firstAttribute="leading" secondItem="DZj-8S-2Xm" secondAttribute="trailing" constant="20" id="A9N-Vr-r2e"/>
-                                                <constraint firstItem="aKL-xM-Qha" firstAttribute="leading" secondItem="i5H-qk-ds2" secondAttribute="trailing" constant="20" id="Agq-ma-VAv"/>
                                                 <constraint firstItem="8hK-3s-uzp" firstAttribute="leading" secondItem="1a3-pm-wRI" secondAttribute="trailing" constant="20" id="BJT-iW-fuI"/>
                                                 <constraint firstItem="8hK-3s-uzp" firstAttribute="top" secondItem="WvF-iH-DUL" secondAttribute="bottom" constant="20" id="EaK-Vk-yrU"/>
                                                 <constraint firstItem="czJ-jW-CkY" firstAttribute="centerX" secondItem="3PP-07-tvo" secondAttribute="centerX" constant="-1.5" id="FdU-No-Uow"/>
-                                                <constraint firstItem="pG9-Yb-cLy" firstAttribute="top" secondItem="aKL-xM-Qha" secondAttribute="bottom" constant="20" id="LAM-24-bH1"/>
                                                 <constraint firstItem="fM9-aN-ygo" firstAttribute="top" secondItem="3PP-07-tvo" secondAttribute="bottom" constant="20" id="MHe-Hh-cwP"/>
                                                 <constraint firstAttribute="bottom" secondItem="czJ-jW-CkY" secondAttribute="bottom" constant="20" id="Oc6-JS-5AK"/>
                                                 <constraint firstItem="DZj-8S-2Xm" firstAttribute="centerY" secondItem="x6P-ij-naQ" secondAttribute="centerY" id="Sel-T7-UQa"/>
@@ -259,7 +242,7 @@
                                                 <constraint firstItem="epZ-dt-Pfc" firstAttribute="leading" secondItem="6QI-WZ-oPR" secondAttribute="trailing" constant="20" id="fHy-yX-F0p"/>
                                                 <constraint firstItem="WvF-iH-DUL" firstAttribute="top" secondItem="x6P-ij-naQ" secondAttribute="bottom" constant="20" id="gWS-MB-fC3"/>
                                                 <constraint firstAttribute="centerX" secondItem="epZ-dt-Pfc" secondAttribute="centerX" id="hHy-Qr-Nam"/>
-                                                <constraint firstItem="i5H-qk-ds2" firstAttribute="centerY" secondItem="aKL-xM-Qha" secondAttribute="centerY" constant="-0.25" id="iTO-SB-LTi"/>
+                                                <constraint firstItem="pG9-Yb-cLy" firstAttribute="top" secondItem="pmK-7c-OPS" secondAttribute="bottom" constant="20" id="i0z-Hw-JaY"/>
                                                 <constraint firstItem="pG9-Yb-cLy" firstAttribute="leading" secondItem="SLt-hZ-haS" secondAttribute="trailing" constant="20" id="jKY-uo-wuQ"/>
                                                 <constraint firstItem="DZj-8S-2Xm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rBF-4q-y2m" secondAttribute="leading" constant="5" id="m8A-dH-4IZ"/>
                                                 <constraint firstItem="SLt-hZ-haS" firstAttribute="centerY" secondItem="pG9-Yb-cLy" secondAttribute="centerY" id="met-MZ-4kt"/>
@@ -317,7 +300,6 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="1500"/>
                     <connections>
-                        <outlet property="customButtonImageSwitch" destination="aKL-xM-Qha" id="RwL-ns-7rf"/>
                         <outlet property="debugModeSwitch" destination="pG9-Yb-cLy" id="9Y9-I0-a4i"/>
                         <outlet property="hideAfterDelaySwitch" destination="3PP-07-tvo" id="ZmV-bO-9oO"/>
                         <outlet property="hideAnimationButton" destination="WvF-iH-DUL" id="b5O-i8-TSg"/>

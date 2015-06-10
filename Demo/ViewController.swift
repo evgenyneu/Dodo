@@ -13,7 +13,6 @@ class ViewController: UIViewController {
   @IBOutlet weak var debugModeSwitch: UISwitch!
   @IBOutlet weak var showAnimationButton: UIButton!
   @IBOutlet weak var hideAnimationButton: UIButton!
-  @IBOutlet weak var customButtonImageSwitch: UISwitch!
   
   let animations = [
     DodoAnimations.Fade,
@@ -87,8 +86,7 @@ class ViewController: UIViewController {
   }
   
   @IBAction func onSuccessButtonTapped(sender: AnyObject) {
-    message = "Dodo"
-//    message = "When you win, nothing hurts."
+    message = "Dodo, an iOS message widget"
     view.dodo.preset = DodoPresets.Success
     show()
   }
@@ -135,10 +133,6 @@ class ViewController: UIViewController {
     show()
   }
   
-  @IBAction func onCustomImageSwitchChanged(sender: AnyObject) {
-    show()
-  }
-  
   @IBAction func onDebugModeSwitchChanged(sender: AnyObject) {
     show()
   }
@@ -169,13 +163,11 @@ class ViewController: UIViewController {
   }
   
   private func addButtons() {
-    view.dodo.style.leftButton.image = nil
-    view.dodo.style.rightButton.image = nil
     view.dodo.style.leftButton.icon = nil
-    view.dodo.style.rightButton.icon = nil
+    view.dodo.style.rightButton.image = nil
     
     if leftButtonSwitch.on {
-      // Use the icon
+      // Use a built-in icon
       view.dodo.style.leftButton.icon = DodoIcons.Close
       view.dodo.style.leftButton.accessibilityLabel = "Close"
       
@@ -185,24 +177,18 @@ class ViewController: UIViewController {
     }
     
     if rightButtonSwitch.on {
-      // Use supplied image
-      view.dodo.style.rightButton.icon = DodoIcons.Reload
-      view.dodo.style.rightButton.accessibilityLabel = "Reload"
+      // Use custom image
+      let customImage = UIImage(named: "Dodo.png")
+      view.dodo.style.rightButton.image = UIImage(named: "Dodo.png")
+      view.dodo.style.rightButton.size = CGSize(width: 30, height: 30)
+      view.dodo.style.rightButton.image = customImage
+      view.dodo.style.rightButton.tintColor = nil
+
+      view.dodo.style.rightButton.accessibilityLabel = "Dodo"
       
       view.dodo.style.rightButton.onTap = { [weak self] bar in
         self?.rotateTheView()
       }
-    }
-    
-    // Use custom image for both buttons
-    if customButtonImageSwitch.on {
-      let customImage = UIImage(named: "happy.png")
-      view.dodo.style.leftButton.image = customImage
-      view.dodo.style.rightButton.image = customImage
-      view.dodo.style.leftButton.tintColor = nil
-      view.dodo.style.rightButton.tintColor = nil
-      view.dodo.style.leftButton.onTap = nil
-      view.dodo.style.rightButton.onTap = nil
     }
   }
   
