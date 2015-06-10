@@ -1,5 +1,3 @@
-🔨🔨🔨 This is work in progress 🔨🔨🔨
-
 <img src='https://raw.githubusercontent.com/exchangegroup/Dodo/master/Graphics/buttons/dodo_ios_message_widget_written_in_swift.jpg' alt='Dodo, a message widget for iOS' width='414'>
 
 
