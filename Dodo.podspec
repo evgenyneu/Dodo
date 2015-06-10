@@ -3,9 +3,9 @@ Pod::Spec.new do |s|
   s.version     = "1.0.3"
   s.license     = { :type => "MIT" }
   s.homepage    = "https://github.com/exchangegroup/Dodo"
-  s.summary     = "A message widget written in Swift."
+  s.summary     = "A message bar written in Swift."
   s.description  = <<-DESC
-                   This is a UI widget for showing notification messages in iOS apps. It is useful for showing short messages to the user, something like: "Message sent", "Note saved", "No Internet connection".
+                   This is a UI widget for showing text messages in iOS apps. It is useful for showing short messages to the user, something like: "Message sent", "Note saved", "No Internet connection".
 
                    * Dodo includes styles for success, info, warning and error type messages.
                    * The bar can have buttons with custom tap handlers.
