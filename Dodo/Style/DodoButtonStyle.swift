@@ -28,7 +28,7 @@ public class DodoButtonStyle {
   
   /**
   
-  This text is spoken by the device when it is in accessibility mode. It is recommended to always set the accessibility label for your button. The text can be a short localized description of the button function, for example: "Close", "Reload" etc.
+  This text is spoken by the device when it is in accessibility mode. It is recommended to always set the accessibility label for your button. The text can be a short localized description of the button function, for example: "Close the message", "Reload" etc.
   
   */
   public var accessibilityLabel: String? {
