@@ -1,7 +1,13 @@
-<img src='https://raw.githubusercontent.com/exchangegroup/Dodo/master/Graphics/buttons/dodo_a_message_widget_for_ios_written_in_swift.jpg' alt='Dodo, a message widget for iOS' width='414'>
-
-
 # Dodo, a message widget for iOS written in Swift
+
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)][carthage]
+[![CocoaPods Version](https://img.shields.io/cocoapods/v/Dodo.svg?style=flat)][cocoadocs]
+[![License](https://img.shields.io/cocoapods/l/Dodo.svg?style=flat)][cocoadocs]
+[![Platform](https://img.shields.io/cocoapods/p/Dodo.svg?style=flat)][cocoadocs]
+[cocoadocs]: http://cocoadocs.org/docsets/Dodo
+[carthage]: https://github.com/Carthage/Carthage
+
+<img src='https://raw.githubusercontent.com/exchangegroup/Dodo/master/Graphics/buttons/dodo_a_message_widget_for_ios_written_in_swift.jpg' alt='Dodo, a message widget for iOS' width='414'>
 
 This is a UI widget for showing notification messages in iOS apps. It is useful for showing short messages to the user, something like: "Message sent", "Note saved", "No Internet connection".
 
