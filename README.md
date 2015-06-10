@@ -7,7 +7,7 @@
 [cocoadocs]: http://cocoadocs.org/docsets/Dodo
 [carthage]: https://github.com/Carthage/Carthage
 
-<img src='https://raw.githubusercontent.com/exchangegroup/Dodo/master/Graphics/buttons/dodo_a_message_widget_for_ios_written_in_swift.jpg' alt='Dodo, a message widget for iOS' width='414'>
+<img src='https://raw.githubusercontent.com/exchangegroup/Dodo/master/Graphics/buttons/dodo_a_message_bar_for_ios_written_in_swift.jpg' alt='Dodo, a message bar for iOS' width='414'>
 
 This is a UI widget for showing text messages in iOS apps. It is useful for showing short messages to the user, something like: "Message sent", "Note saved", "No Internet connection".
 
