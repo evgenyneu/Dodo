@@ -27,7 +27,6 @@ public class DodoBarStyle {
     _marginToSuperview = nil
   }
   
-  
   // -----------------------------
   
   private var _animationHide: DodoAnimation?

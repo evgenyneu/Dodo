@@ -60,7 +60,7 @@ struct DodoAnimationsShow {
   
   /**
   
-  Animation that slides the bar vertically into view.
+  Animation that slides the bar in/out vertically.
   
   :param: view View supplied for animation.
   :param: completed A closure to be called after animation completes.

@@ -1,14 +1,17 @@
-//
-//  Create a UIColor object from a string.
-//
-//  Examples:
-//
-//    DodoColor.fromHexString('#340f9a')
-//    DodoColor.fromHexString('#f1a2b3a6') // With alpha channel
-//
-
 import UIKit
 
+/**
+  
+Creates a UIColor object from a string.
+
+Examples:
+
+    DodoColor.fromHexString('#340f9a')
+
+    // With alpha channel
+    DodoColor.fromHexString('#f1a2b3a6')
+
+*/
 public class DodoColor {
   public class func fromHexString(rgba: String) -> UIColor {
     var red: CGFloat   = 0.0

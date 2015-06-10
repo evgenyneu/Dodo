@@ -1,5 +1,18 @@
 import UIKit
 
+/**
+
+Main class that coordinates the process of showing and hiding of the message bar.
+
+Instance of this class is created automatically in the `dodo` property of any UIView instance.
+It is not expected to be instantiated manually anywhere except unit tests.
+
+For example:
+
+    let view = UIView()
+    view.dodo.info("Horses are blue?")
+
+*/
 final public class Dodo: DodoButtonViewDelegate {
   private weak var superview: UIView!
   private var hideTimer: MoaTimer?
@@ -95,6 +108,7 @@ final public class Dodo: DodoButtonViewDelegate {
     bar.show(inSuperview: superview, withMessage: message)
   }
   
+  /// Hide the message bar if it's currently open.
   public func hide() {
     hideTimer?.cancel()
     
@@ -142,7 +156,7 @@ final public class Dodo: DodoButtonViewDelegate {
   
   // MARK: - DodoButtonViewDelegate
   
-  public func buttonDelegateDidTap(buttonStyle: DodoButtonStyle) {
+  func buttonDelegateDidTap(buttonStyle: DodoButtonStyle) {
     if buttonStyle.hideOnTap {
       hide()
     }

@@ -39,7 +39,7 @@ public struct DodoLabelDefaultStyles {
   // ---------------------------
 
   
-  public static let _horizontalMargin: CGFloat = 10
+  private static let _horizontalMargin: CGFloat = 10
   
   /// Margin between the bar/button edge and the label.
   public static var horizontalMargin = _horizontalMargin

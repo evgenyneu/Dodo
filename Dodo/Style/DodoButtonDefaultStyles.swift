@@ -46,7 +46,7 @@ public struct DodoButtonDefaultStyles {
   // ---------------------------
   
   
-  public static let _horizontalMarginToBar: CGFloat = 10
+  private static let _horizontalMarginToBar: CGFloat = 10
   
   /// Margin between the bar edge and the button
   public static var horizontalMarginToBar = _horizontalMarginToBar
@@ -90,7 +90,7 @@ public struct DodoButtonDefaultStyles {
   // ---------------------------
 
   
-  public static let _tintColor: UIColor? = nil
+  private static let _tintColor: UIColor? = nil
   
   /// Replaces the color of the image or icon. The original colors are used when nil.
   public static var tintColor = _tintColor

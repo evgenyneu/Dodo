@@ -17,7 +17,7 @@ public enum DodoAnimations: String {
   /// Animation that swipes the bar to/from the right with fade effect.
   case SlideRight = "Slide right"
   
-  /// Animation that slides the bar vertically into view.
+  /// Animation that slides the bar in/out vertically.
   case SlideVertically = "Slide vertically"
   
   /**

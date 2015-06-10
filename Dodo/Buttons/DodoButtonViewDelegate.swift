@@ -1,3 +1,3 @@
-public protocol DodoButtonViewDelegate: class {
+protocol DodoButtonViewDelegate: class {
   func buttonDelegateDidTap(buttonStyle: DodoButtonStyle)
 }

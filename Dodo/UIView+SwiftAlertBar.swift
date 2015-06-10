@@ -14,7 +14,7 @@ public extension UIView {
   /**
   
   Message bar extension.
-  Call `dodo.show` to shown a notification widget in the view.
+  Call `dodo.show`, `dodo.success`, dodo.error` functions to show a notification widget in the view.
   
       let view = UIView()
       view.dodo.show("Hello World!")

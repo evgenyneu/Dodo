@@ -50,7 +50,7 @@ public enum DodoAnimations: String {
   /// Animation that swipes the bar to/from the right with fade effect.
   case SlideRight = "Slide right"
   
-  /// Animation that slides the bar vertically into view.
+  /// Animation that slides the bar in/out vertically.
   case SlideVertically = "Slide vertically"
   
   /**
@@ -400,7 +400,7 @@ struct DodoAnimationsShow {
   
   /**
   
-  Animation that slides the bar vertically into view.
+  Animation that slides the bar in/out vertically.
   
   :param: view View supplied for animation.
   :param: completed A closure to be called after animation completes.
@@ -556,7 +556,7 @@ class DodoButtonView: UIImageView {
 //
 // ----------------------------
 
-public protocol DodoButtonViewDelegate: class {
+protocol DodoButtonViewDelegate: class {
   func buttonDelegateDidTap(buttonStyle: DodoButtonStyle)
 }
 
@@ -569,6 +569,19 @@ public protocol DodoButtonViewDelegate: class {
 
 import UIKit
 
+/**
+
+Main class that coordinates the process of showing and hiding of the message bar.
+
+Instance of this class is created automatically in the `dodo` property of any UIView instance.
+It is not expected to be instantiated manually anywhere except unit tests.
+
+For example:
+
+    let view = UIView()
+    view.dodo.info("Horses are blue?")
+
+*/
 final public class Dodo: DodoButtonViewDelegate {
   private weak var superview: UIView!
   private var hideTimer: MoaTimer?
@@ -664,6 +677,7 @@ final public class Dodo: DodoButtonViewDelegate {
     bar.show(inSuperview: superview, withMessage: message)
   }
   
+  /// Hide the message bar if it's currently open.
   public func hide() {
     hideTimer?.cancel()
     
@@ -711,7 +725,7 @@ final public class Dodo: DodoButtonViewDelegate {
   
   // MARK: - DodoButtonViewDelegate
   
-  public func buttonDelegateDidTap(buttonStyle: DodoButtonStyle) {
+  func buttonDelegateDidTap(buttonStyle: DodoButtonStyle) {
     if buttonStyle.hideOnTap {
       hide()
     }
@@ -1407,7 +1421,7 @@ public struct DodoButtonDefaultStyles {
   // ---------------------------
   
   
-  public static let _horizontalMarginToBar: CGFloat = 10
+  private static let _horizontalMarginToBar: CGFloat = 10
   
   /// Margin between the bar edge and the button
   public static var horizontalMarginToBar = _horizontalMarginToBar
@@ -1451,7 +1465,7 @@ public struct DodoButtonDefaultStyles {
   // ---------------------------
 
   
-  public static let _tintColor: UIColor? = nil
+  private static let _tintColor: UIColor? = nil
   
   /// Replaces the color of the image or icon. The original colors are used when nil.
   public static var tintColor = _tintColor
@@ -1668,7 +1682,7 @@ public struct DodoLabelDefaultStyles {
   // ---------------------------
 
   
-  public static let _horizontalMargin: CGFloat = 10
+  private static let _horizontalMargin: CGFloat = 10
   
   /// Margin between the bar/button edge and the label.
   public static var horizontalMargin = _horizontalMargin
@@ -2025,7 +2039,7 @@ public extension UIView {
   /**
   
   Message bar extension.
-  Call `dodo.show` to shown a notification widget in the view.
+  Call `dodo.show`, `dodo.success`, dodo.error` functions to show a notification widget in the view.
   
       let view = UIView()
       view.dodo.show("Hello World!")
@@ -2059,17 +2073,20 @@ public extension UIView {
 //
 // ----------------------------
 
-//
-//  Create a UIColor object from a string.
-//
-//  Examples:
-//
-//    DodoColor.fromHexString('#340f9a')
-//    DodoColor.fromHexString('#f1a2b3a6') // With alpha channel
-//
-
 import UIKit
 
+/**
+  
+Creates a UIColor object from a string.
+
+Examples:
+
+    DodoColor.fromHexString('#340f9a')
+
+    // With alpha channel
+    DodoColor.fromHexString('#f1a2b3a6')
+
+*/
 public class DodoColor {
   public class func fromHexString(rgba: String) -> UIColor {
     var red: CGFloat   = 0.0
