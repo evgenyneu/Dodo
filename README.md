@@ -148,6 +148,17 @@ This project includes a demo app.
 
 <img src='https://raw.githubusercontent.com/exchangegroup/Dodo/master/Graphics/dodo_demo_ios_app.jpg' width='414' alt='Dodo message bar demo iOS app'>
 
+## Alternative solutions
+
+Here are some other message bar libraries for iOS:
+
+* [cezarywojcik/CWStatusBarNotification](https://github.com/cezarywojcik/CWStatusBarNotification)
+* [frankdilo/FDStatusBarNotifierView](https://github.com/frankdilo/FDStatusBarNotifierView)
+* [jaydee3/JDStatusBarNotification](https://github.com/jaydee3/JDStatusBarNotification)
+* [KrauseFx/TSMessages](https://github.com/KrauseFx/TSMessages)
+* [peterprokop/SwiftOverlays](https://github.com/peterprokop/SwiftOverlays)
+* [terryworona/TWMessageBarManager](https://github.com/terryworona/TWMessageBarManager)
+
 
 ## Credits
 
