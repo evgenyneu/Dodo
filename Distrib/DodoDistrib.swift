@@ -1,6 +1,5 @@
 //
-// Dodo
-// 
+// Dodo // 
 // UI widget for showing notification messages in iOS apps.
 //
 // https://github.com/exchangegroup/Dodo
@@ -182,6 +181,8 @@ public enum DodoAnimations: String {
     )
   }
   
+  static weak var timer: MoaTimer?
+  
   /// Animation that rotates the bar around X axis in perspective with spring effect.
   static func rotate(duration: NSTimeInterval?, showView: Bool, view: UIView, completed: DodoAnimationCompleted) {
     
@@ -204,7 +205,15 @@ public enum DodoAnimations: String {
       initialSpringVelocity: 1,
       fromValue: start,
       toValue: end,
-      onFinished: completed)
+      onFinished: showView ? completed : nil)
+    
+    // Hide the bar prematurely for better looks
+    timer?.cancel()
+    if !showView {
+      timer = MoaTimer.runAfter(0.3) { timer in
+        completed()
+      }
+    }
   }
   
   /// Animation that swipes the bar to the right with fade-out effect.
@@ -515,6 +524,7 @@ class DodoButtonView: UIImageView {
       tintColor = tintColorToShow
     }
     
+    layer.minificationFilter = kCAFilterTrilinear // make the image crisp
     image = imageToShow
     contentMode = UIViewContentMode.ScaleAspectFit
     
@@ -1378,7 +1388,7 @@ public struct DodoButtonDefaultStyles {
   
   /**
   
-  This text is spoken by the device when it is in accessibility mode. It is recommended to always set the accessibility label for your button. The text can be a short localized description of the button function, for example: "Close", "Reload" etc.
+  This text is spoken by the device when it is in accessibility mode. It is recommended to always set the accessibility label for your button. The text can be a short localized description of the button function, for example: "Close the message", "Reload" etc.
   
   */
   public static var accessibilityLabel = _accessibilityLabel
@@ -1486,7 +1496,7 @@ public class DodoButtonStyle {
   
   /**
   
-  This text is spoken by the device when it is in accessibility mode. It is recommended to always set the accessibility label for your button. The text can be a short localized description of the button function, for example: "Close", "Reload" etc.
+  This text is spoken by the device when it is in accessibility mode. It is recommended to always set the accessibility label for your button. The text can be a short localized description of the button function, for example: "Close the message", "Reload" etc.
   
   */
   public var accessibilityLabel: String? {
