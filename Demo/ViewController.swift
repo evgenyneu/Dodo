@@ -170,10 +170,7 @@ class ViewController: UIViewController {
       // Use a built-in icon
       view.dodo.style.leftButton.icon = DodoIcons.Close
       view.dodo.style.leftButton.accessibilityLabel = "Close"
-      
-      view.dodo.style.leftButton.onTap = { [weak self] bar in
-        self?.view.dodo.hide()
-      }
+      view.dodo.style.leftButton.hideOnTap = true
     }
     
     if rightButtonSwitch.on {
@@ -183,7 +180,6 @@ class ViewController: UIViewController {
       view.dodo.style.rightButton.size = CGSize(width: 30, height: 30)
       view.dodo.style.rightButton.image = customImage
       view.dodo.style.rightButton.tintColor = nil
-
       view.dodo.style.rightButton.accessibilityLabel = "Dodo"
       
       view.dodo.style.rightButton.onTap = { [weak self] bar in
