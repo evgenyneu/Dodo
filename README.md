@@ -46,7 +46,7 @@ If you are using CocoaPods add this text to your Podfile and run `pod install`.
 
 ## Usage
 
-Add `import Dodo` to your source code if you used Carthage or CocoaPods setup methods. Dodo is an extension of a UIView class. You can reach it by using using the `dodo` property of any UIView or its subclass.
+Add `import Dodo` to your source code if you used Carthage or CocoaPods setup methods. Dodo is an extension of a UIView class. You can reach it by using using the `dodo` property of any instance of UIView or its subclass.
 
 
 ### Show and hide message bar
