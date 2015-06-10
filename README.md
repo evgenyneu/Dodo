@@ -84,13 +84,13 @@ view.dodo.style.label.color = UIColor.whiteColor()
 // Set background color
 view.dodo.style.bar.backgroundColor = DodoColor.fromHexString("#00000090")
 
-// Make the bar close after 3 seconds.
+// Make the bar close after 3 seconds
 view.dodo.style.bar.hideAfterDelaySeconds = 3
 
-// Make the bar close when it is tapped.
+// Make the bar close when it is tapped
 view.dodo.style.bar.hideOnTap = true
 
-// Show bar at the bottom of the screen.
+// Show bar at the bottom of the screen
 view.dodo.style.bar.locationTop = false
 ```
 
