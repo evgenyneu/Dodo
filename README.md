@@ -110,7 +110,7 @@ Set `style.leftButton` and `style.rightButton` properties to show buttons or ico
 
 ```Swift
 // Use a built-in icon
-view.dodo.style.leftButton.icon = DodoIcons.close
+view.dodo.style.leftButton.icon = .Close
 
 // Supply your image
 view.dodo.style.leftButton.image = UIImage(named: "CloseIcon")
