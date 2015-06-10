@@ -142,6 +142,13 @@ view.dodo.style.bar.animationHide = DodoAnimations.SlideRight.hide
 view.dodo.style.bar.animationShow = DodoAnimations.NoAnimation.show
 ```
 
+## Demo iOS app
+
+This project includes a demo app.
+
+<img src='https://raw.githubusercontent.com/exchangegroup/Dodo/master/Graphics/dodo_demo_ios_app.jpg' width='414' alt='Dodo message bar demo iOS app'>
+
+
 ## Credits
 
 * Original illustration of Alice's Adventures in Wonderland by John Tenniel, 1865. Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Alice_par_John_Tenniel_09.png).
