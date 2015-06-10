@@ -78,7 +78,7 @@ alt='Dodo error presets' width='414'>
 Set `dodo.style` property to style the notification bar before it is shown. See the [styling manual](https://github.com/exchangegroup/Dodo/wiki/Styling) for the complete list of configuration options.
 
 ```Swift
-// Set test color
+// Set the text color
 view.dodo.style.label.color = UIColor.whiteColor()
 
 // Set background color
