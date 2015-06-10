@@ -78,17 +78,26 @@ alt='Dodo error presets' width='414'>
 Set `dodo.style` property to style the notification bar before it is shown. See the [styling manual](https://github.com/exchangegroup/Dodo/wiki/Styling) for the complete list of configuration options.
 
 ```Swift
+// Set the text color
 view.dodo.style.label.color = UIColor.whiteColor()
+
+// Set background color
 view.dodo.style.bar.backgroundColor = DodoColor.fromHexString("#00000090")
+
+// Make the bar close after 3 seconds
 view.dodo.style.bar.hideAfterDelaySeconds = 3
+
+// Make the bar close when it is tapped
 view.dodo.style.bar.hideOnTap = true
+
+// Show bar at the bottom of the screen
 view.dodo.style.bar.locationTop = false
 ```
 
 ### Add buttons or icons
 
 ```Swift
-// Use an icon
+// Use a built-in icon
 view.dodo.style.leftButton.icon = DodoIcons.close
 
 // Supply your image
