@@ -150,10 +150,6 @@ class ViewController: UIViewController {
     
     view.dodo.style.label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
     
-    let buttonTintColor = DodoColor.fromHexString("#FFFFFF90")
-    view.dodo.style.leftButton.tintColor = buttonTintColor
-    view.dodo.style.rightButton.tintColor = buttonTintColor
-    
     view.dodo.style.bar.animationShow = currentShowAnimation.show
     view.dodo.style.bar.animationHide = currentHideAnimation.hide
 
@@ -165,10 +161,11 @@ class ViewController: UIViewController {
   private func addButtons() {
     view.dodo.style.leftButton.icon = nil
     view.dodo.style.rightButton.image = nil
+    view.dodo.style.leftButton.tintColor = DodoColor.fromHexString("#FFFFFFAA")
     
     if leftButtonSwitch.on {
       // Use a built-in icon
-      view.dodo.style.leftButton.icon = DodoIcons.Close
+      view.dodo.style.leftButton.icon = .Close
       view.dodo.style.leftButton.accessibilityLabel = "Close the message"
       view.dodo.style.leftButton.hideOnTap = true
     }
@@ -176,10 +173,9 @@ class ViewController: UIViewController {
     if rightButtonSwitch.on {
       // Use custom image
       let customImage = UIImage(named: "Dodo.png")
-      view.dodo.style.rightButton.image = UIImage(named: "Dodo.png")
+      view.dodo.style.rightButton.image = customImage
       view.dodo.style.rightButton.size = CGSize(width: 30, height: 30)
       view.dodo.style.rightButton.image = customImage
-      view.dodo.style.rightButton.tintColor = nil
       view.dodo.style.rightButton.accessibilityLabel = "Picture of Dodo"
       
       view.dodo.style.rightButton.onTap = { [weak self] bar in
