@@ -131,7 +131,7 @@ alt='Dodo bar with right and left buttons' width='414'>
 
 ### Customize animation
 
-Configure the bar animation before it is shown. See the [animation wiki page](https://github.com/exchangegroup/Dodo/wiki/Animating) for more information.
+Configure the animation of the bar before it is shown. See the [animation wiki page](https://github.com/exchangegroup/Dodo/wiki/Animating) for more information.
 
 
 ```Swift
