@@ -89,4 +89,14 @@ class DodoMockTests: XCTestCase {
     XCTAssertEqual("📛", dodoMock.results.errors[0])
     XCTAssertEqual("🚷", dodoMock.results.errors[1])
   }
+  
+  func testCheckMessageIsVisible() {
+    XCTAssertFalse(dodoMock.results.visible)
+    
+    dodoMock.success("🐀")
+    XCTAssert(dodoMock.results.visible)
+    
+    dodoMock.hide()
+    XCTAssertFalse(dodoMock.results.visible)
+  }
 }

@@ -20,8 +20,13 @@ Example:
     // Run the code from the app
     runSomeAppCode()
 
-    // Verify the messages
+    // Verify the message is visible
+    XCTAssert(dodoMock.results.visible)
+
+    // Check total number of messages shown
     XCTAssertEqual(1, dodoMock.results.total)
+
+    // Verify the text of the success message
     XCTAssertEqual("To be prepared is half the victory.", dodoMock.results.success[0])
 
 */
@@ -66,7 +71,10 @@ public class DodoMock: DodoInterface {
   public func show(message: String) {
     let mockMessage = DodoMockMessage(preset: preset, message: message)
     results.messages.append(mockMessage)
+    results.visible = true
   }
   
-  public func hide() { }
+  public func hide() {
+    results.visible = false
+  }
 }

@@ -29,5 +29,8 @@ public struct DodoMockResults {
     return messages.count
   }
   
+  /// Indicates whether the message is visible
+  public var visible = false
+  
   var messages = [DodoMockMessage]()
 }
