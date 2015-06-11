@@ -13,7 +13,7 @@ let view = UIView()
 view.dodo.info("Horses are blue?")
 
 */
-public protocol DodoInterface: class {
+public protocol DodoInterface: class {  
   /// Specify optional layout guide for positioning the bar view.
   var topLayoutGuide: UILayoutSupport? { get set }
   
