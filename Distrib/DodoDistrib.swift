@@ -745,6 +745,7 @@ class DodoToolbar: UIView {
   var layoutGuide: UILayoutSupport?
   var style: DodoStyle
   weak var buttonViewDelegate: DodoButtonViewDelegate?
+  private var didCallHide = false
   
   convenience init(witStyle style: DodoStyle) {
     self.init(frame: CGRect())
@@ -779,6 +780,10 @@ class DodoToolbar: UIView {
   }
   
   func hide(#onAnimationCompleted: ()->()) {
+    // Respond only to the first hide() call
+    if didCallHide { return }
+    didCallHide = true
+    
     style.bar.animationHide(self, duration: style.bar.animationHideDuration,
       locationTop: style.bar.locationTop, completed: { [weak self] in
         
@@ -1156,7 +1161,6 @@ public class DodoBarStyle {
     _locationTop = nil
     _marginToSuperview = nil
   }
-  
   
   // -----------------------------
   

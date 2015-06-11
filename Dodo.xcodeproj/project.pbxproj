@@ -82,7 +82,6 @@
 		7EDF78FC1B210BBC00A9597E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78FB1B210BBC00A9597E /* ViewController.swift */; };
 		7EDF79011B210BBC00A9597E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EDF79001B210BBC00A9597E /* Images.xcassets */; };
 		7EDF79041B210BBC00A9597E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EDF79021B210BBC00A9597E /* LaunchScreen.xib */; };
-		7EDF79101B210BBD00A9597E /* DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF790F1B210BBD00A9597E /* DemoTests.swift */; };
 		7EDF79181B210BFE00A9597E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EDF79171B210BFE00A9597E /* Main.storyboard */; };
 		7EDF791D1B210C1000A9597E /* black.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EDF791A1B210C1000A9597E /* black.png */; };
 		7EDF791E1B210C1000A9597E /* flowers.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EDF791B1B210C1000A9597E /* flowers.jpg */; };
@@ -101,13 +100,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 7EDF785E1B2105F300A9597E;
 			remoteInfo = Dodo;
-		};
-		7EDF790A1B210BBD00A9597E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7EDF78561B2105F300A9597E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7EDF78F41B210BBC00A9597E;
-			remoteInfo = Demo;
 		};
 		7EDF79241B210DC500A9597E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -188,9 +180,6 @@
 		7EDF78FB1B210BBC00A9597E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7EDF79001B210BBC00A9597E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7EDF79031B210BBC00A9597E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		7EDF79091B210BBD00A9597E /* DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7EDF790E1B210BBD00A9597E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7EDF790F1B210BBD00A9597E /* DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTests.swift; sourceTree = "<group>"; };
 		7EDF79171B210BFE00A9597E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		7EDF791A1B210C1000A9597E /* black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = black.png; sourceTree = "<group>"; };
 		7EDF791B1B210C1000A9597E /* flowers.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = flowers.jpg; sourceTree = "<group>"; };
@@ -219,13 +208,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EDF79221B210DC500A9597E /* Dodo.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7EDF79061B210BBD00A9597E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,7 +245,6 @@
 				7EDF78611B2105F300A9597E /* Dodo */,
 				7EDF786E1B2105F300A9597E /* DodoTests */,
 				7EDF78F61B210BBC00A9597E /* Demo */,
-				7EDF790C1B210BBD00A9597E /* DemoTests */,
 				7EDF78601B2105F300A9597E /* Products */,
 				7E7084A61B27ABEC00D0E36D /* Distrib */,
 				7EDF79281B210F6D00A9597E /* README.md */,
@@ -276,7 +257,6 @@
 				7EDF785F1B2105F300A9597E /* Dodo.framework */,
 				7EDF786A1B2105F300A9597E /* DodoTests.xctest */,
 				7EDF78F51B210BBC00A9597E /* Demo.app */,
-				7EDF79091B210BBD00A9597E /* DemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -465,23 +445,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		7EDF790C1B210BBD00A9597E /* DemoTests */ = {
-			isa = PBXGroup;
-			children = (
-				7EDF790F1B210BBD00A9597E /* DemoTests.swift */,
-				7EDF790D1B210BBD00A9597E /* Supporting Files */,
-			);
-			path = DemoTests;
-			sourceTree = "<group>";
-		};
-		7EDF790D1B210BBD00A9597E /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				7EDF790E1B210BBD00A9597E /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		7EDF79191B210C1000A9597E /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -579,24 +542,6 @@
 			productReference = 7EDF78F51B210BBC00A9597E /* Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7EDF79081B210BBD00A9597E /* DemoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7EDF79141B210BBD00A9597E /* Build configuration list for PBXNativeTarget "DemoTests" */;
-			buildPhases = (
-				7EDF79051B210BBD00A9597E /* Sources */,
-				7EDF79061B210BBD00A9597E /* Frameworks */,
-				7EDF79071B210BBD00A9597E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7EDF790B1B210BBD00A9597E /* PBXTargetDependency */,
-			);
-			name = DemoTests;
-			productName = DemoTests;
-			productReference = 7EDF79091B210BBD00A9597E /* DemoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -618,10 +563,6 @@
 					7EDF78F41B210BBC00A9597E = {
 						CreatedOnToolsVersion = 6.4;
 					};
-					7EDF79081B210BBD00A9597E = {
-						CreatedOnToolsVersion = 6.4;
-						TestTargetID = 7EDF78F41B210BBC00A9597E;
-					};
 				};
 			};
 			buildConfigurationList = 7EDF78591B2105F300A9597E /* Build configuration list for PBXProject "Dodo" */;
@@ -640,7 +581,6 @@
 				7EDF785E1B2105F300A9597E /* Dodo */,
 				7EDF78691B2105F300A9597E /* DodoTests */,
 				7EDF78F41B210BBC00A9597E /* Demo */,
-				7EDF79081B210BBD00A9597E /* DemoTests */,
 				7E7084A21B27AB1C00D0E36D /* ConcatenateSwiftFiles */,
 			);
 		};
@@ -677,13 +617,6 @@
 				7EDF79041B210BBC00A9597E /* LaunchScreen.xib in Resources */,
 				7EDF79011B210BBC00A9597E /* Images.xcassets in Resources */,
 				7EDF791F1B210C1000A9597E /* white.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7EDF79071B210BBD00A9597E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -779,14 +712,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7EDF79051B210BBD00A9597E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7EDF79101B210BBD00A9597E /* DemoTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -794,11 +719,6 @@
 			isa = PBXTargetDependency;
 			target = 7EDF785E1B2105F300A9597E /* Dodo */;
 			targetProxy = 7EDF786C1B2105F300A9597E /* PBXContainerItemProxy */;
-		};
-		7EDF790B1B210BBD00A9597E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7EDF78F41B210BBC00A9597E /* Demo */;
-			targetProxy = 7EDF790A1B210BBD00A9597E /* PBXContainerItemProxy */;
 		};
 		7EDF79251B210DC500A9597E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1025,40 +945,6 @@
 			};
 			name = Release;
 		};
-		7EDF79151B210BBD00A9597E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = DemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
-			};
-			name = Debug;
-		};
-		7EDF79161B210BBD00A9597E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = DemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1103,15 +989,6 @@
 			buildConfigurations = (
 				7EDF79121B210BBD00A9597E /* Debug */,
 				7EDF79131B210BBD00A9597E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7EDF79141B210BBD00A9597E /* Build configuration list for PBXNativeTarget "DemoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7EDF79151B210BBD00A9597E /* Debug */,
-				7EDF79161B210BBD00A9597E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

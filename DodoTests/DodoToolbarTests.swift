@@ -61,6 +61,27 @@ class DodoToolbarTests: XCTestCase {
     XCTAssert(completeHandlerCalled)
   }
   
+  func testHideAnimationIsDoneOnceWhenHideIsCalledTwice() {
+    superview.addSubview(obj)
+    
+    var completeHandlerCalled = false
+    
+    obj.hide(onAnimationCompleted: {
+      completeHandlerCalled = true
+    })
+    
+    animationHideCompleted = false
+    completeHandlerCalled = false
+    
+    obj.hide(onAnimationCompleted: {
+      completeHandlerCalled = true
+    })
+    
+    XCTAssert(superview.subviews.isEmpty)
+    XCTAssertFalse(animationHideCompleted)
+    XCTAssertFalse(completeHandlerCalled)
+  }
+  
   // MARK: - Show message
   
   func testUpdateMessage() {
