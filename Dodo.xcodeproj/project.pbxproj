@@ -92,6 +92,7 @@
 		7EDF79231B210DC500A9597E /* Dodo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7EDF785F1B2105F300A9597E /* Dodo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7EDF79271B210DEE00A9597E /* SpringAnimationCALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78971B21068800A9597E /* SpringAnimationCALayer.swift */; };
 		7EF94B9E1B29207F006B4429 /* DodoInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF94B9D1B29207F006B4429 /* DodoInterface.swift */; };
+		7EF94B9F1B29348C006B4429 /* DodoInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF94B9D1B29207F006B4429 /* DodoInterface.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -676,6 +677,7 @@
 				7EDF78D71B2106CD00A9597E /* UIView+SwiftAlertBarTests.swift in Sources */,
 				7EDF78E01B21071500A9597E /* DodoBarDefaultStyles.swift in Sources */,
 				7EDF78CA1B2106CD00A9597E /* DodoTouchTargetTests.swift in Sources */,
+				7EF94B9F1B29348C006B4429 /* DodoInterface.swift in Sources */,
 				7EDF78EA1B21072200A9597E /* SpringAnimationCALayer.swift in Sources */,
 				7EDF78EB1B21072200A9597E /* TegAutolayoutConstraints.swift in Sources */,
 				7E4066B91B2131F900E0AC41 /* DodoAnimations.swift in Sources */,

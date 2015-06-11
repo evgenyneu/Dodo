@@ -1,9 +1,10 @@
+import UIKit
 
 /**
 
 Coordinates the process of showing and hiding of the message bar.
 
-DodoInterface instance is created automatically in the `dodo` property of any UIView instance.
+The instance is created automatically in the `dodo` property of any UIView instance.
 It is not expected to be instantiated manually anywhere except unit tests.
 
 For example:
@@ -12,7 +13,7 @@ let view = UIView()
 view.dodo.info("Horses are blue?")
 
 */
-public protocol DodoInterface {
+public protocol DodoInterface: class {
   /// Specify optional layout guide for positioning the bar view.
   var topLayoutGuide: UILayoutSupport? { get set }
   

@@ -13,7 +13,7 @@ For example:
     view.dodo.info("Horses are blue?")
 
 */
-final public class Dodo: DodoButtonViewDelegate {
+final class Dodo: DodoInterface, DodoButtonViewDelegate {
   private weak var superview: UIView!
   private var hideTimer: MoaTimer?
   
@@ -21,20 +21,20 @@ final public class Dodo: DodoButtonViewDelegate {
   var onTap: OnTap?
   
   /// Specify optional layout guide for positioning the bar view.
-  public var topLayoutGuide: UILayoutSupport?
+  var topLayoutGuide: UILayoutSupport?
   
   /// Specify optional layout guide for positioning the bar view.
-  public var bottomLayoutGuide: UILayoutSupport?
+  var bottomLayoutGuide: UILayoutSupport?
   
   /// Defines styles for the bar.
-  public var style = DodoStyle(parentStyle: DodoPresets.defaultPreset.style)
+  var style = DodoStyle(parentStyle: DodoPresets.defaultPreset.style)
 
   init(superview: UIView) {
     self.superview = superview
   }
   
   /// Changes the style preset for the bar widget.
-  public var preset: DodoPresets = DodoPresets.defaultPreset {
+  var preset: DodoPresets = DodoPresets.defaultPreset {
     didSet {
       if preset != oldValue  {
         style.parent = preset.style
@@ -49,7 +49,7 @@ final public class Dodo: DodoButtonViewDelegate {
   :param: message The text message to be shown.
   
   */
-  public func success(message: String) {
+  func success(message: String) {
     preset = .Success
     show(message)
   }
@@ -61,7 +61,7 @@ final public class Dodo: DodoButtonViewDelegate {
   :param: message The text message to be shown.
   
   */
-  public func info(message: String) {
+  func info(message: String) {
     preset = .Info
     show(message)
   }
@@ -73,7 +73,7 @@ final public class Dodo: DodoButtonViewDelegate {
   :param: message The text message to be shown.
   
   */
-  public func warning(message: String) {
+  func warning(message: String) {
     preset = .Warning
     show(message)
   }
@@ -85,7 +85,7 @@ final public class Dodo: DodoButtonViewDelegate {
   :param: message The text message to be shown.
   
   */
-  public func error(message: String) {
+  func error(message: String) {
     preset = .Error
     show(message)
   }
@@ -97,7 +97,7 @@ final public class Dodo: DodoButtonViewDelegate {
   :param: message The text message to be shown.
     
   */
-  public func show(message: String) {
+  func show(message: String) {
     removeExistingBars()
     setupHideTimer()
 
@@ -109,7 +109,7 @@ final public class Dodo: DodoButtonViewDelegate {
   }
   
   /// Hide the message bar if it's currently open.
-  public func hide() {
+  func hide() {
     hideTimer?.cancel()
     
     toolbar?.hide(onAnimationCompleted: {})
