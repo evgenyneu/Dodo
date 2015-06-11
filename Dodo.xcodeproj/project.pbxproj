@@ -17,7 +17,6 @@
 		7E4946501B26705F00915DB3 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E49464B1B2665FF00915DB3 /* Icons.xcassets */; };
 		7E4946541B26942000915DB3 /* DodoButtonViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4946531B26942000915DB3 /* DodoButtonViewDelegate.swift */; };
 		7E4946551B26942C00915DB3 /* DodoButtonViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4946531B26942000915DB3 /* DodoButtonViewDelegate.swift */; };
-		7E4946581B26955600915DB3 /* ButtonViewDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4946571B26955600915DB3 /* ButtonViewDelegateMock.swift */; };
 		7E8806181B281886005F8297 /* Dodo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E8806171B281886005F8297 /* Dodo.png */; };
 		7EC51DA41B215C070070019F /* DodoAnimationsShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC51DA31B215C070070019F /* DodoAnimationsShow.swift */; };
 		7EC51DA61B215C9D0070019F /* DodoAnimationsHide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC51DA51B215C9D0070019F /* DodoAnimationsHide.swift */; };
@@ -93,9 +92,14 @@
 		7EDF79271B210DEE00A9597E /* SpringAnimationCALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78971B21068800A9597E /* SpringAnimationCALayer.swift */; };
 		7EF94B9E1B29207F006B4429 /* DodoInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF94B9D1B29207F006B4429 /* DodoInterface.swift */; };
 		7EF94B9F1B29348C006B4429 /* DodoInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF94B9D1B29207F006B4429 /* DodoInterface.swift */; };
-		7EF94BA11B293689006B4429 /* DodoMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF94BA01B293689006B4429 /* DodoMockTests.swift */; };
-		7EF94BA31B2936B2006B4429 /* DodoMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF94BA21B2936B2006B4429 /* DodoMock.swift */; };
-		7EF94BA41B2937E6006B4429 /* DodoMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF94BA21B2936B2006B4429 /* DodoMock.swift */; };
+		7EF94BA71B29393A006B4429 /* DodoMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF94BA61B29393A006B4429 /* DodoMock.swift */; };
+		7EF94BAA1B293966006B4429 /* DodoMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF94BA91B293966006B4429 /* DodoMockTests.swift */; };
+		7EF94BAD1B293976006B4429 /* ButtonViewDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF94BAC1B293976006B4429 /* ButtonViewDelegateMock.swift */; };
+		7EF94BAE1B293982006B4429 /* DodoMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF94BA61B29393A006B4429 /* DodoMock.swift */; };
+		7EF94BB01B2939CC006B4429 /* DodoMockResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF94BAF1B2939CC006B4429 /* DodoMockResults.swift */; };
+		7EF94BB11B2939F4006B4429 /* DodoMockResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF94BAF1B2939CC006B4429 /* DodoMockResults.swift */; };
+		7EF94BB31B293BBB006B4429 /* DodoMockMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF94BB21B293BBB006B4429 /* DodoMockMessage.swift */; };
+		7EF94BB41B293BBD006B4429 /* DodoMockMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF94BB21B293BBB006B4429 /* DodoMockMessage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,7 +139,6 @@
 		7E49464B1B2665FF00915DB3 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		7E49464D1B26664B00915DB3 /* DodoIcons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoIcons.swift; sourceTree = "<group>"; };
 		7E4946531B26942000915DB3 /* DodoButtonViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoButtonViewDelegate.swift; sourceTree = "<group>"; };
-		7E4946571B26955600915DB3 /* ButtonViewDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonViewDelegateMock.swift; sourceTree = "<group>"; };
 		7E7084A71B27AC0A00D0E36D /* DodoDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoDistrib.swift; sourceTree = "<group>"; };
 		7E8806171B281886005F8297 /* Dodo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Dodo.png; sourceTree = "<group>"; };
 		7EC51DA31B215C070070019F /* DodoAnimationsShow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoAnimationsShow.swift; sourceTree = "<group>"; };
@@ -191,8 +194,11 @@
 		7EDF791C1B210C1000A9597E /* white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white.png; sourceTree = "<group>"; };
 		7EDF79281B210F6D00A9597E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7EF94B9D1B29207F006B4429 /* DodoInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoInterface.swift; sourceTree = "<group>"; };
-		7EF94BA01B293689006B4429 /* DodoMockTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoMockTests.swift; sourceTree = "<group>"; };
-		7EF94BA21B2936B2006B4429 /* DodoMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoMock.swift; sourceTree = "<group>"; };
+		7EF94BA61B29393A006B4429 /* DodoMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoMock.swift; sourceTree = "<group>"; };
+		7EF94BA91B293966006B4429 /* DodoMockTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoMockTests.swift; sourceTree = "<group>"; };
+		7EF94BAC1B293976006B4429 /* ButtonViewDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonViewDelegateMock.swift; sourceTree = "<group>"; };
+		7EF94BAF1B2939CC006B4429 /* DodoMockResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoMockResults.swift; sourceTree = "<group>"; };
+		7EF94BB21B293BBB006B4429 /* DodoMockMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoMockMessage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,14 +235,6 @@
 				7E49464B1B2665FF00915DB3 /* Icons.xcassets */,
 			);
 			path = Icons;
-			sourceTree = "<group>";
-		};
-		7E4946561B26954500915DB3 /* Mocks */ = {
-			isa = PBXGroup;
-			children = (
-				7E4946571B26955600915DB3 /* ButtonViewDelegateMock.swift */,
-			);
-			path = Mocks;
 			sourceTree = "<group>";
 		};
 		7E7084A61B27ABEC00D0E36D /* Distrib */ = {
@@ -276,12 +274,12 @@
 				7EDF787F1B21068800A9597E /* Buttons */,
 				7E49464A1B2665E100915DB3 /* Icons */,
 				7EDF78831B21068800A9597E /* Helpers */,
+				7EF94BA51B293914006B4429 /* Mock */,
 				7EDF78871B21068800A9597E /* Style */,
 				7EDF78941B21068800A9597E /* Utils */,
 				7EDF78861B21068800A9597E /* DodoToolbar.swift */,
 				7EDF78901B21068800A9597E /* Dodo.swift */,
 				7EF94B9D1B29207F006B4429 /* DodoInterface.swift */,
-				7EF94BA21B2936B2006B4429 /* DodoMock.swift */,
 				7EDF78931B21068800A9597E /* UIView+SwiftAlertBar.swift */,
 				7EDF78641B2105F300A9597E /* Dodo.h */,
 				7EDF78621B2105F300A9597E /* Supporting Files */,
@@ -303,13 +301,12 @@
 				7EDF78B21B2106CD00A9597E /* Buttons */,
 				7EDF78B41B2106CD00A9597E /* Helpers */,
 				7EDF78B61B2106CD00A9597E /* Image */,
-				7E4946561B26954500915DB3 /* Mocks */,
+				7EF94BA81B293948006B4429 /* Mock */,
 				7EDF78BD1B2106CD00A9597E /* Style */,
 				7EDF78C11B2106CD00A9597E /* TestHelpers */,
 				7EDF78C71B2106CD00A9597E /* Utils */,
 				7EDF78BC1B2106CD00A9597E /* DodoToolbarTests.swift */,
 				7EDF78C01B2106CD00A9597E /* DodoTests.swift */,
-				7EF94BA01B293689006B4429 /* DodoMockTests.swift */,
 				7EDF78C61B2106CD00A9597E /* UIView+SwiftAlertBarTests.swift */,
 				7EDF786F1B2105F300A9597E /* Supporting Files */,
 			);
@@ -429,6 +426,7 @@
 		7EDF78C71B2106CD00A9597E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				7EF94BAB1B293976006B4429 /* Mocks */,
 				7EDF78C81B2106CD00A9597E /* DodoColorTests.swift */,
 			);
 			path = Utils;
@@ -465,6 +463,32 @@
 				7EDF791C1B210C1000A9597E /* white.png */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		7EF94BA51B293914006B4429 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				7EF94BA61B29393A006B4429 /* DodoMock.swift */,
+				7EF94BAF1B2939CC006B4429 /* DodoMockResults.swift */,
+				7EF94BB21B293BBB006B4429 /* DodoMockMessage.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		7EF94BA81B293948006B4429 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				7EF94BA91B293966006B4429 /* DodoMockTests.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		7EF94BAB1B293976006B4429 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				7EF94BAC1B293976006B4429 /* ButtonViewDelegateMock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -643,11 +667,13 @@
 				7E4066B81B212C7000E0AC41 /* DodoAnimations.swift in Sources */,
 				7EDF78A21B21068800A9597E /* DodoToolbar.swift in Sources */,
 				7E49464E1B26664B00915DB3 /* DodoIcons.swift in Sources */,
+				7EF94BB31B293BBB006B4429 /* DodoMockMessage.swift in Sources */,
 				7E4066B61B212BCB00E0AC41 /* DodoAnimation.swift in Sources */,
 				7EC51DA61B215C9D0070019F /* DodoAnimationsHide.swift in Sources */,
 				7EDF78A51B21068800A9597E /* DodoButtonDefaultStyles.swift in Sources */,
 				7EDF78A61B21068800A9597E /* DodoButtonStyle.swift in Sources */,
 				7EDF78B01B21068800A9597E /* TegAutolayoutConstraints.swift in Sources */,
+				7EF94BB01B2939CC006B4429 /* DodoMockResults.swift in Sources */,
 				7EDF78A31B21068800A9597E /* DodoBarDefaultStyles.swift in Sources */,
 				7E4946541B26942000915DB3 /* DodoButtonViewDelegate.swift in Sources */,
 				7EDF78B11B21068800A9597E /* DodoColor.swift in Sources */,
@@ -655,9 +681,9 @@
 				7EC51DA41B215C070070019F /* DodoAnimationsShow.swift in Sources */,
 				7EF94B9E1B29207F006B4429 /* DodoInterface.swift in Sources */,
 				7EDF78AA1B21068800A9597E /* DodoStyle.swift in Sources */,
+				7EF94BA71B29393A006B4429 /* DodoMock.swift in Sources */,
 				7EDF789E1B21068800A9597E /* DodoButtonOnTap.swift in Sources */,
 				7EDF78AC1B21068800A9597E /* UIView+SwiftAlertBar.swift in Sources */,
-				7EF94BA31B2936B2006B4429 /* DodoMock.swift in Sources */,
 				7EDF78AF1B21068800A9597E /* SpringAnimationCALayer.swift in Sources */,
 				7EDF78A71B21068800A9597E /* DodoLabelDefaultStyles.swift in Sources */,
 				7EDF78AD1B21068800A9597E /* MoaTimer.swift in Sources */,
@@ -674,14 +700,13 @@
 			files = (
 				7EDF78EE1B21072900A9597E /* DodoToolbar.swift in Sources */,
 				7EDF78D61B2106CD00A9597E /* XCTestCase+Helpers.swift in Sources */,
+				7EF94BAD1B293976006B4429 /* ButtonViewDelegateMock.swift in Sources */,
 				7EDF78D21B2106CD00A9597E /* DodoTests.swift in Sources */,
-				7E4946581B26955600915DB3 /* ButtonViewDelegateMock.swift in Sources */,
 				7E4946551B26942C00915DB3 /* DodoButtonViewDelegate.swift in Sources */,
 				7EDF78E21B21071500A9597E /* DodoButtonDefaultStyles.swift in Sources */,
 				7E49464F1B2666DF00915DB3 /* DodoIcons.swift in Sources */,
 				7EDF78E91B21072200A9597E /* OnTap.swift in Sources */,
 				7EC51DA71B215D450070019F /* DodoAnimationsShow.swift in Sources */,
-				7EF94BA11B293689006B4429 /* DodoMockTests.swift in Sources */,
 				7EDF78DF1B21070E00A9597E /* DodoTouchTarget.swift in Sources */,
 				7EDF78D71B2106CD00A9597E /* UIView+SwiftAlertBarTests.swift in Sources */,
 				7EDF78E01B21071500A9597E /* DodoBarDefaultStyles.swift in Sources */,
@@ -694,12 +719,15 @@
 				7EDF78EC1B21072200A9597E /* DodoColor.swift in Sources */,
 				7EDF78E61B21071500A9597E /* DodoPresets.swift in Sources */,
 				7EDF78D51B2106CD00A9597E /* TestBundle.swift in Sources */,
+				7EF94BB41B293BBD006B4429 /* DodoMockMessage.swift in Sources */,
 				7EDF78D11B2106CD00A9597E /* DodoStyleTests.swift in Sources */,
+				7EF94BAA1B293966006B4429 /* DodoMockTests.swift in Sources */,
 				7EDF78D01B2106CD00A9597E /* DodoPresetsTests.swift in Sources */,
+				7EF94BB11B2939F4006B4429 /* DodoMockResults.swift in Sources */,
 				7EDF78EF1B21072900A9597E /* Dodo.swift in Sources */,
 				7EDF78D41B2106CD00A9597E /* PixelColorTests.swift in Sources */,
 				7EDF78DD1B21070A00A9597E /* DodoButtonOnTap.swift in Sources */,
-				7EF94BA41B2937E6006B4429 /* DodoMock.swift in Sources */,
+				7EF94BAE1B293982006B4429 /* DodoMock.swift in Sources */,
 				7EDF78E41B21071500A9597E /* DodoLabelDefaultStyles.swift in Sources */,
 				7EDF78D81B2106CD00A9597E /* DodoColorTests.swift in Sources */,
 				7EDF78C91B2106CD00A9597E /* DodoButtonViewTests.swift in Sources */,

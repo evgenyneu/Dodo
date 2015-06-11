@@ -10,6 +10,9 @@ The class can be used in unit tests to check the messages that were shown by the
 
 */
 public class DodoMock: DodoInterface {
+  /// This property is used in unit tests to verify which messages were displayed in the message bar.
+  public var results = DodoMockResults()
+  
   public var topLayoutGuide: UILayoutSupport?
   public var bottomLayoutGuide: UILayoutSupport?
   public var style = DodoStyle(parentStyle: DodoPresets.defaultPreset.style)
@@ -43,14 +46,8 @@ public class DodoMock: DodoInterface {
   }
   
   public func show(message: String) {
-//    removeExistingBars()
-//    setupHideTimer()
-//    
-//    var bar = DodoToolbar(witStyle: style)
-//    setupHideOnTap(bar)
-//    bar.layoutGuide = style.bar.locationTop ? topLayoutGuide : bottomLayoutGuide
-//    bar.buttonViewDelegate = self
-//    bar.show(inSuperview: superview, withMessage: message)
+    let mockMessage = DodoMockMessage(preset: preset, message: message)
+    results.messages.append(mockMessage)
   }
   
   public func hide() {
