@@ -24,5 +24,10 @@ public struct DodoMockResults {
     return messages.filter({ $0.preset == DodoPresets.Error }).map({ $0.message })
   }
   
+  /// Total number of messages shown.
+  public var total: Int {
+    return messages.count
+  }
+  
   var messages = [DodoMockMessage]()
 }

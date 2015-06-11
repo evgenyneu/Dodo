@@ -21,7 +21,7 @@ Example:
     runSomeAppCode()
 
     // Verify the messages
-    XCTAssertEqual(1, dodoMock.results.success.count)
+    XCTAssertEqual(1, dodoMock.results.total)
     XCTAssertEqual("To be prepared is half the victory.", dodoMock.results.success[0])
 
 */
