@@ -4,18 +4,22 @@ Used in unit tests to verify the messages that were shown in the message bar.
 
 */
 public struct DodoMockResults {
+  /// An array of success messages displayed in the message bar.
   public var success: [String] {
     return messages.filter({ $0.preset == DodoPresets.Success }).map({ $0.message })
   }
   
+  /// An array of information messages displayed in the message bar.
   public var info: [String] {
     return messages.filter({ $0.preset == DodoPresets.Info }).map({ $0.message })
   }
   
+  /// An array of warning messages displayed in the message bar.
   public var warning: [String] {
     return messages.filter({ $0.preset == DodoPresets.Warning }).map({ $0.message })
   }
   
+  /// An array of error messages displayed in the message bar.
   public var errors: [String] {
     return messages.filter({ $0.preset == DodoPresets.Error }).map({ $0.message })
   }

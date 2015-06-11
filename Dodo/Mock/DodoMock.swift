@@ -2,11 +2,17 @@ import UIKit
 
 /**
 
-The class can be used in unit tests to check the messages that were shown by the app.
+The class can be used in unit tests to verify the messages that were shown by the app.
 
+    // Supply mock to the view
     let dodoMock = DodoMock()
     view.dodo = dodoMock
 
+    runSomeAppCode()
+
+    // Verify the messages
+    XCTAssertEqual(1, dodoMock.results.success.count)
+    XCTAssertEqual("To be prepared is half the victory.", dodoMock.results.success[0])
 
 */
 public class DodoMock: DodoInterface {
@@ -50,9 +56,5 @@ public class DodoMock: DodoInterface {
     results.messages.append(mockMessage)
   }
   
-  public func hide() {
-//    hideTimer?.cancel()
-//    
-//    toolbar?.hide(onAnimationCompleted: {})
-  }
+  public func hide() { }
 }
