@@ -91,6 +91,7 @@
 		7EDF79221B210DC500A9597E /* Dodo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EDF785F1B2105F300A9597E /* Dodo.framework */; };
 		7EDF79231B210DC500A9597E /* Dodo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7EDF785F1B2105F300A9597E /* Dodo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7EDF79271B210DEE00A9597E /* SpringAnimationCALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF78971B21068800A9597E /* SpringAnimationCALayer.swift */; };
+		7EF94B9E1B29207F006B4429 /* DodoInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF94B9D1B29207F006B4429 /* DodoInterface.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -185,6 +186,7 @@
 		7EDF791B1B210C1000A9597E /* flowers.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = flowers.jpg; sourceTree = "<group>"; };
 		7EDF791C1B210C1000A9597E /* white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white.png; sourceTree = "<group>"; };
 		7EDF79281B210F6D00A9597E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		7EF94B9D1B29207F006B4429 /* DodoInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoInterface.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +274,7 @@
 				7EDF78941B21068800A9597E /* Utils */,
 				7EDF78861B21068800A9597E /* DodoToolbar.swift */,
 				7EDF78901B21068800A9597E /* Dodo.swift */,
+				7EF94B9D1B29207F006B4429 /* DodoInterface.swift */,
 				7EDF78931B21068800A9597E /* UIView+SwiftAlertBar.swift */,
 				7EDF78641B2105F300A9597E /* Dodo.h */,
 				7EDF78621B2105F300A9597E /* Supporting Files */,
@@ -642,6 +645,7 @@
 				7EDF78B11B21068800A9597E /* DodoColor.swift in Sources */,
 				7EDF78A91B21068800A9597E /* DodoPresets.swift in Sources */,
 				7EC51DA41B215C070070019F /* DodoAnimationsShow.swift in Sources */,
+				7EF94B9E1B29207F006B4429 /* DodoInterface.swift in Sources */,
 				7EDF78AA1B21068800A9597E /* DodoStyle.swift in Sources */,
 				7EDF789E1B21068800A9597E /* DodoButtonOnTap.swift in Sources */,
 				7EDF78AC1B21068800A9597E /* UIView+SwiftAlertBar.swift in Sources */,
