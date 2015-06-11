@@ -25,10 +25,8 @@ class ViewController: UIViewController {
   
   var currentShowAnimationIndex = 2
   var currentHideAnimationIndex = 2
-
-  var timer: MoaTimer?
   
-  var message = "Failure is success if we learn from it."
+  var message = "Dodo, a message bar for iOS."
   
   let backgroundImages = [
     "flowers.jpg",
@@ -36,8 +34,6 @@ class ViewController: UIViewController {
     "white.png"
   ]
   var currentImageIndex = 0
-  
-  var titleLabel: UILabel!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -47,43 +43,28 @@ class ViewController: UIViewController {
     updateHideAnimationButtonTitle()
   }
   
-  private func changeBackgroundImage() {
-    currentImageIndex += 1
-    if currentImageIndex >= backgroundImages.count  { currentImageIndex = 0 }
-    
-    // Get the new image to be shown
-    
-    let imageName = backgroundImages[currentImageIndex]
-    let newImage = UIImage(named: imageName)
-    
-    // Create a new image view
-    
-    let newImageView = UIImageView()
-    newImageView.setTranslatesAutoresizingMaskIntoConstraints(false)
-    newImageView.image = newImage
-    newImageView.contentMode = UIViewContentMode.ScaleAspectFill
-    view.insertSubview(newImageView, aboveSubview: imageView)
-    TegAutolayoutConstraints.fillParent(newImageView, parentView: view, margin: 0, vertically: false)
-    TegAutolayoutConstraints.fillParent(newImageView, parentView: view, margin: 0, vertically: true)
-    
-    // Fade in new image view
-    
-    newImageView.alpha = 0
-    
-    UIView.animateWithDuration(0.1,
-      animations: {
-        newImageView.alpha = 1
-      },
-      completion: { [weak self] finished in
-        self?.imageView.image = newImage
-        newImageView.removeFromSuperview()
-      }
-    )
-  }
-  
   override func preferredStatusBarStyle() -> UIStatusBarStyle {
     return UIStatusBarStyle.LightContent
   }
+  
+  private func show() {
+    view.dodo.style.bar.locationTop = topSwitch.on
+    view.dodo.style.bar.hideAfterDelaySeconds = hideAfterDelaySwitch.on ? 3 : 0
+    view.dodo.style.bar.debugMode = debugModeSwitch.on
+    view.dodo.style.bar.hideOnTap = hideOnTapSwitch.on
+    view.dodo.style.label.shadowColor = DodoColor.fromHexString("#00000050")
+    
+    view.dodo.style.label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+    
+    view.dodo.style.bar.animationShow = currentShowAnimation.show
+    view.dodo.style.bar.animationHide = currentHideAnimation.hide
+    
+    addButtons()
+    
+    view.dodo.show(message)
+  }
+  
+  // MARK: - UI handlers
   
   @IBAction func onSuccessButtonTapped(sender: AnyObject) {
     message = "Dodo, a message bar for iOS."
@@ -141,22 +122,7 @@ class ViewController: UIViewController {
     changeBackgroundImage()
   }
   
-  private func show() {
-    view.dodo.style.bar.locationTop = topSwitch.on
-    view.dodo.style.bar.hideAfterDelaySeconds = hideAfterDelaySwitch.on ? 3 : 0
-    view.dodo.style.bar.debugMode = debugModeSwitch.on
-    view.dodo.style.bar.hideOnTap = hideOnTapSwitch.on
-    view.dodo.style.label.shadowColor = DodoColor.fromHexString("#00000050")
-    
-    view.dodo.style.label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-    
-    view.dodo.style.bar.animationShow = currentShowAnimation.show
-    view.dodo.style.bar.animationHide = currentHideAnimation.hide
-
-    addButtons()
-    
-    view.dodo.show(message)
-  }
+  // MARK: - Buttons
   
   private func addButtons() {
     view.dodo.style.leftButton.icon = nil
@@ -184,27 +150,7 @@ class ViewController: UIViewController {
     }
   }
   
-  private func rotateTheView() {
-    let myCALayer = view.layer
-    
-    myCALayer.shouldRasterize = true
-    myCALayer.rasterizationScale = UIScreen.mainScreen().scale
-    
-    var transform = CATransform3DIdentity
-    transform.m34 = -1.0/300.0
-    myCALayer.transform = CATransform3DRotate(transform, CGFloat(0), 0, 1, 0)
-    
-    SpringAnimation.animate(myCALayer,
-      keypath: "transform.rotation.y",
-      duration: 3.0,
-      usingSpringWithDamping: 0.7,
-      initialSpringVelocity: 0.7,
-      fromValue: Double(0),
-      toValue: Double(2 * M_PI),
-      onFinished: nil)
-  }
-  
-  // MARK: - Change animation
+  // MARK: - Animation
   
   @IBAction func onShowAnimationButtonTapped(sender: AnyObject) {
     currentShowAnimationIndex += 1
@@ -241,6 +187,62 @@ class ViewController: UIViewController {
   private func animationForIndex(index: Int) -> DodoAnimations {
     if index >= (animations.count - 1) { animations[0] }
     return animations[index]
+  }
+  
+  private func rotateTheView() {
+    let myCALayer = view.layer
+    
+    myCALayer.shouldRasterize = true
+    myCALayer.rasterizationScale = UIScreen.mainScreen().scale
+    
+    var transform = CATransform3DIdentity
+    transform.m34 = -1.0/300.0
+    myCALayer.transform = CATransform3DRotate(transform, CGFloat(0), 0, 1, 0)
+    
+    SpringAnimation.animate(myCALayer,
+      keypath: "transform.rotation.y",
+      duration: 3.0,
+      usingSpringWithDamping: 0.7,
+      initialSpringVelocity: 0.7,
+      fromValue: Double(0),
+      toValue: Double(2 * M_PI),
+      onFinished: nil)
+  }
+  
+  // MARK: - Background image
+  
+  private func changeBackgroundImage() {
+    currentImageIndex += 1
+    if currentImageIndex >= backgroundImages.count  { currentImageIndex = 0 }
+    
+    // Get the new image to be shown
+    
+    let imageName = backgroundImages[currentImageIndex]
+    let newImage = UIImage(named: imageName)
+    
+    // Create a new image view
+    
+    let newImageView = UIImageView()
+    newImageView.setTranslatesAutoresizingMaskIntoConstraints(false)
+    newImageView.image = newImage
+    newImageView.contentMode = UIViewContentMode.ScaleAspectFill
+    view.insertSubview(newImageView, aboveSubview: imageView)
+    TegAutolayoutConstraints.fillParent(newImageView, parentView: view, margin: 0, vertically: false)
+    TegAutolayoutConstraints.fillParent(newImageView, parentView: view, margin: 0, vertically: true)
+    
+    // Fade in new image view
+    
+    newImageView.alpha = 0
+    
+    UIView.animateWithDuration(0.1,
+      animations: {
+        newImageView.alpha = 1
+      },
+      completion: { [weak self] finished in
+        self?.imageView.image = newImage
+        newImageView.removeFromSuperview()
+      }
+    )
   }
 }
 
