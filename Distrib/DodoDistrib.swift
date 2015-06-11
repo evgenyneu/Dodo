@@ -582,7 +582,7 @@ For example:
     view.dodo.info("Horses are blue?")
 
 */
-final public class Dodo: DodoButtonViewDelegate {
+final class Dodo: DodoInterface, DodoButtonViewDelegate {
   private weak var superview: UIView!
   private var hideTimer: MoaTimer?
   
@@ -590,20 +590,20 @@ final public class Dodo: DodoButtonViewDelegate {
   var onTap: OnTap?
   
   /// Specify optional layout guide for positioning the bar view.
-  public var topLayoutGuide: UILayoutSupport?
+  var topLayoutGuide: UILayoutSupport?
   
   /// Specify optional layout guide for positioning the bar view.
-  public var bottomLayoutGuide: UILayoutSupport?
+  var bottomLayoutGuide: UILayoutSupport?
   
   /// Defines styles for the bar.
-  public var style = DodoStyle(parentStyle: DodoPresets.defaultPreset.style)
+  var style = DodoStyle(parentStyle: DodoPresets.defaultPreset.style)
 
   init(superview: UIView) {
     self.superview = superview
   }
   
   /// Changes the style preset for the bar widget.
-  public var preset: DodoPresets = DodoPresets.defaultPreset {
+  var preset: DodoPresets = DodoPresets.defaultPreset {
     didSet {
       if preset != oldValue  {
         style.parent = preset.style
@@ -618,7 +618,7 @@ final public class Dodo: DodoButtonViewDelegate {
   :param: message The text message to be shown.
   
   */
-  public func success(message: String) {
+  func success(message: String) {
     preset = .Success
     show(message)
   }
@@ -630,7 +630,7 @@ final public class Dodo: DodoButtonViewDelegate {
   :param: message The text message to be shown.
   
   */
-  public func info(message: String) {
+  func info(message: String) {
     preset = .Info
     show(message)
   }
@@ -642,7 +642,7 @@ final public class Dodo: DodoButtonViewDelegate {
   :param: message The text message to be shown.
   
   */
-  public func warning(message: String) {
+  func warning(message: String) {
     preset = .Warning
     show(message)
   }
@@ -654,7 +654,7 @@ final public class Dodo: DodoButtonViewDelegate {
   :param: message The text message to be shown.
   
   */
-  public func error(message: String) {
+  func error(message: String) {
     preset = .Error
     show(message)
   }
@@ -666,7 +666,7 @@ final public class Dodo: DodoButtonViewDelegate {
   :param: message The text message to be shown.
     
   */
-  public func show(message: String) {
+  func show(message: String) {
     removeExistingBars()
     setupHideTimer()
 
@@ -678,7 +678,7 @@ final public class Dodo: DodoButtonViewDelegate {
   }
   
   /// Hide the message bar if it's currently open.
-  public func hide() {
+  func hide() {
     hideTimer?.cancel()
     
     toolbar?.hide(onAnimationCompleted: {})
@@ -730,6 +730,89 @@ final public class Dodo: DodoButtonViewDelegate {
       hide()
     }
   }
+}
+
+
+// ----------------------------
+//
+// DodoInterface.swift
+//
+// ----------------------------
+
+import UIKit
+
+/**
+
+Coordinates the process of showing and hiding of the message bar.
+
+The instance is created automatically in the `dodo` property of any UIView instance.
+It is not expected to be instantiated manually anywhere except unit tests.
+
+For example:
+
+let view = UIView()
+view.dodo.info("Horses are blue?")
+
+*/
+public protocol DodoInterface: class {  
+  /// Specify optional layout guide for positioning the bar view.
+  var topLayoutGuide: UILayoutSupport? { get set }
+  
+  /// Specify optional layout guide for positioning the bar view.
+  var bottomLayoutGuide: UILayoutSupport? { get set }
+  
+  /// Defines styles for the bar.
+  var style: DodoStyle { get set }
+  
+  /// Changes the style preset for the bar widget.
+  var preset: DodoPresets { get set }
+  
+  /**
+  
+  Shows the message bar with *.Success* preset. It can be used to indicate successful completion of an operation.
+  
+  :param: message The text message to be shown.
+  
+  */
+  func success(message: String)
+  
+  /**
+  
+  Shows the message bar with *.Info* preset. It can be used for showing information messages that have neutral emotional value.
+  
+  :param: message The text message to be shown.
+  
+  */
+  func info(message: String)
+  /**
+  
+  Shows the message bar with *.Warning* preset. It can be used for for showing warning messages.
+  
+  :param: message The text message to be shown.
+  
+  */
+  func warning(message: String)
+  
+  /**
+  
+  Shows the message bar with *.Warning* preset. It can be used for showing critical error messages
+  
+  :param: message The text message to be shown.
+  
+  */
+  func error(message: String)
+  
+  /**
+  
+  Shows the message bar. Set `preset` property to change the appearance of the message bar, or use the shortcut methods: `success`, `info`, `warning` and `error`.
+  
+  :param: message The text message to be shown.
+  
+  */
+  func show(message: String)
+  
+  /// Hide the message bar if it's currently open.
+  func hide()
 }
 
 
@@ -965,6 +1048,144 @@ public enum DodoIcons: String {
   
   /// Icon for reloading.
   case Reload = "Reload"
+}
+
+
+// ----------------------------
+//
+// DodoMock.swift
+//
+// ----------------------------
+
+import UIKit
+
+/**
+
+This class is for testing the code that uses Dodo. It helps verifying the messages that were shown in the message bar without actually showing them.
+
+Here is how to use it in your unit test.
+
+1. Create an instance of DodoMock.
+2. Set it to the `view.dodo` property of the view.
+3. Run the code that you are testing.
+4. Finally, verify which messages were shown in the message bar.
+
+Example:
+
+    // Supply mock to the view
+    let dodoMock = DodoMock()
+    view.dodo = dodoMock
+
+    // Run the code from the app
+    runSomeAppCode()
+
+    // Verify the messages
+    XCTAssertEqual(1, dodoMock.results.total)
+    XCTAssertEqual("To be prepared is half the victory.", dodoMock.results.success[0])
+
+*/
+public class DodoMock: DodoInterface {
+  /// This property is used in unit tests to verify which messages were displayed in the message bar.
+  public var results = DodoMockResults()
+  
+  public var topLayoutGuide: UILayoutSupport?
+  public var bottomLayoutGuide: UILayoutSupport?
+  public var style = DodoStyle(parentStyle: DodoPresets.defaultPreset.style)
+  
+  public init() { }
+  
+  public var preset: DodoPresets = DodoPresets.defaultPreset {
+    didSet {
+      if preset != oldValue  {
+        style.parent = preset.style
+      }
+    }
+  }
+  
+  public func success(message: String) {
+    preset = .Success
+    show(message)
+  }
+  
+  public func info(message: String) {
+    preset = .Info
+    show(message)
+  }
+  
+  public func warning(message: String) {
+    preset = .Warning
+    show(message)
+  }
+  
+  public func error(message: String) {
+    preset = .Error
+    show(message)
+  }
+  
+  public func show(message: String) {
+    let mockMessage = DodoMockMessage(preset: preset, message: message)
+    results.messages.append(mockMessage)
+  }
+  
+  public func hide() { }
+}
+
+
+// ----------------------------
+//
+// DodoMockMessage.swift
+//
+// ----------------------------
+
+/**
+
+Contains information about the message that was displayed in message bar. Used in unit tests.
+
+*/
+struct DodoMockMessage {
+  let preset: DodoPresets
+  let message: String
+}
+
+
+// ----------------------------
+//
+// DodoMockResults.swift
+//
+// ----------------------------
+
+/**
+
+Used in unit tests to verify the messages that were shown in the message bar.
+
+*/
+public struct DodoMockResults {
+  /// An array of success messages displayed in the message bar.
+  public var success: [String] {
+    return messages.filter({ $0.preset == DodoPresets.Success }).map({ $0.message })
+  }
+  
+  /// An array of information messages displayed in the message bar.
+  public var info: [String] {
+    return messages.filter({ $0.preset == DodoPresets.Info }).map({ $0.message })
+  }
+  
+  /// An array of warning messages displayed in the message bar.
+  public var warning: [String] {
+    return messages.filter({ $0.preset == DodoPresets.Warning }).map({ $0.message })
+  }
+  
+  /// An array of error messages displayed in the message bar.
+  public var errors: [String] {
+    return messages.filter({ $0.preset == DodoPresets.Error }).map({ $0.message })
+  }
+  
+  /// Total number of messages shown.
+  public var total: Int {
+    return messages.count
+  }
+  
+  var messages = [DodoMockMessage]()
 }
 
 
@@ -2049,9 +2270,9 @@ public extension UIView {
       view.dodo.show("Hello World!")
   
   */
-  public var dodo: Dodo {
+  public var dodo: DodoInterface {
     get {
-      if let value = objc_getAssociatedObject(self, &sabAssociationKey) as? Dodo {
+      if let value = objc_getAssociatedObject(self, &sabAssociationKey) as? DodoInterface {
         return value
       } else {
         let dodo = Dodo(superview: self)

@@ -22,7 +22,7 @@ public extension UIView {
   */
   public var dodo: DodoInterface {
     get {
-      if let value = objc_getAssociatedObject(self, &sabAssociationKey) as? Dodo {
+      if let value = objc_getAssociatedObject(self, &sabAssociationKey) as? DodoInterface {
         return value
       } else {
         let dodo = Dodo(superview: self)
