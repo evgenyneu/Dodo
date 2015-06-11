@@ -2,12 +2,22 @@ import UIKit
 
 /**
 
-The class can be used in unit tests to verify the messages that were shown by the app.
+This class is for testing the code that uses Dodo. It helps verifying the messages that were shown in the message bar without actually showing them.
+
+Here is how to use it in your unit test.
+
+1. Create an instance of DodoMock.
+2. Set it to the `view.dodo` property of the view.
+3. Run the code that you are testing.
+4. Finally, verify which messages were shown in the message bar.
+
+Example:
 
     // Supply mock to the view
     let dodoMock = DodoMock()
     view.dodo = dodoMock
 
+    // Run the code from the app
     runSomeAppCode()
 
     // Verify the messages
@@ -22,6 +32,8 @@ public class DodoMock: DodoInterface {
   public var topLayoutGuide: UILayoutSupport?
   public var bottomLayoutGuide: UILayoutSupport?
   public var style = DodoStyle(parentStyle: DodoPresets.defaultPreset.style)
+  
+  public init() { }
   
   public var preset: DodoPresets = DodoPresets.defaultPreset {
     didSet {
