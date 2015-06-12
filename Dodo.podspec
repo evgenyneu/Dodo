@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name        = "Dodo"
-  s.version     = "1.0.11"
+  s.version     = "1.0.12"
   s.license     = { :type => "MIT" }
   s.homepage    = "https://github.com/exchangegroup/Dodo"
   s.summary     = "A message bar written in Swift."
@@ -11,6 +11,7 @@ Pod::Spec.new do |s|
                    * The bar can have buttons with custom tap handlers.
                    * Bar styles can be customized.
                    * You can provide custom animations for showing and hiding the bar or use one of the default animation presets.
+                   * Provides a mock class for unit tests.
                    DESC
   s.authors     = { "Evgenii Neumerzhitckii" => "sausageskin@gmail.com" }
   s.source      = { :git => "https://github.com/exchangegroup/Dodo.git", :tag => s.version }
