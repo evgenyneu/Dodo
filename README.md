@@ -148,7 +148,7 @@ view.dodo.style.bar.animationShow = DodoAnimations.NoAnimation.show
 ### Unit testing
 
 Sometimes it is useful to verify which messages were shown by your app in unit tests. It can be done
-by setting an instance of `DodoMock` to `view.dodo` property.
+by setting an instance of `DodoMock` class to `view.dodo` property.
 
 See the [unit testing manual](https://github.com/exchangegroup/Dodo/wiki/Unit-testing) for more details.
 
