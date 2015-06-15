@@ -59,9 +59,9 @@ final class MoaTimer: NSObject {
   
   Runs the closure after specified time interval.
   
-  :param: interval Time interval in milliseconds.
+  - parameter interval: Time interval in milliseconds.
   :repeats: repeats When true, the code is run repeatedly.
-  :returns: callback A closure to be run by the timer.
+  - returns: callback A closure to be run by the timer.
   
   */
   class func runAfter(interval: NSTimeInterval, repeats: Bool = false,

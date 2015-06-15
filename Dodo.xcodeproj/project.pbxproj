@@ -583,6 +583,7 @@
 		7EDF78561B2105F300A9597E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = Marketplacer;
 				TargetAttributes = {

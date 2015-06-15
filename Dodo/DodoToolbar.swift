@@ -38,7 +38,7 @@ class DodoToolbar: UIView {
       locationTop: style.bar.locationTop, completed: {})
   }
   
-  func hide(#onAnimationCompleted: ()->()) {
+  func hide(onAnimationCompleted onAnimationCompleted: ()->()) {
     // Respond only to the first hide() call
     if didCallHide { return }
     didCallHide = true
@@ -76,7 +76,7 @@ class DodoToolbar: UIView {
   }
   
   private func layoutLabel(label: UILabel, withButtons buttons: [UIView]) {
-    label.setTranslatesAutoresizingMaskIntoConstraints(false)
+    label.translatesAutoresizingMaskIntoConstraints = false
     
     // Stretch the label vertically
     TegAutolayoutConstraints.fillParent(label, parentView: self,
@@ -112,7 +112,7 @@ class DodoToolbar: UIView {
     
     let buttonViews = DodoButtonView.createMany(buttonStyles)
     
-    for (index, button) in enumerate(buttonViews) {
+    for (index, button) in buttonViews.enumerate() {
       addSubview(button)
       button.delegate = buttonViewDelegate
       button.doLayout(onLeftSide: index == 0)
@@ -139,7 +139,7 @@ class DodoToolbar: UIView {
   }
   
   private func layoutBarInSuperview() {
-    setTranslatesAutoresizingMaskIntoConstraints(false)
+    translatesAutoresizingMaskIntoConstraints = false
     
     if let superview = superview {
       // Stretch the toobar horizontally to the width if its superview

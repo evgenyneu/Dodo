@@ -24,7 +24,7 @@ public enum DodoAnimations: String {
   
   Get animation function that can be used for showing notification bar.
   
-  :returns: Animation function.
+  - returns: Animation function.
   
   */
   public var show: DodoAnimation {
@@ -53,7 +53,7 @@ public enum DodoAnimations: String {
   
   Get animation function that can be used for hiding notification bar.
   
-  :returns: Animation function.
+  - returns: Animation function.
   
   */
   public var hide: DodoAnimation {
@@ -83,8 +83,8 @@ public enum DodoAnimations: String {
   A empty animator which is used when no animation is supplied.
   It simply calls the completion closure.
   
-  :param: view View supplied for animation.
-  :param: completed A closure to be called after animation completes.
+  - parameter view: View supplied for animation.
+  - parameter completed: A closure to be called after animation completes.
 
   */
   static func noAnimation(view: UIView, duration: NSTimeInterval?, locationTop: Bool,
@@ -128,10 +128,10 @@ public enum DodoAnimations: String {
       distance = UIScreen.mainScreen().bounds.height - view.frame.origin.y
     }
             
-    var transform = CGAffineTransformMakeTranslation(0, locationTop ? -distance : distance)
+    let transform = CGAffineTransformMakeTranslation(0, locationTop ? -distance : distance)
       
-    var start: CGAffineTransform = showView ? transform : CGAffineTransformIdentity
-    var end: CGAffineTransform = showView ? CGAffineTransformIdentity : transform
+    let start: CGAffineTransform = showView ? transform : CGAffineTransformIdentity
+    let end: CGAffineTransform = showView ? CGAffineTransformIdentity : transform
     
     view.transform = start
     
@@ -139,7 +139,7 @@ public enum DodoAnimations: String {
       delay: 0,
       usingSpringWithDamping: 1,
       initialSpringVelocity: 1,
-      options: nil,
+      options: [],
       animations: {
         view.transform = end
       },
@@ -155,9 +155,9 @@ public enum DodoAnimations: String {
   static func rotate(duration: NSTimeInterval?, showView: Bool, view: UIView, completed: DodoAnimationCompleted) {
     
     let actualDuration = duration ?? 2.0
-    var start: Double = showView ? Double(M_PI / 2) : 0
-    var end: Double = showView ? 0 : Double(M_PI / 2)
-    var damping = showView ? 0.85 : 3
+    let start: Double = showView ? Double(M_PI / 2) : 0
+    let end: Double = showView ? 0 : Double(M_PI / 2)
+    let damping = showView ? 0.85 : 3
     
     let myCALayer = view.layer
     
@@ -190,13 +190,13 @@ public enum DodoAnimations: String {
       
     let actualDuration = duration ?? 0.4
     let distance = UIScreen.mainScreen().bounds.width
-    var transform = CGAffineTransformMakeTranslation(right ? distance : -distance, 0)
+    let transform = CGAffineTransformMakeTranslation(right ? distance : -distance, 0)
     
-    var start: CGAffineTransform = showView ? transform : CGAffineTransformIdentity
-    var end: CGAffineTransform = showView ? CGAffineTransformIdentity : transform
+    let start: CGAffineTransform = showView ? transform : CGAffineTransformIdentity
+    let end: CGAffineTransform = showView ? CGAffineTransformIdentity : transform
     
-    var alphaStart: CGFloat = showView ? 0.2 : 1
-    var alphaEnd: CGFloat = showView ? 1 : 0.2
+    let alphaStart: CGFloat = showView ? 0.2 : 1
+    let alphaEnd: CGFloat = showView ? 1 : 0.2
 
     view.transform = start
     view.alpha = alphaStart

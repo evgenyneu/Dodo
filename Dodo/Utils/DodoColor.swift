@@ -20,7 +20,7 @@ public class DodoColor {
     var alpha: CGFloat = 1.0
     
     if !rgba.hasPrefix("#") {
-      println("Warning: DodoColor.fromHexString, # character missing")
+      print("Warning: DodoColor.fromHexString, # character missing")
       return UIColor()
     }
     
@@ -30,21 +30,21 @@ public class DodoColor {
     var hexValue: CUnsignedLongLong = 0
     
     if !scanner.scanHexLongLong(&hexValue) {
-      println("Warning: DodoColor.fromHexString, error scanning hex value")
+      print("Warning: DodoColor.fromHexString, error scanning hex value")
       return UIColor()
     }
 
-    if count(hex) == 6 {
+    if hex.characters.count == 6 {
       red   = CGFloat((hexValue & 0xFF0000) >> 16) / 255.0
       green = CGFloat((hexValue & 0x00FF00) >> 8)  / 255.0
       blue  = CGFloat(hexValue & 0x0000FF) / 255.0
-    } else if count(hex) == 8 {
+    } else if hex.characters.count == 8 {
       red   = CGFloat((hexValue & 0xFF000000) >> 24) / 255.0
       green = CGFloat((hexValue & 0x00FF0000) >> 16) / 255.0
       blue  = CGFloat((hexValue & 0x0000FF00) >> 8)  / 255.0
       alpha = CGFloat(hexValue & 0x000000FF)         / 255.0
     } else {
-      println("Warning: DodoColor.fromHexString, invalid rgb string, length should be 7 or 9")
+      print("Warning: DodoColor.fromHexString, invalid rgb string, length should be 7 or 9")
       return UIColor()
     }
    

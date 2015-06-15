@@ -100,7 +100,7 @@ class TegAutolayoutConstraints {
     }
     
     let constraints = NSLayoutConstraint.constraintsWithVisualFormat(format,
-      options: nil, metrics: nil,
+      options: [], metrics: nil,
       views: ["view": view])
     
     parentView.addConstraints(constraints)
@@ -114,7 +114,7 @@ class TegAutolayoutConstraints {
       
     var constraints = [NSLayoutConstraint]()
       
-    for (index, view) in enumerate(views) {
+    for (index, view) in views.enumerate() {
       if index >= views.count - 1 { break }
       
       let viewTwo = views[index + 1]
@@ -130,44 +130,38 @@ class TegAutolayoutConstraints {
     constraintContainer: UIView, margin: CGFloat = 0,
     vertically: Bool = false) -> [NSLayoutConstraint] {
       
-      var marginFormat = ""
-      
-      if margin != 0 {
-        marginFormat = "-\(margin)-"
-      }
-      
-      var format = "[viewOne]\(marginFormat)[viewTwo]"
-      
-      if vertically {
-        format = "V:" + format
-      }
-      
-      if let constraints = NSLayoutConstraint.constraintsWithVisualFormat(format,
-        options: nil, metrics: nil,
-        views: [ "viewOne": viewOne, "viewTwo": viewTwo ]) as? [NSLayoutConstraint] {
-          
-          constraintContainer.addConstraints(constraints)
-          
-          return constraints
-      }
-      
-      return []
+    var marginFormat = ""
+    
+    if margin != 0 {
+      marginFormat = "-\(margin)-"
+    }
+    
+    var format = "[viewOne]\(marginFormat)[viewTwo]"
+    
+    if vertically {
+      format = "V:" + format
+    }
+    
+    let constraints = NSLayoutConstraint.constraintsWithVisualFormat(format,
+      options: [], metrics: nil,
+      views: [ "viewOne": viewOne, "viewTwo": viewTwo ])
+        
+    constraintContainer.addConstraints(constraints)
+    
+    return constraints
   }
   
   class func equalWidth(viewOne: UIView, viewTwo: UIView,
     constraintContainer: UIView) -> [NSLayoutConstraint] {
       
-      if let constraints = NSLayoutConstraint.constraintsWithVisualFormat("[viewOne(==viewTwo)]",
-        options: nil, metrics: nil,
-        views: ["viewOne": viewOne, "viewTwo": viewTwo]) as? [NSLayoutConstraint] {
+    let constraints = NSLayoutConstraint.constraintsWithVisualFormat("[viewOne(==viewTwo)]",
+        options: [], metrics: nil,
+        views: ["viewOne": viewOne, "viewTwo": viewTwo])
           
           
-          constraintContainer.addConstraints(constraints)
-          
-          return constraints
-      }
-      
-      return []
+    constraintContainer.addConstraints(constraints)
+    
+    return constraints
   }
   
   class func height(view: UIView, value: CGFloat) -> [NSLayoutConstraint] {

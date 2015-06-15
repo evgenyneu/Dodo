@@ -6,8 +6,8 @@ struct DodoAnimationsShow {
   
   Animation that rotates the bar around X axis in perspective with spring effect.
   
-  :param: view View supplied for animation.
-  :param: completed A closure to be called after animation completes.
+  - parameter view: View supplied for animation.
+  - parameter completed: A closure to be called after animation completes.
   
   */
   static func rotate(view: UIView, duration: NSTimeInterval?,
@@ -20,8 +20,8 @@ struct DodoAnimationsShow {
   
   Animation that swipes the bar from the left with fade-in effect.
   
-  :param: view View supplied for animation.
-  :param: completed A closure to be called after animation completes.
+  - parameter view: View supplied for animation.
+  - parameter completed: A closure to be called after animation completes.
   
   */
   static func slideLeft(view: UIView, duration: NSTimeInterval?, locationTop: Bool,
@@ -34,8 +34,8 @@ struct DodoAnimationsShow {
   
   Animation that swipes the bar from the right with fade-in effect.
   
-  :param: view View supplied for animation.
-  :param: completed A closure to be called after animation completes.
+  - parameter view: View supplied for animation.
+  - parameter completed: A closure to be called after animation completes.
   
   */
   static func slideRight(view: UIView, duration: NSTimeInterval?, locationTop: Bool,
@@ -48,8 +48,8 @@ struct DodoAnimationsShow {
   
   Animation that fades the bar in.
   
-  :param: view View supplied for animation.
-  :param: completed A closure to be called after animation completes.
+  - parameter view: View supplied for animation.
+  - parameter completed: A closure to be called after animation completes.
   
   */
   static func fade(view: UIView, duration: NSTimeInterval?, locationTop: Bool,
@@ -62,8 +62,8 @@ struct DodoAnimationsShow {
   
   Animation that slides the bar in/out vertically.
   
-  :param: view View supplied for animation.
-  :param: completed A closure to be called after animation completes.
+  - parameter view: View supplied for animation.
+  - parameter completed: A closure to be called after animation completes.
   
   */
   static func slideVertically(view: UIView, duration: NSTimeInterval?, locationTop: Bool,

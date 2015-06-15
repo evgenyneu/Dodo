@@ -156,7 +156,7 @@ class DodoButtonViewTests: XCTestCase {
     let view = DodoButtonView(style: style)
     view.setup()
     
-    XCTAssertEqual("Test bar button", view.accessibilityLabel)
+    XCTAssertEqual("Test bar button", view.accessibilityLabel!)
     XCTAssertEqual(UIAccessibilityTraitButton, view.accessibilityTraits)
     XCTAssert(view.isAccessibilityElement)
   }

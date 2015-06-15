@@ -223,7 +223,7 @@ class ViewController: UIViewController {
     // Create a new image view
     
     let newImageView = UIImageView()
-    newImageView.setTranslatesAutoresizingMaskIntoConstraints(false)
+    newImageView.translatesAutoresizingMaskIntoConstraints = false
     newImageView.image = newImage
     newImageView.contentMode = UIViewContentMode.ScaleAspectFill
     view.insertSubview(newImageView, aboveSubview: imageView)

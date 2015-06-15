@@ -28,7 +28,7 @@ public extension UIView {
         let dodo = Dodo(superview: self)
         
         objc_setAssociatedObject(self, &sabAssociationKey, dodo,
-          objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
+          objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
         
         return dodo
       }
@@ -36,7 +36,7 @@ public extension UIView {
     
     set {
       objc_setAssociatedObject(self, &sabAssociationKey, newValue,
-        objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
+        objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
     }
   }
 }

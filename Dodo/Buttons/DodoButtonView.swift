@@ -35,9 +35,9 @@ class DodoButtonView: UIImageView {
     return hasImages || hasIcons
   }
   
-  func doLayout(#onLeftSide: Bool) {
+  func doLayout(onLeftSide onLeftSide: Bool) {
     precondition(delegate != nil, "Button view delegate can not be nil")
-    setTranslatesAutoresizingMaskIntoConstraints(false)
+    translatesAutoresizingMaskIntoConstraints = false
     
     // Set button's size
     TegAutolayoutConstraints.width(self, value: style.size.width)
