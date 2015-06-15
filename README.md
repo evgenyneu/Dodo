@@ -34,14 +34,19 @@ Simply add [DodoDistrib.swift](https://github.com/exchangegroup/Dodo/blob/master
 
 **Setup with Carthage (iOS 8+)**
 
-Alternatively, add `github "exchangegroup/Dodo" ~> 1.0` to your Cartfile and run `carthage update`.
+Alternatively, add `github "exchangegroup/Dodo" ~> 2.0` to your Cartfile and run `carthage update`.
 
 **Setup with CocoaPods (iOS 8+)**
 
 If you are using CocoaPods add this text to your Podfile and run `pod install`.
 
     use_frameworks!
-    pod 'Dodo', '~> 1.0'
+    pod 'Dodo', '~> 2.0'
+
+
+**Setup in Swift 1.2 project**
+
+Use the [previous version of the library](https://github.com/exchangegroup/Dodo/wiki/Swift-1.2-setup).
 
 
 ## Usage

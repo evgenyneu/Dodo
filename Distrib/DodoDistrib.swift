@@ -57,7 +57,7 @@ public enum DodoAnimations: String {
   
   Get animation function that can be used for showing notification bar.
   
-  :returns: Animation function.
+  - returns: Animation function.
   
   */
   public var show: DodoAnimation {
@@ -86,7 +86,7 @@ public enum DodoAnimations: String {
   
   Get animation function that can be used for hiding notification bar.
   
-  :returns: Animation function.
+  - returns: Animation function.
   
   */
   public var hide: DodoAnimation {
@@ -116,8 +116,8 @@ public enum DodoAnimations: String {
   A empty animator which is used when no animation is supplied.
   It simply calls the completion closure.
   
-  :param: view View supplied for animation.
-  :param: completed A closure to be called after animation completes.
+  - parameter view: View supplied for animation.
+  - parameter completed: A closure to be called after animation completes.
 
   */
   static func noAnimation(view: UIView, duration: NSTimeInterval?, locationTop: Bool,
@@ -161,10 +161,10 @@ public enum DodoAnimations: String {
       distance = UIScreen.mainScreen().bounds.height - view.frame.origin.y
     }
             
-    var transform = CGAffineTransformMakeTranslation(0, locationTop ? -distance : distance)
+    let transform = CGAffineTransformMakeTranslation(0, locationTop ? -distance : distance)
       
-    var start: CGAffineTransform = showView ? transform : CGAffineTransformIdentity
-    var end: CGAffineTransform = showView ? CGAffineTransformIdentity : transform
+    let start: CGAffineTransform = showView ? transform : CGAffineTransformIdentity
+    let end: CGAffineTransform = showView ? CGAffineTransformIdentity : transform
     
     view.transform = start
     
@@ -172,7 +172,7 @@ public enum DodoAnimations: String {
       delay: 0,
       usingSpringWithDamping: 1,
       initialSpringVelocity: 1,
-      options: nil,
+      options: [],
       animations: {
         view.transform = end
       },
@@ -188,9 +188,9 @@ public enum DodoAnimations: String {
   static func rotate(duration: NSTimeInterval?, showView: Bool, view: UIView, completed: DodoAnimationCompleted) {
     
     let actualDuration = duration ?? 2.0
-    var start: Double = showView ? Double(M_PI / 2) : 0
-    var end: Double = showView ? 0 : Double(M_PI / 2)
-    var damping = showView ? 0.85 : 3
+    let start: Double = showView ? Double(M_PI / 2) : 0
+    let end: Double = showView ? 0 : Double(M_PI / 2)
+    let damping = showView ? 0.85 : 3
     
     let myCALayer = view.layer
     
@@ -223,13 +223,13 @@ public enum DodoAnimations: String {
       
     let actualDuration = duration ?? 0.4
     let distance = UIScreen.mainScreen().bounds.width
-    var transform = CGAffineTransformMakeTranslation(right ? distance : -distance, 0)
+    let transform = CGAffineTransformMakeTranslation(right ? distance : -distance, 0)
     
-    var start: CGAffineTransform = showView ? transform : CGAffineTransformIdentity
-    var end: CGAffineTransform = showView ? CGAffineTransformIdentity : transform
+    let start: CGAffineTransform = showView ? transform : CGAffineTransformIdentity
+    let end: CGAffineTransform = showView ? CGAffineTransformIdentity : transform
     
-    var alphaStart: CGFloat = showView ? 0.2 : 1
-    var alphaEnd: CGFloat = showView ? 1 : 0.2
+    let alphaStart: CGFloat = showView ? 0.2 : 1
+    let alphaEnd: CGFloat = showView ? 1 : 0.2
 
     view.transform = start
     view.alpha = alphaStart
@@ -263,8 +263,8 @@ struct DodoAnimationsHide {
   
   Animation that rotates the bar around X axis in perspective with spring effect.
   
-  :param: view View supplied for animation.
-  :param: completed A closure to be called after animation completes.
+  - parameter view: View supplied for animation.
+  - parameter completed: A closure to be called after animation completes.
   
   */
   static func rotate(view: UIView, duration: NSTimeInterval?, locationTop: Bool,
@@ -277,8 +277,8 @@ struct DodoAnimationsHide {
   
   Animation that swipes the bar from to the left with fade-in effect.
   
-  :param: view View supplied for animation.
-  :param: completed A closure to be called after animation completes.
+  - parameter view: View supplied for animation.
+  - parameter completed: A closure to be called after animation completes.
   
   */
   static func slideLeft(view: UIView, duration: NSTimeInterval?, locationTop: Bool,
@@ -291,8 +291,8 @@ struct DodoAnimationsHide {
   
   Animation that swipes the bar to the right with fade-out effect.
   
-  :param: view View supplied for animation.
-  :param: completed A closure to be called after animation completes.
+  - parameter view: View supplied for animation.
+  - parameter completed: A closure to be called after animation completes.
   
   */
   static func slideRight(view: UIView, duration: NSTimeInterval?, locationTop: Bool,
@@ -305,8 +305,8 @@ struct DodoAnimationsHide {
   
   Animation that fades the bar out.
   
-  :param: view View supplied for animation.
-  :param: completed A closure to be called after animation completes.
+  - parameter view: View supplied for animation.
+  - parameter completed: A closure to be called after animation completes.
   
   */
   static func fade(view: UIView, duration: NSTimeInterval?, locationTop: Bool,
@@ -319,8 +319,8 @@ struct DodoAnimationsHide {
   
   Animation that slides the bar vertically out of view.
   
-  :param: view View supplied for animation.
-  :param: completed A closure to be called after animation completes.
+  - parameter view: View supplied for animation.
+  - parameter completed: A closure to be called after animation completes.
   
   */
   static func slideVertically(view: UIView, duration: NSTimeInterval?, locationTop: Bool,
@@ -346,8 +346,8 @@ struct DodoAnimationsShow {
   
   Animation that rotates the bar around X axis in perspective with spring effect.
   
-  :param: view View supplied for animation.
-  :param: completed A closure to be called after animation completes.
+  - parameter view: View supplied for animation.
+  - parameter completed: A closure to be called after animation completes.
   
   */
   static func rotate(view: UIView, duration: NSTimeInterval?,
@@ -360,8 +360,8 @@ struct DodoAnimationsShow {
   
   Animation that swipes the bar from the left with fade-in effect.
   
-  :param: view View supplied for animation.
-  :param: completed A closure to be called after animation completes.
+  - parameter view: View supplied for animation.
+  - parameter completed: A closure to be called after animation completes.
   
   */
   static func slideLeft(view: UIView, duration: NSTimeInterval?, locationTop: Bool,
@@ -374,8 +374,8 @@ struct DodoAnimationsShow {
   
   Animation that swipes the bar from the right with fade-in effect.
   
-  :param: view View supplied for animation.
-  :param: completed A closure to be called after animation completes.
+  - parameter view: View supplied for animation.
+  - parameter completed: A closure to be called after animation completes.
   
   */
   static func slideRight(view: UIView, duration: NSTimeInterval?, locationTop: Bool,
@@ -388,8 +388,8 @@ struct DodoAnimationsShow {
   
   Animation that fades the bar in.
   
-  :param: view View supplied for animation.
-  :param: completed A closure to be called after animation completes.
+  - parameter view: View supplied for animation.
+  - parameter completed: A closure to be called after animation completes.
   
   */
   static func fade(view: UIView, duration: NSTimeInterval?, locationTop: Bool,
@@ -402,8 +402,8 @@ struct DodoAnimationsShow {
   
   Animation that slides the bar in/out vertically.
   
-  :param: view View supplied for animation.
-  :param: completed A closure to be called after animation completes.
+  - parameter view: View supplied for animation.
+  - parameter completed: A closure to be called after animation completes.
   
   */
   static func slideVertically(view: UIView, duration: NSTimeInterval?, locationTop: Bool,
@@ -468,9 +468,9 @@ class DodoButtonView: UIImageView {
     return hasImages || hasIcons
   }
   
-  func doLayout(#onLeftSide: Bool) {
+  func doLayout(onLeftSide onLeftSide: Bool) {
     precondition(delegate != nil, "Button view delegate can not be nil")
-    setTranslatesAutoresizingMaskIntoConstraints(false)
+    translatesAutoresizingMaskIntoConstraints = false
     
     // Set button's size
     TegAutolayoutConstraints.width(self, value: style.size.width)
@@ -615,7 +615,7 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
   
   Shows the message bar with *.Success* preset. It can be used to indicate successful completion of an operation.
   
-  :param: message The text message to be shown.
+  - parameter message: The text message to be shown.
   
   */
   func success(message: String) {
@@ -627,7 +627,7 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
   
   Shows the message bar with *.Info* preset. It can be used for showing information messages that have neutral emotional value.
   
-  :param: message The text message to be shown.
+  - parameter message: The text message to be shown.
   
   */
   func info(message: String) {
@@ -639,7 +639,7 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
   
   Shows the message bar with *.Warning* preset. It can be used for for showing warning messages.
   
-  :param: message The text message to be shown.
+  - parameter message: The text message to be shown.
   
   */
   func warning(message: String) {
@@ -651,7 +651,7 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
   
   Shows the message bar with *.Warning* preset. It can be used for showing critical error messages
   
-  :param: message The text message to be shown.
+  - parameter message: The text message to be shown.
   
   */
   func error(message: String) {
@@ -663,14 +663,14 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
     
   Shows the message bar. Set `preset` property to change the appearance of the message bar, or use the shortcut methods: `success`, `info`, `warning` and `error`.
     
-  :param: message The text message to be shown.
+  - parameter message: The text message to be shown.
     
   */
   func show(message: String) {
     removeExistingBars()
     setupHideTimer()
 
-    var bar = DodoToolbar(witStyle: style)
+    let bar = DodoToolbar(witStyle: style)
     setupHideOnTap(bar)
     bar.layoutGuide = style.bar.locationTop ? topLayoutGuide : bottomLayoutGuide
     bar.buttonViewDelegate = self
@@ -771,7 +771,7 @@ public protocol DodoInterface: class {
   
   Shows the message bar with *.Success* preset. It can be used to indicate successful completion of an operation.
   
-  :param: message The text message to be shown.
+  - parameter message: The text message to be shown.
   
   */
   func success(message: String)
@@ -780,7 +780,7 @@ public protocol DodoInterface: class {
   
   Shows the message bar with *.Info* preset. It can be used for showing information messages that have neutral emotional value.
   
-  :param: message The text message to be shown.
+  - parameter message: The text message to be shown.
   
   */
   func info(message: String)
@@ -788,7 +788,7 @@ public protocol DodoInterface: class {
   
   Shows the message bar with *.Warning* preset. It can be used for for showing warning messages.
   
-  :param: message The text message to be shown.
+  - parameter message: The text message to be shown.
   
   */
   func warning(message: String)
@@ -797,7 +797,7 @@ public protocol DodoInterface: class {
   
   Shows the message bar with *.Warning* preset. It can be used for showing critical error messages
   
-  :param: message The text message to be shown.
+  - parameter message: The text message to be shown.
   
   */
   func error(message: String)
@@ -806,7 +806,7 @@ public protocol DodoInterface: class {
   
   Shows the message bar. Set `preset` property to change the appearance of the message bar, or use the shortcut methods: `success`, `info`, `warning` and `error`.
   
-  :param: message The text message to be shown.
+  - parameter message: The text message to be shown.
   
   */
   func show(message: String)
@@ -862,7 +862,7 @@ class DodoToolbar: UIView {
       locationTop: style.bar.locationTop, completed: {})
   }
   
-  func hide(#onAnimationCompleted: ()->()) {
+  func hide(onAnimationCompleted onAnimationCompleted: ()->()) {
     // Respond only to the first hide() call
     if didCallHide { return }
     didCallHide = true
@@ -900,7 +900,7 @@ class DodoToolbar: UIView {
   }
   
   private func layoutLabel(label: UILabel, withButtons buttons: [UIView]) {
-    label.setTranslatesAutoresizingMaskIntoConstraints(false)
+    label.translatesAutoresizingMaskIntoConstraints = false
     
     // Stretch the label vertically
     TegAutolayoutConstraints.fillParent(label, parentView: self,
@@ -936,7 +936,7 @@ class DodoToolbar: UIView {
     
     let buttonViews = DodoButtonView.createMany(buttonStyles)
     
-    for (index, button) in enumerate(buttonViews) {
+    for (index, button) in buttonViews.enumerate() {
       addSubview(button)
       button.delegate = buttonViewDelegate
       button.doLayout(onLeftSide: index == 0)
@@ -963,7 +963,7 @@ class DodoToolbar: UIView {
   }
   
   private func layoutBarInSuperview() {
-    setTranslatesAutoresizingMaskIntoConstraints(false)
+    translatesAutoresizingMaskIntoConstraints = false
     
     if let superview = superview {
       // Stretch the toobar horizontally to the width if its superview
@@ -1079,8 +1079,13 @@ Example:
     // Run the code from the app
     runSomeAppCode()
 
-    // Verify the messages
+    // Verify the message is visible
+    XCTAssert(dodoMock.results.visible)
+
+    // Check total number of messages shown
     XCTAssertEqual(1, dodoMock.results.total)
+
+    // Verify the text of the success message
     XCTAssertEqual("To be prepared is half the victory.", dodoMock.results.success[0])
 
 */
@@ -1125,9 +1130,12 @@ public class DodoMock: DodoInterface {
   public func show(message: String) {
     let mockMessage = DodoMockMessage(preset: preset, message: message)
     results.messages.append(mockMessage)
+    results.visible = true
   }
   
-  public func hide() { }
+  public func hide() {
+    results.visible = false
+  }
 }
 
 
@@ -1184,6 +1192,9 @@ public struct DodoMockResults {
   public var total: Int {
     return messages.count
   }
+  
+  /// Indicates whether the message is visible
+  public var visible = false
   
   var messages = [DodoMockMessage]()
 }
@@ -2278,7 +2289,7 @@ public extension UIView {
         let dodo = Dodo(superview: self)
         
         objc_setAssociatedObject(self, &sabAssociationKey, dodo,
-          objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
+          objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
         
         return dodo
       }
@@ -2286,7 +2297,7 @@ public extension UIView {
     
     set {
       objc_setAssociatedObject(self, &sabAssociationKey, newValue,
-        objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
+        objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
     }
   }
 }
@@ -2320,7 +2331,7 @@ public class DodoColor {
     var alpha: CGFloat = 1.0
     
     if !rgba.hasPrefix("#") {
-      println("Warning: DodoColor.fromHexString, # character missing")
+      print("Warning: DodoColor.fromHexString, # character missing")
       return UIColor()
     }
     
@@ -2330,21 +2341,21 @@ public class DodoColor {
     var hexValue: CUnsignedLongLong = 0
     
     if !scanner.scanHexLongLong(&hexValue) {
-      println("Warning: DodoColor.fromHexString, error scanning hex value")
+      print("Warning: DodoColor.fromHexString, error scanning hex value")
       return UIColor()
     }
 
-    if count(hex) == 6 {
+    if hex.characters.count == 6 {
       red   = CGFloat((hexValue & 0xFF0000) >> 16) / 255.0
       green = CGFloat((hexValue & 0x00FF00) >> 8)  / 255.0
       blue  = CGFloat(hexValue & 0x0000FF) / 255.0
-    } else if count(hex) == 8 {
+    } else if hex.characters.count == 8 {
       red   = CGFloat((hexValue & 0xFF000000) >> 24) / 255.0
       green = CGFloat((hexValue & 0x00FF0000) >> 16) / 255.0
       blue  = CGFloat((hexValue & 0x0000FF00) >> 8)  / 255.0
       alpha = CGFloat(hexValue & 0x000000FF)         / 255.0
     } else {
-      println("Warning: DodoColor.fromHexString, invalid rgb string, length should be 7 or 9")
+      print("Warning: DodoColor.fromHexString, invalid rgb string, length should be 7 or 9")
       return UIColor()
     }
    
@@ -2420,9 +2431,9 @@ final class MoaTimer: NSObject {
   
   Runs the closure after specified time interval.
   
-  :param: interval Time interval in milliseconds.
+  - parameter interval: Time interval in milliseconds.
   :repeats: repeats When true, the code is run repeatedly.
-  :returns: callback A closure to be run by the timer.
+  - returns: callback A closure to be run by the timer.
   
   */
   class func runAfter(interval: NSTimeInterval, repeats: Bool = false,
@@ -2664,7 +2675,7 @@ class TegAutolayoutConstraints {
     }
     
     let constraints = NSLayoutConstraint.constraintsWithVisualFormat(format,
-      options: nil, metrics: nil,
+      options: [], metrics: nil,
       views: ["view": view])
     
     parentView.addConstraints(constraints)
@@ -2678,7 +2689,7 @@ class TegAutolayoutConstraints {
       
     var constraints = [NSLayoutConstraint]()
       
-    for (index, view) in enumerate(views) {
+    for (index, view) in views.enumerate() {
       if index >= views.count - 1 { break }
       
       let viewTwo = views[index + 1]
@@ -2694,44 +2705,38 @@ class TegAutolayoutConstraints {
     constraintContainer: UIView, margin: CGFloat = 0,
     vertically: Bool = false) -> [NSLayoutConstraint] {
       
-      var marginFormat = ""
-      
-      if margin != 0 {
-        marginFormat = "-\(margin)-"
-      }
-      
-      var format = "[viewOne]\(marginFormat)[viewTwo]"
-      
-      if vertically {
-        format = "V:" + format
-      }
-      
-      if let constraints = NSLayoutConstraint.constraintsWithVisualFormat(format,
-        options: nil, metrics: nil,
-        views: [ "viewOne": viewOne, "viewTwo": viewTwo ]) as? [NSLayoutConstraint] {
-          
-          constraintContainer.addConstraints(constraints)
-          
-          return constraints
-      }
-      
-      return []
+    var marginFormat = ""
+    
+    if margin != 0 {
+      marginFormat = "-\(margin)-"
+    }
+    
+    var format = "[viewOne]\(marginFormat)[viewTwo]"
+    
+    if vertically {
+      format = "V:" + format
+    }
+    
+    let constraints = NSLayoutConstraint.constraintsWithVisualFormat(format,
+      options: [], metrics: nil,
+      views: [ "viewOne": viewOne, "viewTwo": viewTwo ])
+        
+    constraintContainer.addConstraints(constraints)
+    
+    return constraints
   }
   
   class func equalWidth(viewOne: UIView, viewTwo: UIView,
     constraintContainer: UIView) -> [NSLayoutConstraint] {
       
-      if let constraints = NSLayoutConstraint.constraintsWithVisualFormat("[viewOne(==viewTwo)]",
-        options: nil, metrics: nil,
-        views: ["viewOne": viewOne, "viewTwo": viewTwo]) as? [NSLayoutConstraint] {
+    let constraints = NSLayoutConstraint.constraintsWithVisualFormat("[viewOne(==viewTwo)]",
+        options: [], metrics: nil,
+        views: ["viewOne": viewOne, "viewTwo": viewTwo])
           
           
-          constraintContainer.addConstraints(constraints)
-          
-          return constraints
-      }
-      
-      return []
+    constraintContainer.addConstraints(constraints)
+    
+    return constraints
   }
   
   class func height(view: UIView, value: CGFloat) -> [NSLayoutConstraint] {
