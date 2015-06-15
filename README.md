@@ -28,9 +28,6 @@ From *Alice's Adventures in Wonderland*.
 
 There are three ways you can add Dodo to your project.
 
-**Add source (iOS 7+)**
-
-Simply add [DodoDistrib.swift](https://github.com/exchangegroup/Dodo/blob/master/Distrib/DodoDistrib.swift) file into your Xcode project.
 
 **Setup with Carthage (iOS 8+)**
 
