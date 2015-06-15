@@ -26,7 +26,7 @@ From *Alice's Adventures in Wonderland*.
 
 ## Setup
 
-There are three ways you can add Dodo to your project.
+There are two ways you can add Dodo to your project.
 
 
 **Setup with Carthage (iOS 8+)**
