@@ -179,6 +179,7 @@ Here are some other message bar libraries for iOS:
 * Drawing of White Dodo byFrederick William Frohawk, 1907. Source: [Wikipedia](http://en.m.wikipedia.org/wiki/File:Dodo_reunion-Rothschild_original.jpg).
 * Painting of a dodo by Jan Saverij, 1651. Source: [Wikimedia Commons](https://commons.m.wikimedia.org/wiki/File:Jan_Savery_Dodo.jpg#mw-jump-to-license).
 * Painting of a dodo head by Cornelis Saftleven, 1638. Source: [Wikimedia Commons](https://commons.m.wikimedia.org/wiki/File:Saftleven_dodo.jpg#mw-jump-to-license).
+* Compilation of the Gelderland sketches from 1601 of live and recently killed dodos. Source: [Wikimedia Commons](Compilation of the Gelderland sketches from 1601 of live and recently killed dodos)
 
 ## License
 
