@@ -31,7 +31,7 @@ There are two ways you can add Dodo to your project.
 
 **Setup with Carthage (iOS 8+)**
 
-Alternatively, add `github "exchangegroup/Dodo" ~> 2.0` to your Cartfile and run `carthage update`.
+Add `github "exchangegroup/Dodo" ~> 2.0` to your Cartfile and run `carthage update`.
 
 **Setup with CocoaPods (iOS 8+)**
 
