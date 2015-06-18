@@ -22,7 +22,7 @@ width='300' alt="Illustration fromAlice's Adventures in Wonderland by John Tenni
 
 > At last the Dodo said, `EVERYBODY has won, and all must have prizes.'
 
-From *Alice's Adventures in Wonderland*.
+*From Alice's Adventures in Wonderland. Original illustration of Alice's Adventures in Wonderland by John Tenniel, 1865. Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Alice_par_John_Tenniel_09.png).*
 
 ## Setup
 
