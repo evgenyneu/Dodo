@@ -173,15 +173,8 @@ Here are some other message bar libraries for iOS:
 * [terryworona/TWMessageBarManager](https://github.com/terryworona/TWMessageBarManager)
 
 
-## Credits
-
-* Original illustration of Alice's Adventures in Wonderland by John Tenniel, 1865. Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Alice_par_John_Tenniel_09.png).
-* Drawing of White Dodo byFrederick William Frohawk, 1907. Source: [Wikipedia](http://en.m.wikipedia.org/wiki/File:Dodo_reunion-Rothschild_original.jpg).
-* Painting of a dodo by Jan Saverij, 1651. Source: [Wikimedia Commons](https://commons.m.wikimedia.org/wiki/File:Jan_Savery_Dodo.jpg#mw-jump-to-license).
-* Painting of a dodo head by Cornelis Saftleven, 1638. Source: [Wikimedia Commons](https://commons.m.wikimedia.org/wiki/File:Saftleven_dodo.jpg#mw-jump-to-license).
-* Compilation of the Gelderland sketches, 1601. Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Dodo_(VOC_Gelderland,_1602).jpg)
-
 ## License
 
 Dodo is released under the [MIT License](LICENSE).
+
 
