@@ -2,7 +2,7 @@
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)][carthage]
 [![CocoaPods Version](https://img.shields.io/cocoapods/v/Dodo.svg?style=flat)][cocoadocs]
-[![License](https://img.shields.io/cocoapods/l/Dodo.svg?style=flat)][cocoadocs]
+[![License](https://img.shields.io/cocoapods/l/Dodo.svg?style=flat)](LICENSE)
 [![Platform](https://img.shields.io/cocoapods/p/Dodo.svg?style=flat)][cocoadocs]
 [cocoadocs]: http://cocoadocs.org/docsets/Dodo
 [carthage]: https://github.com/Carthage/Carthage
