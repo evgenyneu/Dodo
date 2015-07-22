@@ -222,7 +222,7 @@ class DodoToolbarTests: XCTestCase {
     let buttons = sabButtons(superview)
     
     XCTAssertEqual(2, buttons.count)
-//    XCTAssertEqual(256, buttons[0].image!.size.width)
-//    XCTAssert(buttons[1].image == nil)
+    XCTAssertEqual(256, buttons[0].image!.size.width)
+    XCTAssert(buttons[1].image == nil)
   }
 }
