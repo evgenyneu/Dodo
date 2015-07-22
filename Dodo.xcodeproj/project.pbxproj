@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B6CA44F1B5F63C70003B836 /* UnderKeyboardDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6CA44E1B5F63C70003B836 /* UnderKeyboardDistrib.swift */; };
 		7E4066B61B212BCB00E0AC41 /* DodoAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4066B51B212BCB00E0AC41 /* DodoAnimation.swift */; };
 		7E4066B81B212C7000E0AC41 /* DodoAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4066B71B212C7000E0AC41 /* DodoAnimations.swift */; };
 		7E4066B91B2131F900E0AC41 /* DodoAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4066B71B212C7000E0AC41 /* DodoAnimations.swift */; };
@@ -134,6 +135,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2B6CA44E1B5F63C70003B836 /* UnderKeyboardDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderKeyboardDistrib.swift; sourceTree = "<group>"; };
 		7E4066B51B212BCB00E0AC41 /* DodoAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoAnimation.swift; sourceTree = "<group>"; };
 		7E4066B71B212C7000E0AC41 /* DodoAnimations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoAnimations.swift; sourceTree = "<group>"; };
 		7E49464B1B2665FF00915DB3 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
@@ -368,11 +370,12 @@
 		7EDF78941B21068800A9597E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				7EDF78991B21068800A9597E /* DodoColor.swift */,
 				7EDF78951B21068800A9597E /* MoaTimer.swift */,
 				7EDF78961B21068800A9597E /* OnTap.swift */,
 				7EDF78971B21068800A9597E /* SpringAnimationCALayer.swift */,
 				7EDF78981B21068800A9597E /* TegAutolayoutConstraints.swift */,
-				7EDF78991B21068800A9597E /* DodoColor.swift */,
+				2B6CA44E1B5F63C70003B836 /* UnderKeyboardDistrib.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -584,7 +587,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Marketplacer;
 				TargetAttributes = {
 					7E7084A21B27AB1C00D0E36D = {
@@ -680,6 +683,7 @@
 				7EDF78B11B21068800A9597E /* DodoColor.swift in Sources */,
 				7EDF78A91B21068800A9597E /* DodoPresets.swift in Sources */,
 				7EC51DA41B215C070070019F /* DodoAnimationsShow.swift in Sources */,
+				2B6CA44F1B5F63C70003B836 /* UnderKeyboardDistrib.swift in Sources */,
 				7EF94B9E1B29207F006B4429 /* DodoInterface.swift in Sources */,
 				7EDF78AA1B21068800A9597E /* DodoStyle.swift in Sources */,
 				7EF94BA71B29393A006B4429 /* DodoMock.swift in Sources */,
@@ -836,6 +840,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -914,6 +919,7 @@
 				INFOPLIST_FILE = Dodo/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.marketplacer.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -931,6 +937,7 @@
 				INFOPLIST_FILE = Dodo/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.marketplacer.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -949,6 +956,7 @@
 				);
 				INFOPLIST_FILE = DodoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.marketplacer.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -962,6 +970,7 @@
 				);
 				INFOPLIST_FILE = DodoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.marketplacer.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -976,6 +985,7 @@
 				);
 				INFOPLIST_FILE = Demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.marketplacer.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -986,6 +996,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.marketplacer.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
