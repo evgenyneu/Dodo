@@ -11,6 +11,7 @@
 		2B6CA4531B5F74480003B836 /* DodoKeyboardListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6CA4521B5F74480003B836 /* DodoKeyboardListener.swift */; };
 		2B6CA4541B5F77960003B836 /* UnderKeyboardDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6CA4501B5F73E40003B836 /* UnderKeyboardDistrib.swift */; };
 		2B6CA4551B5F77B40003B836 /* DodoKeyboardListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6CA4521B5F74480003B836 /* DodoKeyboardListener.swift */; };
+		7E34D3791B605B6A00BECDCA /* XCTest+postKeyboardNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E34D3781B605B6A00BECDCA /* XCTest+postKeyboardNotification.swift */; };
 		7E4066B61B212BCB00E0AC41 /* DodoAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4066B51B212BCB00E0AC41 /* DodoAnimation.swift */; };
 		7E4066B81B212C7000E0AC41 /* DodoAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4066B71B212C7000E0AC41 /* DodoAnimations.swift */; };
 		7E4066B91B2131F900E0AC41 /* DodoAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4066B71B212C7000E0AC41 /* DodoAnimations.swift */; };
@@ -140,6 +141,7 @@
 /* Begin PBXFileReference section */
 		2B6CA4501B5F73E40003B836 /* UnderKeyboardDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderKeyboardDistrib.swift; sourceTree = "<group>"; };
 		2B6CA4521B5F74480003B836 /* DodoKeyboardListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoKeyboardListener.swift; sourceTree = "<group>"; };
+		7E34D3781B605B6A00BECDCA /* XCTest+postKeyboardNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTest+postKeyboardNotification.swift"; sourceTree = "<group>"; };
 		7E4066B51B212BCB00E0AC41 /* DodoAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoAnimation.swift; sourceTree = "<group>"; };
 		7E4066B71B212C7000E0AC41 /* DodoAnimations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoAnimations.swift; sourceTree = "<group>"; };
 		7E49464B1B2665FF00915DB3 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
@@ -427,6 +429,7 @@
 				7EDF78C31B2106CD00A9597E /* PixelColorTests.swift */,
 				7EDF78C41B2106CD00A9597E /* TestBundle.swift */,
 				7EDF78C51B2106CD00A9597E /* XCTestCase+Helpers.swift */,
+				7E34D3781B605B6A00BECDCA /* XCTest+postKeyboardNotification.swift */,
 			);
 			path = TestHelpers;
 			sourceTree = "<group>";
@@ -727,6 +730,7 @@
 				7EDF78EA1B21072200A9597E /* SpringAnimationCALayer.swift in Sources */,
 				7EDF78EB1B21072200A9597E /* TegAutolayoutConstraints.swift in Sources */,
 				7E4066B91B2131F900E0AC41 /* DodoAnimations.swift in Sources */,
+				7E34D3791B605B6A00BECDCA /* XCTest+postKeyboardNotification.swift in Sources */,
 				7EDF78E11B21071500A9597E /* DodoBarStyle.swift in Sources */,
 				7EDF78EC1B21072200A9597E /* DodoColor.swift in Sources */,
 				7EDF78E61B21071500A9597E /* DodoPresets.swift in Sources */,

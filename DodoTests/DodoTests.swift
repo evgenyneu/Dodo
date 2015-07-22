@@ -258,4 +258,31 @@ class DodoTests: XCTestCase {
     XCTAssertFalse(animationShowTop!)
     XCTAssertFalse(animationHideTop!)
   }
+  
+  // MARK: - Keyboard evasion
+  
+  func testShowBarAboveKeyboard_keyboardAppeasAfterBarIsShown() {
+    superview.frame = CGRect(origin: CGPoint(), size: CGSize(width: 230, height: 380))
+    obj.style.bar.locationTop = false
+    obj.show("Hello world!")
+    
+    postKeyboardWillShowNotification(CGSize(width: 46, height: 135))
+    
+    superview.layoutIfNeeded()
+    let toolbar = sabToolbar(superview)!
+    XCTAssertEqual(380 - toolbar.frame.height - 135 - 10, toolbar.frame.origin.y)
+  }
+  
+  func testShowBarAboveKeyboard_keyboardAppeasBeforeBarIsShown() {
+    postKeyboardWillShowNotification(CGSize(width: 46, height: 135))
+    
+    superview.frame = CGRect(origin: CGPoint(), size: CGSize(width: 230, height: 380))
+    obj.style.bar.locationTop = false
+    obj.show("Hello world!")
+    
+    superview.layoutIfNeeded()
+    
+    let toolbar = sabToolbar(superview)!
+    XCTAssertEqual(380 - toolbar.frame.height - 135 - 10, toolbar.frame.origin.y)
+  }
 }
