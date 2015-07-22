@@ -1,7 +1,5 @@
 import UIKit
 
-var dodoUnderKeyboardLayoutConstraint = UnderKeyboardLayoutConstraint()
-
 class DodoToolbar: UIView {
   var layoutGuide: UILayoutSupport?
   var style: DodoStyle
@@ -179,8 +177,8 @@ class DodoToolbar: UIView {
   
   private func setupKeyboardListener(bottomConstraint: NSLayoutConstraint) {
     if let superview = superview {
-      dodoUnderKeyboardLayoutConstraint.setup(bottomConstraint, view: superview,
-        bottomLayoutGuide: layoutGuide)
+      DodoKeyboardListener.underKeyboardLayoutConstraint.setup(bottomConstraint,
+        view: superview, bottomLayoutGuide: layoutGuide)
     }
   }
 }

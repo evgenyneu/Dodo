@@ -31,6 +31,8 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
 
   init(superview: UIView) {
     self.superview = superview
+    
+    DodoKeyboardListener.startListening()
   }
   
   /// Changes the style preset for the bar widget.
@@ -113,6 +115,10 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
     hideTimer?.cancel()
     
     toolbar?.hide(onAnimationCompleted: {})
+  }
+  
+  func listenForKeyboard() {
+    
   }
   
   private var toolbar: DodoToolbar? {
