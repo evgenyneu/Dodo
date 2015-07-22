@@ -172,7 +172,6 @@ class DodoToolbarTests: XCTestCase {
   }
   
   func testCreateLeftButtonWithIcon() {
-    let image = TestBundle.image("67px.png")!
     obj.style.leftButton.icon = DodoIcons.Close
     obj.style.rightButton.image = nil
     

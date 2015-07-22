@@ -13,6 +13,8 @@ class ViewController: UIViewController {
   @IBOutlet weak var debugModeSwitch: UISwitch!
   @IBOutlet weak var showAnimationButton: UIButton!
   @IBOutlet weak var hideAnimationButton: UIButton!
+  @IBOutlet weak var showKeyboardTextEdit: UITextField!
+  @IBOutlet weak var toggleKeyboardButton: UIButton!
   
   let animations = [
     DodoAnimations.Fade,
@@ -41,6 +43,9 @@ class ViewController: UIViewController {
     view.dodo.topLayoutGuide = topLayoutGuide
     updateShowAnimationButtonTitle()
     updateHideAnimationButtonTitle()
+    updateKeyboardToggleButtonTitle()
+    showKeyboardTextEdit.alpha = 0.01
+
   }
   
   override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -120,6 +125,23 @@ class ViewController: UIViewController {
   
   @IBAction func onChangeBackgroundTapped(sender: AnyObject) {
     changeBackgroundImage()
+  }
+  
+  // MARK: - Show / hide keyboard
+  
+  @IBAction func onToggleKeyboardTapped(sender: AnyObject) {
+    if showKeyboardTextEdit.editing {
+      view.endEditing(true)
+    } else {
+      showKeyboardTextEdit.becomeFirstResponder()
+    }
+    
+    updateKeyboardToggleButtonTitle()
+  }
+  
+  private func updateKeyboardToggleButtonTitle() {
+    let title = showKeyboardTextEdit.editing ?  "Hide keyboard" : "Show keyboard"
+     toggleKeyboardButton.setTitle(title, forState: .Normal)
   }
   
   // MARK: - Buttons

@@ -162,12 +162,23 @@ class DodoToolbar: UIView {
       } else {
         
         // Align the top/bottom of the toolbar with the top/bottom of its superview
-        TegAutolayoutConstraints.alignSameAttributes(superview, toItem: self,
+        let constraints = TegAutolayoutConstraints.alignSameAttributes(superview, toItem: self,
           constraintContainer: superview,
           attribute: style.bar.locationTop ? NSLayoutAttribute.Top : NSLayoutAttribute.Bottom,
           margin: verticalMargin)
         
+        if let bottomConstraint = constraints.first where !style.bar.locationTop {
+          setupKeyboardListener(bottomConstraint)
+        }
+        
       }
+    }
+  }
+  
+  private func setupKeyboardListener(bottomConstraint: NSLayoutConstraint) {
+    if let superview = superview {
+      DodoKeyboardListener.underKeyboardLayoutConstraint.setup(bottomConstraint,
+        view: superview, bottomLayoutGuide: layoutGuide)
     }
   }
 }
