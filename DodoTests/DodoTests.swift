@@ -285,4 +285,21 @@ class DodoTests: XCTestCase {
     let toolbar = sabToolbar(superview)!
     XCTAssertEqual(380 - toolbar.frame.height - 135 - 10, toolbar.frame.origin.y)
   }
+  
+  func testShowBarAboveKeyboard_keyboardAppeasAfterBarIsShown_withLayoutGuide() {
+    let layoutGuide = LayoutGuideMock()
+    layoutGuide.frame = CGRect(origin: CGPoint(x: 0, y: 150), size: CGSize(width: 10, height: 14))
+    superview.addSubview(layoutGuide)
+    
+    obj.bottomLayoutGuide = layoutGuide
+    superview.frame = CGRect(origin: CGPoint(), size: CGSize(width: 230, height: 380))
+    obj.style.bar.locationTop = false
+    obj.show("Hello world!")
+    
+    postKeyboardWillShowNotification(CGSize(width: 46, height: 135))
+    
+    superview.layoutIfNeeded()
+    let toolbar = sabToolbar(superview)!
+    XCTAssertEqual(150 - toolbar.frame.height - 135 - 10, toolbar.frame.origin.y)
+  }
 }

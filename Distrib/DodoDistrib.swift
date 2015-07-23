@@ -1000,11 +1000,13 @@ class DodoToolbar: UIView {
       let vMargin = style.bar.marginToSuperview.height
       let verticalMargin = style.bar.locationTop ? -vMargin : vMargin
       
+      var verticalConstraints = [NSLayoutConstraint]()
+      
       if let layoutGuide = layoutGuide {
         
         // Align the top/bottom edge of the toolbar with the top/bottom layout guide
         // (a tab bar, for example)
-        TegAutolayoutConstraints.alignVerticallyToLayoutGuide(self,
+        verticalConstraints = TegAutolayoutConstraints.alignVerticallyToLayoutGuide(self,
           onTop: style.bar.locationTop,
           layoutGuide: layoutGuide,
           constraintContainer: superview,
@@ -1013,21 +1015,22 @@ class DodoToolbar: UIView {
       } else {
         
         // Align the top/bottom of the toolbar with the top/bottom of its superview
-        let constraints = TegAutolayoutConstraints.alignSameAttributes(superview, toItem: self,
+        verticalConstraints = TegAutolayoutConstraints.alignSameAttributes(superview, toItem: self,
           constraintContainer: superview,
           attribute: style.bar.locationTop ? NSLayoutAttribute.Top : NSLayoutAttribute.Bottom,
           margin: verticalMargin)
-        
-        if let bottomConstraint = constraints.first where !style.bar.locationTop {
-          setupKeyboardListener(bottomConstraint)
-        }
-        
       }
+      
+      setupKeyboardEvader(verticalConstraints)
     }
   }
   
-  private func setupKeyboardListener(bottomConstraint: NSLayoutConstraint) {
-    if let superview = superview {
+  // Moves the message bar from under the keyboard
+  private func setupKeyboardEvader(verticalConstraints: [NSLayoutConstraint]) {
+    if let bottomConstraint = verticalConstraints.first,
+      superview = superview
+      where !style.bar.locationTop {
+      
       DodoKeyboardListener.underKeyboardLayoutConstraint.setup(bottomConstraint,
         view: superview, bottomLayoutGuide: layoutGuide)
     }
@@ -2893,7 +2896,6 @@ Adjusts the length (constant value) of the bottom layout constraint when keyboar
   }
   
   func keyboardWillAnimate(isShowing: Bool, height: CGFloat) {
-    print("keyboardWillAnimate isShowing: \(isShowing) height: \(height)")
     guard let bottomLayoutConstraint = bottomLayoutConstraint else { return }
     
     let layoutGuideHeight = bottomLayoutGuide?.length ?? 0

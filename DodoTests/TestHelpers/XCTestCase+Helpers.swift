@@ -4,7 +4,14 @@ import XCTest
 extension XCTestCase {
   func sabToolbar(superview: UIView) -> DodoToolbar? {
     if superview.subviews.count == 0 { return nil }
-    return superview.subviews[0] as? DodoToolbar
+    
+    let toolbars = superview.subviews.filter { $0 is DodoToolbar }.map { $0 as! DodoToolbar }
+    
+    guard let toolbar = toolbars.first else {
+      return nil
+    }
+    
+    return toolbar
   }
   
   func sabLabel(superview: UIView) -> UILabel? {

@@ -79,7 +79,6 @@ Adjusts the length (constant value) of the bottom layout constraint when keyboar
   }
   
   func keyboardWillAnimate(isShowing: Bool, height: CGFloat) {
-    print("keyboardWillAnimate isShowing: \(isShowing) height: \(height)")
     guard let bottomLayoutConstraint = bottomLayoutConstraint else { return }
     
     let layoutGuideHeight = bottomLayoutGuide?.length ?? 0
