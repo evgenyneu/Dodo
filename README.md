@@ -26,8 +26,11 @@ width='300' alt="Illustration fromAlice's Adventures in Wonderland by John Tenni
 
 ## Setup
 
-There are two ways you can add Dodo to your project.
+There are three ways you can add Dodo to your project.
 
+**Add source (iOS 7+)**
+
+Simply add [DodoDistrib.swift](https://github.com/exchangegroup/Dodo/blob/master/Distrib/DodoDistrib.swift) file into your Xcode project.
 
 **Setup with Carthage (iOS 8+)**
 
