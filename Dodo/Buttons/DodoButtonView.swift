@@ -79,10 +79,7 @@ class DodoButtonView: UIImageView {
       let bundle = NSBundle(forClass: self)
       let imageName = icon.rawValue
       
-      // Needed for iOS 7.0, ignore the warning.
-      if #available(iOS 8.0, *) {
-        return UIImage(named: imageName, inBundle: bundle, compatibleWithTraitCollection: nil)
-      }
+      return UIImage(named: imageName, inBundle: bundle, compatibleWithTraitCollection: nil)
     }
     
     return nil
