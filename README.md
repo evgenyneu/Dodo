@@ -164,6 +164,10 @@ This project includes a demo app.
 
 <img src='https://raw.githubusercontent.com/exchangegroup/Dodo/master/Graphics/dodo_demo_ios_app.jpg' width='414' alt='Dodo message bar demo iOS app'>
 
+## Known limitations
+
+* Dodo messages [can not be shown](https://github.com/exchangegroup/Dodo/issues/2) in the `UITableViewController`.
+
 ## Alternative solutions
 
 Here are some other message bar libraries for iOS:
