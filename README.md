@@ -24,6 +24,10 @@ width='300' alt="Illustration fromAlice's Adventures in Wonderland by John Tenni
 
 *From Alice's Adventures in Wonderland. Original illustration by John Tenniel, 1865. Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Alice_par_John_Tenniel_09.png).*
 
+## Known limitations
+
+* Dodo messages [can not be shown](https://github.com/exchangegroup/Dodo/issues/2) in a `UITableViewController`.
+
 ## Setup
 
 There are three ways you can add Dodo to your project.
@@ -163,10 +167,6 @@ See the [unit testing manual](https://github.com/exchangegroup/Dodo/wiki/Unit-te
 This project includes a demo app.
 
 <img src='https://raw.githubusercontent.com/exchangegroup/Dodo/master/Graphics/dodo_demo_ios_app.jpg' width='414' alt='Dodo message bar demo iOS app'>
-
-## Known limitations
-
-* Dodo messages [can not be shown](https://github.com/exchangegroup/Dodo/issues/2) in the `UITableViewController`.
 
 ## Alternative solutions
 
