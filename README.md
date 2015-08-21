@@ -94,7 +94,7 @@ alt='Dodo error presets' width='414'>
 
 ### Styling
 
-Set `dodo.style` property to style the message bar before it is shown. See the [styling manual](https://github.com/exchangegroup/Dodo/wiki/Styling) for the complete list of configuration options.
+Set `dodo.style` property to style the message bar **before** it is shown. See the [styling manual](https://github.com/exchangegroup/Dodo/wiki/Styling) for the complete list of configuration options.
 
 ```Swift
 // Set the text color
@@ -115,7 +115,7 @@ view.dodo.style.bar.locationTop = false
 
 ### Add buttons or icons
 
-Set `style.leftButton` and `style.rightButton` properties to show buttons or icons. As with other style property please set them **before** showing the message.
+Set `style.leftButton` and `style.rightButton` properties to show buttons or icons. As with other style properties please style the buttons **before** the message is shown.
 
 ```Swift
 // Use a built-in icon
