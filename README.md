@@ -115,7 +115,7 @@ view.dodo.style.bar.locationTop = false
 
 ### Add buttons or icons
 
-Set `style.leftButton` and `style.rightButton` properties to show buttons or icons.
+Set `style.leftButton` and `style.rightButton` properties to show buttons or icons. As with other style property please set them **before** showing the message.
 
 ```Swift
 // Use a built-in icon
