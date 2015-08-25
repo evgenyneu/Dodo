@@ -59,7 +59,7 @@ class DodoButtonView: UIImageView {
   }
   
   func setup() {
-    DodoButtonView.image(style).map { applyStyle($0) }
+    if let image = DodoButtonView.image(style) { applyStyle(image) }
     setupTap()
   }
   
