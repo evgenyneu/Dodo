@@ -13,6 +13,15 @@ Examples:
 
 */
 public class DodoColor {
+  /**
+  
+  Creates a UIColor object from a string.
+  
+  - parameter rgba: a RGB/RGBA string representation of color. It can include optional alpha value. Example: "#cca213" or "#cca21312" (with alpha value).
+  
+  - returns: UIColor object.
+  
+  */
   public class func fromHexString(rgba: String) -> UIColor {
     var red: CGFloat   = 0.0
     var green: CGFloat = 0.0
