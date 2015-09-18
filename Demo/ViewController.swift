@@ -45,7 +45,10 @@ class ViewController: UIViewController {
     updateHideAnimationButtonTitle()
     updateKeyboardToggleButtonTitle()
     showKeyboardTextEdit.alpha = 0.01
-
+    
+    view.dodo.style.bar.onTap = {
+      print("Tap tap tap 🌻🌼🐁🍃")
+    }
   }
   
   override func preferredStatusBarStyle() -> UIStatusBarStyle {

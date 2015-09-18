@@ -417,16 +417,6 @@ struct DodoAnimationsShow {
 
 // ----------------------------
 //
-// DodoBarOnTap.swift
-//
-// ----------------------------
-
-/// A closure that is called when a bar is tapped
-public typealias DodoBarOnTap = ()->()
-
-
-// ----------------------------
-//
 // DodoButtonOnTap.swift
 //
 // ----------------------------
@@ -730,13 +720,20 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
     }
   }
   
-  // MARK: - Hiding the bar on tap
+  // MARK: - Reacting to tap
   
   private func setupHideOnTap(toolbar: UIView) {
+    onTap = OnTap(view: toolbar, gesture: UITapGestureRecognizer()) { [weak self] in
+      self?.didTapTheBar()
+    }
+  }
+  
+  /// The bar has been tapped
+  private func didTapTheBar() {
+    style.bar.onTap?()
+    
     if style.bar.hideOnTap {
-      onTap = OnTap(view: toolbar, gesture: UITapGestureRecognizer()) { [weak self] in
-        self?.hide()
-      }
+      hide()
     }
   }
   
@@ -748,6 +745,16 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
     }
   }
 }
+
+
+// ----------------------------
+//
+// DodoBarOnTap.swift
+//
+// ----------------------------
+
+/// A closure that is called when a bar is tapped
+public typealias DodoBarOnTap = ()->()
 
 
 // ----------------------------

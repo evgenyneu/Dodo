@@ -226,6 +226,29 @@ class DodoTests: XCTestCase {
     XCTAssert(animationHideCompleted)
   }
   
+  // MARK: - Run closure the the bar is tapped
+  
+  func testOnTap() {
+    obj.style.bar.hideOnTap = false
+    var tapClosureCalledTimes = 0
+    
+    obj.style.bar.onTap = {
+      tapClosureCalledTimes += 1
+    }
+    
+    obj.show("Hello world!")
+    
+    obj.onTap?.didTap(UITapGestureRecognizer())
+    XCTAssertEqual(1, tapClosureCalledTimes)
+    
+    obj.onTap?.didTap(UITapGestureRecognizer())
+    XCTAssertEqual(2, tapClosureCalledTimes)
+    
+    // Keep the bar on screen
+    let toolbar = self.sabToolbar(self.superview)
+    XCTAssert(toolbar != nil)
+  }
+  
   // MARK: - Animation
   
   func testShowPassAnimationDuration() {
