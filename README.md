@@ -111,6 +111,9 @@ view.dodo.style.bar.hideOnTap = true
 
 // Show the bar at the bottom of the screen
 view.dodo.style.bar.locationTop = false
+
+// Do something on tap
+view.dodo.style.bar.onTap = { /* Button tapped */ }
 ```
 
 ### Add buttons or icons
