@@ -23,6 +23,7 @@ public struct DodoBarDefaultStyles {
     hideOnTap = _hideOnTap
     locationTop = _locationTop
     marginToSuperview = _marginToSuperview
+    onTap = _onTap
   }
   
   // ---------------------------
@@ -147,5 +148,13 @@ public struct DodoBarDefaultStyles {
   public static var marginToSuperview = _marginToSuperview
   
 
+  // ---------------------------
+  
+  
+  private static let _onTap: DodoBarOnTap? = nil
+  
+  /// Supply a function that will be called when user taps the bar.
+  public static var onTap = _onTap
+  
   // ---------------------------
 }

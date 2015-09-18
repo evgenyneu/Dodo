@@ -417,6 +417,16 @@ struct DodoAnimationsShow {
 
 // ----------------------------
 //
+// DodoBarOnTap.swift
+//
+// ----------------------------
+
+/// A closure that is called when a bar is tapped
+public typealias DodoBarOnTap = ()->()
+
+
+// ----------------------------
+//
 // DodoButtonOnTap.swift
 //
 // ----------------------------
@@ -1273,6 +1283,7 @@ public struct DodoBarDefaultStyles {
     hideOnTap = _hideOnTap
     locationTop = _locationTop
     marginToSuperview = _marginToSuperview
+    onTap = _onTap
   }
   
   // ---------------------------
@@ -1398,6 +1409,14 @@ public struct DodoBarDefaultStyles {
   
 
   // ---------------------------
+  
+  
+  private static let _onTap: DodoBarOnTap? = nil
+  
+  /// Supply a function that will be called when user taps the bar.
+  public static var onTap = _onTap
+  
+  // ---------------------------
 }
 
 
@@ -1434,6 +1453,7 @@ public class DodoBarStyle {
     _hideOnTap = nil
     _locationTop = nil
     _marginToSuperview = nil
+    _onTap = nil
   }
   
   // -----------------------------
@@ -1638,6 +1658,21 @@ public class DodoBarStyle {
     
     set {
       _marginToSuperview = newValue
+    }
+  }
+  
+  // ---------------------------
+  
+  private var _onTap: DodoBarOnTap?
+  
+  /// Supply a function that will be called when user taps the bar.
+  public var onTap: DodoBarOnTap? {
+    get {
+      return _onTap ?? parent?.onTap ?? DodoBarDefaultStyles.onTap
+    }
+    
+    set {
+      _onTap = newValue
     }
   }
   
@@ -2366,6 +2401,15 @@ Examples:
 
 */
 public class DodoColor {
+  /**
+  
+  Creates a UIColor object from a string.
+  
+  - parameter rgba: a RGB/RGBA string representation of color. It can include optional alpha value. Example: "#cca213" or "#cca21312" (with alpha value).
+  
+  - returns: UIColor object.
+  
+  */
   public class func fromHexString(rgba: String) -> UIColor {
     var red: CGFloat   = 0.0
     var green: CGFloat = 0.0

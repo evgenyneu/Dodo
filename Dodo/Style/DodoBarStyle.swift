@@ -25,6 +25,7 @@ public class DodoBarStyle {
     _hideOnTap = nil
     _locationTop = nil
     _marginToSuperview = nil
+    _onTap = nil
   }
   
   // -----------------------------
@@ -229,6 +230,21 @@ public class DodoBarStyle {
     
     set {
       _marginToSuperview = newValue
+    }
+  }
+  
+  // ---------------------------
+  
+  private var _onTap: DodoBarOnTap?
+  
+  /// Supply a function that will be called when user taps the bar.
+  public var onTap: DodoBarOnTap? {
+    get {
+      return _onTap ?? parent?.onTap ?? DodoBarDefaultStyles.onTap
+    }
+    
+    set {
+      _onTap = newValue
     }
   }
   
