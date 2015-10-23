@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B05999C1BABBA8300F36AED /* DodoBarOnTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B05999B1BABBA8300F36AED /* DodoBarOnTap.swift */; settings = {ASSET_TAGS = (); }; };
-		2B05999D1BABBA8800F36AED /* DodoBarOnTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B05999B1BABBA8300F36AED /* DodoBarOnTap.swift */; settings = {ASSET_TAGS = (); }; };
+		2B05999C1BABBA8300F36AED /* DodoBarOnTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B05999B1BABBA8300F36AED /* DodoBarOnTap.swift */; };
+		2B05999D1BABBA8800F36AED /* DodoBarOnTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B05999B1BABBA8300F36AED /* DodoBarOnTap.swift */; };
 		2B5589681B60753E008CA494 /* UnderKeyboardDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5589671B60753E008CA494 /* UnderKeyboardDistrib.swift */; };
 		2B5589691B60755D008CA494 /* UnderKeyboardDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5589671B60753E008CA494 /* UnderKeyboardDistrib.swift */; };
 		2B6CA4531B5F74480003B836 /* DodoKeyboardListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6CA4521B5F74480003B836 /* DodoKeyboardListener.swift */; };
@@ -968,10 +968,7 @@
 		7EDF78791B2105F300A9597E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -986,10 +983,7 @@
 		7EDF787A1B2105F300A9597E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = DodoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.marketplacer.$(PRODUCT_NAME:rfc1034identifier)";
