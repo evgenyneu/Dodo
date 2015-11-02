@@ -7,7 +7,7 @@ Animating CALayer with spring effect in iOS with Swift
 https://github.com/evgenyneu/SpringAnimationCALayer
 
 */
-class SpringAnimation {
+class SpringAnimationCALayer {
   // Animates layer with spring effect.
   class func animate(layer: CALayer,
     keypath: String,

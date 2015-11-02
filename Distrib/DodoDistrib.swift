@@ -199,7 +199,7 @@ public enum DodoAnimations: String {
     myCALayer.transform = CATransform3DRotate(transform, CGFloat(end), 1, 0, 0)
     myCALayer.zPosition = 300
     
-    SpringAnimation.animate(myCALayer,
+    SpringAnimationCALayer.animate(myCALayer,
       keypath: "transform.rotation.x",
       duration: actualDuration,
       usingSpringWithDamping: damping,
@@ -2587,7 +2587,7 @@ Animating CALayer with spring effect in iOS with Swift
 https://github.com/evgenyneu/SpringAnimationCALayer
 
 */
-class SpringAnimation {
+class SpringAnimationCALayer {
   // Animates layer with spring effect.
   class func animate(layer: CALayer,
     keypath: String,

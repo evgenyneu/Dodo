@@ -224,7 +224,7 @@ class ViewController: UIViewController {
     transform.m34 = -1.0/300.0
     myCALayer.transform = CATransform3DRotate(transform, CGFloat(0), 0, 1, 0)
     
-    SpringAnimation.animate(myCALayer,
+    SpringAnimationCALayer.animate(myCALayer,
       keypath: "transform.rotation.y",
       duration: 3.0,
       usingSpringWithDamping: 0.7,
