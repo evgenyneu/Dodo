@@ -38,14 +38,14 @@ Simply add [DodoDistrib.swift](https://github.com/marketplacer/Dodo/blob/master/
 
 **Setup with Carthage (iOS 8+)**
 
-Add `github "marketplacer/Dodo" ~> 2.0` to your Cartfile and run `carthage update`.
+Add `github "marketplacer/Dodo" ~> 2.2` to your Cartfile and run `carthage update`.
 
 **Setup with CocoaPods (iOS 8+)**
 
 If you are using CocoaPods add this text to your Podfile and run `pod install`.
 
     use_frameworks!
-    pod 'Dodo', '~> 2.0'
+    pod 'Dodo', '~> 2.2'
 
 
 **Setup in Swift 1.2 project**
