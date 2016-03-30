@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name        = "Dodo"
-  s.version     = "2.0.13"
+  s.version     = "2.2.0"
   s.license     = { :type => "MIT" }
   s.homepage    = "https://github.com/marketplacer/Dodo"
   s.summary     = "A message bar written in Swift."
