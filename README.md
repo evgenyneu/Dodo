@@ -51,7 +51,7 @@ If you are using CocoaPods add this text to your Podfile and run `pod install`.
 **Previous versions**
 
 
-Use the [previous versions of the library](https://github.com/marketplacer/Dodo/wiki/Previous-versions) if you need to run it in older Swift/Xcode.
+Use the [previous versions of the library](https://github.com/marketplacer/Dodo/wiki/Previous-versions) if you need to run it in older Xcode.
 
 
 ## Usage
