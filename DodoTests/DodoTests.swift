@@ -323,6 +323,8 @@ class DodoTests: XCTestCase {
     
     superview.layoutIfNeeded()
     let toolbar = sabToolbar(superview)!
-    XCTAssertEqual(150 - toolbar.frame.height - 135 - 10, toolbar.frame.origin.y)
+    let expectY = TestHelpers.round10(150 - Double(toolbar.frame.height) - 135 - 10)
+    
+    XCTAssertEqual(expectY, TestHelpers.round10(Double(toolbar.frame.origin.y)))
   }
 }

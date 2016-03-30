@@ -26,6 +26,7 @@
 		7E4946541B26942000915DB3 /* DodoButtonViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4946531B26942000915DB3 /* DodoButtonViewDelegate.swift */; };
 		7E4946551B26942C00915DB3 /* DodoButtonViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4946531B26942000915DB3 /* DodoButtonViewDelegate.swift */; };
 		7E8806181B281886005F8297 /* Dodo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E8806171B281886005F8297 /* Dodo.png */; };
+		7EA9E6D91CABA16B00FC3470 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA9E6D81CABA16B00FC3470 /* TestHelpers.swift */; };
 		7EC51DA41B215C070070019F /* DodoAnimationsShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC51DA31B215C070070019F /* DodoAnimationsShow.swift */; };
 		7EC51DA61B215C9D0070019F /* DodoAnimationsHide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC51DA51B215C9D0070019F /* DodoAnimationsHide.swift */; };
 		7EC51DA71B215D450070019F /* DodoAnimationsShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC51DA31B215C070070019F /* DodoAnimationsShow.swift */; };
@@ -154,6 +155,7 @@
 		7E4946531B26942000915DB3 /* DodoButtonViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoButtonViewDelegate.swift; sourceTree = "<group>"; };
 		7E7084A71B27AC0A00D0E36D /* DodoDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoDistrib.swift; sourceTree = "<group>"; };
 		7E8806171B281886005F8297 /* Dodo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Dodo.png; sourceTree = "<group>"; };
+		7EA9E6D81CABA16B00FC3470 /* TestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		7EC51DA31B215C070070019F /* DodoAnimationsShow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoAnimationsShow.swift; sourceTree = "<group>"; };
 		7EC51DA51B215C9D0070019F /* DodoAnimationsHide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoAnimationsHide.swift; sourceTree = "<group>"; };
 		7EDF785F1B2105F300A9597E /* Dodo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Dodo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -322,6 +324,7 @@
 				7EDF78C71B2106CD00A9597E /* Utils */,
 				7EDF78BC1B2106CD00A9597E /* DodoToolbarTests.swift */,
 				7EDF78C01B2106CD00A9597E /* DodoTests.swift */,
+				7EA9E6D81CABA16B00FC3470 /* TestHelpers.swift */,
 				7EDF78C61B2106CD00A9597E /* UIView+SwiftAlertBarTests.swift */,
 				7EDF786F1B2105F300A9597E /* Supporting Files */,
 			);
@@ -764,6 +767,7 @@
 				7EDF78E81B21072200A9597E /* MoaTimer.swift in Sources */,
 				7EC51DA81B215D470070019F /* DodoAnimationsHide.swift in Sources */,
 				7EDF78D31B2106CD00A9597E /* PixelColor.swift in Sources */,
+				7EA9E6D91CABA16B00FC3470 /* TestHelpers.swift in Sources */,
 				7EDF78DE1B21070A00A9597E /* DodoButtonView.swift in Sources */,
 				7E4066BA1B2131FE00E0AC41 /* DodoAnimation.swift in Sources */,
 				7EDF78E51B21071500A9597E /* DodoLabelStyle.swift in Sources */,
@@ -1001,7 +1005,7 @@
 				);
 				INFOPLIST_FILE = Demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.marketplacer.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.marketplacer.DodoDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1012,7 +1016,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.marketplacer.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.marketplacer.DodoDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

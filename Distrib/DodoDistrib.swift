@@ -2500,7 +2500,7 @@ final class MoaTimer: NSObject {
     
     self.callback = callback
     timer = NSTimer.scheduledTimerWithTimeInterval(interval, target: self,
-      selector: "timerFired:", userInfo: nil, repeats: repeats)
+      selector: #selector(MoaTimer.timerFired(_:)), userInfo: nil, repeats: repeats)
   }
   
   /// Timer is cancelled automatically when it is deallocated.
@@ -2563,7 +2563,7 @@ class OnTap: NSObject {
     super.init()
     view.addGestureRecognizer(gesture)
     view.userInteractionEnabled = true
-    gesture.addTarget(self, action: "didTap:")
+    gesture.addTarget(self, action: #selector(OnTap.didTap(_:)))
   }
 
   func didTap(gesture: UIGestureRecognizer) {
@@ -3017,8 +3017,8 @@ public final class UnderKeyboardObserver: NSObject {
   public func start() {
     stop()
     
-    notificationCenter.addObserver(self, selector: Selector("keyboardNotification:"), name:UIKeyboardWillShowNotification, object: nil);
-    notificationCenter.addObserver(self, selector: Selector("keyboardNotification:"), name:UIKeyboardWillHideNotification, object: nil);
+    notificationCenter.addObserver(self, selector: #selector(UnderKeyboardObserver.keyboardNotification(_:)), name:UIKeyboardWillShowNotification, object: nil);
+    notificationCenter.addObserver(self, selector: #selector(UnderKeyboardObserver.keyboardNotification(_:)), name:UIKeyboardWillHideNotification, object: nil);
   }
   
   /// Stop listening for keyboard notifications.

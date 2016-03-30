@@ -13,7 +13,7 @@ class OnTap: NSObject {
     super.init()
     view.addGestureRecognizer(gesture)
     view.userInteractionEnabled = true
-    gesture.addTarget(self, action: "didTap:")
+    gesture.addTarget(self, action: #selector(OnTap.didTap(_:)))
   }
 
   func didTap(gesture: UIGestureRecognizer) {
