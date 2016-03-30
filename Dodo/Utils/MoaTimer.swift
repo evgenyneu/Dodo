@@ -35,7 +35,7 @@ final class MoaTimer: NSObject {
     
     self.callback = callback
     timer = NSTimer.scheduledTimerWithTimeInterval(interval, target: self,
-      selector: "timerFired:", userInfo: nil, repeats: repeats)
+      selector: #selector(MoaTimer.timerFired(_:)), userInfo: nil, repeats: repeats)
   }
   
   /// Timer is cancelled automatically when it is deallocated.
