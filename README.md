@@ -172,6 +172,10 @@ This project includes a demo app.
 
 <img src='https://raw.githubusercontent.com/marketplacer/Dodo/master/Graphics/dodo_demo_ios_app.jpg' width='414' alt='Dodo message bar demo iOS app'>
 
+## Thanks 👍
+
+* [sai-prasanna](https://github.com/sai-prasanna) for Swift 2.2 update.
+
 ## Alternative solutions
 
 Here are some other message bar libraries for iOS:
