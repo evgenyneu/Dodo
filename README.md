@@ -48,9 +48,10 @@ If you are using CocoaPods add this text to your Podfile and run `pod install`.
     pod 'Dodo', '~> 2.2'
 
 
-**Setup in Swift 1.2 project**
+**Previous versions**
 
-Use the [previous version of the library](https://github.com/marketplacer/Dodo/wiki/Swift-1.2-setup).
+
+Use the [previous versions of the library](https://github.com/marketplacer/Dodo/wiki/Previous-versions) if you need to run it in older Swift/Xcode.
 
 
 ## Usage
