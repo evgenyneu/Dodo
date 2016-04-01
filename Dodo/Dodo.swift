@@ -17,7 +17,7 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
   private weak var superview: UIView!
   private var hideTimer: MoaTimer?
   
- // Gesture handler that hides the bar when it is tapped
+  // Gesture handler that hides the bar when it is tapped
   var onTap: OnTap?
   
   /// Specify optional layout guide for positioning the bar view.
