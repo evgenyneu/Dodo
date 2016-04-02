@@ -14,17 +14,13 @@ import UIKit
  
  2. Use Dodo in your ObjC code:
  
- @implementation ViewController
- 
- - (void)viewDidLoad {
- [super viewDidLoad];
- 
- [DodoObjCBridge style: self.view];
- [DodoObjCBridge topLayoutGuide:self.topLayoutGuide inView:self.view];
- [DodoObjCBridge success: @"Hello from ObjC" inView: self.view];
- }
- 
- @end
+   - (void)viewDidLoad {
+     [super viewDidLoad];
+     
+     [DodoObjCBridge style: self.view];
+     [DodoObjCBridge topLayoutGuide:self.topLayoutGuide inView:self.view];
+     [DodoObjCBridge success: @"Hello from ObjC" inView: self.view];
+   }
  */
 @objc public class DodoObjCBridge: NSObject {
   /**

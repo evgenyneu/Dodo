@@ -165,6 +165,10 @@ by setting an instance of `DodoMock` class to `view.dodo` property.
 
 See the [unit testing manual](https://github.com/marketplacer/Dodo/wiki/Unit-testing) for more details.
 
+### Using Dodo from Objective-C
+
+[This manual](https://github.com/marketplacer/Dodo/wiki/Using-Dodo-in-Objective-C-project) describes how to show Dodo message in Objective-C app.
+
 
 ## Demo iOS app
 
