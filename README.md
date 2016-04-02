@@ -167,7 +167,7 @@ See the [unit testing manual](https://github.com/marketplacer/Dodo/wiki/Unit-tes
 
 ### Using Dodo from Objective-C
 
-[This manual](wiki/Using-Dodo-in-Objective-C-project) describes how to show Dodo messages in Objective-C apps.
+[This manual](https://github.com/marketplacer/Dodo/wiki/Using-Dodo-in-Objective-C-project) describes how to show Dodo messages in Objective-C apps.
 
 
 ## Demo iOS app
