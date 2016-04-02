@@ -155,6 +155,7 @@
 		7E4946531B26942000915DB3 /* DodoButtonViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoButtonViewDelegate.swift; sourceTree = "<group>"; };
 		7E7084A71B27AC0A00D0E36D /* DodoDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoDistrib.swift; sourceTree = "<group>"; };
 		7E8806171B281886005F8297 /* Dodo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Dodo.png; sourceTree = "<group>"; };
+		7EA49DFE1CAF5EBF00491170 /* DodoObjCBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoObjCBridge.swift; sourceTree = "<group>"; };
 		7EA9E6D81CABA16B00FC3470 /* TestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		7EC51DA31B215C070070019F /* DodoAnimationsShow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoAnimationsShow.swift; sourceTree = "<group>"; };
 		7EC51DA51B215C9D0070019F /* DodoAnimationsHide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DodoAnimationsHide.swift; sourceTree = "<group>"; };
@@ -458,6 +459,7 @@
 			children = (
 				7EDF79191B210C1000A9597E /* Images */,
 				7EDF78F91B210BBC00A9597E /* AppDelegate.swift */,
+				7EA49DFE1CAF5EBF00491170 /* DodoObjCBridge.swift */,
 				7EDF78FB1B210BBC00A9597E /* ViewController.swift */,
 				7EDF79171B210BFE00A9597E /* Main.storyboard */,
 				7EDF79001B210BBC00A9597E /* Images.xcassets */,
