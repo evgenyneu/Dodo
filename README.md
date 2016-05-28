@@ -45,6 +45,7 @@ Add `github "marketplacer/Dodo" ~> 2.2` to your Cartfile and run `carthage updat
 If you are using CocoaPods add this text to your Podfile and run `pod install`.
 
     use_frameworks!
+    target 'Your target name'
     pod 'Dodo', '~> 2.2'
 
 
