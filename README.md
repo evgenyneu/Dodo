@@ -9,10 +9,6 @@
 
 <img src='https://raw.githubusercontent.com/marketplacer/Dodo/master/Graphics/buttons/dodo_a_message_bar_for_ios_written_in_swift.jpg' alt='Dodo, a message bar for iOS' width='414'>
 
-```Swift
-view.dodo.success("Dodo, a message bar for iOS.")
-```
-
 This is a UI widget for showing text messages in iOS apps. It is useful for showing short messages to the user, something like: "Message sent", "Note saved", "No Internet connection".
 
 * Dodo includes styles for success, info, warning and error type messages.
