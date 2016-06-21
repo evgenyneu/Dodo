@@ -46,7 +46,7 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
   
   /**
   
-  Shows the message bar with *.Success* preset. It can be used to indicate successful completion of an operation.
+  Shows the message bar with *.success* preset. It can be used to indicate successful completion of an operation.
   
   - parameter message: The text message to be shown.
   
@@ -114,7 +114,7 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
   func hide() {
     hideTimer?.cancel()
     
-    toolbar?.hide(onAnimationCompleted: {})
+    toolbar?.hide({})
   }
   
   func listenForKeyboard() {

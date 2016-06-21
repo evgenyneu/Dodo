@@ -28,7 +28,7 @@ public protocol DodoInterface: class {
   
   /**
   
-  Shows the message bar with *.Success* preset. It can be used to indicate successful completion of an operation.
+  Shows the message bar with *.success* preset. It can be used to indicate successful completion of an operation.
   
   - parameter message: The text message to be shown.
   

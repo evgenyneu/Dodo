@@ -64,6 +64,7 @@ final class MoaTimer: NSObject {
   - returns: callback A closure to be run by the timer.
   
   */
+  @discardableResult
   class func runAfter(_ interval: TimeInterval, repeats: Bool = false,
     callback: (MoaTimer)->()) -> MoaTimer {
       

@@ -38,7 +38,7 @@ class DodoToolbar: UIView {
       locationTop: style.bar.locationTop, completed: {})
   }
   
-  func hide(onAnimationCompleted: ()->()) {
+  func hide(_ onAnimationCompleted: ()->()) {
     // Respond only to the first hide() call
     if didCallHide { return }
     didCallHide = true

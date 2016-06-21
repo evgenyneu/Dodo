@@ -8,8 +8,8 @@ class DodoTests: XCTestCase {
   var animationShowCompleted = false
   var animationHideCompleted = false
   
-  var animationShowDuration: NSTimeInterval? = nil
-  var animationHideDuration: NSTimeInterval? = nil
+  var animationShowDuration: TimeInterval? = nil
+  var animationHideDuration: TimeInterval? = nil
   
   var animationShowTop: Bool? = nil
   var animationHideTop: Bool? = nil
@@ -110,8 +110,8 @@ class DodoTests: XCTestCase {
   
   func testSetItemStyle() {
     DodoBarDefaultStyles.cornerRadius = 13
-    DodoPresets.Success.style.bar.cornerRadius = 16
-    obj.style.parent = DodoPresets.Success.style
+    DodoPresets.success.style.bar.cornerRadius = 16
+    obj.style.parent = DodoPresets.success.style
     obj.style.bar.cornerRadius = 17
     
     obj.show("Hello world!")
@@ -123,9 +123,9 @@ class DodoTests: XCTestCase {
   // MARK: - Preset
   
   func testUseThePrest() {
-    DodoPresets.Success.style.bar.cornerRadius = 16
+    DodoPresets.success.style.bar.cornerRadius = 16
     
-    obj.preset = .Success
+    obj.preset = .success
     obj.show("Hello world!")
     
     let toolbar = sabToolbar(superview)!
@@ -133,10 +133,10 @@ class DodoTests: XCTestCase {
   }
   
   func testChangeThePrest() {
-    DodoPresets.Success.style.bar.cornerRadius = 16
-    DodoPresets.Error.style.bar.cornerRadius = 19
+    DodoPresets.success.style.bar.cornerRadius = 16
+    DodoPresets.error.style.bar.cornerRadius = 19
     
-    obj.preset = .Error
+    obj.preset = .error
     obj.show("Hello world!")
     
     let toolbar = sabToolbar(superview)!
@@ -148,13 +148,13 @@ class DodoTests: XCTestCase {
   func testHideBarAfterDelay() {
     obj.style.bar.hideAfterDelaySeconds = 0.3
     obj.show("Hello world!")
-    let expectation = expectationWithDescription("the timer has finished")
+    let expectation = self.expectation(withDescription: "the timer has finished")
     
     MoaTimer.runAfter(0.5) { timer in
       expectation.fulfill()
     }
     
-    waitForExpectationsWithTimeout(1) { error in }
+    waitForExpectations(withTimeout: 1) { error in }
     
     let toolbar = sabToolbar(superview)
     
@@ -165,13 +165,13 @@ class DodoTests: XCTestCase {
   func testDoesNotHideBarAfterDelayWhenValueIsZero() {
     obj.style.bar.hideAfterDelaySeconds = 0
     obj.show("Hello world!")
-    let expectation = expectationWithDescription("the timer has finished")
+    let expectation = self.expectation(withDescription: "the timer has finished")
     
     MoaTimer.runAfter(0.5) { timer in
       expectation.fulfill()
     }
     
-    waitForExpectationsWithTimeout(1) { error in }
+    waitForExpectations(withTimeout: 1) { error in }
     
     let toolbar = sabToolbar(superview)
     

@@ -2,7 +2,7 @@ import UIKit
 import XCTest
 
 extension XCTestCase {
-  func sabToolbar(superview: UIView) -> DodoToolbar? {
+  func sabToolbar(_ superview: UIView) -> DodoToolbar? {
     if superview.subviews.count == 0 { return nil }
     
     let toolbars = superview.subviews.filter { $0 is DodoToolbar }.map { $0 as! DodoToolbar }
@@ -14,11 +14,11 @@ extension XCTestCase {
     return toolbar
   }
   
-  func sabLabel(superview: UIView) -> UILabel? {
+  func sabLabel(_ superview: UIView) -> UILabel? {
     return sabToolbar(superview)?.subviews.filter { $0 is UILabel }.map { $0 as! UILabel }.first
   }
   
-  func sabButtons(superview: UIView) -> [DodoButtonView] {
+  func sabButtons(_ superview: UIView) -> [DodoButtonView] {
     if let toolbar = sabToolbar(superview) {
       return toolbar.subviews.filter { $0 is DodoButtonView }.map { $0 as! DodoButtonView }
     }
