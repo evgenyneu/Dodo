@@ -98,7 +98,7 @@ Set `dodo.style` property to style the message bar **before** it is shown. See t
 
 ```Swift
 // Set the text color
-view.dodo.style.label.color = UIColor.whiteColor()
+view.dodo.style.label.color = UIColor.white()
 
 // Set background color
 view.dodo.style.bar.backgroundColor = DodoColor.fromHexString("#00000090")
@@ -113,7 +113,7 @@ view.dodo.style.bar.hideOnTap = true
 view.dodo.style.bar.locationTop = false
 
 // Do something on tap
-view.dodo.style.bar.onTap = { /* Button tapped */ }
+view.dodo.style.bar.onTap = { /* Tapped on the bar */ }
 ```
 
 ### Add buttons or icons
@@ -178,6 +178,8 @@ This project includes a demo app.
 ## Thanks 👍
 
 * [sai-prasanna](https://github.com/sai-prasanna) for Swift 2.2 update.
+
+
 
 ## Quote credits
 

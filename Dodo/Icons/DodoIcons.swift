@@ -6,8 +6,8 @@ Collection of icons included with Dodo library.
 
 public enum DodoIcons: String {
   /// Icon for closing the bar.
-  case Close = "Close"
+  case close = "Close"
   
   /// Icon for reloading.
-  case Reload = "Reload"
+  case reload = "Reload"
 }

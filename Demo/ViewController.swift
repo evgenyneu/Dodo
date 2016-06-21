@@ -161,7 +161,7 @@ class ViewController: UIViewController {
     
     if leftButtonSwitch.isOn {
       // Use a built-in icon
-      view.dodo.style.leftButton.icon = .Close
+      view.dodo.style.leftButton.icon = .close
       view.dodo.style.leftButton.accessibilityLabel = "Close the message"
       view.dodo.style.leftButton.hideOnTap = true
     }
