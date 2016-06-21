@@ -142,6 +142,11 @@ class ViewController: UIViewController {
     updateKeyboardToggleButtonTitle()
   }
   
+  @IBAction func didTapView(_ sender: AnyObject) {
+    view.endEditing(true)
+    updateKeyboardToggleButtonTitle()
+  }
+  
   private func updateKeyboardToggleButtonTitle() {
     let title = showKeyboardTextEdit.isEditing ?  "Hide keyboard" : "Show keyboard"
      toggleKeyboardButton.setTitle(title, for: UIControlState())
