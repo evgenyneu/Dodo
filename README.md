@@ -239,3 +239,8 @@ Here are some other message bar libraries for iOS:
 Dodo is released under the [MIT License](LICENSE).
 
 
+## •ᴥ•
+
+This project is dedicated to [the dodo](https://en.wikipedia.org/wiki/Dodo), species of flightless birds that lived on the island of Mauritius and became extinct in the 17th century.
+
+
