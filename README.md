@@ -52,11 +52,6 @@ If you are using CocoaPods add this text to your Podfile and run `pod install`.
 
 Setup a [previous version](https://github.com/marketplacer/Dodo/wiki/Legacy-Swift-versions) of the library if you use an older version of Swift.
 
-**Previous versions**
-
-
-Use the [previous versions of the library](https://github.com/marketplacer/Dodo/wiki/Previous-versions) if you need to run it in older Xcode.
-
 
 ## Usage
 
