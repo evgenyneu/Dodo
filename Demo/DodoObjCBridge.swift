@@ -61,7 +61,7 @@ import UIKit
   
   /**
    
-   Shows the message bar with *.Warning* preset. It can be used for for showing warning messages.
+   Shows the message bar with *.warning* preset. It can be used for for showing warning messages.
    
    - parameter message: The text message to be shown.
    - parameter inView: view where the message is shown.

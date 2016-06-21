@@ -43,9 +43,10 @@ public protocol DodoInterface: class {
   
   */
   func info(_ message: String)
+  
   /**
   
-  Shows the message bar with *.Warning* preset. It can be used for for showing warning messages.
+  Shows the message bar with *.warning* preset. It can be used for for showing warning messages.
   
   - parameter message: The text message to be shown.
   
@@ -54,7 +55,7 @@ public protocol DodoInterface: class {
   
   /**
   
-  Shows the message bar with *.Warning* preset. It can be used for showing critical error messages
+  Shows the message bar with *.warning* preset. It can be used for showing critical error messages
   
   - parameter message: The text message to be shown.
   
@@ -70,6 +71,6 @@ public protocol DodoInterface: class {
   */
   func show(_ message: String)
   
-  /// Hide the message bar if it's currently open.
+  /// Hide the message bar if it's currently shown.
   func hide()
 }

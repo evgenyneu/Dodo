@@ -29,6 +29,7 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
   /// Defines styles for the bar.
   var style = DodoStyle(parentStyle: DodoPresets.defaultPreset.style)
 
+  /// Creates an instance of Dodo class
   init(superview: UIView) {
     self.superview = superview
     
@@ -70,7 +71,7 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
   
   /**
   
-  Shows the message bar with *.Warning* preset. It can be used for for showing warning messages.
+  Shows the message bar with *.warning* preset. It can be used for for showing warning messages.
   
   - parameter message: The text message to be shown.
   
@@ -82,7 +83,7 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
   
   /**
   
-  Shows the message bar with *.Warning* preset. It can be used for showing critical error messages
+  Shows the message bar with *.warning* preset. It can be used for showing critical error messages
   
   - parameter message: The text message to be shown.
   
@@ -110,7 +111,7 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
     bar.show(inSuperview: superview, withMessage: message)
   }
   
-  /// Hide the message bar if it's currently open.
+  /// Hide the message bar if it's currently shown.
   func hide() {
     hideTimer?.cancel()
     
