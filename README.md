@@ -24,9 +24,6 @@ width='300' alt="Illustration fromAlice's Adventures in Wonderland by John Tenni
 
 *From Alice's Adventures in Wonderland. Original illustration by John Tenniel, 1865. Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Alice_par_John_Tenniel_09.png).*
 
-## Known limitations
-
-* Dodo messages [can not be shown](https://github.com/marketplacer/Dodo/issues/2) in a `UITableViewController`.
 
 ## Setup (Swift 3.0)
 
@@ -164,9 +161,18 @@ by setting an instance of `DodoMock` class to `view.dodo` property.
 
 See the [unit testing manual](https://github.com/marketplacer/Dodo/wiki/Unit-testing) for more details.
 
+
+## Known limitations
+
+* Dodo messages [can not be shown](https://github.com/marketplacer/Dodo/issues/2) in a `UITableViewController`.
+
+
+
 ### Using Dodo from Objective-C
 
 [This manual](https://github.com/marketplacer/Dodo/wiki/Using-Dodo-in-Objective-C-project) describes how to show Dodo messages in Objective-C apps.
+
+
 
 
 ## Demo iOS app
