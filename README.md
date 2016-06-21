@@ -28,7 +28,7 @@ width='300' alt="Illustration fromAlice's Adventures in Wonderland by John Tenni
 
 * Dodo messages [can not be shown](https://github.com/marketplacer/Dodo/issues/2) in a `UITableViewController`.
 
-## Setup
+## Setup (Swift 3.0)
 
 There are three ways you can add Dodo to your project.
 
