@@ -48,27 +48,27 @@ public class DodoMock: DodoInterface {
     }
   }
   
-  public func success(message: String) {
-    preset = .Success
+  public func success(_ message: String) {
+    preset = .success
     show(message)
   }
   
-  public func info(message: String) {
-    preset = .Info
+  public func info(_ message: String) {
+    preset = .info
     show(message)
   }
   
-  public func warning(message: String) {
-    preset = .Warning
+  public func warning(_ message: String) {
+    preset = .warning
     show(message)
   }
   
-  public func error(message: String) {
-    preset = .Error
+  public func error(_ message: String) {
+    preset = .error
     show(message)
   }
   
-  public func show(message: String) {
+  public func show(_ message: String) {
     let mockMessage = DodoMockMessage(preset: preset, message: message)
     results.messages.append(mockMessage)
     results.visible = true

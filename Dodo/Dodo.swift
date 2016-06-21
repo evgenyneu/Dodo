@@ -51,8 +51,8 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
   - parameter message: The text message to be shown.
   
   */
-  func success(message: String) {
-    preset = .Success
+  func success(_ message: String) {
+    preset = .success
     show(message)
   }
   
@@ -63,8 +63,8 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
   - parameter message: The text message to be shown.
   
   */
-  func info(message: String) {
-    preset = .Info
+  func info(_ message: String) {
+    preset = .info
     show(message)
   }
   
@@ -75,8 +75,8 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
   - parameter message: The text message to be shown.
   
   */
-  func warning(message: String) {
-    preset = .Warning
+  func warning(_ message: String) {
+    preset = .warning
     show(message)
   }
   
@@ -87,8 +87,8 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
   - parameter message: The text message to be shown.
   
   */
-  func error(message: String) {
-    preset = .Error
+  func error(_ message: String) {
+    preset = .error
     show(message)
   }
   
@@ -99,7 +99,7 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
   - parameter message: The text message to be shown.
     
   */
-  func show(message: String) {
+  func show(_ message: String) {
     removeExistingBars()
     setupHideTimer()
 
@@ -143,7 +143,7 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
     if style.bar.hideAfterDelaySeconds > 0 {
       hideTimer = MoaTimer.runAfter(style.bar.hideAfterDelaySeconds) { [weak self] timer in
         
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
           self?.hide()
         }
       }
@@ -152,7 +152,7 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
   
   // MARK: - Reacting to tap
   
-  private func setupHideOnTap(toolbar: UIView) {
+  private func setupHideOnTap(_ toolbar: UIView) {
     onTap = OnTap(view: toolbar, gesture: UITapGestureRecognizer()) { [weak self] in
       self?.didTapTheBar()
     }
@@ -169,7 +169,7 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
   
   // MARK: - DodoButtonViewDelegate
   
-  func buttonDelegateDidTap(buttonStyle: DodoButtonStyle) {
+  func buttonDelegateDidTap(_ buttonStyle: DodoButtonStyle) {
     if buttonStyle.hideOnTap {
       hide()
     }

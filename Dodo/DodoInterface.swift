@@ -33,7 +33,7 @@ public protocol DodoInterface: class {
   - parameter message: The text message to be shown.
   
   */
-  func success(message: String)
+  func success(_ message: String)
   
   /**
   
@@ -42,7 +42,7 @@ public protocol DodoInterface: class {
   - parameter message: The text message to be shown.
   
   */
-  func info(message: String)
+  func info(_ message: String)
   /**
   
   Shows the message bar with *.Warning* preset. It can be used for for showing warning messages.
@@ -50,7 +50,7 @@ public protocol DodoInterface: class {
   - parameter message: The text message to be shown.
   
   */
-  func warning(message: String)
+  func warning(_ message: String)
   
   /**
   
@@ -59,7 +59,7 @@ public protocol DodoInterface: class {
   - parameter message: The text message to be shown.
   
   */
-  func error(message: String)
+  func error(_ message: String)
   
   /**
   
@@ -68,7 +68,7 @@ public protocol DodoInterface: class {
   - parameter message: The text message to be shown.
   
   */
-  func show(message: String)
+  func show(_ message: String)
   
   /// Hide the message bar if it's currently open.
   func hide()

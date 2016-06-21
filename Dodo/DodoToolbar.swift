@@ -38,7 +38,7 @@ class DodoToolbar: UIView {
       locationTop: style.bar.locationTop, completed: {})
   }
   
-  func hide(onAnimationCompleted onAnimationCompleted: ()->()) {
+  func hide(onAnimationCompleted: ()->()) {
     // Respond only to the first hide() call
     if didCallHide { return }
     didCallHide = true
@@ -53,17 +53,17 @@ class DodoToolbar: UIView {
     
   // MARK: - Label
   
-  private func createLabel(message: String, withButtons buttons: [UIView]) {
+  private func createLabel(_ message: String, withButtons buttons: [UIView]) {
     let label = UILabel()
     
     label.font = style.label.font
     label.text = message
     label.textColor = style.label.color
-    label.textAlignment = NSTextAlignment.Center
+    label.textAlignment = NSTextAlignment.center
     label.numberOfLines = style.label.numberOfLines
     
     if style.bar.debugMode {
-      label.backgroundColor = UIColor.redColor()
+      label.backgroundColor = UIColor.red()
     }
     
     if let shadowColor = style.label.shadowColor {
@@ -75,7 +75,7 @@ class DodoToolbar: UIView {
     layoutLabel(label, withButtons: buttons)
   }
   
-  private func layoutLabel(label: UILabel, withButtons buttons: [UIView]) {
+  private func layoutLabel(_ label: UILabel, withButtons buttons: [UIView]) {
     label.translatesAutoresizingMaskIntoConstraints = false
     
     // Stretch the label vertically
@@ -93,7 +93,7 @@ class DodoToolbar: UIView {
     }
   }
   
-  private func layoutLabelWithButtons(label: UILabel, withButtons buttons: [UIView]) {
+  private func layoutLabelWithButtons(_ label: UILabel, withButtons buttons: [UIView]) {
     if buttons.count != 2 { return }
     
     let views = [buttons[0], label, buttons[1]]
@@ -112,13 +112,13 @@ class DodoToolbar: UIView {
     
     let buttonViews = DodoButtonView.createMany(buttonStyles)
     
-    for (index, button) in buttonViews.enumerate() {
+    for (index, button) in buttonViews.enumerated() {
       addSubview(button)
       button.delegate = buttonViewDelegate
       button.doLayout(onLeftSide: index == 0)
 
       if style.bar.debugMode {
-        button.backgroundColor = UIColor.yellowColor()
+        button.backgroundColor = UIColor.yellow()
       }
     }
     
@@ -133,7 +133,7 @@ class DodoToolbar: UIView {
     layer.masksToBounds = true
     
     if let borderColor = style.bar.borderColor where style.bar.borderWidth > 0 {
-      layer.borderColor = borderColor.CGColor
+      layer.borderColor = borderColor.cgColor
       layer.borderWidth = style.bar.borderWidth
     }
   }
@@ -166,7 +166,7 @@ class DodoToolbar: UIView {
         // Align the top/bottom of the toolbar with the top/bottom of its superview
         verticalConstraints = TegAutolayoutConstraints.alignSameAttributes(superview, toItem: self,
           constraintContainer: superview,
-          attribute: style.bar.locationTop ? NSLayoutAttribute.Top : NSLayoutAttribute.Bottom,
+          attribute: style.bar.locationTop ? NSLayoutAttribute.top : NSLayoutAttribute.bottom,
           margin: verticalMargin)
       }
       
@@ -175,7 +175,7 @@ class DodoToolbar: UIView {
   }
   
   // Moves the message bar from under the keyboard
-  private func setupKeyboardEvader(verticalConstraints: [NSLayoutConstraint]) {
+  private func setupKeyboardEvader(_ verticalConstraints: [NSLayoutConstraint]) {
     if let bottomConstraint = verticalConstraints.first,
       superview = superview
       where !style.bar.locationTop {

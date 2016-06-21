@@ -17,10 +17,8 @@ import UIKit
 
 
 /**
-
-Adjusts the length (constant value) of the bottom layout constraint when keyboard shows and hides.
-
-*/
+ Adjusts the length (constant value) of the bottom layout constraint when keyboard shows and hides.
+ */
 @objc public class UnderKeyboardLayoutConstraint: NSObject {
   private weak var bottomLayoutConstraint: NSLayoutConstraint?
   private weak var bottomLayoutGuide: UILayoutSupport?
@@ -48,37 +46,37 @@ Adjusts the length (constant value) of the bottom layout constraint when keyboar
   }
   
   /**
-  
-  Supply a bottom Auto Layout constraint. Its constant value will be adjusted by the height of the keyboard when it appears and hides.
-  
-  - parameter bottomLayoutConstraint: Supply a bottom layout constraint. Its constant value will be adjusted when keyboard is shown and hidden.
-  
-  - parameter view: Supply a view that will be used to animate the constraint. It is usually the superview containing the view with the constraint.
-  
-  - parameter minMargin: Specify the minimum margin between the keyboard and the bottom of the view the constraint is attached to. Default: 10.
-  
-  - parameter bottomLayoutGuide: Supply an optional bottom layout guide (like a tab bar) that will be taken into account during height calculations.
-  
-  */
-  public func setup(bottomLayoutConstraint: NSLayoutConstraint,
-    view: UIView, minMargin: CGFloat = 10,
-    bottomLayoutGuide: UILayoutSupport? = nil) {
-      
+   
+   Supply a bottom Auto Layout constraint. Its constant value will be adjusted by the height of the keyboard when it appears and hides.
+   
+   - parameter bottomLayoutConstraint: Supply a bottom layout constraint. Its constant value will be adjusted when keyboard is shown and hidden.
+   
+   - parameter view: Supply a view that will be used to animate the constraint. It is usually the superview containing the view with the constraint.
+   
+   - parameter minMargin: Specify the minimum margin between the keyboard and the bottom of the view the constraint is attached to. Default: 10.
+   
+   - parameter bottomLayoutGuide: Supply an optional bottom layout guide (like a tab bar) that will be taken into account during height calculations.
+   
+   */
+  public func setup(_ bottomLayoutConstraint: NSLayoutConstraint,
+                    view: UIView, minMargin: CGFloat = 10,
+                    bottomLayoutGuide: UILayoutSupport? = nil) {
+    
     initialConstraintConstant = bottomLayoutConstraint.constant
     self.bottomLayoutConstraint = bottomLayoutConstraint
     self.minMargin = minMargin
     self.bottomLayoutGuide = bottomLayoutGuide
     self.viewToAnimate = view
-      
+    
     // Keyboard is already open when setup is called
     if let currentKeyboardHeight = keyboardObserver.currentKeyboardHeight
       where currentKeyboardHeight > 0 {
-        
+      
       keyboardWillAnimate(currentKeyboardHeight)
     }
   }
   
-  func keyboardWillAnimate(height: CGFloat) {
+  func keyboardWillAnimate(_ height: CGFloat) {
     guard let bottomLayoutConstraint = bottomLayoutConstraint else { return }
     
     let layoutGuideHeight = bottomLayoutGuide?.length ?? 0
@@ -102,7 +100,7 @@ Adjusts the length (constant value) of the bottom layout constraint when keyboar
     }
   }
   
-  func animateKeyboard(height: CGFloat) {
+  func animateKeyboard(_ height: CGFloat) {
     viewToAnimate?.layoutIfNeeded()
   }
 }
@@ -117,14 +115,12 @@ Adjusts the length (constant value) of the bottom layout constraint when keyboar
 import UIKit
 
 /**
-
-Detects appearance of software keyboard and calls the supplied closures that can be used for changing the layout and moving view from under the keyboard.
-
-*/
+ Detects appearance of software keyboard and calls the supplied closures that can be used for changing the layout and moving view from under the keyboard.
+ */
 public final class UnderKeyboardObserver: NSObject {
   public typealias AnimationCallback = (height: CGFloat) -> ()
   
-  let notificationCenter: NSNotificationCenter
+  let notificationCenter: NotificationCenter
   
   /// Function that will be called before the keyboard is shown and before animation is started.
   public var willAnimateKeyboard: AnimationCallback?
@@ -136,7 +132,7 @@ public final class UnderKeyboardObserver: NSObject {
   public var currentKeyboardHeight: CGFloat?
   
   public override init() {
-    notificationCenter = NSNotificationCenter.defaultCenter()
+    notificationCenter = NotificationCenter.default()
     super.init()
   }
   
@@ -148,8 +144,8 @@ public final class UnderKeyboardObserver: NSObject {
   public func start() {
     stop()
     
-    notificationCenter.addObserver(self, selector: #selector(UnderKeyboardObserver.keyboardNotification(_:)), name:UIKeyboardWillShowNotification, object: nil);
-    notificationCenter.addObserver(self, selector: #selector(UnderKeyboardObserver.keyboardNotification(_:)), name:UIKeyboardWillHideNotification, object: nil);
+    notificationCenter.addObserver(self, selector: #selector(UnderKeyboardObserver.keyboardNotification(_:)), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
+    notificationCenter.addObserver(self, selector: #selector(UnderKeyboardObserver.keyboardNotification(_:)), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
   }
   
   /// Stop listening for keyboard notifications.
@@ -159,29 +155,27 @@ public final class UnderKeyboardObserver: NSObject {
   
   // MARK: - Notification
   
-  func keyboardNotification(notification: NSNotification) {
-    let isShowing = notification.name == UIKeyboardWillShowNotification
+  func keyboardNotification(_ notification: Notification) {
+    let isShowing = notification.name == NSNotification.Name.UIKeyboardWillShow
     
-    if let userInfo = notification.userInfo,
-      let height = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue().height,
-      let duration: NSTimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
+    if let userInfo = (notification as NSNotification).userInfo,
+      let height = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue().height,
+      let duration: TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
       let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber {
-        
+      
       let correctedHeight = isShowing ? height : 0
       willAnimateKeyboard?(height: correctedHeight)
-        
-      UIView.animateWithDuration(duration,
-        delay: NSTimeInterval(0),
-        options: UIViewAnimationOptions(rawValue: animationCurveRawNSN.unsignedLongValue),
-        animations: { [weak self] in
-          self?.animateKeyboard?(height: correctedHeight)
+      
+      UIView.animate(withDuration: duration,
+                     delay: TimeInterval(0),
+                     options: UIViewAnimationOptions(rawValue: animationCurveRawNSN.uintValue),
+                     animations: { [weak self] in
+                      self?.animateKeyboard?(height: correctedHeight)
         },
-        completion: nil
+                     completion: nil
       )
-        
+      
       currentKeyboardHeight = correctedHeight
     }
   }
 }
-
-
