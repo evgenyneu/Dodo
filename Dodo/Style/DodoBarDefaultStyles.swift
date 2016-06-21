@@ -38,10 +38,10 @@ public struct DodoBarDefaultStyles {
   // ---------------------------
   
   
-  private static let _animationHideDuration: NSTimeInterval? = nil
+  private static let _animationHideDuration: TimeInterval? = nil
   
   /// Duration of hide animation. When nil it uses default duration for selected animation function.
-  public static var animationHideDuration: NSTimeInterval? = _animationHideDuration
+  public static var animationHideDuration: TimeInterval? = _animationHideDuration
   
   
   // ---------------------------
@@ -56,10 +56,10 @@ public struct DodoBarDefaultStyles {
   // ---------------------------
   
   
-  private static let _animationShowDuration: NSTimeInterval? = nil
+  private static let _animationShowDuration: TimeInterval? = nil
   
   /// Duration of show animation. When nil it uses default duration for selected animation function.
-  public static var animationShowDuration: NSTimeInterval? = _animationShowDuration
+  public static var animationShowDuration: TimeInterval? = _animationShowDuration
   
   
   // ---------------------------
@@ -83,7 +83,7 @@ public struct DodoBarDefaultStyles {
   // ---------------------------
   
   
-  private static let _borderWidth: CGFloat  = 1 / UIScreen.mainScreen().scale
+  private static let _borderWidth: CGFloat  = 1 / UIScreen.main().scale
   
   /// Border width of the bar.
   public static var borderWidth = _borderWidth
@@ -110,7 +110,7 @@ public struct DodoBarDefaultStyles {
   // ---------------------------
   
   
-  private static let _hideAfterDelaySeconds: NSTimeInterval = 0
+  private static let _hideAfterDelaySeconds: TimeInterval = 0
   
   /**
   

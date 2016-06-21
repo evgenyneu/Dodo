@@ -37,7 +37,7 @@ import UIKit
   
   /**
    
-   Shows the message bar with *.Success* preset. It can be used to indicate successful completion of an operation.
+   Shows the message bar with *.success* preset. It can be used to indicate successful completion of an operation.
    
    - parameter message: The text message to be shown.
    - parameter inView: view where the message is shown.
@@ -49,7 +49,7 @@ import UIKit
   
   /**
    
-   Shows the message bar with *.Error* preset. It can be used for showing critical error messages
+   Shows the message bar with *.error* preset. It can be used for showing critical error messages
    
    - parameter message: The text message to be shown.
    - parameter inView: view where the message is shown.
@@ -61,7 +61,7 @@ import UIKit
   
   /**
    
-   Shows the message bar with *.Warning* preset. It can be used for for showing warning messages.
+   Shows the message bar with *.warning* preset. It can be used for for showing warning messages.
    
    - parameter message: The text message to be shown.
    - parameter inView: view where the message is shown.

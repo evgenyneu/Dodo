@@ -21,7 +21,7 @@ public struct DodoLabelDefaultStyles {
   // ---------------------------
   
   
-  private static let _color = UIColor.whiteColor()
+  private static let _color = UIColor.white()
   
   /// Color of the label text.
   public static var color = _color
@@ -30,7 +30,7 @@ public struct DodoLabelDefaultStyles {
   // ---------------------------
   
   
-  private static let _font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+  private static let _font = UIFont.preferredFont(forTextStyle: UIFontTextStyleHeadline)
   
   /// Font of the label text.
   public static var font = _font

@@ -25,16 +25,16 @@ Timer is Canceling automatically when it is deallocated. You can also cancel it 
 */
 final class MoaTimer: NSObject {
   private let repeats: Bool
-  private var timer: NSTimer?
+  private var timer: Timer?
   private var callback: ((MoaTimer)->())?
   
-  private init(interval: NSTimeInterval, repeats: Bool = false, callback: (MoaTimer)->()) {
+  private init(interval: TimeInterval, repeats: Bool = false, callback: (MoaTimer)->()) {
     self.repeats = repeats
     
     super.init()
     
     self.callback = callback
-    timer = NSTimer.scheduledTimerWithTimeInterval(interval, target: self,
+    timer = Timer.scheduledTimer(timeInterval: interval, target: self,
       selector: #selector(MoaTimer.timerFired(_:)), userInfo: nil, repeats: repeats)
   }
   
@@ -64,13 +64,14 @@ final class MoaTimer: NSObject {
   - returns: callback A closure to be run by the timer.
   
   */
-  class func runAfter(interval: NSTimeInterval, repeats: Bool = false,
+  @discardableResult
+  class func runAfter(_ interval: TimeInterval, repeats: Bool = false,
     callback: (MoaTimer)->()) -> MoaTimer {
       
     return MoaTimer(interval: interval, repeats: repeats, callback: callback)
   }
   
-  func timerFired(timer: NSTimer) {
+  func timerFired(_ timer: Timer) {
     self.callback?(self)
     if !repeats { cancel() }
   }

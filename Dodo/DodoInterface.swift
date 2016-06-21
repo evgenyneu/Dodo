@@ -28,12 +28,12 @@ public protocol DodoInterface: class {
   
   /**
   
-  Shows the message bar with *.Success* preset. It can be used to indicate successful completion of an operation.
+  Shows the message bar with *.success* preset. It can be used to indicate successful completion of an operation.
   
   - parameter message: The text message to be shown.
   
   */
-  func success(message: String)
+  func success(_ message: String)
   
   /**
   
@@ -42,24 +42,25 @@ public protocol DodoInterface: class {
   - parameter message: The text message to be shown.
   
   */
-  func info(message: String)
+  func info(_ message: String)
+  
   /**
   
-  Shows the message bar with *.Warning* preset. It can be used for for showing warning messages.
+  Shows the message bar with *.warning* preset. It can be used for for showing warning messages.
   
   - parameter message: The text message to be shown.
   
   */
-  func warning(message: String)
+  func warning(_ message: String)
   
   /**
   
-  Shows the message bar with *.Warning* preset. It can be used for showing critical error messages
+  Shows the message bar with *.warning* preset. It can be used for showing critical error messages
   
   - parameter message: The text message to be shown.
   
   */
-  func error(message: String)
+  func error(_ message: String)
   
   /**
   
@@ -68,8 +69,8 @@ public protocol DodoInterface: class {
   - parameter message: The text message to be shown.
   
   */
-  func show(message: String)
+  func show(_ message: String)
   
-  /// Hide the message bar if it's currently open.
+  /// Hide the message bar if it's currently shown.
   func hide()
 }

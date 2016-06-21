@@ -29,6 +29,7 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
   /// Defines styles for the bar.
   var style = DodoStyle(parentStyle: DodoPresets.defaultPreset.style)
 
+  /// Creates an instance of Dodo class
   init(superview: UIView) {
     self.superview = superview
     
@@ -46,13 +47,13 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
   
   /**
   
-  Shows the message bar with *.Success* preset. It can be used to indicate successful completion of an operation.
+  Shows the message bar with *.success* preset. It can be used to indicate successful completion of an operation.
   
   - parameter message: The text message to be shown.
   
   */
-  func success(message: String) {
-    preset = .Success
+  func success(_ message: String) {
+    preset = .success
     show(message)
   }
   
@@ -63,32 +64,32 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
   - parameter message: The text message to be shown.
   
   */
-  func info(message: String) {
-    preset = .Info
+  func info(_ message: String) {
+    preset = .info
     show(message)
   }
   
   /**
   
-  Shows the message bar with *.Warning* preset. It can be used for for showing warning messages.
+  Shows the message bar with *.warning* preset. It can be used for for showing warning messages.
   
   - parameter message: The text message to be shown.
   
   */
-  func warning(message: String) {
-    preset = .Warning
+  func warning(_ message: String) {
+    preset = .warning
     show(message)
   }
   
   /**
   
-  Shows the message bar with *.Warning* preset. It can be used for showing critical error messages
+  Shows the message bar with *.warning* preset. It can be used for showing critical error messages
   
   - parameter message: The text message to be shown.
   
   */
-  func error(message: String) {
-    preset = .Error
+  func error(_ message: String) {
+    preset = .error
     show(message)
   }
   
@@ -99,7 +100,7 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
   - parameter message: The text message to be shown.
     
   */
-  func show(message: String) {
+  func show(_ message: String) {
     removeExistingBars()
     setupHideTimer()
 
@@ -110,11 +111,11 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
     bar.show(inSuperview: superview, withMessage: message)
   }
   
-  /// Hide the message bar if it's currently open.
+  /// Hide the message bar if it's currently shown.
   func hide() {
     hideTimer?.cancel()
     
-    toolbar?.hide(onAnimationCompleted: {})
+    toolbar?.hide({})
   }
   
   func listenForKeyboard() {
@@ -143,7 +144,7 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
     if style.bar.hideAfterDelaySeconds > 0 {
       hideTimer = MoaTimer.runAfter(style.bar.hideAfterDelaySeconds) { [weak self] timer in
         
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
           self?.hide()
         }
       }
@@ -152,7 +153,7 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
   
   // MARK: - Reacting to tap
   
-  private func setupHideOnTap(toolbar: UIView) {
+  private func setupHideOnTap(_ toolbar: UIView) {
     onTap = OnTap(view: toolbar, gesture: UITapGestureRecognizer()) { [weak self] in
       self?.didTapTheBar()
     }
@@ -169,7 +170,7 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
   
   // MARK: - DodoButtonViewDelegate
   
-  func buttonDelegateDidTap(buttonStyle: DodoButtonStyle) {
+  func buttonDelegateDidTap(_ buttonStyle: DodoButtonStyle) {
     if buttonStyle.hideOnTap {
       hide()
     }

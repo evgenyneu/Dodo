@@ -52,7 +52,7 @@ class DodoToolbarTests: XCTestCase {
     
     var completeHandlerCalled = false
     
-    obj.hide(onAnimationCompleted: {
+    obj.hide({
       completeHandlerCalled = true
     })
     
@@ -66,14 +66,14 @@ class DodoToolbarTests: XCTestCase {
     
     var completeHandlerCalled = false
     
-    obj.hide(onAnimationCompleted: {
+    obj.hide({
       completeHandlerCalled = true
     })
     
     animationHideCompleted = false
     completeHandlerCalled = false
     
-    obj.hide(onAnimationCompleted: {
+    obj.hide({
       completeHandlerCalled = true
     })
     
@@ -106,8 +106,8 @@ class DodoToolbarTests: XCTestCase {
   
   func testUsePresetStyle() {
     DodoBarDefaultStyles.cornerRadius = 13
-    DodoPresets.Success.style.bar.cornerRadius = 16
-    obj.style.parent = DodoPresets.Success.style
+    DodoPresets.success.style.bar.cornerRadius = 16
+    obj.style.parent = DodoPresets.success.style
     obj.show(inSuperview: superview, withMessage: "Hello World!")
     
     let toolbar = sabToolbar(superview)!
@@ -116,8 +116,8 @@ class DodoToolbarTests: XCTestCase {
   
   func testSetItemStyle() {
     DodoBarDefaultStyles.cornerRadius = 13
-    DodoPresets.Success.style.bar.cornerRadius = 16
-    obj.style.parent = DodoPresets.Success.style
+    DodoPresets.success.style.bar.cornerRadius = 16
+    obj.style.parent = DodoPresets.success.style
     obj.style.bar.cornerRadius = 17
     obj.show(inSuperview: superview, withMessage: "Hello World!")
     
@@ -172,7 +172,7 @@ class DodoToolbarTests: XCTestCase {
   }
   
   func testCreateLeftButtonWithIcon() {
-    obj.style.leftButton.icon = DodoIcons.Close
+    obj.style.leftButton.icon = DodoIcons.close
     obj.style.rightButton.image = nil
     
     obj.show(inSuperview: superview, withMessage: "hello")
@@ -185,7 +185,7 @@ class DodoToolbarTests: XCTestCase {
   
   func testRunTapCallbackClosures() {
     var tappedLeftButton = false
-    obj.style.leftButton.icon = DodoIcons.Close
+    obj.style.leftButton.icon = DodoIcons.close
     obj.style.leftButton.onTap = { tappedLeftButton = true }
     
     var tappedRightButton = false
@@ -215,7 +215,7 @@ class DodoToolbarTests: XCTestCase {
   // MARK: - Use button with a bundled icon
   
   func testUseBundledIcon() {
-    obj.style.leftButton.icon = DodoIcons.Close
+    obj.style.leftButton.icon = DodoIcons.close
     
     obj.show(inSuperview: superview, withMessage: "hello")
     

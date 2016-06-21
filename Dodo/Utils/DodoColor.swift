@@ -22,7 +22,7 @@ public class DodoColor {
   - returns: UIColor object.
   
   */
-  public class func fromHexString(rgba: String) -> UIColor {
+  public class func fromHexString(_ rgba: String) -> UIColor {
     var red: CGFloat   = 0.0
     var green: CGFloat = 0.0
     var blue: CGFloat  = 0.0
@@ -33,12 +33,12 @@ public class DodoColor {
       return UIColor()
     }
     
-    let index = rgba.startIndex.advancedBy(1)
-    let hex = rgba.substringFromIndex(index)
-    let scanner = NSScanner(string: hex)
+    let index = rgba.characters.index(rgba.startIndex, offsetBy: 1)
+    let hex = rgba.substring(from: index)
+    let scanner = Scanner(string: hex)
     var hexValue: CUnsignedLongLong = 0
     
-    if !scanner.scanHexLongLong(&hexValue) {
+    if !scanner.scanHexInt64(&hexValue) {
       print("Warning: DodoColor.fromHexString, error scanning hex value")
       return UIColor()
     }

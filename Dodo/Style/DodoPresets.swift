@@ -6,19 +6,19 @@ Defines the style presets for the bar.
 */
 public enum DodoPresets {
   /// A styling preset used for indicating successful completion of an operation. Usually styled with green color.
-  case Success
+  case success
   
   /// A styling preset for showing information messages, neutral in color.
-  case Info
+  case info
   
   /// A styling preset for showing warning messages. Can be styled with yellow/orange colors.
-  case Warning
+  case warning
   
   /// A styling preset for showing critical error messages. Usually styled with red color.
-  case Error
+  case error
   
   /// The preset is used by default for the bar if it's not set by the user.
-  static let defaultPreset = DodoPresets.Success
+  static let defaultPreset = DodoPresets.success
   
   /// The preset cache.
   private static var styles = [DodoPresets: DodoStyle]()
@@ -44,7 +44,7 @@ public enum DodoPresets {
   
   /// Reset the preset style to its initial state.
   public func reset() {
-    DodoPresets.styles.removeValueForKey(self)
+    DodoPresets.styles.removeValue(forKey: self)
   }
   
   private static func makeStyle(forPreset preset: DodoPresets) -> DodoStyle{
@@ -52,16 +52,16 @@ public enum DodoPresets {
     let style = DodoStyle()
     
     switch preset {
-    case .Success:
+    case .success:
       style.bar.backgroundColor = DodoColor.fromHexString("#00CC03C9")
       
-    case .Info:
+    case .info:
       style.bar.backgroundColor = DodoColor.fromHexString("#0057FF96")
       
-    case .Warning:
+    case .warning:
       style.bar.backgroundColor = DodoColor.fromHexString("#CEC411DD")
       
-    case .Error:
+    case .error:
       style.bar.backgroundColor = DodoColor.fromHexString("#FF0B0BCC")
     }
         

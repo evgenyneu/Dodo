@@ -18,7 +18,7 @@
 import UIKit
 
 /// A closure that is called for animation of the bar when it is being shown or hidden.
-public typealias DodoAnimation = (UIView, duration: NSTimeInterval?,
+public typealias DodoAnimation = (UIView, duration: TimeInterval?,
   locationTop: Bool, completed: DodoAnimationCompleted)->()
 
 /// A closure that is called by the animator when animation has finished.
@@ -36,22 +36,22 @@ import UIKit
 /// Collection of animation effects use for showing and hiding the notification bar.
 public enum DodoAnimations: String {
   /// Animation that fades the bar in/out.
-  case Fade = "Fade"
+  case fade = "Fade"
   
   /// Used for showing notification without animation.
-  case NoAnimation = "No animation"
+  case noAnimation = "No animation"
   
   /// Animation that rotates the bar around X axis in perspective with spring effect.
-  case Rotate = "Rotate"
+  case rotate = "Rotate"
   
   /// Animation that swipes the bar to/from the left with fade effect.
-  case SlideLeft = "Slide left"
+  case slideLeft = "Slide left"
   
   /// Animation that swipes the bar to/from the right with fade effect.
-  case SlideRight = "Slide right"
+  case slideRight = "Slide right"
   
   /// Animation that slides the bar in/out vertically.
-  case SlideVertically = "Slide vertically"
+  case slideVertically = "Slide vertically"
   
   /**
   
@@ -62,22 +62,22 @@ public enum DodoAnimations: String {
   */
   public var show: DodoAnimation {
     switch self {
-    case .Fade:
+    case .fade:
       return DodoAnimationsShow.fade
       
-    case .NoAnimation:
-      return DodoAnimations.noAnimation
+    case .noAnimation:
+      return DodoAnimations.doNoAnimation
       
-    case .Rotate:
+    case .rotate:
       return DodoAnimationsShow.rotate
       
-    case .SlideLeft:
+    case .slideLeft:
       return DodoAnimationsShow.slideLeft
       
-    case .SlideRight:
+    case .slideRight:
       return DodoAnimationsShow.slideRight
       
-    case .SlideVertically:
+    case .slideVertically:
       return DodoAnimationsShow.slideVertically
     }
   }
@@ -91,22 +91,22 @@ public enum DodoAnimations: String {
   */
   public var hide: DodoAnimation {
     switch self {
-    case .Fade:
+    case .fade:
       return DodoAnimationsHide.fade
       
-    case .NoAnimation:
-      return DodoAnimations.noAnimation
+    case .noAnimation:
+      return DodoAnimations.doNoAnimation
       
-    case .Rotate:
+    case .rotate:
       return DodoAnimationsHide.rotate
       
-    case .SlideLeft:
+    case .slideLeft:
       return DodoAnimationsHide.slideLeft
       
-    case .SlideRight:
+    case .slideRight:
       return DodoAnimationsHide.slideRight
       
-    case .SlideVertically:
+    case .slideVertically:
       return DodoAnimationsHide.slideVertically
     }
   }
@@ -120,14 +120,14 @@ public enum DodoAnimations: String {
   - parameter completed: A closure to be called after animation completes.
 
   */
-  static func noAnimation(view: UIView, duration: NSTimeInterval?, locationTop: Bool,
+  static func doNoAnimation(_ view: UIView, duration: TimeInterval?, locationTop: Bool,
     completed: DodoAnimationCompleted) {
       
     completed()
   }
   
   /// Helper function for fading the view in and out.
-  static func fade(duration: NSTimeInterval?, showView: Bool, view: UIView,
+  static func doFade(_ duration: TimeInterval?, showView: Bool, view: UIView,
     completed: DodoAnimationCompleted) {
       
     let actualDuration = duration ?? 0.5
@@ -136,7 +136,7 @@ public enum DodoAnimations: String {
 
     view.alpha = startAlpha
     
-    UIView.animateWithDuration(actualDuration,
+    UIView.animate(withDuration: actualDuration,
       animations: {
         view.alpha = endAlpha
       },
@@ -147,7 +147,7 @@ public enum DodoAnimations: String {
   }
   
   /// Helper function for sliding the view vertically
-  static func slideVertically(duration: NSTimeInterval?, showView: Bool, view: UIView,
+  static func doSlideVertically(_ duration: TimeInterval?, showView: Bool, view: UIView,
     locationTop: Bool, completed: DodoAnimationCompleted) {
     
     let actualDuration = duration ?? 0.5
@@ -158,17 +158,17 @@ public enum DodoAnimations: String {
     if locationTop {
       distance = view.frame.height + view.frame.origin.y
     } else {
-      distance = UIScreen.mainScreen().bounds.height - view.frame.origin.y
+      distance = UIScreen.main().bounds.height - view.frame.origin.y
     }
             
-    let transform = CGAffineTransformMakeTranslation(0, locationTop ? -distance : distance)
+    let transform = CGAffineTransform(translationX: 0, y: locationTop ? -distance : distance)
       
-    let start: CGAffineTransform = showView ? transform : CGAffineTransformIdentity
-    let end: CGAffineTransform = showView ? CGAffineTransformIdentity : transform
+    let start: CGAffineTransform = showView ? transform : CGAffineTransform.identity
+    let end: CGAffineTransform = showView ? CGAffineTransform.identity : transform
     
     view.transform = start
     
-    UIView.animateWithDuration(actualDuration,
+    UIView.animate(withDuration: actualDuration,
       delay: 0,
       usingSpringWithDamping: 1,
       initialSpringVelocity: 1,
@@ -185,7 +185,7 @@ public enum DodoAnimations: String {
   static weak var timer: MoaTimer?
   
   /// Animation that rotates the bar around X axis in perspective with spring effect.
-  static func rotate(duration: NSTimeInterval?, showView: Bool, view: UIView, completed: DodoAnimationCompleted) {
+  static func doRotate(_ duration: TimeInterval?, showView: Bool, view: UIView, completed: DodoAnimationCompleted) {
     
     let actualDuration = duration ?? 2.0
     let start: Double = showView ? Double(M_PI / 2) : 0
@@ -218,15 +218,15 @@ public enum DodoAnimations: String {
   }
   
   /// Animation that swipes the bar to the right with fade-out effect.
-  static func slide(duration: NSTimeInterval?, right: Bool, showView: Bool,
+  static func doSlide(_ duration: TimeInterval?, right: Bool, showView: Bool,
     view: UIView, completed: DodoAnimationCompleted) {
       
     let actualDuration = duration ?? 0.4
-    let distance = UIScreen.mainScreen().bounds.width
-    let transform = CGAffineTransformMakeTranslation(right ? distance : -distance, 0)
+    let distance = UIScreen.main().bounds.width
+    let transform = CGAffineTransform(translationX: right ? distance : -distance, y: 0)
     
-    let start: CGAffineTransform = showView ? transform : CGAffineTransformIdentity
-    let end: CGAffineTransform = showView ? CGAffineTransformIdentity : transform
+    let start: CGAffineTransform = showView ? transform : CGAffineTransform.identity
+    let end: CGAffineTransform = showView ? CGAffineTransform.identity : transform
     
     let alphaStart: CGFloat = showView ? 0.2 : 1
     let alphaEnd: CGFloat = showView ? 1 : 0.2
@@ -234,9 +234,9 @@ public enum DodoAnimations: String {
     view.transform = start
     view.alpha = alphaStart
       
-    UIView.animateWithDuration(actualDuration,
+    UIView.animate(withDuration: actualDuration,
       delay: 0,
-      options: UIViewAnimationOptions.CurveEaseOut,
+      options: UIViewAnimationOptions.curveEaseOut,
       animations: {
         view.transform = end
         view.alpha = alphaEnd
@@ -267,10 +267,10 @@ struct DodoAnimationsHide {
   - parameter completed: A closure to be called after animation completes.
   
   */
-  static func rotate(view: UIView, duration: NSTimeInterval?, locationTop: Bool,
+  static func rotate(_ view: UIView, duration: TimeInterval?, locationTop: Bool,
     completed: DodoAnimationCompleted) {
       
-    DodoAnimations.rotate(duration, showView: false, view: view, completed: completed)
+    DodoAnimations.doRotate(duration, showView: false, view: view, completed: completed)
   }
   
   /**
@@ -281,10 +281,10 @@ struct DodoAnimationsHide {
   - parameter completed: A closure to be called after animation completes.
   
   */
-  static func slideLeft(view: UIView, duration: NSTimeInterval?, locationTop: Bool,
+  static func slideLeft(_ view: UIView, duration: TimeInterval?, locationTop: Bool,
     completed: DodoAnimationCompleted) {
       
-    DodoAnimations.slide(duration, right: false, showView: false, view: view, completed: completed)
+    DodoAnimations.doSlide(duration, right: false, showView: false, view: view, completed: completed)
   }
   
   /**
@@ -295,10 +295,10 @@ struct DodoAnimationsHide {
   - parameter completed: A closure to be called after animation completes.
   
   */
-  static func slideRight(view: UIView, duration: NSTimeInterval?, locationTop: Bool,
+  static func slideRight(_ view: UIView, duration: TimeInterval?, locationTop: Bool,
     completed: DodoAnimationCompleted) {
       
-    DodoAnimations.slide(duration, right: true, showView: false, view: view, completed: completed)
+    DodoAnimations.doSlide(duration, right: true, showView: false, view: view, completed: completed)
   }
   
   /**
@@ -309,10 +309,10 @@ struct DodoAnimationsHide {
   - parameter completed: A closure to be called after animation completes.
   
   */
-  static func fade(view: UIView, duration: NSTimeInterval?, locationTop: Bool,
+  static func fade(_ view: UIView, duration: TimeInterval?, locationTop: Bool,
     completed: DodoAnimationCompleted) {
       
-    DodoAnimations.fade(duration, showView: false, view: view, completed: completed)
+    DodoAnimations.doFade(duration, showView: false, view: view, completed: completed)
   }
   
   /**
@@ -323,10 +323,10 @@ struct DodoAnimationsHide {
   - parameter completed: A closure to be called after animation completes.
   
   */
-  static func slideVertically(view: UIView, duration: NSTimeInterval?, locationTop: Bool,
+  static func slideVertically(_ view: UIView, duration: TimeInterval?, locationTop: Bool,
     completed: DodoAnimationCompleted) {
       
-      DodoAnimations.slideVertically(duration, showView: false, view: view,
+      DodoAnimations.doSlideVertically(duration, showView: false, view: view,
         locationTop: locationTop, completed: completed)
   }
 }
@@ -350,10 +350,10 @@ struct DodoAnimationsShow {
   - parameter completed: A closure to be called after animation completes.
   
   */
-  static func rotate(view: UIView, duration: NSTimeInterval?,
+  static func rotate(_ view: UIView, duration: TimeInterval?,
     locationTop: Bool, completed: DodoAnimationCompleted) {
       
-    DodoAnimations.rotate(duration, showView: true, view: view, completed: completed)
+    DodoAnimations.doRotate(duration, showView: true, view: view, completed: completed)
   }
   
   /**
@@ -364,10 +364,10 @@ struct DodoAnimationsShow {
   - parameter completed: A closure to be called after animation completes.
   
   */
-  static func slideLeft(view: UIView, duration: NSTimeInterval?, locationTop: Bool,
+  static func slideLeft(_ view: UIView, duration: TimeInterval?, locationTop: Bool,
     completed: DodoAnimationCompleted) {
       
-    DodoAnimations.slide(duration, right: false, showView: true, view: view, completed: completed)
+    DodoAnimations.doSlide(duration, right: false, showView: true, view: view, completed: completed)
   }
   
   /**
@@ -378,10 +378,10 @@ struct DodoAnimationsShow {
   - parameter completed: A closure to be called after animation completes.
   
   */
-  static func slideRight(view: UIView, duration: NSTimeInterval?, locationTop: Bool,
+  static func slideRight(_ view: UIView, duration: TimeInterval?, locationTop: Bool,
     completed: DodoAnimationCompleted) {
       
-    DodoAnimations.slide(duration, right: true, showView: true, view: view, completed: completed)
+    DodoAnimations.doSlide(duration, right: true, showView: true, view: view, completed: completed)
   }
   
   /**
@@ -392,10 +392,10 @@ struct DodoAnimationsShow {
   - parameter completed: A closure to be called after animation completes.
   
   */
-  static func fade(view: UIView, duration: NSTimeInterval?, locationTop: Bool,
+  static func fade(_ view: UIView, duration: TimeInterval?, locationTop: Bool,
     completed: DodoAnimationCompleted) {
       
-    DodoAnimations.fade(duration, showView: true, view: view, completed: completed)
+    DodoAnimations.doFade(duration, showView: true, view: view, completed: completed)
   }
   
   /**
@@ -406,10 +406,10 @@ struct DodoAnimationsShow {
   - parameter completed: A closure to be called after animation completes.
   
   */
-  static func slideVertically(view: UIView, duration: NSTimeInterval?, locationTop: Bool,
+  static func slideVertically(_ view: UIView, duration: TimeInterval?, locationTop: Bool,
     completed: DodoAnimationCompleted) {
       
-    DodoAnimations.slideVertically(duration, showView: true, view: view,
+    DodoAnimations.doSlideVertically(duration, showView: true, view: view,
       locationTop: locationTop,completed: completed)
   }
 }
@@ -450,7 +450,7 @@ class DodoButtonView: UIImageView {
   }
   
   // Create button views for given button styles.
-  static func createMany(styles: [DodoButtonStyle]) -> [DodoButtonView] {
+  static func createMany(_ styles: [DodoButtonStyle]) -> [DodoButtonView] {
       
     if !haveButtons(styles) { return [] }
     
@@ -461,14 +461,14 @@ class DodoButtonView: UIImageView {
     }
   }
   
-  static func haveButtons(styles: [DodoButtonStyle]) -> Bool {
+  static func haveButtons(_ styles: [DodoButtonStyle]) -> Bool {
     let hasImages = styles.filter({ $0.image != nil }).count > 0
     let hasIcons = styles.filter({ $0.icon != nil }).count > 0
 
     return hasImages || hasIcons
   }
   
-  func doLayout(onLeftSide onLeftSide: Bool) {
+  func doLayout(onLeftSide: Bool) {
     precondition(delegate != nil, "Button view delegate can not be nil")
     translatesAutoresizingMaskIntoConstraints = false
     
@@ -477,7 +477,7 @@ class DodoButtonView: UIImageView {
     TegAutolayoutConstraints.height(self, value: style.size.height)
     
     if let superview = superview {
-      let alignAttribute = onLeftSide ? NSLayoutAttribute.Left : NSLayoutAttribute.Right
+      let alignAttribute = onLeftSide ? NSLayoutAttribute.left : NSLayoutAttribute.right
       
       let marginHorizontal = onLeftSide ? style.horizontalMarginToBar : -style.horizontalMarginToBar
       
@@ -497,38 +497,38 @@ class DodoButtonView: UIImageView {
   }
   
   /// Increase the hitsize of the image view if it's less than 44px for easier tapping.
-  override func pointInside(point: CGPoint, withEvent event: UIEvent?) -> Bool {
+  override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
     let oprimizedBounds = DodoTouchTarget.optimize(bounds)
     return oprimizedBounds.contains(point)
   }
   
   /// Returns the image supplied by user or create one from the icon
-  class func image(style: DodoButtonStyle) -> UIImage? {
+  class func image(_ style: DodoButtonStyle) -> UIImage? {
     if style.image != nil {
       return style.image
     }
     
     if let icon = style.icon {
-      let bundle = NSBundle(forClass: self)
+      let bundle = Bundle(for: self)
       let imageName = icon.rawValue
       
-      return UIImage(named: imageName, inBundle: bundle, compatibleWithTraitCollection: nil)
+      return UIImage(named: imageName, in: bundle, compatibleWith: nil)
     }
     
     return nil
   }
   
-  private func applyStyle(imageIn: UIImage) {
+  private func applyStyle(_ imageIn: UIImage) {
     var imageToShow = imageIn
     if let tintColorToShow = style.tintColor {
       // Replace image colors with the specified tint color
-      imageToShow = imageToShow.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+      imageToShow = imageToShow.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
       tintColor = tintColorToShow
     }
     
     layer.minificationFilter = kCAFilterTrilinear // make the image crisp
     image = imageToShow
-    contentMode = UIViewContentMode.ScaleAspectFit
+    contentMode = UIViewContentMode.scaleAspectFit
     
     // Make button accessible
     if let accessibilityLabelToShow = style.accessibilityLabel {
@@ -558,7 +558,7 @@ class DodoButtonView: UIImageView {
 // ----------------------------
 
 protocol DodoButtonViewDelegate: class {
-  func buttonDelegateDidTap(buttonStyle: DodoButtonStyle)
+  func buttonDelegateDidTap(_ buttonStyle: DodoButtonStyle)
 }
 
 
@@ -587,7 +587,7 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
   private weak var superview: UIView!
   private var hideTimer: MoaTimer?
   
- // Gesture handler that hides the bar when it is tapped
+  // Gesture handler that hides the bar when it is tapped
   var onTap: OnTap?
   
   /// Specify optional layout guide for positioning the bar view.
@@ -599,6 +599,7 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
   /// Defines styles for the bar.
   var style = DodoStyle(parentStyle: DodoPresets.defaultPreset.style)
 
+  /// Creates an instance of Dodo class
   init(superview: UIView) {
     self.superview = superview
     
@@ -616,13 +617,13 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
   
   /**
   
-  Shows the message bar with *.Success* preset. It can be used to indicate successful completion of an operation.
+  Shows the message bar with *.success* preset. It can be used to indicate successful completion of an operation.
   
   - parameter message: The text message to be shown.
   
   */
-  func success(message: String) {
-    preset = .Success
+  func success(_ message: String) {
+    preset = .success
     show(message)
   }
   
@@ -633,32 +634,32 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
   - parameter message: The text message to be shown.
   
   */
-  func info(message: String) {
-    preset = .Info
+  func info(_ message: String) {
+    preset = .info
     show(message)
   }
   
   /**
   
-  Shows the message bar with *.Warning* preset. It can be used for for showing warning messages.
+  Shows the message bar with *.warning* preset. It can be used for for showing warning messages.
   
   - parameter message: The text message to be shown.
   
   */
-  func warning(message: String) {
-    preset = .Warning
+  func warning(_ message: String) {
+    preset = .warning
     show(message)
   }
   
   /**
   
-  Shows the message bar with *.Warning* preset. It can be used for showing critical error messages
+  Shows the message bar with *.warning* preset. It can be used for showing critical error messages
   
   - parameter message: The text message to be shown.
   
   */
-  func error(message: String) {
-    preset = .Error
+  func error(_ message: String) {
+    preset = .error
     show(message)
   }
   
@@ -669,7 +670,7 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
   - parameter message: The text message to be shown.
     
   */
-  func show(message: String) {
+  func show(_ message: String) {
     removeExistingBars()
     setupHideTimer()
 
@@ -680,11 +681,11 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
     bar.show(inSuperview: superview, withMessage: message)
   }
   
-  /// Hide the message bar if it's currently open.
+  /// Hide the message bar if it's currently shown.
   func hide() {
     hideTimer?.cancel()
     
-    toolbar?.hide(onAnimationCompleted: {})
+    toolbar?.hide({})
   }
   
   func listenForKeyboard() {
@@ -713,7 +714,7 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
     if style.bar.hideAfterDelaySeconds > 0 {
       hideTimer = MoaTimer.runAfter(style.bar.hideAfterDelaySeconds) { [weak self] timer in
         
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
           self?.hide()
         }
       }
@@ -722,7 +723,7 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
   
   // MARK: - Reacting to tap
   
-  private func setupHideOnTap(toolbar: UIView) {
+  private func setupHideOnTap(_ toolbar: UIView) {
     onTap = OnTap(view: toolbar, gesture: UITapGestureRecognizer()) { [weak self] in
       self?.didTapTheBar()
     }
@@ -739,7 +740,7 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
   
   // MARK: - DodoButtonViewDelegate
   
-  func buttonDelegateDidTap(buttonStyle: DodoButtonStyle) {
+  func buttonDelegateDidTap(_ buttonStyle: DodoButtonStyle) {
     if buttonStyle.hideOnTap {
       hide()
     }
@@ -793,12 +794,12 @@ public protocol DodoInterface: class {
   
   /**
   
-  Shows the message bar with *.Success* preset. It can be used to indicate successful completion of an operation.
+  Shows the message bar with *.success* preset. It can be used to indicate successful completion of an operation.
   
   - parameter message: The text message to be shown.
   
   */
-  func success(message: String)
+  func success(_ message: String)
   
   /**
   
@@ -807,24 +808,25 @@ public protocol DodoInterface: class {
   - parameter message: The text message to be shown.
   
   */
-  func info(message: String)
+  func info(_ message: String)
+  
   /**
   
-  Shows the message bar with *.Warning* preset. It can be used for for showing warning messages.
+  Shows the message bar with *.warning* preset. It can be used for for showing warning messages.
   
   - parameter message: The text message to be shown.
   
   */
-  func warning(message: String)
+  func warning(_ message: String)
   
   /**
   
-  Shows the message bar with *.Warning* preset. It can be used for showing critical error messages
+  Shows the message bar with *.warning* preset. It can be used for showing critical error messages
   
   - parameter message: The text message to be shown.
   
   */
-  func error(message: String)
+  func error(_ message: String)
   
   /**
   
@@ -833,9 +835,9 @@ public protocol DodoInterface: class {
   - parameter message: The text message to be shown.
   
   */
-  func show(message: String)
+  func show(_ message: String)
   
-  /// Hide the message bar if it's currently open.
+  /// Hide the message bar if it's currently shown.
   func hide()
 }
 
@@ -907,7 +909,7 @@ class DodoToolbar: UIView {
       locationTop: style.bar.locationTop, completed: {})
   }
   
-  func hide(onAnimationCompleted onAnimationCompleted: ()->()) {
+  func hide(_ onAnimationCompleted: ()->()) {
     // Respond only to the first hide() call
     if didCallHide { return }
     didCallHide = true
@@ -922,17 +924,17 @@ class DodoToolbar: UIView {
     
   // MARK: - Label
   
-  private func createLabel(message: String, withButtons buttons: [UIView]) {
+  private func createLabel(_ message: String, withButtons buttons: [UIView]) {
     let label = UILabel()
     
     label.font = style.label.font
     label.text = message
     label.textColor = style.label.color
-    label.textAlignment = NSTextAlignment.Center
+    label.textAlignment = NSTextAlignment.center
     label.numberOfLines = style.label.numberOfLines
     
     if style.bar.debugMode {
-      label.backgroundColor = UIColor.redColor()
+      label.backgroundColor = UIColor.red()
     }
     
     if let shadowColor = style.label.shadowColor {
@@ -944,7 +946,7 @@ class DodoToolbar: UIView {
     layoutLabel(label, withButtons: buttons)
   }
   
-  private func layoutLabel(label: UILabel, withButtons buttons: [UIView]) {
+  private func layoutLabel(_ label: UILabel, withButtons buttons: [UIView]) {
     label.translatesAutoresizingMaskIntoConstraints = false
     
     // Stretch the label vertically
@@ -962,7 +964,7 @@ class DodoToolbar: UIView {
     }
   }
   
-  private func layoutLabelWithButtons(label: UILabel, withButtons buttons: [UIView]) {
+  private func layoutLabelWithButtons(_ label: UILabel, withButtons buttons: [UIView]) {
     if buttons.count != 2 { return }
     
     let views = [buttons[0], label, buttons[1]]
@@ -981,13 +983,13 @@ class DodoToolbar: UIView {
     
     let buttonViews = DodoButtonView.createMany(buttonStyles)
     
-    for (index, button) in buttonViews.enumerate() {
+    for (index, button) in buttonViews.enumerated() {
       addSubview(button)
       button.delegate = buttonViewDelegate
       button.doLayout(onLeftSide: index == 0)
 
       if style.bar.debugMode {
-        button.backgroundColor = UIColor.yellowColor()
+        button.backgroundColor = UIColor.yellow()
       }
     }
     
@@ -1002,7 +1004,7 @@ class DodoToolbar: UIView {
     layer.masksToBounds = true
     
     if let borderColor = style.bar.borderColor where style.bar.borderWidth > 0 {
-      layer.borderColor = borderColor.CGColor
+      layer.borderColor = borderColor.cgColor
       layer.borderWidth = style.bar.borderWidth
     }
   }
@@ -1035,7 +1037,7 @@ class DodoToolbar: UIView {
         // Align the top/bottom of the toolbar with the top/bottom of its superview
         verticalConstraints = TegAutolayoutConstraints.alignSameAttributes(superview, toItem: self,
           constraintContainer: superview,
-          attribute: style.bar.locationTop ? NSLayoutAttribute.Top : NSLayoutAttribute.Bottom,
+          attribute: style.bar.locationTop ? NSLayoutAttribute.top : NSLayoutAttribute.bottom,
           margin: verticalMargin)
       }
       
@@ -1044,7 +1046,7 @@ class DodoToolbar: UIView {
   }
   
   // Moves the message bar from under the keyboard
-  private func setupKeyboardEvader(verticalConstraints: [NSLayoutConstraint]) {
+  private func setupKeyboardEvader(_ verticalConstraints: [NSLayoutConstraint]) {
     if let bottomConstraint = verticalConstraints.first,
       superview = superview
       where !style.bar.locationTop {
@@ -1071,7 +1073,7 @@ The function is used in pointInside(point: CGPoint, withEvent event: UIEvent?) o
 
 */
 struct DodoTouchTarget {
-  static func optimize(bounds: CGRect) -> CGRect {
+  static func optimize(_ bounds: CGRect) -> CGRect {
     let recommendedHitSize: CGFloat = 44
     
     var hitWidthIncrease:CGFloat = recommendedHitSize - bounds.width
@@ -1080,9 +1082,8 @@ struct DodoTouchTarget {
     if hitWidthIncrease < 0 { hitWidthIncrease = 0 }
     if hitHeightIncrease < 0 { hitHeightIncrease = 0 }
     
-    let extendedBounds: CGRect = CGRectInset(bounds,
-      -hitWidthIncrease / 2,
-      -hitHeightIncrease / 2)
+    let extendedBounds: CGRect = bounds.insetBy(dx: -hitWidthIncrease / 2,
+      dy: -hitHeightIncrease / 2)
     
     return extendedBounds
   }
@@ -1103,10 +1104,10 @@ Collection of icons included with Dodo library.
 
 public enum DodoIcons: String {
   /// Icon for closing the bar.
-  case Close = "Close"
+  case close = "Close"
   
   /// Icon for reloading.
-  case Reload = "Reload"
+  case reload = "Reload"
 }
 
 
@@ -1152,12 +1153,19 @@ public class DodoMock: DodoInterface {
   /// This property is used in unit tests to verify which messages were displayed in the message bar.
   public var results = DodoMockResults()
   
+  /// Specify optional layout guide for positioning the bar view.
   public var topLayoutGuide: UILayoutSupport?
+  
+  /// Specify optional layout guide for positioning the bar view.
   public var bottomLayoutGuide: UILayoutSupport?
+  
+  /// Defines styles for the bar.
   public var style = DodoStyle(parentStyle: DodoPresets.defaultPreset.style)
   
+  /// Creates an instance of DodoMock class
   public init() { }
   
+  /// Changes the style preset for the bar widget.
   public var preset: DodoPresets = DodoPresets.defaultPreset {
     didSet {
       if preset != oldValue  {
@@ -1166,32 +1174,68 @@ public class DodoMock: DodoInterface {
     }
   }
   
-  public func success(message: String) {
-    preset = .Success
+  /**
+   
+   Shows the message bar with *.success* preset. It can be used to indicate successful completion of an operation.
+   
+   - parameter message: The text message to be shown.
+   
+   */
+  public func success(_ message: String) {
+    preset = .success
     show(message)
   }
   
-  public func info(message: String) {
-    preset = .Info
+  /**
+   
+   Shows the message bar with *.Info* preset. It can be used for showing information messages that have neutral emotional value.
+   
+   - parameter message: The text message to be shown.
+   
+   */
+  public func info(_ message: String) {
+    preset = .info
     show(message)
   }
   
-  public func warning(message: String) {
-    preset = .Warning
+  /**
+   
+   Shows the message bar with *.warning* preset. It can be used for for showing warning messages.
+   
+   - parameter message: The text message to be shown.
+   
+   */
+  public func warning(_ message: String) {
+    preset = .warning
     show(message)
   }
   
-  public func error(message: String) {
-    preset = .Error
+  /**
+   
+   Shows the message bar with *.warning* preset. It can be used for showing critical error messages
+   
+   - parameter message: The text message to be shown.
+   
+   */
+  public func error(_ message: String) {
+    preset = .error
     show(message)
   }
   
-  public func show(message: String) {
+  /**
+   
+   Shows the message bar. Set `preset` property to change the appearance of the message bar, or use the shortcut methods: `success`, `info`, `warning` and `error`.
+   
+   - parameter message: The text message to be shown.
+   
+   */
+  public func show(_ message: String) {
     let mockMessage = DodoMockMessage(preset: preset, message: message)
     results.messages.append(mockMessage)
     results.visible = true
   }
   
+  /// Hide the message bar if it's currently shown.
   public func hide() {
     results.visible = false
   }
@@ -1229,22 +1273,22 @@ Used in unit tests to verify the messages that were shown in the message bar.
 public struct DodoMockResults {
   /// An array of success messages displayed in the message bar.
   public var success: [String] {
-    return messages.filter({ $0.preset == DodoPresets.Success }).map({ $0.message })
+    return messages.filter({ $0.preset == DodoPresets.success }).map({ $0.message })
   }
   
   /// An array of information messages displayed in the message bar.
   public var info: [String] {
-    return messages.filter({ $0.preset == DodoPresets.Info }).map({ $0.message })
+    return messages.filter({ $0.preset == DodoPresets.info }).map({ $0.message })
   }
   
   /// An array of warning messages displayed in the message bar.
   public var warning: [String] {
-    return messages.filter({ $0.preset == DodoPresets.Warning }).map({ $0.message })
+    return messages.filter({ $0.preset == DodoPresets.warning }).map({ $0.message })
   }
   
   /// An array of error messages displayed in the message bar.
   public var errors: [String] {
-    return messages.filter({ $0.preset == DodoPresets.Error }).map({ $0.message })
+    return messages.filter({ $0.preset == DodoPresets.error }).map({ $0.message })
   }
   
   /// Total number of messages shown.
@@ -1305,10 +1349,10 @@ public struct DodoBarDefaultStyles {
   // ---------------------------
   
   
-  private static let _animationHideDuration: NSTimeInterval? = nil
+  private static let _animationHideDuration: TimeInterval? = nil
   
   /// Duration of hide animation. When nil it uses default duration for selected animation function.
-  public static var animationHideDuration: NSTimeInterval? = _animationHideDuration
+  public static var animationHideDuration: TimeInterval? = _animationHideDuration
   
   
   // ---------------------------
@@ -1323,10 +1367,10 @@ public struct DodoBarDefaultStyles {
   // ---------------------------
   
   
-  private static let _animationShowDuration: NSTimeInterval? = nil
+  private static let _animationShowDuration: TimeInterval? = nil
   
   /// Duration of show animation. When nil it uses default duration for selected animation function.
-  public static var animationShowDuration: NSTimeInterval? = _animationShowDuration
+  public static var animationShowDuration: TimeInterval? = _animationShowDuration
   
   
   // ---------------------------
@@ -1350,7 +1394,7 @@ public struct DodoBarDefaultStyles {
   // ---------------------------
   
   
-  private static let _borderWidth: CGFloat  = 1 / UIScreen.mainScreen().scale
+  private static let _borderWidth: CGFloat  = 1 / UIScreen.main().scale
   
   /// Border width of the bar.
   public static var borderWidth = _borderWidth
@@ -1377,7 +1421,7 @@ public struct DodoBarDefaultStyles {
   // ---------------------------
   
   
-  private static let _hideAfterDelaySeconds: NSTimeInterval = 0
+  private static let _hideAfterDelaySeconds: TimeInterval = 0
   
   /**
   
@@ -1480,10 +1524,10 @@ public class DodoBarStyle {
   
   // ---------------------------
   
-  private var _animationHideDuration: NSTimeInterval?
+  private var _animationHideDuration: TimeInterval?
   
   /// Duration of hide animation. When nil it uses default duration for selected animation function.
-  public var animationHideDuration: NSTimeInterval? {
+  public var animationHideDuration: TimeInterval? {
     get {
       return (_animationHideDuration ?? parent?.animationHideDuration) ??
         DodoBarDefaultStyles.animationHideDuration
@@ -1511,10 +1555,10 @@ public class DodoBarStyle {
   
   // ---------------------------
   
-  private var _animationShowDuration: NSTimeInterval?
+  private var _animationShowDuration: TimeInterval?
   
   /// Duration of show animation. When nil it uses default duration for selected animation function.
-  public var animationShowDuration: NSTimeInterval? {
+  public var animationShowDuration: TimeInterval? {
     get {
       return (_animationShowDuration ?? parent?.animationShowDuration) ??
         DodoBarDefaultStyles.animationShowDuration
@@ -1602,7 +1646,7 @@ public class DodoBarStyle {
   
   // ---------------------------
   
-  private var _hideAfterDelaySeconds: NSTimeInterval?
+  private var _hideAfterDelaySeconds: TimeInterval?
   
   /**
   
@@ -1610,7 +1654,7 @@ public class DodoBarStyle {
   If nil the bar is kept on screen.
   
   */
-  public var hideAfterDelaySeconds: NSTimeInterval {
+  public var hideAfterDelaySeconds: TimeInterval {
     get {
       return _hideAfterDelaySeconds ?? parent?.hideAfterDelaySeconds ??
         DodoBarDefaultStyles.hideAfterDelaySeconds
@@ -1984,7 +2028,7 @@ public struct DodoLabelDefaultStyles {
   // ---------------------------
   
   
-  private static let _color = UIColor.whiteColor()
+  private static let _color = UIColor.white()
   
   /// Color of the label text.
   public static var color = _color
@@ -1993,7 +2037,7 @@ public struct DodoLabelDefaultStyles {
   // ---------------------------
   
   
-  private static let _font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+  private static let _font = UIFont.preferredFont(forTextStyle: UIFontTextStyleHeadline)
   
   /// Font of the label text.
   public static var font = _font
@@ -2177,19 +2221,19 @@ Defines the style presets for the bar.
 */
 public enum DodoPresets {
   /// A styling preset used for indicating successful completion of an operation. Usually styled with green color.
-  case Success
+  case success
   
   /// A styling preset for showing information messages, neutral in color.
-  case Info
+  case info
   
   /// A styling preset for showing warning messages. Can be styled with yellow/orange colors.
-  case Warning
+  case warning
   
   /// A styling preset for showing critical error messages. Usually styled with red color.
-  case Error
+  case error
   
   /// The preset is used by default for the bar if it's not set by the user.
-  static let defaultPreset = DodoPresets.Success
+  static let defaultPreset = DodoPresets.success
   
   /// The preset cache.
   private static var styles = [DodoPresets: DodoStyle]()
@@ -2215,7 +2259,7 @@ public enum DodoPresets {
   
   /// Reset the preset style to its initial state.
   public func reset() {
-    DodoPresets.styles.removeValueForKey(self)
+    DodoPresets.styles.removeValue(forKey: self)
   }
   
   private static func makeStyle(forPreset preset: DodoPresets) -> DodoStyle{
@@ -2223,16 +2267,16 @@ public enum DodoPresets {
     let style = DodoStyle()
     
     switch preset {
-    case .Success:
+    case .success:
       style.bar.backgroundColor = DodoColor.fromHexString("#00CC03C9")
       
-    case .Info:
+    case .info:
       style.bar.backgroundColor = DodoColor.fromHexString("#0057FF96")
       
-    case .Warning:
+    case .warning:
       style.bar.backgroundColor = DodoColor.fromHexString("#CEC411DD")
       
-    case .Error:
+    case .error:
       style.bar.backgroundColor = DodoColor.fromHexString("#FF0B0BCC")
     }
         
@@ -2417,7 +2461,7 @@ public class DodoColor {
   - returns: UIColor object.
   
   */
-  public class func fromHexString(rgba: String) -> UIColor {
+  public class func fromHexString(_ rgba: String) -> UIColor {
     var red: CGFloat   = 0.0
     var green: CGFloat = 0.0
     var blue: CGFloat  = 0.0
@@ -2428,12 +2472,12 @@ public class DodoColor {
       return UIColor()
     }
     
-    let index = rgba.startIndex.advancedBy(1)
-    let hex = rgba.substringFromIndex(index)
-    let scanner = NSScanner(string: hex)
+    let index = rgba.characters.index(rgba.startIndex, offsetBy: 1)
+    let hex = rgba.substring(from: index)
+    let scanner = Scanner(string: hex)
     var hexValue: CUnsignedLongLong = 0
     
-    if !scanner.scanHexLongLong(&hexValue) {
+    if !scanner.scanHexInt64(&hexValue) {
       print("Warning: DodoColor.fromHexString, error scanning hex value")
       return UIColor()
     }
@@ -2490,16 +2534,16 @@ Timer is Canceling automatically when it is deallocated. You can also cancel it 
 */
 final class MoaTimer: NSObject {
   private let repeats: Bool
-  private var timer: NSTimer?
+  private var timer: Timer?
   private var callback: ((MoaTimer)->())?
   
-  private init(interval: NSTimeInterval, repeats: Bool = false, callback: (MoaTimer)->()) {
+  private init(interval: TimeInterval, repeats: Bool = false, callback: (MoaTimer)->()) {
     self.repeats = repeats
     
     super.init()
     
     self.callback = callback
-    timer = NSTimer.scheduledTimerWithTimeInterval(interval, target: self,
+    timer = Timer.scheduledTimer(timeInterval: interval, target: self,
       selector: #selector(MoaTimer.timerFired(_:)), userInfo: nil, repeats: repeats)
   }
   
@@ -2529,13 +2573,14 @@ final class MoaTimer: NSObject {
   - returns: callback A closure to be run by the timer.
   
   */
-  class func runAfter(interval: NSTimeInterval, repeats: Bool = false,
+  @discardableResult
+  class func runAfter(_ interval: TimeInterval, repeats: Bool = false,
     callback: (MoaTimer)->()) -> MoaTimer {
       
     return MoaTimer(interval: interval, repeats: repeats, callback: callback)
   }
   
-  func timerFired(timer: NSTimer) {
+  func timerFired(_ timer: Timer) {
     self.callback?(self)
     if !repeats { cancel() }
   }
@@ -2562,11 +2607,11 @@ class OnTap: NSObject {
     self.closure = closure
     super.init()
     view.addGestureRecognizer(gesture)
-    view.userInteractionEnabled = true
+    view.isUserInteractionEnabled = true
     gesture.addTarget(self, action: #selector(OnTap.didTap(_:)))
   }
 
-  func didTap(gesture: UIGestureRecognizer) {
+  func didTap(_ gesture: UIGestureRecognizer) {
     closure()
   }
 }
@@ -2589,7 +2634,7 @@ https://github.com/evgenyneu/SpringAnimationCALayer
 */
 class SpringAnimationCALayer {
   // Animates layer with spring effect.
-  class func animate(layer: CALayer,
+  class func animate(_ layer: CALayer,
     keypath: String,
     duration: CFTimeInterval,
     usingSpringWithDamping: Double,
@@ -2606,12 +2651,12 @@ class SpringAnimationCALayer {
         initialSpringVelocity: initialSpringVelocity,
         fromValue: fromValue, toValue: toValue)
       
-      layer.addAnimation(animation, forKey: keypath + " spring animation")
+      layer.add(animation, forKey: keypath + " spring animation")
       CATransaction.commit()
   }
   
   // Creates CAKeyframeAnimation object
-  class func create(keypath: String,
+  class func create(_ keypath: String,
     duration: CFTimeInterval,
     usingSpringWithDamping: Double,
     initialSpringVelocity: Double,
@@ -2632,11 +2677,11 @@ class SpringAnimationCALayer {
       return animation
   }
   
-  class func animationValues(fromValue: Double, toValue: Double,
+  class func animationValues(_ fromValue: Double, toValue: Double,
     usingSpringWithDamping: Double, initialSpringVelocity: Double) -> [Double]{
       
       let numOfPoints = 1000
-      var values = [Double](count: numOfPoints, repeatedValue: 0.0)
+      var values = [Double](repeating: 0.0, count: numOfPoints)
       
       let distanceBetweenValues = toValue - fromValue
       
@@ -2652,7 +2697,7 @@ class SpringAnimationCALayer {
       return values
   }
   
-  private class func animationValuesNormalized(x: Double, usingSpringWithDamping: Double,
+  private class func animationValuesNormalized(_ x: Double, usingSpringWithDamping: Double,
     initialSpringVelocity: Double) -> Double {
       
       return pow(M_E, -usingSpringWithDamping * x) * cos(initialSpringVelocity * x)
@@ -2675,27 +2720,28 @@ class SpringAnimationCALayer {
 import UIKit
 
 class TegAutolayoutConstraints {
-  class func centerX(viewOne: UIView, viewTwo: UIView,
+  class func centerX(_ viewOne: UIView, viewTwo: UIView,
     constraintContainer: UIView) -> [NSLayoutConstraint] {
       
       return center(viewOne, viewTwo: viewTwo, constraintContainer: constraintContainer, vertically: false)
   }
   
-  class func centerY(viewOne: UIView, viewTwo: UIView,
+  @discardableResult
+  class func centerY(_ viewOne: UIView, viewTwo: UIView,
     constraintContainer: UIView) -> [NSLayoutConstraint] {
       
       return center(viewOne, viewTwo: viewTwo, constraintContainer: constraintContainer, vertically: true)
   }
   
-  private class func center(viewOne: UIView, viewTwo: UIView,
+  private class func center(_ viewOne: UIView, viewTwo: UIView,
     constraintContainer: UIView, vertically: Bool = false) -> [NSLayoutConstraint] {
       
-      let attribute = vertically ? NSLayoutAttribute.CenterY : NSLayoutAttribute.CenterX
+      let attribute = vertically ? NSLayoutAttribute.centerY : NSLayoutAttribute.centerX
       
       let constraint = NSLayoutConstraint(
         item: viewOne,
         attribute: attribute,
-        relatedBy: NSLayoutRelation.Equal,
+        relatedBy: NSLayoutRelation.equal,
         toItem: viewTwo,
         attribute: attribute,
         multiplier: 1,
@@ -2706,13 +2752,14 @@ class TegAutolayoutConstraints {
       return [constraint]
   }
   
-  class func alignSameAttributes(item: AnyObject, toItem: AnyObject,
+  @discardableResult
+  class func alignSameAttributes(_ item: AnyObject, toItem: AnyObject,
     constraintContainer: UIView, attribute: NSLayoutAttribute, margin: CGFloat = 0) -> [NSLayoutConstraint] {
       
       let constraint = NSLayoutConstraint(
         item: item,
         attribute: attribute,
-        relatedBy: NSLayoutRelation.Equal,
+        relatedBy: NSLayoutRelation.equal,
         toItem: toItem,
         attribute: attribute,
         multiplier: 1,
@@ -2723,16 +2770,16 @@ class TegAutolayoutConstraints {
       return [constraint]
   }
   
-  class func alignVerticallyToLayoutGuide(item: AnyObject, onTop: Bool,
+  class func alignVerticallyToLayoutGuide(_ item: AnyObject, onTop: Bool,
     layoutGuide: UILayoutSupport, constraintContainer: UIView,
     margin: CGFloat = 0) -> [NSLayoutConstraint] {
       
     let constraint = NSLayoutConstraint(
       item: layoutGuide,
-      attribute: onTop ? NSLayoutAttribute.Bottom : NSLayoutAttribute.Top,
-      relatedBy: NSLayoutRelation.Equal,
+      attribute: onTop ? NSLayoutAttribute.bottom : NSLayoutAttribute.top,
+      relatedBy: NSLayoutRelation.equal,
       toItem: item,
-      attribute: onTop ? NSLayoutAttribute.Top : NSLayoutAttribute.Bottom,
+      attribute: onTop ? NSLayoutAttribute.top : NSLayoutAttribute.bottom,
       multiplier: 1,
       constant: margin)
     
@@ -2741,20 +2788,20 @@ class TegAutolayoutConstraints {
     return [constraint]
   }
   
-  class func aspectRatio(view: UIView, ratio: CGFloat) {
+  class func aspectRatio(_ view: UIView, ratio: CGFloat) {
     let constraint = NSLayoutConstraint(
       item: view,
-      attribute: NSLayoutAttribute.Width,
-      relatedBy: NSLayoutRelation.Equal,
+      attribute: NSLayoutAttribute.width,
+      relatedBy: NSLayoutRelation.equal,
       toItem: view,
-      attribute: NSLayoutAttribute.Height,
+      attribute: NSLayoutAttribute.height,
       multiplier: ratio,
       constant: 0)
     
     view.addConstraint(constraint)
   }
   
-  class func fillParent(view: UIView, parentView: UIView, margin: CGFloat = 0, vertically: Bool = false) {
+  class func fillParent(_ view: UIView, parentView: UIView, margin: CGFloat = 0, vertically: Bool = false) {
     var marginFormat = ""
     
     if margin != 0 {
@@ -2767,14 +2814,15 @@ class TegAutolayoutConstraints {
       format = "V:" + format
     }
     
-    let constraints = NSLayoutConstraint.constraintsWithVisualFormat(format,
+    let constraints = NSLayoutConstraint.constraints(withVisualFormat: format,
       options: [], metrics: nil,
       views: ["view": view])
     
     parentView.addConstraints(constraints)
   }
   
-  class func viewsNextToEachOther(views: [UIView],
+  @discardableResult
+  class func viewsNextToEachOther(_ views: [UIView],
     constraintContainer: UIView, margin: CGFloat = 0,
     vertically: Bool = false) -> [NSLayoutConstraint] {
       
@@ -2782,7 +2830,7 @@ class TegAutolayoutConstraints {
       
     var constraints = [NSLayoutConstraint]()
       
-    for (index, view) in views.enumerate() {
+    for (index, view) in views.enumerated() {
       if index >= views.count - 1 { break }
       
       let viewTwo = views[index + 1]
@@ -2794,7 +2842,7 @@ class TegAutolayoutConstraints {
     return constraints
   }
   
-  class func twoViewsNextToEachOther(viewOne: UIView, viewTwo: UIView,
+  class func twoViewsNextToEachOther(_ viewOne: UIView, viewTwo: UIView,
     constraintContainer: UIView, margin: CGFloat = 0,
     vertically: Bool = false) -> [NSLayoutConstraint] {
       
@@ -2810,7 +2858,7 @@ class TegAutolayoutConstraints {
       format = "V:" + format
     }
     
-    let constraints = NSLayoutConstraint.constraintsWithVisualFormat(format,
+    let constraints = NSLayoutConstraint.constraints(withVisualFormat: format,
       options: [], metrics: nil,
       views: [ "viewOne": viewOne, "viewTwo": viewTwo ])
         
@@ -2819,10 +2867,10 @@ class TegAutolayoutConstraints {
     return constraints
   }
   
-  class func equalWidth(viewOne: UIView, viewTwo: UIView,
+  class func equalWidth(_ viewOne: UIView, viewTwo: UIView,
     constraintContainer: UIView) -> [NSLayoutConstraint] {
       
-    let constraints = NSLayoutConstraint.constraintsWithVisualFormat("[viewOne(==viewTwo)]",
+    let constraints = NSLayoutConstraint.constraints(withVisualFormat: "[viewOne(==viewTwo)]",
         options: [], metrics: nil,
         views: ["viewOne": viewOne, "viewTwo": viewTwo])
           
@@ -2832,25 +2880,27 @@ class TegAutolayoutConstraints {
     return constraints
   }
   
-  class func height(view: UIView, value: CGFloat) -> [NSLayoutConstraint] {
+  @discardableResult
+  class func height(_ view: UIView, value: CGFloat) -> [NSLayoutConstraint] {
     return widthOrHeight(view, value: value, isWidth: false)
   }
   
-  class func width(view: UIView, value: CGFloat) -> [NSLayoutConstraint] {
+  @discardableResult
+  class func width(_ view: UIView, value: CGFloat) -> [NSLayoutConstraint] {
     return widthOrHeight(view, value: value, isWidth: true)
   }
   
-  private class func widthOrHeight(view: UIView, value: CGFloat,
+  private class func widthOrHeight(_ view: UIView, value: CGFloat,
     isWidth: Bool) -> [NSLayoutConstraint] {
     
-    let attribute = isWidth ? NSLayoutAttribute.Width : NSLayoutAttribute.Height
+    let attribute = isWidth ? NSLayoutAttribute.width : NSLayoutAttribute.height
       
     let constraint = NSLayoutConstraint(
       item: view,
       attribute: attribute,
-      relatedBy: NSLayoutRelation.Equal,
+      relatedBy: NSLayoutRelation.equal,
       toItem: nil,
-      attribute: NSLayoutAttribute.NotAnAttribute,
+      attribute: NSLayoutAttribute.notAnAttribute,
       multiplier: 1,
       constant: value)
     
@@ -2886,10 +2936,8 @@ import UIKit
 
 
 /**
-
-Adjusts the length (constant value) of the bottom layout constraint when keyboard shows and hides.
-
-*/
+ Adjusts the length (constant value) of the bottom layout constraint when keyboard shows and hides.
+ */
 @objc public class UnderKeyboardLayoutConstraint: NSObject {
   private weak var bottomLayoutConstraint: NSLayoutConstraint?
   private weak var bottomLayoutGuide: UILayoutSupport?
@@ -2917,37 +2965,37 @@ Adjusts the length (constant value) of the bottom layout constraint when keyboar
   }
   
   /**
-  
-  Supply a bottom Auto Layout constraint. Its constant value will be adjusted by the height of the keyboard when it appears and hides.
-  
-  - parameter bottomLayoutConstraint: Supply a bottom layout constraint. Its constant value will be adjusted when keyboard is shown and hidden.
-  
-  - parameter view: Supply a view that will be used to animate the constraint. It is usually the superview containing the view with the constraint.
-  
-  - parameter minMargin: Specify the minimum margin between the keyboard and the bottom of the view the constraint is attached to. Default: 10.
-  
-  - parameter bottomLayoutGuide: Supply an optional bottom layout guide (like a tab bar) that will be taken into account during height calculations.
-  
-  */
-  public func setup(bottomLayoutConstraint: NSLayoutConstraint,
-    view: UIView, minMargin: CGFloat = 10,
-    bottomLayoutGuide: UILayoutSupport? = nil) {
-      
+   
+   Supply a bottom Auto Layout constraint. Its constant value will be adjusted by the height of the keyboard when it appears and hides.
+   
+   - parameter bottomLayoutConstraint: Supply a bottom layout constraint. Its constant value will be adjusted when keyboard is shown and hidden.
+   
+   - parameter view: Supply a view that will be used to animate the constraint. It is usually the superview containing the view with the constraint.
+   
+   - parameter minMargin: Specify the minimum margin between the keyboard and the bottom of the view the constraint is attached to. Default: 10.
+   
+   - parameter bottomLayoutGuide: Supply an optional bottom layout guide (like a tab bar) that will be taken into account during height calculations.
+   
+   */
+  public func setup(_ bottomLayoutConstraint: NSLayoutConstraint,
+                    view: UIView, minMargin: CGFloat = 10,
+                    bottomLayoutGuide: UILayoutSupport? = nil) {
+    
     initialConstraintConstant = bottomLayoutConstraint.constant
     self.bottomLayoutConstraint = bottomLayoutConstraint
     self.minMargin = minMargin
     self.bottomLayoutGuide = bottomLayoutGuide
     self.viewToAnimate = view
-      
+    
     // Keyboard is already open when setup is called
     if let currentKeyboardHeight = keyboardObserver.currentKeyboardHeight
       where currentKeyboardHeight > 0 {
-        
+      
       keyboardWillAnimate(currentKeyboardHeight)
     }
   }
   
-  func keyboardWillAnimate(height: CGFloat) {
+  func keyboardWillAnimate(_ height: CGFloat) {
     guard let bottomLayoutConstraint = bottomLayoutConstraint else { return }
     
     let layoutGuideHeight = bottomLayoutGuide?.length ?? 0
@@ -2971,7 +3019,7 @@ Adjusts the length (constant value) of the bottom layout constraint when keyboar
     }
   }
   
-  func animateKeyboard(height: CGFloat) {
+  func animateKeyboard(_ height: CGFloat) {
     viewToAnimate?.layoutIfNeeded()
   }
 }
@@ -2986,14 +3034,12 @@ Adjusts the length (constant value) of the bottom layout constraint when keyboar
 import UIKit
 
 /**
-
-Detects appearance of software keyboard and calls the supplied closures that can be used for changing the layout and moving view from under the keyboard.
-
-*/
+ Detects appearance of software keyboard and calls the supplied closures that can be used for changing the layout and moving view from under the keyboard.
+ */
 public final class UnderKeyboardObserver: NSObject {
   public typealias AnimationCallback = (height: CGFloat) -> ()
   
-  let notificationCenter: NSNotificationCenter
+  let notificationCenter: NotificationCenter
   
   /// Function that will be called before the keyboard is shown and before animation is started.
   public var willAnimateKeyboard: AnimationCallback?
@@ -3005,7 +3051,7 @@ public final class UnderKeyboardObserver: NSObject {
   public var currentKeyboardHeight: CGFloat?
   
   public override init() {
-    notificationCenter = NSNotificationCenter.defaultCenter()
+    notificationCenter = NotificationCenter.default()
     super.init()
   }
   
@@ -3017,8 +3063,8 @@ public final class UnderKeyboardObserver: NSObject {
   public func start() {
     stop()
     
-    notificationCenter.addObserver(self, selector: #selector(UnderKeyboardObserver.keyboardNotification(_:)), name:UIKeyboardWillShowNotification, object: nil);
-    notificationCenter.addObserver(self, selector: #selector(UnderKeyboardObserver.keyboardNotification(_:)), name:UIKeyboardWillHideNotification, object: nil);
+    notificationCenter.addObserver(self, selector: #selector(UnderKeyboardObserver.keyboardNotification(_:)), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
+    notificationCenter.addObserver(self, selector: #selector(UnderKeyboardObserver.keyboardNotification(_:)), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
   }
   
   /// Stop listening for keyboard notifications.
@@ -3028,26 +3074,26 @@ public final class UnderKeyboardObserver: NSObject {
   
   // MARK: - Notification
   
-  func keyboardNotification(notification: NSNotification) {
-    let isShowing = notification.name == UIKeyboardWillShowNotification
+  func keyboardNotification(_ notification: Notification) {
+    let isShowing = notification.name == NSNotification.Name.UIKeyboardWillShow
     
-    if let userInfo = notification.userInfo,
-      let height = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue().height,
-      let duration: NSTimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
+    if let userInfo = (notification as NSNotification).userInfo,
+      let height = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue().height,
+      let duration: TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
       let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber {
-        
+      
       let correctedHeight = isShowing ? height : 0
       willAnimateKeyboard?(height: correctedHeight)
-        
-      UIView.animateWithDuration(duration,
-        delay: NSTimeInterval(0),
-        options: UIViewAnimationOptions(rawValue: animationCurveRawNSN.unsignedLongValue),
-        animations: { [weak self] in
-          self?.animateKeyboard?(height: correctedHeight)
+      
+      UIView.animate(withDuration: duration,
+                     delay: TimeInterval(0),
+                     options: UIViewAnimationOptions(rawValue: animationCurveRawNSN.uintValue),
+                     animations: { [weak self] in
+                      self?.animateKeyboard?(height: correctedHeight)
         },
-        completion: nil
+                     completion: nil
       )
-        
+      
       currentKeyboardHeight = correctedHeight
     }
   }

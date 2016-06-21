@@ -7,27 +7,28 @@
 import UIKit
 
 class TegAutolayoutConstraints {
-  class func centerX(viewOne: UIView, viewTwo: UIView,
+  class func centerX(_ viewOne: UIView, viewTwo: UIView,
     constraintContainer: UIView) -> [NSLayoutConstraint] {
       
       return center(viewOne, viewTwo: viewTwo, constraintContainer: constraintContainer, vertically: false)
   }
   
-  class func centerY(viewOne: UIView, viewTwo: UIView,
+  @discardableResult
+  class func centerY(_ viewOne: UIView, viewTwo: UIView,
     constraintContainer: UIView) -> [NSLayoutConstraint] {
       
       return center(viewOne, viewTwo: viewTwo, constraintContainer: constraintContainer, vertically: true)
   }
   
-  private class func center(viewOne: UIView, viewTwo: UIView,
+  private class func center(_ viewOne: UIView, viewTwo: UIView,
     constraintContainer: UIView, vertically: Bool = false) -> [NSLayoutConstraint] {
       
-      let attribute = vertically ? NSLayoutAttribute.CenterY : NSLayoutAttribute.CenterX
+      let attribute = vertically ? NSLayoutAttribute.centerY : NSLayoutAttribute.centerX
       
       let constraint = NSLayoutConstraint(
         item: viewOne,
         attribute: attribute,
-        relatedBy: NSLayoutRelation.Equal,
+        relatedBy: NSLayoutRelation.equal,
         toItem: viewTwo,
         attribute: attribute,
         multiplier: 1,
@@ -38,13 +39,14 @@ class TegAutolayoutConstraints {
       return [constraint]
   }
   
-  class func alignSameAttributes(item: AnyObject, toItem: AnyObject,
+  @discardableResult
+  class func alignSameAttributes(_ item: AnyObject, toItem: AnyObject,
     constraintContainer: UIView, attribute: NSLayoutAttribute, margin: CGFloat = 0) -> [NSLayoutConstraint] {
       
       let constraint = NSLayoutConstraint(
         item: item,
         attribute: attribute,
-        relatedBy: NSLayoutRelation.Equal,
+        relatedBy: NSLayoutRelation.equal,
         toItem: toItem,
         attribute: attribute,
         multiplier: 1,
@@ -55,16 +57,16 @@ class TegAutolayoutConstraints {
       return [constraint]
   }
   
-  class func alignVerticallyToLayoutGuide(item: AnyObject, onTop: Bool,
+  class func alignVerticallyToLayoutGuide(_ item: AnyObject, onTop: Bool,
     layoutGuide: UILayoutSupport, constraintContainer: UIView,
     margin: CGFloat = 0) -> [NSLayoutConstraint] {
       
     let constraint = NSLayoutConstraint(
       item: layoutGuide,
-      attribute: onTop ? NSLayoutAttribute.Bottom : NSLayoutAttribute.Top,
-      relatedBy: NSLayoutRelation.Equal,
+      attribute: onTop ? NSLayoutAttribute.bottom : NSLayoutAttribute.top,
+      relatedBy: NSLayoutRelation.equal,
       toItem: item,
-      attribute: onTop ? NSLayoutAttribute.Top : NSLayoutAttribute.Bottom,
+      attribute: onTop ? NSLayoutAttribute.top : NSLayoutAttribute.bottom,
       multiplier: 1,
       constant: margin)
     
@@ -73,20 +75,20 @@ class TegAutolayoutConstraints {
     return [constraint]
   }
   
-  class func aspectRatio(view: UIView, ratio: CGFloat) {
+  class func aspectRatio(_ view: UIView, ratio: CGFloat) {
     let constraint = NSLayoutConstraint(
       item: view,
-      attribute: NSLayoutAttribute.Width,
-      relatedBy: NSLayoutRelation.Equal,
+      attribute: NSLayoutAttribute.width,
+      relatedBy: NSLayoutRelation.equal,
       toItem: view,
-      attribute: NSLayoutAttribute.Height,
+      attribute: NSLayoutAttribute.height,
       multiplier: ratio,
       constant: 0)
     
     view.addConstraint(constraint)
   }
   
-  class func fillParent(view: UIView, parentView: UIView, margin: CGFloat = 0, vertically: Bool = false) {
+  class func fillParent(_ view: UIView, parentView: UIView, margin: CGFloat = 0, vertically: Bool = false) {
     var marginFormat = ""
     
     if margin != 0 {
@@ -99,14 +101,15 @@ class TegAutolayoutConstraints {
       format = "V:" + format
     }
     
-    let constraints = NSLayoutConstraint.constraintsWithVisualFormat(format,
+    let constraints = NSLayoutConstraint.constraints(withVisualFormat: format,
       options: [], metrics: nil,
       views: ["view": view])
     
     parentView.addConstraints(constraints)
   }
   
-  class func viewsNextToEachOther(views: [UIView],
+  @discardableResult
+  class func viewsNextToEachOther(_ views: [UIView],
     constraintContainer: UIView, margin: CGFloat = 0,
     vertically: Bool = false) -> [NSLayoutConstraint] {
       
@@ -114,7 +117,7 @@ class TegAutolayoutConstraints {
       
     var constraints = [NSLayoutConstraint]()
       
-    for (index, view) in views.enumerate() {
+    for (index, view) in views.enumerated() {
       if index >= views.count - 1 { break }
       
       let viewTwo = views[index + 1]
@@ -126,7 +129,7 @@ class TegAutolayoutConstraints {
     return constraints
   }
   
-  class func twoViewsNextToEachOther(viewOne: UIView, viewTwo: UIView,
+  class func twoViewsNextToEachOther(_ viewOne: UIView, viewTwo: UIView,
     constraintContainer: UIView, margin: CGFloat = 0,
     vertically: Bool = false) -> [NSLayoutConstraint] {
       
@@ -142,7 +145,7 @@ class TegAutolayoutConstraints {
       format = "V:" + format
     }
     
-    let constraints = NSLayoutConstraint.constraintsWithVisualFormat(format,
+    let constraints = NSLayoutConstraint.constraints(withVisualFormat: format,
       options: [], metrics: nil,
       views: [ "viewOne": viewOne, "viewTwo": viewTwo ])
         
@@ -151,10 +154,10 @@ class TegAutolayoutConstraints {
     return constraints
   }
   
-  class func equalWidth(viewOne: UIView, viewTwo: UIView,
+  class func equalWidth(_ viewOne: UIView, viewTwo: UIView,
     constraintContainer: UIView) -> [NSLayoutConstraint] {
       
-    let constraints = NSLayoutConstraint.constraintsWithVisualFormat("[viewOne(==viewTwo)]",
+    let constraints = NSLayoutConstraint.constraints(withVisualFormat: "[viewOne(==viewTwo)]",
         options: [], metrics: nil,
         views: ["viewOne": viewOne, "viewTwo": viewTwo])
           
@@ -164,25 +167,27 @@ class TegAutolayoutConstraints {
     return constraints
   }
   
-  class func height(view: UIView, value: CGFloat) -> [NSLayoutConstraint] {
+  @discardableResult
+  class func height(_ view: UIView, value: CGFloat) -> [NSLayoutConstraint] {
     return widthOrHeight(view, value: value, isWidth: false)
   }
   
-  class func width(view: UIView, value: CGFloat) -> [NSLayoutConstraint] {
+  @discardableResult
+  class func width(_ view: UIView, value: CGFloat) -> [NSLayoutConstraint] {
     return widthOrHeight(view, value: value, isWidth: true)
   }
   
-  private class func widthOrHeight(view: UIView, value: CGFloat,
+  private class func widthOrHeight(_ view: UIView, value: CGFloat,
     isWidth: Bool) -> [NSLayoutConstraint] {
     
-    let attribute = isWidth ? NSLayoutAttribute.Width : NSLayoutAttribute.Height
+    let attribute = isWidth ? NSLayoutAttribute.width : NSLayoutAttribute.height
       
     let constraint = NSLayoutConstraint(
       item: view,
       attribute: attribute,
-      relatedBy: NSLayoutRelation.Equal,
+      relatedBy: NSLayoutRelation.equal,
       toItem: nil,
-      attribute: NSLayoutAttribute.NotAnAttribute,
+      attribute: NSLayoutAttribute.notAnAttribute,
       multiplier: 1,
       constant: value)
     

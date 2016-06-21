@@ -17,12 +17,12 @@ class ViewController: UIViewController {
   @IBOutlet weak var toggleKeyboardButton: UIButton!
   
   let animations = [
-    DodoAnimations.Fade,
-    DodoAnimations.NoAnimation,
-    DodoAnimations.Rotate,
-    DodoAnimations.SlideLeft,
-    DodoAnimations.SlideRight,
-    DodoAnimations.SlideVertically
+    DodoAnimations.fade,
+    DodoAnimations.noAnimation,
+    DodoAnimations.rotate,
+    DodoAnimations.slideLeft,
+    DodoAnimations.slideRight,
+    DodoAnimations.slideVertically
   ]
   
   var currentShowAnimationIndex = 2
@@ -52,17 +52,17 @@ class ViewController: UIViewController {
   }
   
   override func preferredStatusBarStyle() -> UIStatusBarStyle {
-    return UIStatusBarStyle.LightContent
+    return UIStatusBarStyle.lightContent
   }
   
   private func show() {
-    view.dodo.style.bar.locationTop = topSwitch.on
-    view.dodo.style.bar.hideAfterDelaySeconds = hideAfterDelaySwitch.on ? 3 : 0
-    view.dodo.style.bar.debugMode = debugModeSwitch.on
-    view.dodo.style.bar.hideOnTap = hideOnTapSwitch.on
+    view.dodo.style.bar.locationTop = topSwitch.isOn
+    view.dodo.style.bar.hideAfterDelaySeconds = hideAfterDelaySwitch.isOn ? 3 : 0
+    view.dodo.style.bar.debugMode = debugModeSwitch.isOn
+    view.dodo.style.bar.hideOnTap = hideOnTapSwitch.isOn
     view.dodo.style.label.shadowColor = DodoColor.fromHexString("#00000050")
     
-    view.dodo.style.label.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+    view.dodo.style.label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleHeadline)
     
     view.dodo.style.bar.animationShow = currentShowAnimation.show
     view.dodo.style.bar.animationHide = currentHideAnimation.hide
@@ -74,66 +74,66 @@ class ViewController: UIViewController {
   
   // MARK: - UI handlers
   
-  @IBAction func onSuccessButtonTapped(sender: AnyObject) {
+  @IBAction func onSuccessButtonTapped(_ sender: AnyObject) {
     message = "Dodo, a message bar for iOS."
-    view.dodo.preset = DodoPresets.Success
+    view.dodo.preset = DodoPresets.success
     show()
   }
   
-  @IBAction func onInfoButtonTapped(sender: AnyObject) {
+  @IBAction func onInfoButtonTapped(_ sender: AnyObject) {
     message = "Information is not knowledge."
-    view.dodo.preset = DodoPresets.Info
+    view.dodo.preset = DodoPresets.info
     show()
   }
   
-  @IBAction func onWarningButtonTapped(sender: AnyObject) {
+  @IBAction func onWarningButtonTapped(_ sender: AnyObject) {
     message = "If the doors of perception were cleansed everything would appear to man as it is, Infinite."
-    view.dodo.preset = DodoPresets.Warning
+    view.dodo.preset = DodoPresets.warning
     show()
   }
   
-  @IBAction func onErrorButtonTapped(sender: AnyObject) {
+  @IBAction func onErrorButtonTapped(_ sender: AnyObject) {
     message = "Failure is success if we learn from it."
-    view.dodo.preset = DodoPresets.Error
+    view.dodo.preset = DodoPresets.error
     show()
   }
   
-  @IBAction func onHideButtonTapped(sender: AnyObject) {
+  @IBAction func onHideButtonTapped(_ sender: AnyObject) {
     view.dodo.hide()
   }
   
-  @IBAction func onTopSwitchChanged(sender: AnyObject) {
+  @IBAction func onTopSwitchChanged(_ sender: AnyObject) {
     show()
   }
   
-  @IBAction func onHideAfterDelaySwitchChanged(sender: UISwitch) {
+  @IBAction func onHideAfterDelaySwitchChanged(_ sender: UISwitch) {
     show()
   }
   
-  @IBAction func onHideOnTapSwitchChanged(sender: AnyObject) {
+  @IBAction func onHideOnTapSwitchChanged(_ sender: AnyObject) {
     show()
   }
   
-  @IBAction func onLeftButtonSwitchChanged(sender: AnyObject) {
+  @IBAction func onLeftButtonSwitchChanged(_ sender: AnyObject) {
     show()
   }
   
-  @IBAction func onRightButtonSwitchChanged(sender: AnyObject) {
+  @IBAction func onRightButtonSwitchChanged(_ sender: AnyObject) {
     show()
   }
   
-  @IBAction func onDebugModeSwitchChanged(sender: AnyObject) {
+  @IBAction func onDebugModeSwitchChanged(_ sender: AnyObject) {
     show()
   }
   
-  @IBAction func onChangeBackgroundTapped(sender: AnyObject) {
+  @IBAction func onChangeBackgroundTapped(_ sender: AnyObject) {
     changeBackgroundImage()
   }
   
   // MARK: - Show / hide keyboard
   
-  @IBAction func onToggleKeyboardTapped(sender: AnyObject) {
-    if showKeyboardTextEdit.editing {
+  @IBAction func onToggleKeyboardTapped(_ sender: AnyObject) {
+    if showKeyboardTextEdit.isEditing {
       view.endEditing(true)
     } else {
       showKeyboardTextEdit.becomeFirstResponder()
@@ -142,9 +142,14 @@ class ViewController: UIViewController {
     updateKeyboardToggleButtonTitle()
   }
   
+  @IBAction func didTapView(_ sender: AnyObject) {
+    view.endEditing(true)
+    updateKeyboardToggleButtonTitle()
+  }
+  
   private func updateKeyboardToggleButtonTitle() {
-    let title = showKeyboardTextEdit.editing ?  "Hide keyboard" : "Show keyboard"
-     toggleKeyboardButton.setTitle(title, forState: .Normal)
+    let title = showKeyboardTextEdit.isEditing ?  "Hide keyboard" : "Show keyboard"
+     toggleKeyboardButton.setTitle(title, for: UIControlState())
   }
   
   // MARK: - Buttons
@@ -154,14 +159,14 @@ class ViewController: UIViewController {
     view.dodo.style.rightButton.image = nil
     view.dodo.style.leftButton.tintColor = DodoColor.fromHexString("#FFFFFFAA")
     
-    if leftButtonSwitch.on {
+    if leftButtonSwitch.isOn {
       // Use a built-in icon
-      view.dodo.style.leftButton.icon = .Close
+      view.dodo.style.leftButton.icon = .close
       view.dodo.style.leftButton.accessibilityLabel = "Close the message"
       view.dodo.style.leftButton.hideOnTap = true
     }
     
-    if rightButtonSwitch.on {
+    if rightButtonSwitch.isOn {
       // Use custom image
       let customImage = UIImage(named: "Dodo.png")
       view.dodo.style.rightButton.image = customImage
@@ -177,14 +182,14 @@ class ViewController: UIViewController {
   
   // MARK: - Animation
   
-  @IBAction func onShowAnimationButtonTapped(sender: AnyObject) {
+  @IBAction func onShowAnimationButtonTapped(_ sender: AnyObject) {
     currentShowAnimationIndex += 1
     if currentShowAnimationIndex >= animations.count { currentShowAnimationIndex = 0 }
     updateShowAnimationButtonTitle()
     show()
   }
   
-  @IBAction func onHideAnimationButtonTapped(sender: AnyObject) {
+  @IBAction func onHideAnimationButtonTapped(_ sender: AnyObject) {
     currentHideAnimationIndex += 1
     if currentHideAnimationIndex >= animations.count { currentHideAnimationIndex = 0 }
     updateHideAnimationButtonTitle()
@@ -193,12 +198,12 @@ class ViewController: UIViewController {
   
   private func updateShowAnimationButtonTitle() {
     let text = currentShowAnimation.rawValue
-    showAnimationButton.setTitle(text, forState: UIControlState.Normal)
+    showAnimationButton.setTitle(text, for: UIControlState())
   }
   
   private func updateHideAnimationButtonTitle() {
     let text = currentHideAnimation.rawValue
-    hideAnimationButton.setTitle(text, forState: UIControlState.Normal)
+    hideAnimationButton.setTitle(text, for: UIControlState())
   }
   
   var currentShowAnimation: DodoAnimations {
@@ -209,8 +214,8 @@ class ViewController: UIViewController {
     return animationForIndex(currentHideAnimationIndex)
   }
   
-  private func animationForIndex(index: Int) -> DodoAnimations {
-    if index >= (animations.count - 1) { animations[0] }
+  private func animationForIndex(_ index: Int) -> DodoAnimations {
+    if index > (animations.count - 1) { return animations[0] }
     return animations[index]
   }
   
@@ -218,7 +223,7 @@ class ViewController: UIViewController {
     let myCALayer = view.layer
     
     myCALayer.shouldRasterize = true
-    myCALayer.rasterizationScale = UIScreen.mainScreen().scale
+    myCALayer.rasterizationScale = UIScreen.main().scale
     
     var transform = CATransform3DIdentity
     transform.m34 = -1.0/300.0
@@ -250,7 +255,7 @@ class ViewController: UIViewController {
     let newImageView = UIImageView()
     newImageView.translatesAutoresizingMaskIntoConstraints = false
     newImageView.image = newImage
-    newImageView.contentMode = UIViewContentMode.ScaleAspectFill
+    newImageView.contentMode = UIViewContentMode.scaleAspectFill
     view.insertSubview(newImageView, aboveSubview: imageView)
     TegAutolayoutConstraints.fillParent(newImageView, parentView: view, margin: 0, vertically: false)
     TegAutolayoutConstraints.fillParent(newImageView, parentView: view, margin: 0, vertically: true)
@@ -259,7 +264,7 @@ class ViewController: UIViewController {
     
     newImageView.alpha = 0
     
-    UIView.animateWithDuration(0.1,
+    UIView.animate(withDuration: 0.1,
       animations: {
         newImageView.alpha = 1
       },

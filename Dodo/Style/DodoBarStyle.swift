@@ -45,10 +45,10 @@ public class DodoBarStyle {
   
   // ---------------------------
   
-  private var _animationHideDuration: NSTimeInterval?
+  private var _animationHideDuration: TimeInterval?
   
   /// Duration of hide animation. When nil it uses default duration for selected animation function.
-  public var animationHideDuration: NSTimeInterval? {
+  public var animationHideDuration: TimeInterval? {
     get {
       return (_animationHideDuration ?? parent?.animationHideDuration) ??
         DodoBarDefaultStyles.animationHideDuration
@@ -76,10 +76,10 @@ public class DodoBarStyle {
   
   // ---------------------------
   
-  private var _animationShowDuration: NSTimeInterval?
+  private var _animationShowDuration: TimeInterval?
   
   /// Duration of show animation. When nil it uses default duration for selected animation function.
-  public var animationShowDuration: NSTimeInterval? {
+  public var animationShowDuration: TimeInterval? {
     get {
       return (_animationShowDuration ?? parent?.animationShowDuration) ??
         DodoBarDefaultStyles.animationShowDuration
@@ -167,7 +167,7 @@ public class DodoBarStyle {
   
   // ---------------------------
   
-  private var _hideAfterDelaySeconds: NSTimeInterval?
+  private var _hideAfterDelaySeconds: TimeInterval?
   
   /**
   
@@ -175,7 +175,7 @@ public class DodoBarStyle {
   If nil the bar is kept on screen.
   
   */
-  public var hideAfterDelaySeconds: NSTimeInterval {
+  public var hideAfterDelaySeconds: TimeInterval {
     get {
       return _hideAfterDelaySeconds ?? parent?.hideAfterDelaySeconds ??
         DodoBarDefaultStyles.hideAfterDelaySeconds

@@ -17,7 +17,7 @@ class DodoButtonView: UIImageView {
   }
   
   // Create button views for given button styles.
-  static func createMany(styles: [DodoButtonStyle]) -> [DodoButtonView] {
+  static func createMany(_ styles: [DodoButtonStyle]) -> [DodoButtonView] {
       
     if !haveButtons(styles) { return [] }
     
@@ -28,14 +28,14 @@ class DodoButtonView: UIImageView {
     }
   }
   
-  static func haveButtons(styles: [DodoButtonStyle]) -> Bool {
+  static func haveButtons(_ styles: [DodoButtonStyle]) -> Bool {
     let hasImages = styles.filter({ $0.image != nil }).count > 0
     let hasIcons = styles.filter({ $0.icon != nil }).count > 0
 
     return hasImages || hasIcons
   }
   
-  func doLayout(onLeftSide onLeftSide: Bool) {
+  func doLayout(onLeftSide: Bool) {
     precondition(delegate != nil, "Button view delegate can not be nil")
     translatesAutoresizingMaskIntoConstraints = false
     
@@ -44,7 +44,7 @@ class DodoButtonView: UIImageView {
     TegAutolayoutConstraints.height(self, value: style.size.height)
     
     if let superview = superview {
-      let alignAttribute = onLeftSide ? NSLayoutAttribute.Left : NSLayoutAttribute.Right
+      let alignAttribute = onLeftSide ? NSLayoutAttribute.left : NSLayoutAttribute.right
       
       let marginHorizontal = onLeftSide ? style.horizontalMarginToBar : -style.horizontalMarginToBar
       
@@ -64,38 +64,38 @@ class DodoButtonView: UIImageView {
   }
   
   /// Increase the hitsize of the image view if it's less than 44px for easier tapping.
-  override func pointInside(point: CGPoint, withEvent event: UIEvent?) -> Bool {
+  override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
     let oprimizedBounds = DodoTouchTarget.optimize(bounds)
     return oprimizedBounds.contains(point)
   }
   
   /// Returns the image supplied by user or create one from the icon
-  class func image(style: DodoButtonStyle) -> UIImage? {
+  class func image(_ style: DodoButtonStyle) -> UIImage? {
     if style.image != nil {
       return style.image
     }
     
     if let icon = style.icon {
-      let bundle = NSBundle(forClass: self)
+      let bundle = Bundle(for: self)
       let imageName = icon.rawValue
       
-      return UIImage(named: imageName, inBundle: bundle, compatibleWithTraitCollection: nil)
+      return UIImage(named: imageName, in: bundle, compatibleWith: nil)
     }
     
     return nil
   }
   
-  private func applyStyle(imageIn: UIImage) {
+  private func applyStyle(_ imageIn: UIImage) {
     var imageToShow = imageIn
     if let tintColorToShow = style.tintColor {
       // Replace image colors with the specified tint color
-      imageToShow = imageToShow.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+      imageToShow = imageToShow.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
       tintColor = tintColorToShow
     }
     
     layer.minificationFilter = kCAFilterTrilinear // make the image crisp
     image = imageToShow
-    contentMode = UIViewContentMode.ScaleAspectFit
+    contentMode = UIViewContentMode.scaleAspectFit
     
     // Make button accessible
     if let accessibilityLabelToShow = style.accessibilityLabel {

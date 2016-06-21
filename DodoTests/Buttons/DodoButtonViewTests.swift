@@ -63,7 +63,7 @@ class DodoButtonViewTests: XCTestCase {
   
   func testHaveButtons_yesHasOneIcon() {
     let styleOne = DodoButtonStyle(parentStyle: nil)
-    styleOne.icon = DodoIcons.Close
+    styleOne.icon = DodoIcons.close
     
     let styleTwo = DodoButtonStyle(parentStyle: nil)
   
@@ -97,7 +97,7 @@ class DodoButtonViewTests: XCTestCase {
     view.setup()
     
     XCTAssertEqual(67, view.image!.size.width)
-    XCTAssertEqual(UIViewContentMode.ScaleAspectFit, view.contentMode)
+    XCTAssertEqual(UIViewContentMode.scaleAspectFit, view.contentMode)
   }
   
   func testSetupView_no_image() {
@@ -114,13 +114,13 @@ class DodoButtonViewTests: XCTestCase {
     let style = DodoButtonStyle(parentStyle: nil)
     let image = TestBundle.image("67px.png")!
     style.image = image
-    style.tintColor = UIColor.purpleColor()
+    style.tintColor = UIColor.purple()
     
     let view = DodoButtonView(style: style)
     view.setup()
     
-    XCTAssertEqual(UIImageRenderingMode.AlwaysTemplate, view.image!.renderingMode)
-    XCTAssertEqual(UIColor.purpleColor(), view.tintColor)
+    XCTAssertEqual(UIImageRenderingMode.alwaysTemplate, view.image!.renderingMode)
+    XCTAssertEqual(UIColor.purple(), view.tintColor)
   }
   
   func testSetupView_noOriginalImageColor() {
@@ -134,12 +134,12 @@ class DodoButtonViewTests: XCTestCase {
     let view = DodoButtonView(style: style)
     view.setup()
     
-    XCTAssertEqual(UIImageRenderingMode.Automatic, view.image!.renderingMode)
+    XCTAssertEqual(UIImageRenderingMode.automatic, view.image!.renderingMode)
   }
   
   func testSetupView_withIcon() {
     let style = DodoButtonStyle(parentStyle: nil)
-    style.icon = DodoIcons.Close
+    style.icon = DodoIcons.close
     
     let view = DodoButtonView(style: style)
     view.setup()
@@ -216,7 +216,7 @@ class DodoButtonViewTests: XCTestCase {
   
   func testButtonImage_withIcon() {
     let style = DodoButtonStyle(parentStyle: nil)
-    style.icon = DodoIcons.Close
+    style.icon = DodoIcons.close
     
     let actualImage = DodoButtonView.image(style)!
     XCTAssertEqual(256, actualImage.size.width)
