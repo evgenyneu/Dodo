@@ -187,7 +187,7 @@ This project includes a demo app.
 
 
 
-## Quote credits
+## Quotes credits
 
 #### Albert Einstein
 
