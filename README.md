@@ -179,7 +179,50 @@ This project includes a demo app.
 
 * [sai-prasanna](https://github.com/sai-prasanna) for Swift 2.2 update.
 
+## Quote credits
+
+#### Albert Einstein
+
+> Information is not knowledge.
+
+
+#### Carl Segan
+
+> Extinction is the rule. Survival is the exception.
+
+
+#### George S. Patton
+
+> Success is how high you bounce when you hit bottom.
+
+#### Henry David Thoreau
+
+> This world is but a canvas to our imagination.
+
+> The perception of beauty is a moral test.
+
+#### Joe Namath
+
+> When you win, nothing hurts.
+
+
+#### Lewis Carroll
+
+> Everybody has won and all must have prizes.
+
+
+#### Malcolm Forbes
+
+> Failure is success if we learn from it.
+
+#### William Blake
+
+> If the doors of perception were cleansed everything would appear to man as it is, Infinite.
+
+
+
 ## Alternative solutions
+
 
 Here are some other message bar libraries for iOS:
 
