@@ -3,22 +3,22 @@ import UIKit
 /// Collection of animation effects use for showing and hiding the notification bar.
 public enum DodoAnimations: String {
   /// Animation that fades the bar in/out.
-  case Fade = "Fade"
+  case fade = "Fade"
   
   /// Used for showing notification without animation.
-  case NoAnimation = "No animation"
+  case noAnimation = "No animation"
   
   /// Animation that rotates the bar around X axis in perspective with spring effect.
-  case Rotate = "Rotate"
+  case rotate = "Rotate"
   
   /// Animation that swipes the bar to/from the left with fade effect.
-  case SlideLeft = "Slide left"
+  case slideLeft = "Slide left"
   
   /// Animation that swipes the bar to/from the right with fade effect.
-  case SlideRight = "Slide right"
+  case slideRight = "Slide right"
   
   /// Animation that slides the bar in/out vertically.
-  case SlideVertically = "Slide vertically"
+  case slideVertically = "Slide vertically"
   
   /**
   
@@ -29,22 +29,22 @@ public enum DodoAnimations: String {
   */
   public var show: DodoAnimation {
     switch self {
-    case .Fade:
+    case .fade:
       return DodoAnimationsShow.fade
       
-    case .NoAnimation:
-      return DodoAnimations.noAnimation
+    case .noAnimation:
+      return DodoAnimations.doNoAnimation
       
-    case .Rotate:
+    case .rotate:
       return DodoAnimationsShow.rotate
       
-    case .SlideLeft:
+    case .slideLeft:
       return DodoAnimationsShow.slideLeft
       
-    case .SlideRight:
+    case .slideRight:
       return DodoAnimationsShow.slideRight
       
-    case .SlideVertically:
+    case .slideVertically:
       return DodoAnimationsShow.slideVertically
     }
   }
@@ -58,22 +58,22 @@ public enum DodoAnimations: String {
   */
   public var hide: DodoAnimation {
     switch self {
-    case .Fade:
+    case .fade:
       return DodoAnimationsHide.fade
       
-    case .NoAnimation:
-      return DodoAnimations.noAnimation
+    case .noAnimation:
+      return DodoAnimations.doNoAnimation
       
-    case .Rotate:
+    case .rotate:
       return DodoAnimationsHide.rotate
       
-    case .SlideLeft:
+    case .slideLeft:
       return DodoAnimationsHide.slideLeft
       
-    case .SlideRight:
+    case .slideRight:
       return DodoAnimationsHide.slideRight
       
-    case .SlideVertically:
+    case .slideVertically:
       return DodoAnimationsHide.slideVertically
     }
   }
@@ -87,14 +87,14 @@ public enum DodoAnimations: String {
   - parameter completed: A closure to be called after animation completes.
 
   */
-  static func noAnimation(_ view: UIView, duration: TimeInterval?, locationTop: Bool,
+  static func doNoAnimation(_ view: UIView, duration: TimeInterval?, locationTop: Bool,
     completed: DodoAnimationCompleted) {
       
     completed()
   }
   
   /// Helper function for fading the view in and out.
-  static func fade(_ duration: TimeInterval?, showView: Bool, view: UIView,
+  static func doFade(_ duration: TimeInterval?, showView: Bool, view: UIView,
     completed: DodoAnimationCompleted) {
       
     let actualDuration = duration ?? 0.5
@@ -114,7 +114,7 @@ public enum DodoAnimations: String {
   }
   
   /// Helper function for sliding the view vertically
-  static func slideVertically(_ duration: TimeInterval?, showView: Bool, view: UIView,
+  static func doSlideVertically(_ duration: TimeInterval?, showView: Bool, view: UIView,
     locationTop: Bool, completed: DodoAnimationCompleted) {
     
     let actualDuration = duration ?? 0.5
@@ -152,7 +152,7 @@ public enum DodoAnimations: String {
   static weak var timer: MoaTimer?
   
   /// Animation that rotates the bar around X axis in perspective with spring effect.
-  static func rotate(_ duration: TimeInterval?, showView: Bool, view: UIView, completed: DodoAnimationCompleted) {
+  static func doRotate(_ duration: TimeInterval?, showView: Bool, view: UIView, completed: DodoAnimationCompleted) {
     
     let actualDuration = duration ?? 2.0
     let start: Double = showView ? Double(M_PI / 2) : 0
@@ -185,7 +185,7 @@ public enum DodoAnimations: String {
   }
   
   /// Animation that swipes the bar to the right with fade-out effect.
-  static func slide(_ duration: TimeInterval?, right: Bool, showView: Bool,
+  static func doSlide(_ duration: TimeInterval?, right: Bool, showView: Bool,
     view: UIView, completed: DodoAnimationCompleted) {
       
     let actualDuration = duration ?? 0.4

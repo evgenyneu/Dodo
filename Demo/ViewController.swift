@@ -17,12 +17,12 @@ class ViewController: UIViewController {
   @IBOutlet weak var toggleKeyboardButton: UIButton!
   
   let animations = [
-    DodoAnimations.Fade,
-    DodoAnimations.NoAnimation,
-    DodoAnimations.Rotate,
-    DodoAnimations.SlideLeft,
-    DodoAnimations.SlideRight,
-    DodoAnimations.SlideVertically
+    DodoAnimations.fade,
+    DodoAnimations.noAnimation,
+    DodoAnimations.rotate,
+    DodoAnimations.slideLeft,
+    DodoAnimations.slideRight,
+    DodoAnimations.slideVertically
   ]
   
   var currentShowAnimationIndex = 2
@@ -215,7 +215,7 @@ class ViewController: UIViewController {
   }
   
   private func animationForIndex(_ index: Int) -> DodoAnimations {
-    if index >= (animations.count - 1) { return animations[0] }
+    if index > (animations.count - 1) { return animations[0] }
     return animations[index]
   }
   
