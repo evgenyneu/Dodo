@@ -1,5 +1,9 @@
 # Dodo version history
 
+## 3.0.0 (2016-06-21)
+
+* Updated to Swift 3.0
+
 ## 2.2.0 (2016-03-30)
 
 * Updated to Swift 2.2 selector style [sai-prasanna](https://github.com/sai-prasanna).
