@@ -150,11 +150,11 @@ Configure the animation effect of the bar before it is shown. See the [animation
 
 ```Swift
 // Use existing animations
-view.dodo.style.bar.animationShow = DodoAnimations.Rotate.show
-view.dodo.style.bar.animationHide = DodoAnimations.SlideRight.hide
+view.dodo.style.bar.animationShow = DodoAnimations.rotate.show
+view.dodo.style.bar.animationHide = DodoAnimations.slideRight.hide
 
 // Turn off animation
-view.dodo.style.bar.animationShow = DodoAnimations.NoAnimation.show
+view.dodo.style.bar.animationShow = DodoAnimations.noAnimation.show
 ```
 
 ### Unit testing
