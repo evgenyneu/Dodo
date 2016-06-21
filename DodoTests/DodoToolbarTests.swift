@@ -172,7 +172,7 @@ class DodoToolbarTests: XCTestCase {
   }
   
   func testCreateLeftButtonWithIcon() {
-    obj.style.leftButton.icon = DodoIcons.Close
+    obj.style.leftButton.icon = DodoIcons.close
     obj.style.rightButton.image = nil
     
     obj.show(inSuperview: superview, withMessage: "hello")
@@ -185,7 +185,7 @@ class DodoToolbarTests: XCTestCase {
   
   func testRunTapCallbackClosures() {
     var tappedLeftButton = false
-    obj.style.leftButton.icon = DodoIcons.Close
+    obj.style.leftButton.icon = DodoIcons.close
     obj.style.leftButton.onTap = { tappedLeftButton = true }
     
     var tappedRightButton = false
@@ -215,7 +215,7 @@ class DodoToolbarTests: XCTestCase {
   // MARK: - Use button with a bundled icon
   
   func testUseBundledIcon() {
-    obj.style.leftButton.icon = DodoIcons.Close
+    obj.style.leftButton.icon = DodoIcons.close
     
     obj.show(inSuperview: superview, withMessage: "hello")
     

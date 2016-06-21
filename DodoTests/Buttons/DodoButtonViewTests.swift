@@ -63,7 +63,7 @@ class DodoButtonViewTests: XCTestCase {
   
   func testHaveButtons_yesHasOneIcon() {
     let styleOne = DodoButtonStyle(parentStyle: nil)
-    styleOne.icon = DodoIcons.Close
+    styleOne.icon = DodoIcons.close
     
     let styleTwo = DodoButtonStyle(parentStyle: nil)
   
@@ -139,7 +139,7 @@ class DodoButtonViewTests: XCTestCase {
   
   func testSetupView_withIcon() {
     let style = DodoButtonStyle(parentStyle: nil)
-    style.icon = DodoIcons.Close
+    style.icon = DodoIcons.close
     
     let view = DodoButtonView(style: style)
     view.setup()
@@ -216,7 +216,7 @@ class DodoButtonViewTests: XCTestCase {
   
   func testButtonImage_withIcon() {
     let style = DodoButtonStyle(parentStyle: nil)
-    style.icon = DodoIcons.Close
+    style.icon = DodoIcons.close
     
     let actualImage = DodoButtonView.image(style)!
     XCTAssertEqual(256, actualImage.size.width)

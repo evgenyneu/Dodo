@@ -182,7 +182,7 @@ class DodoTests: XCTestCase {
   // MARK: - Hiding when button is tapped
   
   func testHideWhenButtonIsTapped() {
-    obj.style.leftButton.icon = DodoIcons.Close
+    obj.style.leftButton.icon = DodoIcons.close
     obj.style.leftButton.hideOnTap = true
     
     obj.show("Hello world!")
@@ -198,7 +198,7 @@ class DodoTests: XCTestCase {
   }
   
   func testDoNotHideWhenButtonIsTapped() {
-    obj.style.leftButton.icon = DodoIcons.Close
+    obj.style.leftButton.icon = DodoIcons.close
     obj.style.leftButton.hideOnTap = false
     
     obj.show("Hello world!")
