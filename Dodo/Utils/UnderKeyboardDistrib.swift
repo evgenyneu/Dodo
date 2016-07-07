@@ -28,7 +28,7 @@ import UIKit
   
   private var viewToAnimate: UIView?
   
-  /// Creates an instance of UnderKeyboardLayoutConstraint
+  /// Creates an instance of the class
   public override init() {
     super.init()
     
@@ -132,10 +132,9 @@ public final class UnderKeyboardObserver: NSObject {
   /// Current height of the keyboard. Has value `nil` if unknown.
   public var currentKeyboardHeight: CGFloat?
   
-  
-  /// Creates an instance of UnderKeyboardObserver class
+  /// Creates an instance of the class
   public override init() {
-    notificationCenter = NotificationCenter.default()
+    notificationCenter = NotificationCenter.default
     super.init()
   }
   

@@ -5,7 +5,7 @@ extension XCTest {
   func postKeyboardWillShowNotification(_ keyboardSize: CGSize) {
     let userInfo = keyboardNotificationUserInfo(keyboardSize)
 
-    NotificationCenter.default().post(name: NSNotification.Name.UIKeyboardWillShow,
+    NotificationCenter.default.post(name: NSNotification.Name.UIKeyboardWillShow,
       object: self, userInfo: userInfo)
   }
   
@@ -13,7 +13,7 @@ extension XCTest {
     let size = CGSize(width: 18, height: 132) // Keyboard hide notification contains the size
     let userInfo = keyboardNotificationUserInfo(size)
     
-    NotificationCenter.default().post(name: NSNotification.Name.UIKeyboardWillHide,
+    NotificationCenter.default.post(name: NSNotification.Name.UIKeyboardWillHide,
       object: self, userInfo: userInfo)
   }
   
