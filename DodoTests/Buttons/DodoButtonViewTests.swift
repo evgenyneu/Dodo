@@ -114,13 +114,13 @@ class DodoButtonViewTests: XCTestCase {
     let style = DodoButtonStyle(parentStyle: nil)
     let image = TestBundle.image("67px.png")!
     style.image = image
-    style.tintColor = UIColor.purple()
+    style.tintColor = UIColor.purple
     
     let view = DodoButtonView(style: style)
     view.setup()
     
     XCTAssertEqual(UIImageRenderingMode.alwaysTemplate, view.image!.renderingMode)
-    XCTAssertEqual(UIColor.purple(), view.tintColor)
+    XCTAssertEqual(UIColor.purple, view.tintColor)
   }
   
   func testSetupView_noOriginalImageColor() {

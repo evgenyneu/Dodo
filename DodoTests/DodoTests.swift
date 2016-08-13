@@ -148,13 +148,13 @@ class DodoTests: XCTestCase {
   func testHideBarAfterDelay() {
     obj.style.bar.hideAfterDelaySeconds = 0.3
     obj.show("Hello world!")
-    let expectation = self.expectation(withDescription: "the timer has finished")
+    let expectation = self.expectation(description: "the timer has finished")
     
     MoaTimer.runAfter(0.5) { timer in
       expectation.fulfill()
     }
     
-    waitForExpectations(withTimeout: 1) { error in }
+    waitForExpectations(timeout: 1) { error in }
     
     let toolbar = sabToolbar(superview)
     
@@ -165,13 +165,13 @@ class DodoTests: XCTestCase {
   func testDoesNotHideBarAfterDelayWhenValueIsZero() {
     obj.style.bar.hideAfterDelaySeconds = 0
     obj.show("Hello world!")
-    let expectation = self.expectation(withDescription: "the timer has finished")
+    let expectation = self.expectation(description: "the timer has finished")
     
     MoaTimer.runAfter(0.5) { timer in
       expectation.fulfill()
     }
     
-    waitForExpectations(withTimeout: 1) { error in }
+    waitForExpectations(timeout: 1) { error in }
     
     let toolbar = sabToolbar(superview)
     

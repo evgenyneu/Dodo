@@ -21,7 +21,7 @@ public struct DodoLabelDefaultStyles {
   // ---------------------------
   
   
-  private static let _color = UIColor.white()
+  private static let _color = UIColor.white
   
   /// Color of the label text.
   public static var color = _color
