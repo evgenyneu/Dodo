@@ -95,7 +95,7 @@ Set `dodo.style` property to style the message bar **before** it is shown. See t
 
 ```Swift
 // Set the text color
-view.dodo.style.label.color = UIColor.white()
+view.dodo.style.label.color = UIColor.white
 
 // Set background color
 view.dodo.style.bar.backgroundColor = DodoColor.fromHexString("#00000090")
