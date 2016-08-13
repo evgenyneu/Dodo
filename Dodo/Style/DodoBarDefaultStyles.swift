@@ -83,7 +83,7 @@ public struct DodoBarDefaultStyles {
   // ---------------------------
   
   
-  private static let _borderWidth: CGFloat  = 1 / UIScreen.main().scale
+  private static let _borderWidth: CGFloat  = 1 / UIScreen.main.scale
   
   /// Border width of the bar.
   public static var borderWidth = _borderWidth

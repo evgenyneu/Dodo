@@ -63,7 +63,7 @@ class DodoToolbar: UIView {
     label.numberOfLines = style.label.numberOfLines
     
     if style.bar.debugMode {
-      label.backgroundColor = UIColor.red()
+      label.backgroundColor = UIColor.red
     }
     
     if let shadowColor = style.label.shadowColor {
@@ -118,7 +118,7 @@ class DodoToolbar: UIView {
       button.doLayout(onLeftSide: index == 0)
 
       if style.bar.debugMode {
-        button.backgroundColor = UIColor.yellow()
+        button.backgroundColor = UIColor.yellow
       }
     }
     
@@ -132,7 +132,7 @@ class DodoToolbar: UIView {
     layer.cornerRadius = style.bar.cornerRadius
     layer.masksToBounds = true
     
-    if let borderColor = style.bar.borderColor where style.bar.borderWidth > 0 {
+    if let borderColor = style.bar.borderColor , style.bar.borderWidth > 0 {
       layer.borderColor = borderColor.cgColor
       layer.borderWidth = style.bar.borderWidth
     }
@@ -177,8 +177,8 @@ class DodoToolbar: UIView {
   // Moves the message bar from under the keyboard
   private func setupKeyboardEvader(_ verticalConstraints: [NSLayoutConstraint]) {
     if let bottomConstraint = verticalConstraints.first,
-      superview = superview
-      where !style.bar.locationTop {
+      let superview = superview
+      , !style.bar.locationTop {
       
       DodoKeyboardListener.underKeyboardLayoutConstraint.setup(bottomConstraint,
         view: superview, bottomLayoutGuide: layoutGuide)

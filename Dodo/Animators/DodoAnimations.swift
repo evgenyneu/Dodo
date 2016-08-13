@@ -125,7 +125,7 @@ public enum DodoAnimations: String {
     if locationTop {
       distance = view.frame.height + view.frame.origin.y
     } else {
-      distance = UIScreen.main().bounds.height - view.frame.origin.y
+      distance = UIScreen.main.bounds.height - view.frame.origin.y
     }
             
     let transform = CGAffineTransform(translationX: 0, y: locationTop ? -distance : distance)
@@ -189,7 +189,7 @@ public enum DodoAnimations: String {
     view: UIView, completed: DodoAnimationCompleted) {
       
     let actualDuration = duration ?? 0.4
-    let distance = UIScreen.main().bounds.width
+    let distance = UIScreen.main.bounds.width
     let transform = CGAffineTransform(translationX: right ? distance : -distance, y: 0)
     
     let start: CGAffineTransform = showView ? transform : CGAffineTransform.identity

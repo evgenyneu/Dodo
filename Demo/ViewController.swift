@@ -51,7 +51,7 @@ class ViewController: UIViewController {
     }
   }
   
-  override func preferredStatusBarStyle() -> UIStatusBarStyle {
+  override var preferredStatusBarStyle: UIStatusBarStyle {
     return UIStatusBarStyle.lightContent
   }
   
@@ -223,7 +223,7 @@ class ViewController: UIViewController {
     let myCALayer = view.layer
     
     myCALayer.shouldRasterize = true
-    myCALayer.rasterizationScale = UIScreen.main().scale
+    myCALayer.rasterizationScale = UIScreen.main.scale
     
     var transform = CATransform3DIdentity
     transform.m34 = -1.0/300.0

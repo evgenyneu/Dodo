@@ -158,7 +158,7 @@ public enum DodoAnimations: String {
     if locationTop {
       distance = view.frame.height + view.frame.origin.y
     } else {
-      distance = UIScreen.main().bounds.height - view.frame.origin.y
+      distance = UIScreen.main.bounds.height - view.frame.origin.y
     }
             
     let transform = CGAffineTransform(translationX: 0, y: locationTop ? -distance : distance)
@@ -222,7 +222,7 @@ public enum DodoAnimations: String {
     view: UIView, completed: DodoAnimationCompleted) {
       
     let actualDuration = duration ?? 0.4
-    let distance = UIScreen.main().bounds.width
+    let distance = UIScreen.main.bounds.width
     let transform = CGAffineTransform(translationX: right ? distance : -distance, y: 0)
     
     let start: CGAffineTransform = showView ? transform : CGAffineTransform.identity
@@ -934,7 +934,7 @@ class DodoToolbar: UIView {
     label.numberOfLines = style.label.numberOfLines
     
     if style.bar.debugMode {
-      label.backgroundColor = UIColor.red()
+      label.backgroundColor = UIColor.red
     }
     
     if let shadowColor = style.label.shadowColor {
@@ -989,7 +989,7 @@ class DodoToolbar: UIView {
       button.doLayout(onLeftSide: index == 0)
 
       if style.bar.debugMode {
-        button.backgroundColor = UIColor.yellow()
+        button.backgroundColor = UIColor.yellow
       }
     }
     
@@ -1003,7 +1003,7 @@ class DodoToolbar: UIView {
     layer.cornerRadius = style.bar.cornerRadius
     layer.masksToBounds = true
     
-    if let borderColor = style.bar.borderColor where style.bar.borderWidth > 0 {
+    if let borderColor = style.bar.borderColor , style.bar.borderWidth > 0 {
       layer.borderColor = borderColor.cgColor
       layer.borderWidth = style.bar.borderWidth
     }
@@ -1048,8 +1048,8 @@ class DodoToolbar: UIView {
   // Moves the message bar from under the keyboard
   private func setupKeyboardEvader(_ verticalConstraints: [NSLayoutConstraint]) {
     if let bottomConstraint = verticalConstraints.first,
-      superview = superview
-      where !style.bar.locationTop {
+      let superview = superview
+      , !style.bar.locationTop {
       
       DodoKeyboardListener.underKeyboardLayoutConstraint.setup(bottomConstraint,
         view: superview, bottomLayoutGuide: layoutGuide)
@@ -1393,7 +1393,7 @@ public struct DodoBarDefaultStyles {
   // ---------------------------
   
   
-  private static let _borderWidth: CGFloat  = 1 / UIScreen.main().scale
+  private static let _borderWidth: CGFloat  = 1 / UIScreen.main.scale
   
   /// Border width of the bar.
   public static var borderWidth = _borderWidth
@@ -2027,7 +2027,7 @@ public struct DodoLabelDefaultStyles {
   // ---------------------------
   
   
-  private static let _color = UIColor.white()
+  private static let _color = UIColor.white
   
   /// Color of the label text.
   public static var color = _color
@@ -2989,7 +2989,7 @@ import UIKit
     
     // Keyboard is already open when setup is called
     if let currentKeyboardHeight = keyboardObserver.currentKeyboardHeight
-      where currentKeyboardHeight > 0 {
+      , currentKeyboardHeight > 0 {
       
       keyboardWillAnimate(currentKeyboardHeight)
     }
@@ -3079,7 +3079,7 @@ public final class UnderKeyboardObserver: NSObject {
     let isShowing = notification.name == NSNotification.Name.UIKeyboardWillShow
     
     if let userInfo = (notification as NSNotification).userInfo,
-      let height = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue().height,
+      let height = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height,
       let duration: TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
       let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber {
       
