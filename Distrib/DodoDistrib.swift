@@ -18,8 +18,8 @@
 import UIKit
 
 /// A closure that is called for animation of the bar when it is being shown or hidden.
-public typealias DodoAnimation = (UIView, duration: TimeInterval?,
-  locationTop: Bool, completed: DodoAnimationCompleted)->()
+public typealias DodoAnimation = (UIView, _ duration: TimeInterval?,
+  _ locationTop: Bool, _ completed: DodoAnimationCompleted)->()
 
 /// A closure that is called by the animator when animation has finished.
 public typealias DodoAnimationCompleted = ()->()
@@ -905,17 +905,16 @@ class DodoToolbar: UIView {
 
     createLabel(message, withButtons: buttons)
     
-    style.bar.animationShow(self, duration: style.bar.animationShowDuration,
-      locationTop: style.bar.locationTop, completed: {})
+    style.bar.animationShow(self, style.bar.animationShowDuration, style.bar.locationTop, {})
   }
   
-  func hide(_ onAnimationCompleted: ()->()) {
+  func hide(_ onAnimationCompleted: @escaping ()->()) {
     // Respond only to the first hide() call
     if didCallHide { return }
     didCallHide = true
     
-    style.bar.animationHide(self, duration: style.bar.animationHideDuration,
-      locationTop: style.bar.locationTop, completed: { [weak self] in
+    style.bar.animationHide(self, style.bar.animationHideDuration,
+                            style.bar.locationTop, { [weak self] in
         
       self?.removeFromSuperview()
       onAnimationCompleted()
@@ -2036,7 +2035,7 @@ public struct DodoLabelDefaultStyles {
   // ---------------------------
   
   
-  private static let _font = UIFont.preferredFont(forTextStyle: UIFontTextStyleHeadline)
+  private static let _font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
   
   /// Font of the label text.
   public static var font = _font
@@ -2536,7 +2535,7 @@ final class MoaTimer: NSObject {
   private var timer: Timer?
   private var callback: ((MoaTimer)->())?
   
-  private init(interval: TimeInterval, repeats: Bool = false, callback: (MoaTimer)->()) {
+  private init(interval: TimeInterval, repeats: Bool = false, callback: @escaping (MoaTimer)->()) {
     self.repeats = repeats
     
     super.init()
@@ -2574,7 +2573,7 @@ final class MoaTimer: NSObject {
   */
   @discardableResult
   class func runAfter(_ interval: TimeInterval, repeats: Bool = false,
-    callback: (MoaTimer)->()) -> MoaTimer {
+    callback: @escaping (MoaTimer)->()) -> MoaTimer {
       
     return MoaTimer(interval: interval, repeats: repeats, callback: callback)
   }
@@ -2602,7 +2601,7 @@ Calling tap with closure.
 class OnTap: NSObject {
   var closure: ()->()
 
-  init(view: UIView, gesture: UIGestureRecognizer, closure:()->()) {
+  init(view: UIView, gesture: UIGestureRecognizer, closure: @escaping ()->()) {
     self.closure = closure
     super.init()
     view.addGestureRecognizer(gesture)
@@ -3037,7 +3036,7 @@ import UIKit
  Detects appearance of software keyboard and calls the supplied closures that can be used for changing the layout and moving view from under the keyboard.
  */
 public final class UnderKeyboardObserver: NSObject {
-  public typealias AnimationCallback = (height: CGFloat) -> ()
+  public typealias AnimationCallback = (_ height: CGFloat) -> ()
   
   let notificationCenter: NotificationCenter
   
@@ -3084,13 +3083,13 @@ public final class UnderKeyboardObserver: NSObject {
       let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber {
       
       let correctedHeight = isShowing ? height : 0
-      willAnimateKeyboard?(height: correctedHeight)
+      willAnimateKeyboard?(correctedHeight)
       
       UIView.animate(withDuration: duration,
                      delay: TimeInterval(0),
                      options: UIViewAnimationOptions(rawValue: animationCurveRawNSN.uintValue),
                      animations: { [weak self] in
-                      self?.animateKeyboard?(height: correctedHeight)
+                      self?.animateKeyboard?(correctedHeight)
         },
                      completion: nil
       )

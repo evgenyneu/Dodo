@@ -8,7 +8,7 @@ Calling tap with closure.
 class OnTap: NSObject {
   var closure: ()->()
 
-  init(view: UIView, gesture: UIGestureRecognizer, closure:()->()) {
+  init(view: UIView, gesture: UIGestureRecognizer, closure: @escaping ()->()) {
     self.closure = closure
     super.init()
     view.addGestureRecognizer(gesture)

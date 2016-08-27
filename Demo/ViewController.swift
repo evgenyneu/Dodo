@@ -62,7 +62,7 @@ class ViewController: UIViewController {
     view.dodo.style.bar.hideOnTap = hideOnTapSwitch.isOn
     view.dodo.style.label.shadowColor = DodoColor.fromHexString("#00000050")
     
-    view.dodo.style.label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleHeadline)
+    view.dodo.style.label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
     
     view.dodo.style.bar.animationShow = currentShowAnimation.show
     view.dodo.style.bar.animationHide = currentHideAnimation.hide

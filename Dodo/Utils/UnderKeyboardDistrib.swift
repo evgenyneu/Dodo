@@ -119,7 +119,7 @@ import UIKit
  Detects appearance of software keyboard and calls the supplied closures that can be used for changing the layout and moving view from under the keyboard.
  */
 public final class UnderKeyboardObserver: NSObject {
-  public typealias AnimationCallback = (height: CGFloat) -> ()
+  public typealias AnimationCallback = (_ height: CGFloat) -> ()
   
   let notificationCenter: NotificationCenter
   
@@ -166,13 +166,13 @@ public final class UnderKeyboardObserver: NSObject {
       let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber {
       
       let correctedHeight = isShowing ? height : 0
-      willAnimateKeyboard?(height: correctedHeight)
+      willAnimateKeyboard?(correctedHeight)
       
       UIView.animate(withDuration: duration,
                      delay: TimeInterval(0),
                      options: UIViewAnimationOptions(rawValue: animationCurveRawNSN.uintValue),
                      animations: { [weak self] in
-                      self?.animateKeyboard?(height: correctedHeight)
+                      self?.animateKeyboard?(correctedHeight)
         },
                      completion: nil
       )

@@ -22,9 +22,9 @@ extension XCTest {
     let rectValue = NSValue(cgRect: rect)
     
     return [
-      UIKeyboardFrameEndUserInfoKey: rectValue,
-      UIKeyboardAnimationDurationUserInfoKey: NSNumber(value: 0),
-      UIKeyboardAnimationCurveUserInfoKey: NSNumber(value: 0)
+      UIKeyboardFrameEndUserInfoKey as NSObject: rectValue,
+      UIKeyboardAnimationDurationUserInfoKey as NSObject: NSNumber(value: 0),
+      UIKeyboardAnimationCurveUserInfoKey as NSObject: NSNumber(value: 0)
     ]
   }
 }
