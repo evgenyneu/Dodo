@@ -95,7 +95,7 @@ public enum DodoAnimations: String {
   
   /// Helper function for fading the view in and out.
   static func doFade(_ duration: TimeInterval?, showView: Bool, view: UIView,
-    completed: DodoAnimationCompleted) {
+    completed: @escaping DodoAnimationCompleted) {
       
     let actualDuration = duration ?? 0.5
     let startAlpha: CGFloat = showView ? 0 : 1
@@ -115,7 +115,7 @@ public enum DodoAnimations: String {
   
   /// Helper function for sliding the view vertically
   static func doSlideVertically(_ duration: TimeInterval?, showView: Bool, view: UIView,
-    locationTop: Bool, completed: DodoAnimationCompleted) {
+    locationTop: Bool, completed: @escaping DodoAnimationCompleted) {
     
     let actualDuration = duration ?? 0.5
     view.layoutIfNeeded()
@@ -152,7 +152,7 @@ public enum DodoAnimations: String {
   static weak var timer: MoaTimer?
   
   /// Animation that rotates the bar around X axis in perspective with spring effect.
-  static func doRotate(_ duration: TimeInterval?, showView: Bool, view: UIView, completed: DodoAnimationCompleted) {
+  static func doRotate(_ duration: TimeInterval?, showView: Bool, view: UIView, completed: @escaping DodoAnimationCompleted) {
     
     let actualDuration = duration ?? 2.0
     let start: Double = showView ? Double(M_PI / 2) : 0
@@ -186,7 +186,7 @@ public enum DodoAnimations: String {
   
   /// Animation that swipes the bar to the right with fade-out effect.
   static func doSlide(_ duration: TimeInterval?, right: Bool, showView: Bool,
-    view: UIView, completed: DodoAnimationCompleted) {
+    view: UIView, completed: @escaping DodoAnimationCompleted) {
       
     let actualDuration = duration ?? 0.4
     let distance = UIScreen.main.bounds.width

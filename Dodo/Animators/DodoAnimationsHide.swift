@@ -11,7 +11,7 @@ struct DodoAnimationsHide {
   
   */
   static func rotate(_ view: UIView, duration: TimeInterval?, locationTop: Bool,
-    completed: DodoAnimationCompleted) {
+    completed: @escaping DodoAnimationCompleted) {
       
     DodoAnimations.doRotate(duration, showView: false, view: view, completed: completed)
   }
@@ -25,7 +25,7 @@ struct DodoAnimationsHide {
   
   */
   static func slideLeft(_ view: UIView, duration: TimeInterval?, locationTop: Bool,
-    completed: DodoAnimationCompleted) {
+    completed: @escaping DodoAnimationCompleted) {
       
     DodoAnimations.doSlide(duration, right: false, showView: false, view: view, completed: completed)
   }
@@ -39,7 +39,7 @@ struct DodoAnimationsHide {
   
   */
   static func slideRight(_ view: UIView, duration: TimeInterval?, locationTop: Bool,
-    completed: DodoAnimationCompleted) {
+    completed: @escaping DodoAnimationCompleted) {
       
     DodoAnimations.doSlide(duration, right: true, showView: false, view: view, completed: completed)
   }
@@ -53,7 +53,7 @@ struct DodoAnimationsHide {
   
   */
   static func fade(_ view: UIView, duration: TimeInterval?, locationTop: Bool,
-    completed: DodoAnimationCompleted) {
+    completed: @escaping DodoAnimationCompleted) {
       
     DodoAnimations.doFade(duration, showView: false, view: view, completed: completed)
   }
@@ -67,7 +67,7 @@ struct DodoAnimationsHide {
   
   */
   static func slideVertically(_ view: UIView, duration: TimeInterval?, locationTop: Bool,
-    completed: DodoAnimationCompleted) {
+    completed: @escaping DodoAnimationCompleted) {
       
       DodoAnimations.doSlideVertically(duration, showView: false, view: view,
         locationTop: locationTop, completed: completed)
