@@ -194,7 +194,7 @@ This project includes a demo app.
 > Information is not knowledge.
 
 
-#### Carl Segan
+#### Carl Sagan
 
 > Extinction is the rule. Survival is the exception.
 
