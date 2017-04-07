@@ -155,8 +155,8 @@ public enum DodoAnimations: String {
   static func doRotate(_ duration: TimeInterval?, showView: Bool, view: UIView, completed: @escaping DodoAnimationCompleted) {
     
     let actualDuration = duration ?? 2.0
-    let start: Double = showView ? Double(M_PI / 2) : 0
-    let end: Double = showView ? 0 : Double(M_PI / 2)
+    let start: Double = showView ? Double(Double.pi / 2) : 0
+    let end: Double = showView ? 0 : Double(Double.pi / 2)
     let damping = showView ? 0.85 : 3
     
     let myCALayer = view.layer

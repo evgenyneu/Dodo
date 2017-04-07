@@ -235,7 +235,7 @@ class ViewController: UIViewController {
       usingSpringWithDamping: 0.7,
       initialSpringVelocity: 0.7,
       fromValue: Double(0),
-      toValue: Double(2 * M_PI),
+      toValue: Double(2 * Double.pi),
       onFinished: nil)
   }
   

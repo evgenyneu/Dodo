@@ -1,5 +1,8 @@
 # Dodo version history
 
+## 8.0.0 (2017-04-08)
+
+* Updated Swift 3.1.
 
 ## 7.0.0 (2016-09-09)
 

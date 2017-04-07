@@ -1,11 +1,9 @@
 # Dodo, a message bar for iOS / Swift
 
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)][carthage]
-[![CocoaPods Version](https://img.shields.io/cocoapods/v/Dodo.svg?style=flat)][cocoadocs]
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![CocoaPods Version](https://img.shields.io/cocoapods/v/Dodo.svg?style=flat)](http://cocoadocs.org/docsets/Dodo)
 [![License](https://img.shields.io/cocoapods/l/Dodo.svg?style=flat)](LICENSE)
-[![Platform](https://img.shields.io/cocoapods/p/Dodo.svg?style=flat)][cocoadocs]
-[cocoadocs]: http://cocoadocs.org/docsets/Dodo
-[carthage]: https://github.com/Carthage/Carthage
+[![Platform](https://img.shields.io/cocoapods/p/Dodo.svg?style=flat)](http://cocoadocs.org/docsets/Dodo)
 
 <img src='https://raw.githubusercontent.com/marketplacer/Dodo/master/Graphics/buttons/dodo_a_message_bar_for_ios_written_in_swift.jpg' alt='Dodo, a message bar for iOS' width='414'>
 
@@ -35,7 +33,7 @@ Simply add [DodoDistrib.swift](https://github.com/marketplacer/Dodo/blob/master/
 
 **Setup with Carthage (iOS 8+)**
 
-Add `github "marketplacer/Dodo" ~> 7.0` to your Cartfile and run `carthage update`.
+Add `github "marketplacer/Dodo" ~> 8.0` to your Cartfile and run `carthage update`.
 
 **Setup with CocoaPods (iOS 8+)**
 
@@ -43,7 +41,7 @@ If you are using CocoaPods add this text to your Podfile and run `pod install`.
 
     use_frameworks!
     target 'Your target name'
-    pod 'Dodo', '~> 7.0'
+    pod 'Dodo', '~> 8.0'
 
 #### Legacy Swift versions
 
