@@ -23,7 +23,7 @@ width='300' alt="Illustration fromAlice's Adventures in Wonderland by John Tenni
 *From Alice's Adventures in Wonderland. Original illustration by John Tenniel, 1865. Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Alice_par_John_Tenniel_09.png).*
 
 
-## Setup (Swift 3.0 / Xcode 8)
+## Setup
 
 There are three ways you can add Dodo to your project.
 
@@ -42,6 +42,19 @@ If you are using CocoaPods add this text to your Podfile and run `pod install`.
     use_frameworks!
     target 'Your target name'
     pod 'Dodo', '~> 8.0'
+
+
+
+
+#### Swift 4.0 / Xcode 9.0 beta version
+
+*Branch:* swift-4.0
+
+* *File:* [DodoDistrib.swift](https://github.com/marketplacer/Dodo/blob/swift-4.0/Distrib/DodoDistrib.swift)
+* *Carthage:* `github "marketplacer/Dodo" "swift-4.0"`
+* *CocoaPods:* `pod 'Dodo', git: 'https://github.com/marketplacer/Dodo.git', branch: 'swift-4.0'`
+
+
 
 #### Legacy Swift versions
 
