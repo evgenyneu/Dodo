@@ -16,7 +16,7 @@ class OnTap: NSObject {
     gesture.addTarget(self, action: #selector(OnTap.didTap(_:)))
   }
 
-  func didTap(_ gesture: UIGestureRecognizer) {
+  @objc func didTap(_ gesture: UIGestureRecognizer) {
     closure()
   }
 }
