@@ -34,7 +34,7 @@ public class DodoColor {
     }
     
     let index = rgba.characters.index(rgba.startIndex, offsetBy: 1)
-    let hex = rgba.substring(from: index)
+    let hex = String(rgba.suffix(from: index))
     let scanner = Scanner(string: hex)
     var hexValue: CUnsignedLongLong = 0
     

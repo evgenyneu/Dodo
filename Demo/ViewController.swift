@@ -174,7 +174,7 @@ class ViewController: UIViewController {
       view.dodo.style.rightButton.image = customImage
       view.dodo.style.rightButton.accessibilityLabel = "Picture of Dodo"
       
-      view.dodo.style.rightButton.onTap = { [weak self] bar in
+      view.dodo.style.rightButton.onTap = { [weak self] in
         self?.rotateTheView()
       }
     }
