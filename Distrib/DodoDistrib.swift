@@ -11,18 +11,694 @@
 
 // ----------------------------
 //
-// DodoAnimation.swift
+// DodoButtonView.swift
+//
+// ----------------------------
+
+
+import UIKit
+
+class DodoButtonView: UIImageView {
+  private let style: DodoButtonStyle
+  weak var delegate: DodoButtonViewDelegate?
+  var onTap: OnTap?
+  
+  init(style: DodoButtonStyle) {
+    self.style = style
+    
+    super.init(frame: CGRect())
+  }
+
+  required init(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  // Create button views for given button styles.
+  static func createMany(_ styles: [DodoButtonStyle]) -> [DodoButtonView] {
+      
+    if !haveButtons(styles) { return [] }
+    
+    return styles.map { style in
+      let view = DodoButtonView(style: style)
+      view.setup()
+      return view
+    }
+  }
+  
+  static func haveButtons(_ styles: [DodoButtonStyle]) -> Bool {
+    let hasImages = styles.filter({ $0.image != nil }).count > 0
+    let hasIcons = styles.filter({ $0.icon != nil }).count > 0
+
+    return hasImages || hasIcons
+  }
+  
+  func doLayout(onLeftSide: Bool) {
+    precondition(delegate != nil, "Button view delegate can not be nil")
+    translatesAutoresizingMaskIntoConstraints = false
+    
+    // Set button's size
+    TegAutolayoutConstraints.width(self, value: style.size.width)
+    TegAutolayoutConstraints.height(self, value: style.size.height)
+    
+    if let superview = superview {
+      let alignAttribute = onLeftSide ? NSLayoutAttribute.left : NSLayoutAttribute.right
+      
+      let marginHorizontal = onLeftSide ? style.horizontalMarginToBar : -style.horizontalMarginToBar
+      
+      // Align the button to the left/right of the view
+      TegAutolayoutConstraints.alignSameAttributes(self, toItem: superview,
+        constraintContainer: superview,
+        attribute: alignAttribute, margin: marginHorizontal)
+      
+      // Center the button verticaly
+      TegAutolayoutConstraints.centerY(self, viewTwo: superview, constraintContainer: superview)
+    }
+  }
+  
+  func setup() {
+    if let image = DodoButtonView.image(style) { applyStyle(image) }
+    setupTap()
+  }
+  
+  /// Increase the hitsize of the image view if it's less than 44px for easier tapping.
+  override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+    let oprimizedBounds = DodoTouchTarget.optimize(bounds)
+    return oprimizedBounds.contains(point)
+  }
+  
+  /// Returns the image supplied by user or create one from the icon
+  class func image(_ style: DodoButtonStyle) -> UIImage? {
+    if style.image != nil {
+      return style.image
+    }
+    
+    if let icon = style.icon {
+      let bundle = Bundle(for: self)
+      let imageName = icon.rawValue
+      
+      return UIImage(named: imageName, in: bundle, compatibleWith: nil)
+    }
+    
+    return nil
+  }
+  
+  private func applyStyle(_ imageIn: UIImage) {
+    var imageToShow = imageIn
+    if let tintColorToShow = style.tintColor {
+      // Replace image colors with the specified tint color
+      imageToShow = imageToShow.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+      tintColor = tintColorToShow
+    }
+    
+    layer.minificationFilter = kCAFilterTrilinear // make the image crisp
+    image = imageToShow
+    contentMode = UIViewContentMode.scaleAspectFit
+    
+    // Make button accessible
+    if let accessibilityLabelToShow = style.accessibilityLabel {
+      isAccessibilityElement = true
+      accessibilityLabel = accessibilityLabelToShow
+      accessibilityTraits = UIAccessibilityTraitButton
+    }
+  }
+  
+  private func setupTap() {
+    onTap = OnTap(view: self, gesture: UITapGestureRecognizer()) { [weak self] in
+      self?.didTap()
+    }
+  }
+  
+  private func didTap() {
+    self.delegate?.buttonDelegateDidTap(self.style)
+    style.onTap?()
+  }
+}
+
+
+// ----------------------------
+//
+// DodoButtonViewDelegate.swift
+//
+// ----------------------------
+
+protocol DodoButtonViewDelegate: class {
+  func buttonDelegateDidTap(_ buttonStyle: DodoButtonStyle)
+}
+
+
+// ----------------------------
+//
+// DodoButtonOnTap.swift
+//
+// ----------------------------
+
+/// A closure that is called when a bar button is tapped
+public typealias DodoButtonOnTap = ()->()
+
+
+// ----------------------------
+//
+// DodoInterface.swift
 //
 // ----------------------------
 
 import UIKit
 
-/// A closure that is called for animation of the bar when it is being shown or hidden.
-public typealias DodoAnimation = (UIView, _ duration: TimeInterval?,
-  _ locationTop: Bool, _ completed: @escaping DodoAnimationCompleted)->()
+/**
 
-/// A closure that is called by the animator when animation has finished.
-public typealias DodoAnimationCompleted = ()->()
+Coordinates the process of showing and hiding of the message bar.
+
+The instance is created automatically in the `dodo` property of any UIView instance.
+It is not expected to be instantiated manually anywhere except unit tests.
+
+For example:
+
+let view = UIView()
+view.dodo.info("Horses are blue?")
+
+*/
+public protocol DodoInterface: class {  
+  /// Specify optional layout guide for positioning the bar view.
+  var topLayoutGuide: UILayoutSupport? { get set }
+  
+  /// Specify optional layout guide for positioning the bar view.
+  var bottomLayoutGuide: UILayoutSupport? { get set }
+  
+  /// Defines styles for the bar.
+  var style: DodoStyle { get set }
+  
+  /// Changes the style preset for the bar widget.
+  var preset: DodoPresets { get set }
+  
+  /**
+  
+  Shows the message bar with *.success* preset. It can be used to indicate successful completion of an operation.
+  
+  - parameter message: The text message to be shown.
+  
+  */
+  func success(_ message: String)
+  
+  /**
+  
+  Shows the message bar with *.Info* preset. It can be used for showing information messages that have neutral emotional value.
+  
+  - parameter message: The text message to be shown.
+  
+  */
+  func info(_ message: String)
+  
+  /**
+  
+  Shows the message bar with *.warning* preset. It can be used for for showing warning messages.
+  
+  - parameter message: The text message to be shown.
+  
+  */
+  func warning(_ message: String)
+  
+  /**
+  
+  Shows the message bar with *.warning* preset. It can be used for showing critical error messages
+  
+  - parameter message: The text message to be shown.
+  
+  */
+  func error(_ message: String)
+  
+  /**
+  
+  Shows the message bar. Set `preset` property to change the appearance of the message bar, or use the shortcut methods: `success`, `info`, `warning` and `error`.
+  
+  - parameter message: The text message to be shown.
+  
+  */
+  func show(_ message: String)
+  
+  /// Hide the message bar if it's currently shown.
+  func hide()
+}
+
+
+// ----------------------------
+//
+// Dodo.swift
+//
+// ----------------------------
+
+import UIKit
+
+/**
+
+Main class that coordinates the process of showing and hiding of the message bar.
+
+Instance of this class is created automatically in the `dodo` property of any UIView instance.
+It is not expected to be instantiated manually anywhere except unit tests.
+
+For example:
+
+    let view = UIView()
+    view.dodo.info("Horses are blue?")
+
+*/
+final class Dodo: DodoInterface, DodoButtonViewDelegate {
+  private weak var superview: UIView!
+  private var hideTimer: MoaTimer?
+  
+  // Gesture handler that hides the bar when it is tapped
+  var onTap: OnTap?
+  
+  /// Specify optional layout guide for positioning the bar view.
+  var topLayoutGuide: UILayoutSupport?
+  
+  /// Specify optional layout guide for positioning the bar view.
+  var bottomLayoutGuide: UILayoutSupport?
+  
+  /// Defines styles for the bar.
+  var style = DodoStyle(parentStyle: DodoPresets.defaultPreset.style)
+
+  /// Creates an instance of Dodo class
+  init(superview: UIView) {
+    self.superview = superview
+    
+    DodoKeyboardListener.startListening()
+  }
+  
+  /// Changes the style preset for the bar widget.
+  var preset: DodoPresets = DodoPresets.defaultPreset {
+    didSet {
+      if preset != oldValue  {
+        style.parent = preset.style
+      }
+    }
+  }
+  
+  /**
+  
+  Shows the message bar with *.success* preset. It can be used to indicate successful completion of an operation.
+  
+  - parameter message: The text message to be shown.
+  
+  */
+  func success(_ message: String) {
+    preset = .success
+    show(message)
+  }
+  
+  /**
+  
+  Shows the message bar with *.Info* preset. It can be used for showing information messages that have neutral emotional value.
+  
+  - parameter message: The text message to be shown.
+  
+  */
+  func info(_ message: String) {
+    preset = .info
+    show(message)
+  }
+  
+  /**
+  
+  Shows the message bar with *.warning* preset. It can be used for for showing warning messages.
+  
+  - parameter message: The text message to be shown.
+  
+  */
+  func warning(_ message: String) {
+    preset = .warning
+    show(message)
+  }
+  
+  /**
+  
+  Shows the message bar with *.warning* preset. It can be used for showing critical error messages
+  
+  - parameter message: The text message to be shown.
+  
+  */
+  func error(_ message: String) {
+    preset = .error
+    show(message)
+  }
+  
+  /**
+    
+  Shows the message bar. Set `preset` property to change the appearance of the message bar, or use the shortcut methods: `success`, `info`, `warning` and `error`.
+    
+  - parameter message: The text message to be shown.
+    
+  */
+  func show(_ message: String) {
+    removeExistingBars()
+    setupHideTimer()
+
+    let bar = DodoToolbar(witStyle: style)
+    setupHideOnTap(bar)
+    bar.layoutGuide = style.bar.locationTop ? topLayoutGuide : bottomLayoutGuide
+    bar.buttonViewDelegate = self
+    bar.show(inSuperview: superview, withMessage: message)
+  }
+  
+  /// Hide the message bar if it's currently shown.
+  func hide() {
+    hideTimer?.cancel()
+    
+    toolbar?.hide({})
+  }
+  
+  func listenForKeyboard() {
+    
+  }
+  
+  private var toolbar: DodoToolbar? {
+    get {
+      return superview.subviews.filter { $0 is DodoToolbar }.map { $0 as! DodoToolbar }.first
+    }
+  }
+  
+  private func removeExistingBars() {
+    for view in superview.subviews {
+      if let existingToolbar = view as? DodoToolbar {
+        existingToolbar.removeFromSuperview()
+      }
+    }
+  }
+  
+  // MARK: - Hiding after delay
+  
+  private func setupHideTimer() {
+    hideTimer?.cancel()
+    
+    if style.bar.hideAfterDelaySeconds > 0 {
+      hideTimer = MoaTimer.runAfter(style.bar.hideAfterDelaySeconds) { [weak self] timer in
+        
+        DispatchQueue.main.async {
+          self?.hide()
+        }
+      }
+    }
+  }
+  
+  // MARK: - Reacting to tap
+  
+  private func setupHideOnTap(_ toolbar: UIView) {
+    onTap = OnTap(view: toolbar, gesture: UITapGestureRecognizer()) { [weak self] in
+      self?.didTapTheBar()
+    }
+  }
+  
+  /// The bar has been tapped
+  private func didTapTheBar() {
+    style.bar.onTap?()
+    
+    if style.bar.hideOnTap {
+      hide()
+    }
+  }
+  
+  // MARK: - DodoButtonViewDelegate
+  
+  func buttonDelegateDidTap(_ buttonStyle: DodoButtonStyle) {
+    if buttonStyle.hideOnTap {
+      hide()
+    }
+  }
+}
+
+
+// ----------------------------
+//
+// DodoMockMessage.swift
+//
+// ----------------------------
+
+/**
+
+Contains information about the message that was displayed in message bar. Used in unit tests.
+
+*/
+struct DodoMockMessage {
+  let preset: DodoPresets
+  let message: String
+}
+
+
+// ----------------------------
+//
+// DodoMock.swift
+//
+// ----------------------------
+
+import UIKit
+
+/**
+
+This class is for testing the code that uses Dodo. It helps verifying the messages that were shown in the message bar without actually showing them.
+
+Here is how to use it in your unit test.
+
+1. Create an instance of DodoMock.
+2. Set it to the `view.dodo` property of the view.
+3. Run the code that you are testing.
+4. Finally, verify which messages were shown in the message bar.
+
+Example:
+
+    // Supply mock to the view
+    let dodoMock = DodoMock()
+    view.dodo = dodoMock
+
+    // Run the code from the app
+    runSomeAppCode()
+
+    // Verify the message is visible
+    XCTAssert(dodoMock.results.visible)
+
+    // Check total number of messages shown
+    XCTAssertEqual(1, dodoMock.results.total)
+
+    // Verify the text of the success message
+    XCTAssertEqual("To be prepared is half the victory.", dodoMock.results.success[0])
+
+*/
+public class DodoMock: DodoInterface {
+  /// This property is used in unit tests to verify which messages were displayed in the message bar.
+  public var results = DodoMockResults()
+  
+  /// Specify optional layout guide for positioning the bar view.
+  public var topLayoutGuide: UILayoutSupport?
+  
+  /// Specify optional layout guide for positioning the bar view.
+  public var bottomLayoutGuide: UILayoutSupport?
+  
+  /// Defines styles for the bar.
+  public var style = DodoStyle(parentStyle: DodoPresets.defaultPreset.style)
+  
+  /// Creates an instance of DodoMock class
+  public init() { }
+  
+  /// Changes the style preset for the bar widget.
+  public var preset: DodoPresets = DodoPresets.defaultPreset {
+    didSet {
+      if preset != oldValue  {
+        style.parent = preset.style
+      }
+    }
+  }
+  
+  /**
+   
+   Shows the message bar with *.success* preset. It can be used to indicate successful completion of an operation.
+   
+   - parameter message: The text message to be shown.
+   
+   */
+  public func success(_ message: String) {
+    preset = .success
+    show(message)
+  }
+  
+  /**
+   
+   Shows the message bar with *.Info* preset. It can be used for showing information messages that have neutral emotional value.
+   
+   - parameter message: The text message to be shown.
+   
+   */
+  public func info(_ message: String) {
+    preset = .info
+    show(message)
+  }
+  
+  /**
+   
+   Shows the message bar with *.warning* preset. It can be used for for showing warning messages.
+   
+   - parameter message: The text message to be shown.
+   
+   */
+  public func warning(_ message: String) {
+    preset = .warning
+    show(message)
+  }
+  
+  /**
+   
+   Shows the message bar with *.warning* preset. It can be used for showing critical error messages
+   
+   - parameter message: The text message to be shown.
+   
+   */
+  public func error(_ message: String) {
+    preset = .error
+    show(message)
+  }
+  
+  /**
+   
+   Shows the message bar. Set `preset` property to change the appearance of the message bar, or use the shortcut methods: `success`, `info`, `warning` and `error`.
+   
+   - parameter message: The text message to be shown.
+   
+   */
+  public func show(_ message: String) {
+    let mockMessage = DodoMockMessage(preset: preset, message: message)
+    results.messages.append(mockMessage)
+    results.visible = true
+  }
+  
+  /// Hide the message bar if it's currently shown.
+  public func hide() {
+    results.visible = false
+  }
+}
+
+
+// ----------------------------
+//
+// DodoMockResults.swift
+//
+// ----------------------------
+
+/**
+
+Used in unit tests to verify the messages that were shown in the message bar.
+
+*/
+public struct DodoMockResults {
+  /// An array of success messages displayed in the message bar.
+  public var success: [String] {
+    return messages.filter({ $0.preset == DodoPresets.success }).map({ $0.message })
+  }
+  
+  /// An array of information messages displayed in the message bar.
+  public var info: [String] {
+    return messages.filter({ $0.preset == DodoPresets.info }).map({ $0.message })
+  }
+  
+  /// An array of warning messages displayed in the message bar.
+  public var warning: [String] {
+    return messages.filter({ $0.preset == DodoPresets.warning }).map({ $0.message })
+  }
+  
+  /// An array of error messages displayed in the message bar.
+  public var errors: [String] {
+    return messages.filter({ $0.preset == DodoPresets.error }).map({ $0.message })
+  }
+  
+  /// Total number of messages shown.
+  public var total: Int {
+    return messages.count
+  }
+  
+  /// Indicates whether the message is visible
+  public var visible = false
+  
+  var messages = [DodoMockMessage]()
+}
+
+
+// ----------------------------
+//
+// DodoAnimationsHide.swift
+//
+// ----------------------------
+
+import UIKit
+
+/// Collection of animation effects use for hiding the notification bar.
+struct DodoAnimationsHide {
+  /**
+  
+  Animation that rotates the bar around X axis in perspective with spring effect.
+  
+  - parameter view: View supplied for animation.
+  - parameter completed: A closure to be called after animation completes.
+  
+  */
+  static func rotate(_ view: UIView, duration: TimeInterval?, locationTop: Bool,
+    completed: @escaping DodoAnimationCompleted) {
+      
+    DodoAnimations.doRotate(duration, showView: false, view: view, completed: completed)
+  }
+  
+  /**
+  
+  Animation that swipes the bar from to the left with fade-in effect.
+  
+  - parameter view: View supplied for animation.
+  - parameter completed: A closure to be called after animation completes.
+  
+  */
+  static func slideLeft(_ view: UIView, duration: TimeInterval?, locationTop: Bool,
+    completed: @escaping DodoAnimationCompleted) {
+      
+    DodoAnimations.doSlide(duration, right: false, showView: false, view: view, completed: completed)
+  }
+  
+  /**
+  
+  Animation that swipes the bar to the right with fade-out effect.
+  
+  - parameter view: View supplied for animation.
+  - parameter completed: A closure to be called after animation completes.
+  
+  */
+  static func slideRight(_ view: UIView, duration: TimeInterval?, locationTop: Bool,
+    completed: @escaping DodoAnimationCompleted) {
+      
+    DodoAnimations.doSlide(duration, right: true, showView: false, view: view, completed: completed)
+  }
+  
+  /**
+  
+  Animation that fades the bar out.
+  
+  - parameter view: View supplied for animation.
+  - parameter completed: A closure to be called after animation completes.
+  
+  */
+  static func fade(_ view: UIView, duration: TimeInterval?, locationTop: Bool,
+    completed: @escaping DodoAnimationCompleted) {
+      
+    DodoAnimations.doFade(duration, showView: false, view: view, completed: completed)
+  }
+  
+  /**
+  
+  Animation that slides the bar vertically out of view.
+  
+  - parameter view: View supplied for animation.
+  - parameter completed: A closure to be called after animation completes.
+  
+  */
+  static func slideVertically(_ view: UIView, duration: TimeInterval?, locationTop: Bool,
+    completed: @escaping DodoAnimationCompleted) {
+      
+      DodoAnimations.doSlideVertically(duration, showView: false, view: view,
+        locationTop: locationTop, completed: completed)
+  }
+}
 
 
 // ----------------------------
@@ -251,89 +927,6 @@ public enum DodoAnimations: String {
 
 // ----------------------------
 //
-// DodoAnimationsHide.swift
-//
-// ----------------------------
-
-import UIKit
-
-/// Collection of animation effects use for hiding the notification bar.
-struct DodoAnimationsHide {
-  /**
-  
-  Animation that rotates the bar around X axis in perspective with spring effect.
-  
-  - parameter view: View supplied for animation.
-  - parameter completed: A closure to be called after animation completes.
-  
-  */
-  static func rotate(_ view: UIView, duration: TimeInterval?, locationTop: Bool,
-    completed: @escaping DodoAnimationCompleted) {
-      
-    DodoAnimations.doRotate(duration, showView: false, view: view, completed: completed)
-  }
-  
-  /**
-  
-  Animation that swipes the bar from to the left with fade-in effect.
-  
-  - parameter view: View supplied for animation.
-  - parameter completed: A closure to be called after animation completes.
-  
-  */
-  static func slideLeft(_ view: UIView, duration: TimeInterval?, locationTop: Bool,
-    completed: @escaping DodoAnimationCompleted) {
-      
-    DodoAnimations.doSlide(duration, right: false, showView: false, view: view, completed: completed)
-  }
-  
-  /**
-  
-  Animation that swipes the bar to the right with fade-out effect.
-  
-  - parameter view: View supplied for animation.
-  - parameter completed: A closure to be called after animation completes.
-  
-  */
-  static func slideRight(_ view: UIView, duration: TimeInterval?, locationTop: Bool,
-    completed: @escaping DodoAnimationCompleted) {
-      
-    DodoAnimations.doSlide(duration, right: true, showView: false, view: view, completed: completed)
-  }
-  
-  /**
-  
-  Animation that fades the bar out.
-  
-  - parameter view: View supplied for animation.
-  - parameter completed: A closure to be called after animation completes.
-  
-  */
-  static func fade(_ view: UIView, duration: TimeInterval?, locationTop: Bool,
-    completed: @escaping DodoAnimationCompleted) {
-      
-    DodoAnimations.doFade(duration, showView: false, view: view, completed: completed)
-  }
-  
-  /**
-  
-  Animation that slides the bar vertically out of view.
-  
-  - parameter view: View supplied for animation.
-  - parameter completed: A closure to be called after animation completes.
-  
-  */
-  static func slideVertically(_ view: UIView, duration: TimeInterval?, locationTop: Bool,
-    completed: @escaping DodoAnimationCompleted) {
-      
-      DodoAnimations.doSlideVertically(duration, showView: false, view: view,
-        locationTop: locationTop, completed: completed)
-  }
-}
-
-
-// ----------------------------
-//
 // DodoAnimationsShow.swift
 //
 // ----------------------------
@@ -417,154 +1010,23 @@ struct DodoAnimationsShow {
 
 // ----------------------------
 //
-// DodoButtonOnTap.swift
+// DodoAnimation.swift
 //
 // ----------------------------
-
-/// A closure that is called when a bar button is tapped
-public typealias DodoButtonOnTap = ()->()
-
-
-// ----------------------------
-//
-// DodoButtonView.swift
-//
-// ----------------------------
-
 
 import UIKit
 
-class DodoButtonView: UIImageView {
-  private let style: DodoButtonStyle
-  weak var delegate: DodoButtonViewDelegate?
-  var onTap: OnTap?
-  
-  init(style: DodoButtonStyle) {
-    self.style = style
-    
-    super.init(frame: CGRect())
-  }
+/// A closure that is called for animation of the bar when it is being shown or hidden.
+public typealias DodoAnimation = (UIView, _ duration: TimeInterval?,
+  _ locationTop: Bool, _ completed: @escaping DodoAnimationCompleted)->()
 
-  required init(coder aDecoder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-  
-  // Create button views for given button styles.
-  static func createMany(_ styles: [DodoButtonStyle]) -> [DodoButtonView] {
-      
-    if !haveButtons(styles) { return [] }
-    
-    return styles.map { style in
-      let view = DodoButtonView(style: style)
-      view.setup()
-      return view
-    }
-  }
-  
-  static func haveButtons(_ styles: [DodoButtonStyle]) -> Bool {
-    let hasImages = styles.filter({ $0.image != nil }).count > 0
-    let hasIcons = styles.filter({ $0.icon != nil }).count > 0
-
-    return hasImages || hasIcons
-  }
-  
-  func doLayout(onLeftSide: Bool) {
-    precondition(delegate != nil, "Button view delegate can not be nil")
-    translatesAutoresizingMaskIntoConstraints = false
-    
-    // Set button's size
-    TegAutolayoutConstraints.width(self, value: style.size.width)
-    TegAutolayoutConstraints.height(self, value: style.size.height)
-    
-    if let superview = superview {
-      let alignAttribute = onLeftSide ? NSLayoutAttribute.left : NSLayoutAttribute.right
-      
-      let marginHorizontal = onLeftSide ? style.horizontalMarginToBar : -style.horizontalMarginToBar
-      
-      // Align the button to the left/right of the view
-      TegAutolayoutConstraints.alignSameAttributes(self, toItem: superview,
-        constraintContainer: superview,
-        attribute: alignAttribute, margin: marginHorizontal)
-      
-      // Center the button verticaly
-      TegAutolayoutConstraints.centerY(self, viewTwo: superview, constraintContainer: superview)
-    }
-  }
-  
-  func setup() {
-    if let image = DodoButtonView.image(style) { applyStyle(image) }
-    setupTap()
-  }
-  
-  /// Increase the hitsize of the image view if it's less than 44px for easier tapping.
-  override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-    let oprimizedBounds = DodoTouchTarget.optimize(bounds)
-    return oprimizedBounds.contains(point)
-  }
-  
-  /// Returns the image supplied by user or create one from the icon
-  class func image(_ style: DodoButtonStyle) -> UIImage? {
-    if style.image != nil {
-      return style.image
-    }
-    
-    if let icon = style.icon {
-      let bundle = Bundle(for: self)
-      let imageName = icon.rawValue
-      
-      return UIImage(named: imageName, in: bundle, compatibleWith: nil)
-    }
-    
-    return nil
-  }
-  
-  private func applyStyle(_ imageIn: UIImage) {
-    var imageToShow = imageIn
-    if let tintColorToShow = style.tintColor {
-      // Replace image colors with the specified tint color
-      imageToShow = imageToShow.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-      tintColor = tintColorToShow
-    }
-    
-    layer.minificationFilter = kCAFilterTrilinear // make the image crisp
-    image = imageToShow
-    contentMode = UIViewContentMode.scaleAspectFit
-    
-    // Make button accessible
-    if let accessibilityLabelToShow = style.accessibilityLabel {
-      isAccessibilityElement = true
-      accessibilityLabel = accessibilityLabelToShow
-      accessibilityTraits = UIAccessibilityTraitButton
-    }
-  }
-  
-  private func setupTap() {
-    onTap = OnTap(view: self, gesture: UITapGestureRecognizer()) { [weak self] in
-      self?.didTap()
-    }
-  }
-  
-  private func didTap() {
-    self.delegate?.buttonDelegateDidTap(self.style)
-    style.onTap?()
-  }
-}
+/// A closure that is called by the animator when animation has finished.
+public typealias DodoAnimationCompleted = ()->()
 
 
 // ----------------------------
 //
-// DodoButtonViewDelegate.swift
-//
-// ----------------------------
-
-protocol DodoButtonViewDelegate: class {
-  func buttonDelegateDidTap(_ buttonStyle: DodoButtonStyle)
-}
-
-
-// ----------------------------
-//
-// Dodo.swift
+// MoaTimer.swift
 //
 // ----------------------------
 
@@ -572,900 +1034,666 @@ import UIKit
 
 /**
 
-Main class that coordinates the process of showing and hiding of the message bar.
+Creates a timer that executes code after delay.
 
-Instance of this class is created automatically in the `dodo` property of any UIView instance.
-It is not expected to be instantiated manually anywhere except unit tests.
+Usage
 
-For example:
+    var timer: MoaTimer.runAfter?
+    ...
 
-    let view = UIView()
-    view.dodo.info("Horses are blue?")
+    func myFunc() {
+       timer = MoaTimer.runAfter(0.010) { timer in
+          ... code to run
+       }
+    }
+
+Canceling the timer
+
+Timer is Canceling automatically when it is deallocated. You can also cancel it manually:
+
+    let timer = MoaTimer.runAfter(0.010) { timer in ... }
+    timer.cancel()
 
 */
-final class Dodo: DodoInterface, DodoButtonViewDelegate {
-  private weak var superview: UIView!
-  private var hideTimer: MoaTimer?
+final class MoaTimer: NSObject {
+  private let repeats: Bool
+  private var timer: Timer?
+  private var callback: ((MoaTimer)->())?
   
-  // Gesture handler that hides the bar when it is tapped
-  var onTap: OnTap?
-  
-  /// Specify optional layout guide for positioning the bar view.
-  var topLayoutGuide: UILayoutSupport?
-  
-  /// Specify optional layout guide for positioning the bar view.
-  var bottomLayoutGuide: UILayoutSupport?
-  
-  /// Defines styles for the bar.
-  var style = DodoStyle(parentStyle: DodoPresets.defaultPreset.style)
-
-  /// Creates an instance of Dodo class
-  init(superview: UIView) {
-    self.superview = superview
+  private init(interval: TimeInterval, repeats: Bool = false, callback: @escaping (MoaTimer)->()) {
+    self.repeats = repeats
     
-    DodoKeyboardListener.startListening()
+    super.init()
+    
+    self.callback = callback
+    timer = Timer.scheduledTimer(timeInterval: interval, target: self,
+      selector: #selector(MoaTimer.timerFired(_:)), userInfo: nil, repeats: repeats)
   }
   
-  /// Changes the style preset for the bar widget.
-  var preset: DodoPresets = DodoPresets.defaultPreset {
-    didSet {
-      if preset != oldValue  {
-        style.parent = preset.style
-      }
-    }
+  /// Timer is cancelled automatically when it is deallocated.
+  deinit {
+    cancel()
   }
   
   /**
   
-  Shows the message bar with *.success* preset. It can be used to indicate successful completion of an operation.
+  Cancels the timer and prevents it from firing in the future.
   
-  - parameter message: The text message to be shown.
+  Note that timer is cancelled automatically whe it is deallocated.
   
   */
-  func success(_ message: String) {
-    preset = .success
-    show(message)
+  func cancel() {
+    timer?.invalidate()
+    timer = nil
   }
   
   /**
   
-  Shows the message bar with *.Info* preset. It can be used for showing information messages that have neutral emotional value.
+  Runs the closure after specified time interval.
   
-  - parameter message: The text message to be shown.
-  
-  */
-  func info(_ message: String) {
-    preset = .info
-    show(message)
-  }
-  
-  /**
-  
-  Shows the message bar with *.warning* preset. It can be used for for showing warning messages.
-  
-  - parameter message: The text message to be shown.
+  - parameter interval: Time interval in milliseconds.
+  :repeats: repeats When true, the code is run repeatedly.
+  - returns: callback A closure to be run by the timer.
   
   */
-  func warning(_ message: String) {
-    preset = .warning
-    show(message)
+  @discardableResult
+  class func runAfter(_ interval: TimeInterval, repeats: Bool = false,
+    callback: @escaping (MoaTimer)->()) -> MoaTimer {
+      
+    return MoaTimer(interval: interval, repeats: repeats, callback: callback)
   }
   
-  /**
-  
-  Shows the message bar with *.warning* preset. It can be used for showing critical error messages
-  
-  - parameter message: The text message to be shown.
-  
-  */
-  func error(_ message: String) {
-    preset = .error
-    show(message)
-  }
-  
-  /**
-    
-  Shows the message bar. Set `preset` property to change the appearance of the message bar, or use the shortcut methods: `success`, `info`, `warning` and `error`.
-    
-  - parameter message: The text message to be shown.
-    
-  */
-  func show(_ message: String) {
-    removeExistingBars()
-    setupHideTimer()
-
-    let bar = DodoToolbar(witStyle: style)
-    setupHideOnTap(bar)
-    bar.layoutGuide = style.bar.locationTop ? topLayoutGuide : bottomLayoutGuide
-    bar.buttonViewDelegate = self
-    bar.show(inSuperview: superview, withMessage: message)
-  }
-  
-  /// Hide the message bar if it's currently shown.
-  func hide() {
-    hideTimer?.cancel()
-    
-    toolbar?.hide({})
-  }
-  
-  func listenForKeyboard() {
-    
-  }
-  
-  private var toolbar: DodoToolbar? {
-    get {
-      return superview.subviews.filter { $0 is DodoToolbar }.map { $0 as! DodoToolbar }.first
-    }
-  }
-  
-  private func removeExistingBars() {
-    for view in superview.subviews {
-      if let existingToolbar = view as? DodoToolbar {
-        existingToolbar.removeFromSuperview()
-      }
-    }
-  }
-  
-  // MARK: - Hiding after delay
-  
-  private func setupHideTimer() {
-    hideTimer?.cancel()
-    
-    if style.bar.hideAfterDelaySeconds > 0 {
-      hideTimer = MoaTimer.runAfter(style.bar.hideAfterDelaySeconds) { [weak self] timer in
-        
-        DispatchQueue.main.async {
-          self?.hide()
-        }
-      }
-    }
-  }
-  
-  // MARK: - Reacting to tap
-  
-  private func setupHideOnTap(_ toolbar: UIView) {
-    onTap = OnTap(view: toolbar, gesture: UITapGestureRecognizer()) { [weak self] in
-      self?.didTapTheBar()
-    }
-  }
-  
-  /// The bar has been tapped
-  private func didTapTheBar() {
-    style.bar.onTap?()
-    
-    if style.bar.hideOnTap {
-      hide()
-    }
-  }
-  
-  // MARK: - DodoButtonViewDelegate
-  
-  func buttonDelegateDidTap(_ buttonStyle: DodoButtonStyle) {
-    if buttonStyle.hideOnTap {
-      hide()
-    }
+  @objc func timerFired(_ timer: Timer) {
+    self.callback?(self)
+    if !repeats { cancel() }
   }
 }
 
 
 // ----------------------------
 //
-// DodoBarOnTap.swift
+// UnderKeyboardDistrib.swift
 //
 // ----------------------------
 
-/// A closure that is called when a bar is tapped
-public typealias DodoBarOnTap = ()->()
-
+//
+// An iOS libary for moving content from under the keyboard.
+//
+// https://github.com/marketplacer/UnderKeyboard
+//
+// This file was automatically generated by combining multiple Swift source files.
+//
 
 // ----------------------------
 //
-// DodoInterface.swift
+// UnderKeyboardLayoutConstraint.swift
 //
 // ----------------------------
-
 import UIKit
 
-/**
-
-Coordinates the process of showing and hiding of the message bar.
-
-The instance is created automatically in the `dodo` property of any UIView instance.
-It is not expected to be instantiated manually anywhere except unit tests.
-
-For example:
-
-let view = UIView()
-view.dodo.info("Horses are blue?")
-
-*/
-public protocol DodoInterface: class {  
-  /// Specify optional layout guide for positioning the bar view.
-  var topLayoutGuide: UILayoutSupport? { get set }
-  
-  /// Specify optional layout guide for positioning the bar view.
-  var bottomLayoutGuide: UILayoutSupport? { get set }
-  
-  /// Defines styles for the bar.
-  var style: DodoStyle { get set }
-  
-  /// Changes the style preset for the bar widget.
-  var preset: DodoPresets { get set }
-  
-  /**
-  
-  Shows the message bar with *.success* preset. It can be used to indicate successful completion of an operation.
-  
-  - parameter message: The text message to be shown.
-  
-  */
-  func success(_ message: String)
-  
-  /**
-  
-  Shows the message bar with *.Info* preset. It can be used for showing information messages that have neutral emotional value.
-  
-  - parameter message: The text message to be shown.
-  
-  */
-  func info(_ message: String)
-  
-  /**
-  
-  Shows the message bar with *.warning* preset. It can be used for for showing warning messages.
-  
-  - parameter message: The text message to be shown.
-  
-  */
-  func warning(_ message: String)
-  
-  /**
-  
-  Shows the message bar with *.warning* preset. It can be used for showing critical error messages
-  
-  - parameter message: The text message to be shown.
-  
-  */
-  func error(_ message: String)
-  
-  /**
-  
-  Shows the message bar. Set `preset` property to change the appearance of the message bar, or use the shortcut methods: `success`, `info`, `warning` and `error`.
-  
-  - parameter message: The text message to be shown.
-  
-  */
-  func show(_ message: String)
-  
-  /// Hide the message bar if it's currently shown.
-  func hide()
-}
-
-
-// ----------------------------
-//
-// DodoKeyboardListener.swift
-//
-// ----------------------------
 
 /**
-
-Start listening for keyboard events. Used for moving the message bar from under the keyboard when the bar is shown at the bottom of the screen.
-
-*/
-struct DodoKeyboardListener {
-  static let underKeyboardLayoutConstraint = UnderKeyboardLayoutConstraint()
+ Adjusts the length (constant value) of the bottom layout constraint when keyboard shows and hides.
+ */
+@objc public class UnderKeyboardLayoutConstraint: NSObject {
+  private weak var bottomLayoutConstraint: NSLayoutConstraint?
+  private weak var bottomLayoutGuide: UILayoutSupport?
+  private var keyboardObserver = UnderKeyboardObserver()
+  private var initialConstraintConstant: CGFloat = 0
+  private var minMargin: CGFloat = 10
   
-  static func startListening() {
-    // Just access the static property to make it initialize itself lazily if it hasn't been already.
-    underKeyboardLayoutConstraint.isAccessibilityElement = false
-  }
-}
-
-
-// ----------------------------
-//
-// DodoToolbar.swift
-//
-// ----------------------------
-
-import UIKit
-
-class DodoToolbar: UIView {
-  var layoutGuide: UILayoutSupport?
-  var style: DodoStyle
-  weak var buttonViewDelegate: DodoButtonViewDelegate?
-  private var didCallHide = false
+  private var viewToAnimate: UIView?
   
-  convenience init(witStyle style: DodoStyle) {
-    self.init(frame: CGRect())
+  /// Creates an instance of the class
+  public override init() {
+    super.init()
     
-    self.style = style
+    keyboardObserver.willAnimateKeyboard = keyboardWillAnimate
+    keyboardObserver.animateKeyboard = animateKeyboard
+    keyboardObserver.start()
   }
   
-  override init(frame: CGRect) {
-    style = DodoStyle()
+  deinit {
+    stop()
+  }
+  
+  /// Stop listening for keyboard notifications.
+  public func stop() {
+    keyboardObserver.stop()
+  }
+  
+  /**
+   
+   Supply a bottom Auto Layout constraint. Its constant value will be adjusted by the height of the keyboard when it appears and hides.
+   
+   - parameter bottomLayoutConstraint: Supply a bottom layout constraint. Its constant value will be adjusted when keyboard is shown and hidden.
+   
+   - parameter view: Supply a view that will be used to animate the constraint. It is usually the superview containing the view with the constraint.
+   
+   - parameter minMargin: Specify the minimum margin between the keyboard and the bottom of the view the constraint is attached to. Default: 10.
+   
+   - parameter bottomLayoutGuide: Supply an optional bottom layout guide (like a tab bar) that will be taken into account during height calculations.
+   
+   */
+  public func setup(_ bottomLayoutConstraint: NSLayoutConstraint,
+                    view: UIView, minMargin: CGFloat = 10,
+                    bottomLayoutGuide: UILayoutSupport? = nil) {
     
-    super.init(frame: frame)
-  }
-  
-  required init(coder aDecoder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-  
-  func show(inSuperview parentView: UIView, withMessage message: String) {
+    initialConstraintConstant = bottomLayoutConstraint.constant
+    self.bottomLayoutConstraint = bottomLayoutConstraint
+    self.minMargin = minMargin
+    self.bottomLayoutGuide = bottomLayoutGuide
+    self.viewToAnimate = view
+    
+    // Keyboard is already open when setup is called
+    if let currentKeyboardHeight = keyboardObserver.currentKeyboardHeight
+      , currentKeyboardHeight > 0 {
       
-    if superview != nil { return } // already being shown
+      keyboardWillAnimate(currentKeyboardHeight)
+    }
+  }
   
-    parentView.addSubview(self)
-    applyStyle()
-    layoutBarInSuperview()
+  func keyboardWillAnimate(_ height: CGFloat) {
+    guard let bottomLayoutConstraint = bottomLayoutConstraint else { return }
+    
+    let layoutGuideHeight = bottomLayoutGuide?.length ?? 0
+    let correctedHeight = height - layoutGuideHeight
+    
+    if height > 0 {
+      let newConstantValue = correctedHeight + minMargin
       
-    let buttons = createButtons()
-
-    createLabel(message, withButtons: buttons)
-    
-    style.bar.animationShow(self, style.bar.animationShowDuration, style.bar.locationTop, {})
-  }
-  
-  func hide(_ onAnimationCompleted: @escaping ()->()) {
-    // Respond only to the first hide() call
-    if didCallHide { return }
-    didCallHide = true
-    
-    style.bar.animationHide(self, style.bar.animationHideDuration,
-                            style.bar.locationTop, { [weak self] in
-        
-      self?.removeFromSuperview()
-      onAnimationCompleted()
-    })
-  }
-    
-  // MARK: - Label
-  
-  private func createLabel(_ message: String, withButtons buttons: [UIView]) {
-    let label = UILabel()
-    
-    label.font = style.label.font
-    label.text = message
-    label.textColor = style.label.color
-    label.textAlignment = NSTextAlignment.center
-    label.numberOfLines = style.label.numberOfLines
-    
-    if style.bar.debugMode {
-      label.backgroundColor = UIColor.red
-    }
-    
-    if let shadowColor = style.label.shadowColor {
-      label.shadowColor = shadowColor
-      label.shadowOffset = style.label.shadowOffset
-    }
-    
-    addSubview(label)
-    layoutLabel(label, withButtons: buttons)
-  }
-  
-  private func layoutLabel(_ label: UILabel, withButtons buttons: [UIView]) {
-    label.translatesAutoresizingMaskIntoConstraints = false
-    
-    // Stretch the label vertically
-    TegAutolayoutConstraints.fillParent(label, parentView: self,
-      margin: style.label.horizontalMargin, vertically: true)
-    
-    if buttons.count == 0 {
-      if let superview = superview {
-        // If there are no buttons - stretch the label to the entire width of the view
-        TegAutolayoutConstraints.fillParent(label, parentView: superview,
-          margin: style.label.horizontalMargin, vertically: false)
-      }
-    } else {
-      layoutLabelWithButtons(label, withButtons: buttons)
-    }
-  }
-  
-  private func layoutLabelWithButtons(_ label: UILabel, withButtons buttons: [UIView]) {
-    if buttons.count != 2 { return }
-    
-    let views = [buttons[0], label, buttons[1]]
-    
-    if let superview = superview {
-      TegAutolayoutConstraints.viewsNextToEachOther(views,
-        constraintContainer: superview, margin: style.label.horizontalMargin, vertically: false)
-    }
-  }
-  
-  // MARK: - Buttons
-  
-  private func createButtons() -> [DodoButtonView] {
-    precondition(buttonViewDelegate != nil, "Button view delegate can not be nil")
-    let buttonStyles = [style.leftButton, style.rightButton]
-    
-    let buttonViews = DodoButtonView.createMany(buttonStyles)
-    
-    for (index, button) in buttonViews.enumerated() {
-      addSubview(button)
-      button.delegate = buttonViewDelegate
-      button.doLayout(onLeftSide: index == 0)
-
-      if style.bar.debugMode {
-        button.backgroundColor = UIColor.yellow
-      }
-    }
-    
-    return buttonViews
-  }
-  
-  // MARK: - Style the bar
-  
-  private func applyStyle() {
-    backgroundColor = style.bar.backgroundColor
-    layer.cornerRadius = style.bar.cornerRadius
-    layer.masksToBounds = true
-    
-    if let borderColor = style.bar.borderColor , style.bar.borderWidth > 0 {
-      layer.borderColor = borderColor.cgColor
-      layer.borderWidth = style.bar.borderWidth
-    }
-  }
-  
-  private func layoutBarInSuperview() {
-    translatesAutoresizingMaskIntoConstraints = false
-    
-    if let superview = superview {
-      // Stretch the toobar horizontally to the width if its superview
-      TegAutolayoutConstraints.fillParent(self, parentView: superview,
-        margin: style.bar.marginToSuperview.width, vertically: false)
-      
-      let vMargin = style.bar.marginToSuperview.height
-      let verticalMargin = style.bar.locationTop ? -vMargin : vMargin
-      
-      var verticalConstraints = [NSLayoutConstraint]()
-      
-      if let layoutGuide = layoutGuide {
-        
-        // Align the top/bottom edge of the toolbar with the top/bottom layout guide
-        // (a tab bar, for example)
-        verticalConstraints = TegAutolayoutConstraints.alignVerticallyToLayoutGuide(self,
-          onTop: style.bar.locationTop,
-          layoutGuide: layoutGuide,
-          constraintContainer: superview,
-          margin: verticalMargin)
-        
+      if newConstantValue > initialConstraintConstant {
+        // Keyboard height is bigger than the initial constraint length.
+        // Increase constraint length.
+        bottomLayoutConstraint.constant = newConstantValue
       } else {
+        // Keyboard height is NOT bigger than the initial constraint length.
+        // Show the initial constraint length.
+        bottomLayoutConstraint.constant = initialConstraintConstant
+      }
+      
+    } else {
+      bottomLayoutConstraint.constant = initialConstraintConstant
+    }
+  }
+  
+  func animateKeyboard(_ height: CGFloat) {
+    guard let viewToAnimate = viewToAnimate else { return }
+    
+    // Check if view is shown, otherwise layoutIfNeeded() will crash
+    if viewToAnimate.window != nil {
+      viewToAnimate.layoutIfNeeded()
+    }
+  }
+}
+
+
+// ----------------------------
+//
+// UnderKeyboardObserver.swift
+//
+// ----------------------------
+import UIKit
+
+/**
+ Detects appearance of software keyboard and calls the supplied closures that can be used for changing the layout and moving view from under the keyboard.
+ */
+public final class UnderKeyboardObserver: NSObject {
+  public typealias AnimationCallback = (_ height: CGFloat) -> ()
+  
+  let notificationCenter: NotificationCenter
+  
+  /// Function that will be called before the keyboard is shown and before animation is started.
+  public var willAnimateKeyboard: AnimationCallback?
+  
+  /// Function that will be called inside the animation block. This can be used to call `layoutIfNeeded` on the view.
+  public var animateKeyboard: AnimationCallback?
+  
+  /// Current height of the keyboard. Has value `nil` if unknown.
+  public var currentKeyboardHeight: CGFloat?
+  
+  /// Creates an instance of the class
+  public override init() {
+    notificationCenter = NotificationCenter.default
+    super.init()
+  }
+  
+  deinit {
+    stop()
+  }
+  
+  /// Start listening for keyboard notifications.
+  public func start() {
+    stop()
+    
+    notificationCenter.addObserver(self, selector: #selector(UnderKeyboardObserver.keyboardNotification(_:)), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
+    notificationCenter.addObserver(self, selector: #selector(UnderKeyboardObserver.keyboardNotification(_:)), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
+  }
+  
+  /// Stop listening for keyboard notifications.
+  public func stop() {
+    notificationCenter.removeObserver(self)
+  }
+  
+  // MARK: - Notification
+  
+  @objc func keyboardNotification(_ notification: Notification) {
+    let isShowing = notification.name == NSNotification.Name.UIKeyboardWillShow
+    
+    if let userInfo = (notification as NSNotification).userInfo,
+      let height = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height,
+      let duration: TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
+      let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber {
+      
+      let correctedHeight = isShowing ? height : 0
+      willAnimateKeyboard?(correctedHeight)
+      
+      UIView.animate(withDuration: duration,
+                     delay: TimeInterval(0),
+                     options: UIViewAnimationOptions(rawValue: animationCurveRawNSN.uintValue),
+                     animations: { [weak self] in
+                      self?.animateKeyboard?(correctedHeight)
+        },
+                     completion: nil
+      )
+      
+      currentKeyboardHeight = correctedHeight
+    }
+  }
+}
+
+
+// ----------------------------
+//
+// SpringAnimationCALayer.swift
+//
+// ----------------------------
+
+import UIKit
+
+/**
+
+Animating CALayer with spring effect in iOS with Swift
+
+https://github.com/evgenyneu/SpringAnimationCALayer
+
+*/
+class SpringAnimationCALayer {
+  // Animates layer with spring effect.
+  class func animate(_ layer: CALayer,
+    keypath: String,
+    duration: CFTimeInterval,
+    usingSpringWithDamping: Double,
+    initialSpringVelocity: Double,
+    fromValue: Double,
+    toValue: Double,
+    onFinished: (()->())?) {
+      
+      CATransaction.begin()
+      CATransaction.setCompletionBlock(onFinished)
+      
+      let animation = create(keypath, duration: duration,
+        usingSpringWithDamping: usingSpringWithDamping,
+        initialSpringVelocity: initialSpringVelocity,
+        fromValue: fromValue, toValue: toValue)
+      
+      layer.add(animation, forKey: keypath + " spring animation")
+      CATransaction.commit()
+  }
+  
+  // Creates CAKeyframeAnimation object
+  class func create(_ keypath: String,
+    duration: CFTimeInterval,
+    usingSpringWithDamping: Double,
+    initialSpringVelocity: Double,
+    fromValue: Double,
+    toValue: Double) -> CAKeyframeAnimation {
+      
+      let dampingMultiplier = Double(10)
+      let velocityMultiplier = Double(10)
+      
+      let values = animationValues(fromValue, toValue: toValue,
+        usingSpringWithDamping: dampingMultiplier * usingSpringWithDamping,
+        initialSpringVelocity: velocityMultiplier * initialSpringVelocity)
+      
+      let animation = CAKeyframeAnimation(keyPath: keypath)
+      animation.values = values
+      animation.duration = duration
+      
+      return animation
+  }
+  
+  class func animationValues(_ fromValue: Double, toValue: Double,
+    usingSpringWithDamping: Double, initialSpringVelocity: Double) -> [Double]{
+      
+      let numOfPoints = 1000
+      var values = [Double](repeating: 0.0, count: numOfPoints)
+      
+      let distanceBetweenValues = toValue - fromValue
+      
+      for point in (0..<numOfPoints) {
+        let x = Double(point) / Double(numOfPoints)
+        let valueNormalized = animationValuesNormalized(x,
+          usingSpringWithDamping: usingSpringWithDamping, initialSpringVelocity: initialSpringVelocity)
         
-        // Align the top/bottom of the toolbar with the top/bottom of its superview
-        verticalConstraints = TegAutolayoutConstraints.alignSameAttributes(superview, toItem: self,
-          constraintContainer: superview,
-          attribute: style.bar.locationTop ? NSLayoutAttribute.top : NSLayoutAttribute.bottom,
-          margin: verticalMargin)
+        let value = toValue - distanceBetweenValues * valueNormalized
+        values[point] = value
       }
       
-      setupKeyboardEvader(verticalConstraints)
-    }
+      return values
   }
   
-  // Moves the message bar from under the keyboard
-  private func setupKeyboardEvader(_ verticalConstraints: [NSLayoutConstraint]) {
-    if let bottomConstraint = verticalConstraints.first,
-      let superview = superview
-      , !style.bar.locationTop {
+  private class func animationValuesNormalized(_ x: Double, usingSpringWithDamping: Double,
+    initialSpringVelocity: Double) -> Double {
       
-      DodoKeyboardListener.underKeyboardLayoutConstraint.setup(bottomConstraint,
-        view: superview, bottomLayoutGuide: layoutGuide)
+      return pow(M_E, -usingSpringWithDamping * x) * cos(initialSpringVelocity * x)
+  }
+}
+
+
+// ----------------------------
+//
+// OnTap.swift
+//
+// ----------------------------
+
+import UIKit
+
+/**
+
+Calling tap with closure.
+
+*/
+class OnTap: NSObject {
+  var closure: ()->()
+
+  init(view: UIView, gesture: UIGestureRecognizer, closure: @escaping ()->()) {
+    self.closure = closure
+    super.init()
+    view.addGestureRecognizer(gesture)
+    view.isUserInteractionEnabled = true
+    gesture.addTarget(self, action: #selector(OnTap.didTap(_:)))
+  }
+
+  @objc func didTap(_ gesture: UIGestureRecognizer) {
+    closure()
+  }
+}
+
+
+// ----------------------------
+//
+// TegAutolayoutConstraints.swift
+//
+// ----------------------------
+
+//
+//  TegAlign.swift
+//
+//  Collection of shortcuts to create autolayout constraints.
+//
+
+import UIKit
+
+class TegAutolayoutConstraints {
+  class func centerX(_ viewOne: UIView, viewTwo: UIView,
+    constraintContainer: UIView) -> [NSLayoutConstraint] {
+      
+      return center(viewOne, viewTwo: viewTwo, constraintContainer: constraintContainer, vertically: false)
+  }
+  
+  @discardableResult
+  class func centerY(_ viewOne: UIView, viewTwo: UIView,
+    constraintContainer: UIView) -> [NSLayoutConstraint] {
+      
+      return center(viewOne, viewTwo: viewTwo, constraintContainer: constraintContainer, vertically: true)
+  }
+  
+  private class func center(_ viewOne: UIView, viewTwo: UIView,
+    constraintContainer: UIView, vertically: Bool = false) -> [NSLayoutConstraint] {
+      
+      let attribute = vertically ? NSLayoutAttribute.centerY : NSLayoutAttribute.centerX
+      
+      let constraint = NSLayoutConstraint(
+        item: viewOne,
+        attribute: attribute,
+        relatedBy: NSLayoutRelation.equal,
+        toItem: viewTwo,
+        attribute: attribute,
+        multiplier: 1,
+        constant: 0)
+      
+      constraintContainer.addConstraint(constraint)
+      
+      return [constraint]
+  }
+  
+  @discardableResult
+  class func alignSameAttributes(_ item: AnyObject, toItem: AnyObject,
+    constraintContainer: UIView, attribute: NSLayoutAttribute, margin: CGFloat = 0) -> [NSLayoutConstraint] {
+      
+      let constraint = NSLayoutConstraint(
+        item: item,
+        attribute: attribute,
+        relatedBy: NSLayoutRelation.equal,
+        toItem: toItem,
+        attribute: attribute,
+        multiplier: 1,
+        constant: margin)
+      
+      constraintContainer.addConstraint(constraint)
+      
+      return [constraint]
+  }
+  
+  class func alignVerticallyToLayoutGuide(_ item: AnyObject, onTop: Bool,
+    layoutGuide: UILayoutSupport, constraintContainer: UIView,
+    margin: CGFloat = 0) -> [NSLayoutConstraint] {
+      
+    let constraint = NSLayoutConstraint(
+      item: layoutGuide,
+      attribute: onTop ? NSLayoutAttribute.bottom : NSLayoutAttribute.top,
+      relatedBy: NSLayoutRelation.equal,
+      toItem: item,
+      attribute: onTop ? NSLayoutAttribute.top : NSLayoutAttribute.bottom,
+      multiplier: 1,
+      constant: margin)
+    
+    constraintContainer.addConstraint(constraint)
+    
+    return [constraint]
+  }
+  
+  class func aspectRatio(_ view: UIView, ratio: CGFloat) {
+    let constraint = NSLayoutConstraint(
+      item: view,
+      attribute: NSLayoutAttribute.width,
+      relatedBy: NSLayoutRelation.equal,
+      toItem: view,
+      attribute: NSLayoutAttribute.height,
+      multiplier: ratio,
+      constant: 0)
+    
+    view.addConstraint(constraint)
+  }
+  
+  class func fillParent(_ view: UIView, parentView: UIView, margin: CGFloat = 0, vertically: Bool = false) {
+    var marginFormat = ""
+    
+    if margin != 0 {
+      marginFormat = "-\(margin)-"
     }
-  }
-}
-
-
-// ----------------------------
-//
-// DodoTouchTarget.swift
-//
-// ----------------------------
-
-import UIKit
-
-/**
-
-Helper function to make sure bounds are big enought to be used as touch target.
-The function is used in pointInside(point: CGPoint, withEvent event: UIEvent?) of UIImageView.
-
-*/
-struct DodoTouchTarget {
-  static func optimize(_ bounds: CGRect) -> CGRect {
-    let recommendedHitSize: CGFloat = 44
     
-    var hitWidthIncrease:CGFloat = recommendedHitSize - bounds.width
-    var hitHeightIncrease:CGFloat = recommendedHitSize - bounds.height
+    var format = "|\(marginFormat)[view]\(marginFormat)|"
     
-    if hitWidthIncrease < 0 { hitWidthIncrease = 0 }
-    if hitHeightIncrease < 0 { hitHeightIncrease = 0 }
-    
-    let extendedBounds: CGRect = bounds.insetBy(dx: -hitWidthIncrease / 2,
-      dy: -hitHeightIncrease / 2)
-    
-    return extendedBounds
-  }
-}
-
-
-// ----------------------------
-//
-// DodoIcons.swift
-//
-// ----------------------------
-
-/**
-
-Collection of icons included with Dodo library.
-
-*/
-public enum DodoIcons: String {
-  /// Icon for closing the bar.
-  case close = "Close"
-  
-  /// Icon for reloading.
-  case reload = "Reload"
-}
-
-
-// ----------------------------
-//
-// DodoMock.swift
-//
-// ----------------------------
-
-import UIKit
-
-/**
-
-This class is for testing the code that uses Dodo. It helps verifying the messages that were shown in the message bar without actually showing them.
-
-Here is how to use it in your unit test.
-
-1. Create an instance of DodoMock.
-2. Set it to the `view.dodo` property of the view.
-3. Run the code that you are testing.
-4. Finally, verify which messages were shown in the message bar.
-
-Example:
-
-    // Supply mock to the view
-    let dodoMock = DodoMock()
-    view.dodo = dodoMock
-
-    // Run the code from the app
-    runSomeAppCode()
-
-    // Verify the message is visible
-    XCTAssert(dodoMock.results.visible)
-
-    // Check total number of messages shown
-    XCTAssertEqual(1, dodoMock.results.total)
-
-    // Verify the text of the success message
-    XCTAssertEqual("To be prepared is half the victory.", dodoMock.results.success[0])
-
-*/
-public class DodoMock: DodoInterface {
-  /// This property is used in unit tests to verify which messages were displayed in the message bar.
-  public var results = DodoMockResults()
-  
-  /// Specify optional layout guide for positioning the bar view.
-  public var topLayoutGuide: UILayoutSupport?
-  
-  /// Specify optional layout guide for positioning the bar view.
-  public var bottomLayoutGuide: UILayoutSupport?
-  
-  /// Defines styles for the bar.
-  public var style = DodoStyle(parentStyle: DodoPresets.defaultPreset.style)
-  
-  /// Creates an instance of DodoMock class
-  public init() { }
-  
-  /// Changes the style preset for the bar widget.
-  public var preset: DodoPresets = DodoPresets.defaultPreset {
-    didSet {
-      if preset != oldValue  {
-        style.parent = preset.style
-      }
+    if vertically {
+      format = "V:" + format
     }
+    
+    let constraints = NSLayoutConstraint.constraints(withVisualFormat: format,
+      options: [], metrics: nil,
+      views: ["view": view])
+    
+    parentView.addConstraints(constraints)
   }
   
-  /**
-   
-   Shows the message bar with *.success* preset. It can be used to indicate successful completion of an operation.
-   
-   - parameter message: The text message to be shown.
-   
-   */
-  public func success(_ message: String) {
-    preset = .success
-    show(message)
+  @discardableResult
+  class func viewsNextToEachOther(_ views: [UIView],
+    constraintContainer: UIView, margin: CGFloat = 0,
+    vertically: Bool = false) -> [NSLayoutConstraint] {
+      
+    if views.count < 2 { return []  }
+      
+    var constraints = [NSLayoutConstraint]()
+      
+    for (index, view) in views.enumerated() {
+      if index >= views.count - 1 { break }
+      
+      let viewTwo = views[index + 1]
+      
+      constraints += twoViewsNextToEachOther(view, viewTwo: viewTwo,
+        constraintContainer: constraintContainer, margin: margin, vertically: vertically)
+    }
+      
+    return constraints
   }
   
-  /**
-   
-   Shows the message bar with *.Info* preset. It can be used for showing information messages that have neutral emotional value.
-   
-   - parameter message: The text message to be shown.
-   
-   */
-  public func info(_ message: String) {
-    preset = .info
-    show(message)
+  class func twoViewsNextToEachOther(_ viewOne: UIView, viewTwo: UIView,
+    constraintContainer: UIView, margin: CGFloat = 0,
+    vertically: Bool = false) -> [NSLayoutConstraint] {
+      
+    var marginFormat = ""
+    
+    if margin != 0 {
+      marginFormat = "-\(margin)-"
+    }
+    
+    var format = "[viewOne]\(marginFormat)[viewTwo]"
+    
+    if vertically {
+      format = "V:" + format
+    }
+    
+    let constraints = NSLayoutConstraint.constraints(withVisualFormat: format,
+      options: [], metrics: nil,
+      views: [ "viewOne": viewOne, "viewTwo": viewTwo ])
+        
+    constraintContainer.addConstraints(constraints)
+    
+    return constraints
   }
   
-  /**
-   
-   Shows the message bar with *.warning* preset. It can be used for for showing warning messages.
-   
-   - parameter message: The text message to be shown.
-   
-   */
-  public func warning(_ message: String) {
-    preset = .warning
-    show(message)
+  class func equalWidth(_ viewOne: UIView, viewTwo: UIView,
+    constraintContainer: UIView) -> [NSLayoutConstraint] {
+      
+    let constraints = NSLayoutConstraint.constraints(withVisualFormat: "[viewOne(==viewTwo)]",
+        options: [], metrics: nil,
+        views: ["viewOne": viewOne, "viewTwo": viewTwo])
+          
+          
+    constraintContainer.addConstraints(constraints)
+    
+    return constraints
   }
   
-  /**
-   
-   Shows the message bar with *.warning* preset. It can be used for showing critical error messages
-   
-   - parameter message: The text message to be shown.
-   
-   */
-  public func error(_ message: String) {
-    preset = .error
-    show(message)
+  @discardableResult
+  class func height(_ view: UIView, value: CGFloat) -> [NSLayoutConstraint] {
+    return widthOrHeight(view, value: value, isWidth: false)
   }
   
-  /**
-   
-   Shows the message bar. Set `preset` property to change the appearance of the message bar, or use the shortcut methods: `success`, `info`, `warning` and `error`.
-   
-   - parameter message: The text message to be shown.
-   
-   */
-  public func show(_ message: String) {
-    let mockMessage = DodoMockMessage(preset: preset, message: message)
-    results.messages.append(mockMessage)
-    results.visible = true
+  @discardableResult
+  class func width(_ view: UIView, value: CGFloat) -> [NSLayoutConstraint] {
+    return widthOrHeight(view, value: value, isWidth: true)
   }
   
-  /// Hide the message bar if it's currently shown.
-  public func hide() {
-    results.visible = false
+  private class func widthOrHeight(_ view: UIView, value: CGFloat,
+    isWidth: Bool) -> [NSLayoutConstraint] {
+    
+    let attribute = isWidth ? NSLayoutAttribute.width : NSLayoutAttribute.height
+      
+    let constraint = NSLayoutConstraint(
+      item: view,
+      attribute: attribute,
+      relatedBy: NSLayoutRelation.equal,
+      toItem: nil,
+      attribute: NSLayoutAttribute.notAnAttribute,
+      multiplier: 1,
+      constant: value)
+    
+    view.addConstraint(constraint)
+    
+    return [constraint]
   }
 }
 
 
 // ----------------------------
 //
-// DodoMockMessage.swift
-//
-// ----------------------------
-
-/**
-
-Contains information about the message that was displayed in message bar. Used in unit tests.
-
-*/
-struct DodoMockMessage {
-  let preset: DodoPresets
-  let message: String
-}
-
-
-// ----------------------------
-//
-// DodoMockResults.swift
-//
-// ----------------------------
-
-/**
-
-Used in unit tests to verify the messages that were shown in the message bar.
-
-*/
-public struct DodoMockResults {
-  /// An array of success messages displayed in the message bar.
-  public var success: [String] {
-    return messages.filter({ $0.preset == DodoPresets.success }).map({ $0.message })
-  }
-  
-  /// An array of information messages displayed in the message bar.
-  public var info: [String] {
-    return messages.filter({ $0.preset == DodoPresets.info }).map({ $0.message })
-  }
-  
-  /// An array of warning messages displayed in the message bar.
-  public var warning: [String] {
-    return messages.filter({ $0.preset == DodoPresets.warning }).map({ $0.message })
-  }
-  
-  /// An array of error messages displayed in the message bar.
-  public var errors: [String] {
-    return messages.filter({ $0.preset == DodoPresets.error }).map({ $0.message })
-  }
-  
-  /// Total number of messages shown.
-  public var total: Int {
-    return messages.count
-  }
-  
-  /// Indicates whether the message is visible
-  public var visible = false
-  
-  var messages = [DodoMockMessage]()
-}
-
-
-// ----------------------------
-//
-// DodoBarDefaultStyles.swift
+// DodoColor.swift
 //
 // ----------------------------
 
 import UIKit
 
 /**
+  
+Creates a UIColor object from a string.
 
-Default styles for the bar view.
-Default styles are used when individual element styles are not set.
+Examples:
+
+    DodoColor.fromHexString('#340f9a')
+
+    // With alpha channel
+    DodoColor.fromHexString('#f1a2b3a6')
 
 */
-public struct DodoBarDefaultStyles {
-  
-  /// Revert the property values to their defaults
-  public static func resetToDefaults() {
-    animationHide = _animationHide
-    animationHideDuration = _animationHideDuration
-    animationShow = _animationShow
-    animationShowDuration = _animationShowDuration
-    backgroundColor = _backgroundColor
-    borderColor = _borderColor
-    borderWidth = _borderWidth
-    cornerRadius = _cornerRadius
-    debugMode = _debugMode
-    hideAfterDelaySeconds = _hideAfterDelaySeconds
-    hideOnTap = _hideOnTap
-    locationTop = _locationTop
-    marginToSuperview = _marginToSuperview
-    onTap = _onTap
-  }
-  
-  // ---------------------------
-  
-  
-  private static let _animationHide: DodoAnimation = DodoAnimationsHide.rotate
-  
-  /// Specify a function for animating the bar when it is hidden.
-  public static var animationHide: DodoAnimation = _animationHide
-  
-  
-  // ---------------------------
-  
-  
-  private static let _animationHideDuration: TimeInterval? = nil
-  
-  /// Duration of hide animation. When nil it uses default duration for selected animation function.
-  public static var animationHideDuration: TimeInterval? = _animationHideDuration
-  
-  
-  // ---------------------------
-  
-  
-  private static let _animationShow: DodoAnimation = DodoAnimationsShow.rotate
-  
-  /// Specify a function for animating the bar when it is shown.
-  public static var animationShow: DodoAnimation = _animationShow
-  
-  
-  // ---------------------------
-  
-  
-  private static let _animationShowDuration: TimeInterval? = nil
-  
-  /// Duration of show animation. When nil it uses default duration for selected animation function.
-  public static var animationShowDuration: TimeInterval? = _animationShowDuration
-  
-  
-  // ---------------------------
-  
-  
-  private static let _backgroundColor: UIColor? = nil
-  
-  /// Background color of the bar.
-  public static var backgroundColor = _backgroundColor
-  
-  
-  // ---------------------------
-  
-  
-  private static let _borderColor: UIColor? = nil
-  
-  /// Color of the bar's border.
-  public static var borderColor = _borderColor
-  
-  
-  // ---------------------------
-  
-  
-  private static let _borderWidth: CGFloat  = 1 / UIScreen.main.scale
-  
-  /// Border width of the bar.
-  public static var borderWidth = _borderWidth
-  
-  
-  // ---------------------------
-  
-  
-  private static let _cornerRadius: CGFloat = 20
-  
-  /// Corner radius of the bar view.
-  public static var cornerRadius = _cornerRadius
-  
-  
-  // ---------------------------
-  
-  
-  private static let _debugMode = false
-  
-  /// When true it highlights the view background for spotting layout issues.
-  public static var debugMode = _debugMode
-  
-  
-  // ---------------------------
-  
-  
-  private static let _hideAfterDelaySeconds: TimeInterval = 0
-  
+public class DodoColor {
   /**
   
-  Hides the bar automatically after the specified number of seconds.
-  The bar is kept on screen indefinitely if the value is zero.
+  Creates a UIColor object from a string.
+  
+  - parameter rgba: a RGB/RGBA string representation of color. It can include optional alpha value. Example: "#cca213" or "#cca21312" (with alpha value).
+  
+  - returns: UIColor object.
   
   */
-  public static var hideAfterDelaySeconds = _hideAfterDelaySeconds
-  
-  
-  // ---------------------------
-  
-  
-  private static let _hideOnTap = false
-  
-  /// When true the bar is hidden when user taps on it.
-  public static var hideOnTap = _hideOnTap
-  
-  
-  // ---------------------------
+  public class func fromHexString(_ rgba: String) -> UIColor {
+    var red: CGFloat   = 0.0
+    var green: CGFloat = 0.0
+    var blue: CGFloat  = 0.0
+    var alpha: CGFloat = 1.0
+    
+    if !rgba.hasPrefix("#") {
+      print("Warning: DodoColor.fromHexString, # character missing")
+      return UIColor()
+    }
+    
+    let index = rgba.index(rgba.startIndex, offsetBy: 1)
+    let hex = String(rgba.suffix(from: index))
+    let scanner = Scanner(string: hex)
+    var hexValue: CUnsignedLongLong = 0
+    
+    if !scanner.scanHexInt64(&hexValue) {
+      print("Warning: DodoColor.fromHexString, error scanning hex value")
+      return UIColor()
+    }
 
-  
-  private static let _locationTop = true
-  
-  /// Position of the bar. When true the bar is shown on top of the screen.
-  public static var locationTop = _locationTop
-  
-
-  // ---------------------------
-  
-  
-  private static let _marginToSuperview = CGSize(width: 5, height: 5)
-  
-  /// Margin between the bar edge and its superview.
-  public static var marginToSuperview = _marginToSuperview
-  
-
-  // ---------------------------
-  
-  
-  private static let _onTap: DodoBarOnTap? = nil
-  
-  /// Supply a function that will be called when user taps the bar.
-  public static var onTap = _onTap
-  
-  // ---------------------------
+    if hex.count == 6 {
+      red   = CGFloat((hexValue & 0xFF0000) >> 16) / 255.0
+      green = CGFloat((hexValue & 0x00FF00) >> 8)  / 255.0
+      blue  = CGFloat(hexValue & 0x0000FF) / 255.0
+    } else if hex.count == 8 {
+      red   = CGFloat((hexValue & 0xFF000000) >> 24) / 255.0
+      green = CGFloat((hexValue & 0x00FF0000) >> 16) / 255.0
+      blue  = CGFloat((hexValue & 0x0000FF00) >> 8)  / 255.0
+      alpha = CGFloat(hexValue & 0x000000FF)         / 255.0
+    } else {
+      print("Warning: DodoColor.fromHexString, invalid rgb string, length should be 7 or 9")
+      return UIColor()
+    }
+   
+    return UIColor(red: red, green: green, blue: blue, alpha: alpha)
+  }
 }
 
 
@@ -1726,6 +1954,84 @@ public class DodoBarStyle {
   }
   
   // -----------------------------
+}
+
+
+// ----------------------------
+//
+// DodoPresets.swift
+//
+// ----------------------------
+
+
+/**
+
+Defines the style presets for the bar.
+
+*/
+public enum DodoPresets {
+  /// A styling preset used for indicating successful completion of an operation. Usually styled with green color.
+  case success
+  
+  /// A styling preset for showing information messages, neutral in color.
+  case info
+  
+  /// A styling preset for showing warning messages. Can be styled with yellow/orange colors.
+  case warning
+  
+  /// A styling preset for showing critical error messages. Usually styled with red color.
+  case error
+  
+  /// The preset is used by default for the bar if it's not set by the user.
+  static let defaultPreset = DodoPresets.success
+  
+  /// The preset cache.
+  private static var styles = [DodoPresets: DodoStyle]()
+  
+  /// Returns the style for the preset
+  public var style: DodoStyle {
+    var style = DodoPresets.styles[self]
+    
+    if style == nil {
+      style = DodoPresets.makeStyle(forPreset: self)
+      DodoPresets.styles[self] = style
+    }
+    
+    precondition(style != nil, "Failed to create style")
+    
+    return style ?? DodoStyle()
+  }
+  
+  /// Reset alls preset styles to their initial states.
+  public static func resetAll() {
+    styles = [:]
+  }
+  
+  /// Reset the preset style to its initial state.
+  public func reset() {
+    DodoPresets.styles.removeValue(forKey: self)
+  }
+  
+  private static func makeStyle(forPreset preset: DodoPresets) -> DodoStyle{
+    
+    let style = DodoStyle()
+    
+    switch preset {
+    case .success:
+      style.bar.backgroundColor = DodoColor.fromHexString("#00CC03C9")
+      
+    case .info:
+      style.bar.backgroundColor = DodoColor.fromHexString("#0057FF96")
+      
+    case .warning:
+      style.bar.backgroundColor = DodoColor.fromHexString("#CEC411DD")
+      
+    case .error:
+      style.bar.backgroundColor = DodoColor.fromHexString("#FF0B0BCC")
+    }
+        
+    return style
+  }
 }
 
 
@@ -1999,85 +2305,97 @@ public class DodoButtonStyle {
 
 // ----------------------------
 //
-// DodoLabelDefaultStyles.swift
+// DodoStyle.swift
 //
 // ----------------------------
 
 import UIKit
 
-/**
-
-Default styles for the text label.
-Default styles are used when individual element styles are not set.
-
-*/
-public struct DodoLabelDefaultStyles {
+/// Combines various styles for the toolbar element.
+public class DodoStyle {
   
-  /// Revert the property values to their defaults
-  public static func resetToDefaults() {
-    color = _color
-    font = _font
-    horizontalMargin = _horizontalMargin
-    numberOfLines = _numberOfLines
-    shadowColor = _shadowColor
-    shadowOffset = _shadowOffset
+  /// The parent style is used to get the property value if the object is missing one.
+  var parent: DodoStyle? {
+    didSet {
+      changeParent()
+    }
   }
   
-  // ---------------------------
+  init(parentStyle: DodoStyle? = nil) {
+    self.parent = parentStyle
+  }
+  
+  private func changeParent() {
+    bar.parent = parent?.bar
+    label.parent = parent?.label
+    leftButton.parent = parent?.leftButton
+    rightButton.parent = parent?.rightButton
+  }
+  
+  /**
+  
+  Reverts all the default styles to their initial values. Usually used in setUp() function in the unit tests.
+  
+  */
+  public static func resetDefaultStyles() {
+    DodoBarDefaultStyles.resetToDefaults()
+    DodoLabelDefaultStyles.resetToDefaults()
+    DodoButtonDefaultStyles.resetToDefaults()
+  }
   
   
-  private static let _color = UIColor.white
+  /// Clears the styles for all properties for this style object. The styles will be taken from parent and default properties.
+  public func clear() {
+    bar.clear()
+    label.clear()
+    leftButton.clear()
+    rightButton.clear()
+  }
   
-  /// Color of the label text.
-  public static var color = _color
-  
-  
-  // ---------------------------
-  
-  
-  private static let _font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
-  
-  /// Font of the label text.
-  public static var font = _font
-  
-  
-  // ---------------------------
+  /**
 
+  Styles for the bar view.
+
+  */
+  public lazy var bar: DodoBarStyle = self.initBarStyle()
   
-  private static let _horizontalMargin: CGFloat = 10
-  
-  /// Margin between the bar/button edge and the label.
-  public static var horizontalMargin = _horizontalMargin
-  
-  
-  // ---------------------------
-  
-  
-  private static let _numberOfLines: Int = 3
-  
-  /// The maximum number of lines in the label.
-  public static var numberOfLines = _numberOfLines
-  
-  
-  // ---------------------------
-  
-  
-  private static let _shadowColor: UIColor? = nil
-  
-  /// Color of text shadow.
-  public static var shadowColor = _shadowColor
+  private func initBarStyle() -> DodoBarStyle {
+    return DodoBarStyle(parentStyle: parent?.bar)
+  }
   
 
-  // ---------------------------
+  /**
 
+  Styles for the text label.
+
+  */
+  public lazy var label: DodoLabelStyle = self.initLabelStyle()
   
-  private static let _shadowOffset = CGSize(width: 0, height: 1)
+  private func initLabelStyle() -> DodoLabelStyle {
+    return DodoLabelStyle(parentStyle: parent?.label)
+  }
   
-  /// Text shadow offset.
-  public static var shadowOffset = _shadowOffset
+  /**
+
+  Styles for the left button.
+
+  */
+  public lazy var leftButton: DodoButtonStyle = self.initLeftButtonStyle()
   
+  private func initLeftButtonStyle() -> DodoButtonStyle {
+    return DodoButtonStyle(parentStyle: parent?.leftButton)
+  }
   
-  // ---------------------------
+  /**
+
+  Styles for the right button.
+
+  */
+  public lazy var rightButton: DodoButtonStyle = self.initRightButtonStyle()
+  
+  private func initRightButtonStyle() -> DodoButtonStyle {
+    return DodoButtonStyle(parentStyle: parent?.rightButton)
+  }
 }
 
 
@@ -2207,175 +2525,467 @@ public class DodoLabelStyle {
 
 // ----------------------------
 //
-// DodoPresets.swift
+// DodoLabelDefaultStyles.swift
 //
 // ----------------------------
 
+import UIKit
 
 /**
 
-Defines the style presets for the bar.
+Default styles for the text label.
+Default styles are used when individual element styles are not set.
 
 */
-public enum DodoPresets {
-  /// A styling preset used for indicating successful completion of an operation. Usually styled with green color.
-  case success
+public struct DodoLabelDefaultStyles {
   
-  /// A styling preset for showing information messages, neutral in color.
-  case info
-  
-  /// A styling preset for showing warning messages. Can be styled with yellow/orange colors.
-  case warning
-  
-  /// A styling preset for showing critical error messages. Usually styled with red color.
-  case error
-  
-  /// The preset is used by default for the bar if it's not set by the user.
-  static let defaultPreset = DodoPresets.success
-  
-  /// The preset cache.
-  private static var styles = [DodoPresets: DodoStyle]()
-  
-  /// Returns the style for the preset
-  public var style: DodoStyle {
-    var style = DodoPresets.styles[self]
-    
-    if style == nil {
-      style = DodoPresets.makeStyle(forPreset: self)
-      DodoPresets.styles[self] = style
-    }
-    
-    precondition(style != nil, "Failed to create style")
-    
-    return style ?? DodoStyle()
+  /// Revert the property values to their defaults
+  public static func resetToDefaults() {
+    color = _color
+    font = _font
+    horizontalMargin = _horizontalMargin
+    numberOfLines = _numberOfLines
+    shadowColor = _shadowColor
+    shadowOffset = _shadowOffset
   }
   
-  /// Reset alls preset styles to their initial states.
-  public static func resetAll() {
-    styles = [:]
+  // ---------------------------
+  
+  
+  private static let _color = UIColor.white
+  
+  /// Color of the label text.
+  public static var color = _color
+  
+  
+  // ---------------------------
+  
+  
+  private static let _font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
+  
+  /// Font of the label text.
+  public static var font = _font
+  
+  
+  // ---------------------------
+
+  
+  private static let _horizontalMargin: CGFloat = 10
+  
+  /// Margin between the bar/button edge and the label.
+  public static var horizontalMargin = _horizontalMargin
+  
+  
+  // ---------------------------
+  
+  
+  private static let _numberOfLines: Int = 3
+  
+  /// The maximum number of lines in the label.
+  public static var numberOfLines = _numberOfLines
+  
+  
+  // ---------------------------
+  
+  
+  private static let _shadowColor: UIColor? = nil
+  
+  /// Color of text shadow.
+  public static var shadowColor = _shadowColor
+  
+
+  // ---------------------------
+
+  
+  private static let _shadowOffset = CGSize(width: 0, height: 1)
+  
+  /// Text shadow offset.
+  public static var shadowOffset = _shadowOffset
+  
+  
+  // ---------------------------
+}
+
+
+// ----------------------------
+//
+// DodoBarDefaultStyles.swift
+//
+// ----------------------------
+
+import UIKit
+
+/**
+
+Default styles for the bar view.
+Default styles are used when individual element styles are not set.
+
+*/
+public struct DodoBarDefaultStyles {
+  
+  /// Revert the property values to their defaults
+  public static func resetToDefaults() {
+    animationHide = _animationHide
+    animationHideDuration = _animationHideDuration
+    animationShow = _animationShow
+    animationShowDuration = _animationShowDuration
+    backgroundColor = _backgroundColor
+    borderColor = _borderColor
+    borderWidth = _borderWidth
+    cornerRadius = _cornerRadius
+    debugMode = _debugMode
+    hideAfterDelaySeconds = _hideAfterDelaySeconds
+    hideOnTap = _hideOnTap
+    locationTop = _locationTop
+    marginToSuperview = _marginToSuperview
+    onTap = _onTap
   }
   
-  /// Reset the preset style to its initial state.
-  public func reset() {
-    DodoPresets.styles.removeValue(forKey: self)
+  // ---------------------------
+  
+  
+  private static let _animationHide: DodoAnimation = DodoAnimationsHide.rotate
+  
+  /// Specify a function for animating the bar when it is hidden.
+  public static var animationHide: DodoAnimation = _animationHide
+  
+  
+  // ---------------------------
+  
+  
+  private static let _animationHideDuration: TimeInterval? = nil
+  
+  /// Duration of hide animation. When nil it uses default duration for selected animation function.
+  public static var animationHideDuration: TimeInterval? = _animationHideDuration
+  
+  
+  // ---------------------------
+  
+  
+  private static let _animationShow: DodoAnimation = DodoAnimationsShow.rotate
+  
+  /// Specify a function for animating the bar when it is shown.
+  public static var animationShow: DodoAnimation = _animationShow
+  
+  
+  // ---------------------------
+  
+  
+  private static let _animationShowDuration: TimeInterval? = nil
+  
+  /// Duration of show animation. When nil it uses default duration for selected animation function.
+  public static var animationShowDuration: TimeInterval? = _animationShowDuration
+  
+  
+  // ---------------------------
+  
+  
+  private static let _backgroundColor: UIColor? = nil
+  
+  /// Background color of the bar.
+  public static var backgroundColor = _backgroundColor
+  
+  
+  // ---------------------------
+  
+  
+  private static let _borderColor: UIColor? = nil
+  
+  /// Color of the bar's border.
+  public static var borderColor = _borderColor
+  
+  
+  // ---------------------------
+  
+  
+  private static let _borderWidth: CGFloat  = 1 / UIScreen.main.scale
+  
+  /// Border width of the bar.
+  public static var borderWidth = _borderWidth
+  
+  
+  // ---------------------------
+  
+  
+  private static let _cornerRadius: CGFloat = 20
+  
+  /// Corner radius of the bar view.
+  public static var cornerRadius = _cornerRadius
+  
+  
+  // ---------------------------
+  
+  
+  private static let _debugMode = false
+  
+  /// When true it highlights the view background for spotting layout issues.
+  public static var debugMode = _debugMode
+  
+  
+  // ---------------------------
+  
+  
+  private static let _hideAfterDelaySeconds: TimeInterval = 0
+  
+  /**
+  
+  Hides the bar automatically after the specified number of seconds.
+  The bar is kept on screen indefinitely if the value is zero.
+  
+  */
+  public static var hideAfterDelaySeconds = _hideAfterDelaySeconds
+  
+  
+  // ---------------------------
+  
+  
+  private static let _hideOnTap = false
+  
+  /// When true the bar is hidden when user taps on it.
+  public static var hideOnTap = _hideOnTap
+  
+  
+  // ---------------------------
+
+  
+  private static let _locationTop = true
+  
+  /// Position of the bar. When true the bar is shown on top of the screen.
+  public static var locationTop = _locationTop
+  
+
+  // ---------------------------
+  
+  
+  private static let _marginToSuperview = CGSize(width: 5, height: 5)
+  
+  /// Margin between the bar edge and its superview.
+  public static var marginToSuperview = _marginToSuperview
+  
+
+  // ---------------------------
+  
+  
+  private static let _onTap: DodoBarOnTap? = nil
+  
+  /// Supply a function that will be called when user taps the bar.
+  public static var onTap = _onTap
+  
+  // ---------------------------
+}
+
+
+// ----------------------------
+//
+// DodoToolbar.swift
+//
+// ----------------------------
+
+import UIKit
+
+class DodoToolbar: UIView {
+  var layoutGuide: UILayoutSupport?
+  var style: DodoStyle
+  weak var buttonViewDelegate: DodoButtonViewDelegate?
+  private var didCallHide = false
+  
+  convenience init(witStyle style: DodoStyle) {
+    self.init(frame: CGRect())
+    
+    self.style = style
   }
   
-  private static func makeStyle(forPreset preset: DodoPresets) -> DodoStyle{
+  override init(frame: CGRect) {
+    style = DodoStyle()
     
-    let style = DodoStyle()
+    super.init(frame: frame)
+  }
+  
+  required init(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  func show(inSuperview parentView: UIView, withMessage message: String) {
+      
+    if superview != nil { return } // already being shown
+  
+    parentView.addSubview(self)
+    applyStyle()
+    layoutBarInSuperview()
+      
+    let buttons = createButtons()
+
+    createLabel(message, withButtons: buttons)
     
-    switch preset {
-    case .success:
-      style.bar.backgroundColor = DodoColor.fromHexString("#00CC03C9")
-      
-    case .info:
-      style.bar.backgroundColor = DodoColor.fromHexString("#0057FF96")
-      
-    case .warning:
-      style.bar.backgroundColor = DodoColor.fromHexString("#CEC411DD")
-      
-    case .error:
-      style.bar.backgroundColor = DodoColor.fromHexString("#FF0B0BCC")
-    }
+    style.bar.animationShow(self, style.bar.animationShowDuration, style.bar.locationTop, {})
+  }
+  
+  func hide(_ onAnimationCompleted: @escaping ()->()) {
+    // Respond only to the first hide() call
+    if didCallHide { return }
+    didCallHide = true
+    
+    style.bar.animationHide(self, style.bar.animationHideDuration,
+                            style.bar.locationTop, { [weak self] in
         
-    return style
+      self?.removeFromSuperview()
+      onAnimationCompleted()
+    })
+  }
+    
+  // MARK: - Label
+  
+  private func createLabel(_ message: String, withButtons buttons: [UIView]) {
+    let label = UILabel()
+    
+    label.font = style.label.font
+    label.text = message
+    label.textColor = style.label.color
+    label.textAlignment = NSTextAlignment.center
+    label.numberOfLines = style.label.numberOfLines
+    
+    if style.bar.debugMode {
+      label.backgroundColor = UIColor.red
+    }
+    
+    if let shadowColor = style.label.shadowColor {
+      label.shadowColor = shadowColor
+      label.shadowOffset = style.label.shadowOffset
+    }
+    
+    addSubview(label)
+    layoutLabel(label, withButtons: buttons)
+  }
+  
+  private func layoutLabel(_ label: UILabel, withButtons buttons: [UIView]) {
+    label.translatesAutoresizingMaskIntoConstraints = false
+    
+    // Stretch the label vertically
+    TegAutolayoutConstraints.fillParent(label, parentView: self,
+      margin: style.label.horizontalMargin, vertically: true)
+    
+    if buttons.count == 0 {
+      if let superview = superview {
+        // If there are no buttons - stretch the label to the entire width of the view
+        TegAutolayoutConstraints.fillParent(label, parentView: superview,
+          margin: style.label.horizontalMargin, vertically: false)
+      }
+    } else {
+      layoutLabelWithButtons(label, withButtons: buttons)
+    }
+  }
+  
+  private func layoutLabelWithButtons(_ label: UILabel, withButtons buttons: [UIView]) {
+    if buttons.count != 2 { return }
+    
+    let views = [buttons[0], label, buttons[1]]
+    
+    if let superview = superview {
+      TegAutolayoutConstraints.viewsNextToEachOther(views,
+        constraintContainer: superview, margin: style.label.horizontalMargin, vertically: false)
+    }
+  }
+  
+  // MARK: - Buttons
+  
+  private func createButtons() -> [DodoButtonView] {
+    precondition(buttonViewDelegate != nil, "Button view delegate can not be nil")
+    let buttonStyles = [style.leftButton, style.rightButton]
+    
+    let buttonViews = DodoButtonView.createMany(buttonStyles)
+    
+    for (index, button) in buttonViews.enumerated() {
+      addSubview(button)
+      button.delegate = buttonViewDelegate
+      button.doLayout(onLeftSide: index == 0)
+
+      if style.bar.debugMode {
+        button.backgroundColor = UIColor.yellow
+      }
+    }
+    
+    return buttonViews
+  }
+  
+  // MARK: - Style the bar
+  
+  private func applyStyle() {
+    backgroundColor = style.bar.backgroundColor
+    layer.cornerRadius = style.bar.cornerRadius
+    layer.masksToBounds = true
+    
+    if let borderColor = style.bar.borderColor , style.bar.borderWidth > 0 {
+      layer.borderColor = borderColor.cgColor
+      layer.borderWidth = style.bar.borderWidth
+    }
+  }
+  
+  private func layoutBarInSuperview() {
+    translatesAutoresizingMaskIntoConstraints = false
+    
+    if let superview = superview {
+      // Stretch the toobar horizontally to the width if its superview
+      TegAutolayoutConstraints.fillParent(self, parentView: superview,
+        margin: style.bar.marginToSuperview.width, vertically: false)
+      
+      let vMargin = style.bar.marginToSuperview.height
+      let verticalMargin = style.bar.locationTop ? -vMargin : vMargin
+      
+      var verticalConstraints = [NSLayoutConstraint]()
+      
+      if let layoutGuide = layoutGuide {
+        
+        // Align the top/bottom edge of the toolbar with the top/bottom layout guide
+        // (a tab bar, for example)
+        verticalConstraints = TegAutolayoutConstraints.alignVerticallyToLayoutGuide(self,
+          onTop: style.bar.locationTop,
+          layoutGuide: layoutGuide,
+          constraintContainer: superview,
+          margin: verticalMargin)
+        
+      } else {
+        
+        // Align the top/bottom of the toolbar with the top/bottom of its superview
+        verticalConstraints = TegAutolayoutConstraints.alignSameAttributes(superview, toItem: self,
+          constraintContainer: superview,
+          attribute: style.bar.locationTop ? NSLayoutAttribute.top : NSLayoutAttribute.bottom,
+          margin: verticalMargin)
+      }
+      
+      setupKeyboardEvader(verticalConstraints)
+    }
+  }
+  
+  // Moves the message bar from under the keyboard
+  private func setupKeyboardEvader(_ verticalConstraints: [NSLayoutConstraint]) {
+    if let bottomConstraint = verticalConstraints.first,
+      let superview = superview
+      , !style.bar.locationTop {
+      
+      DodoKeyboardListener.underKeyboardLayoutConstraint.setup(bottomConstraint,
+        view: superview, bottomLayoutGuide: layoutGuide)
+    }
   }
 }
 
 
 // ----------------------------
 //
-// DodoStyle.swift
+// DodoIcons.swift
 //
 // ----------------------------
 
-import UIKit
+/**
 
-/// Combines various styles for the toolbar element.
-public class DodoStyle {
-  
-  /// The parent style is used to get the property value if the object is missing one.
-  var parent: DodoStyle? {
-    didSet {
-      changeParent()
-    }
-  }
-  
-  init(parentStyle: DodoStyle? = nil) {
-    self.parent = parentStyle
-  }
-  
-  private func changeParent() {
-    bar.parent = parent?.bar
-    label.parent = parent?.label
-    leftButton.parent = parent?.leftButton
-    rightButton.parent = parent?.rightButton
-  }
-  
-  /**
-  
-  Reverts all the default styles to their initial values. Usually used in setUp() function in the unit tests.
-  
-  */
-  public static func resetDefaultStyles() {
-    DodoBarDefaultStyles.resetToDefaults()
-    DodoLabelDefaultStyles.resetToDefaults()
-    DodoButtonDefaultStyles.resetToDefaults()
-  }
-  
-  
-  /// Clears the styles for all properties for this style object. The styles will be taken from parent and default properties.
-  public func clear() {
-    bar.clear()
-    label.clear()
-    leftButton.clear()
-    rightButton.clear()
-  }
-  
-  /**
+Collection of icons included with Dodo library.
 
-  Styles for the bar view.
-
-  */
-  public lazy var bar: DodoBarStyle = self.initBarStyle()
+*/
+public enum DodoIcons: String {
+  /// Icon for closing the bar.
+  case close = "Close"
   
-  private func initBarStyle() -> DodoBarStyle {
-    return DodoBarStyle(parentStyle: parent?.bar)
-  }
-  
-
-  /**
-
-  Styles for the text label.
-
-  */
-  public lazy var label: DodoLabelStyle = self.initLabelStyle()
-  
-  private func initLabelStyle() -> DodoLabelStyle {
-    return DodoLabelStyle(parentStyle: parent?.label)
-  }
-  
-  /**
-
-  Styles for the left button.
-
-  */
-  public lazy var leftButton: DodoButtonStyle = self.initLeftButtonStyle()
-  
-  private func initLeftButtonStyle() -> DodoButtonStyle {
-    return DodoButtonStyle(parentStyle: parent?.leftButton)
-  }
-  
-  /**
-
-  Styles for the right button.
-
-  */
-  public lazy var rightButton: DodoButtonStyle = self.initRightButtonStyle()
-  
-  private func initRightButtonStyle() -> DodoButtonStyle {
-    return DodoButtonStyle(parentStyle: parent?.rightButton)
-  }
+  /// Icon for reloading.
+  case reload = "Reload"
 }
 
 
@@ -2431,77 +3041,28 @@ public extension UIView {
 
 // ----------------------------
 //
-// DodoColor.swift
+// DodoKeyboardListener.swift
 //
 // ----------------------------
 
-import UIKit
-
 /**
-  
-Creates a UIColor object from a string.
 
-Examples:
-
-    DodoColor.fromHexString('#340f9a')
-
-    // With alpha channel
-    DodoColor.fromHexString('#f1a2b3a6')
+Start listening for keyboard events. Used for moving the message bar from under the keyboard when the bar is shown at the bottom of the screen.
 
 */
-public class DodoColor {
-  /**
+struct DodoKeyboardListener {
+  static let underKeyboardLayoutConstraint = UnderKeyboardLayoutConstraint()
   
-  Creates a UIColor object from a string.
-  
-  - parameter rgba: a RGB/RGBA string representation of color. It can include optional alpha value. Example: "#cca213" or "#cca21312" (with alpha value).
-  
-  - returns: UIColor object.
-  
-  */
-  public class func fromHexString(_ rgba: String) -> UIColor {
-    var red: CGFloat   = 0.0
-    var green: CGFloat = 0.0
-    var blue: CGFloat  = 0.0
-    var alpha: CGFloat = 1.0
-    
-    if !rgba.hasPrefix("#") {
-      print("Warning: DodoColor.fromHexString, # character missing")
-      return UIColor()
-    }
-    
-    let index = rgba.characters.index(rgba.startIndex, offsetBy: 1)
-    let hex = String(rgba.suffix(from: index))
-    let scanner = Scanner(string: hex)
-    var hexValue: CUnsignedLongLong = 0
-    
-    if !scanner.scanHexInt64(&hexValue) {
-      print("Warning: DodoColor.fromHexString, error scanning hex value")
-      return UIColor()
-    }
-
-    if hex.characters.count == 6 {
-      red   = CGFloat((hexValue & 0xFF0000) >> 16) / 255.0
-      green = CGFloat((hexValue & 0x00FF00) >> 8)  / 255.0
-      blue  = CGFloat(hexValue & 0x0000FF) / 255.0
-    } else if hex.characters.count == 8 {
-      red   = CGFloat((hexValue & 0xFF000000) >> 24) / 255.0
-      green = CGFloat((hexValue & 0x00FF0000) >> 16) / 255.0
-      blue  = CGFloat((hexValue & 0x0000FF00) >> 8)  / 255.0
-      alpha = CGFloat(hexValue & 0x000000FF)         / 255.0
-    } else {
-      print("Warning: DodoColor.fromHexString, invalid rgb string, length should be 7 or 9")
-      return UIColor()
-    }
-   
-    return UIColor(red: red, green: green, blue: blue, alpha: alpha)
+  static func startListening() {
+    // Just access the static property to make it initialize itself lazily if it hasn't been already.
+    underKeyboardLayoutConstraint.isAccessibilityElement = false
   }
 }
 
 
 // ----------------------------
 //
-// MoaTimer.swift
+// DodoTouchTarget.swift
 //
 // ----------------------------
 
@@ -2509,596 +3070,35 @@ import UIKit
 
 /**
 
-Creates a timer that executes code after delay.
-
-Usage
-
-    var timer: MoaTimer.runAfter?
-    ...
-
-    func myFunc() {
-       timer = MoaTimer.runAfter(0.010) { timer in
-          ... code to run
-       }
-    }
-
-Canceling the timer
-
-Timer is Canceling automatically when it is deallocated. You can also cancel it manually:
-
-    let timer = MoaTimer.runAfter(0.010) { timer in ... }
-    timer.cancel()
+Helper function to make sure bounds are big enought to be used as touch target.
+The function is used in pointInside(point: CGPoint, withEvent event: UIEvent?) of UIImageView.
 
 */
-final class MoaTimer: NSObject {
-  private let repeats: Bool
-  private var timer: Timer?
-  private var callback: ((MoaTimer)->())?
-  
-  private init(interval: TimeInterval, repeats: Bool = false, callback: @escaping (MoaTimer)->()) {
-    self.repeats = repeats
+struct DodoTouchTarget {
+  static func optimize(_ bounds: CGRect) -> CGRect {
+    let recommendedHitSize: CGFloat = 44
     
-    super.init()
+    var hitWidthIncrease:CGFloat = recommendedHitSize - bounds.width
+    var hitHeightIncrease:CGFloat = recommendedHitSize - bounds.height
     
-    self.callback = callback
-    timer = Timer.scheduledTimer(timeInterval: interval, target: self,
-      selector: #selector(MoaTimer.timerFired(_:)), userInfo: nil, repeats: repeats)
-  }
-  
-  /// Timer is cancelled automatically when it is deallocated.
-  deinit {
-    cancel()
-  }
-  
-  /**
-  
-  Cancels the timer and prevents it from firing in the future.
-  
-  Note that timer is cancelled automatically whe it is deallocated.
-  
-  */
-  func cancel() {
-    timer?.invalidate()
-    timer = nil
-  }
-  
-  /**
-  
-  Runs the closure after specified time interval.
-  
-  - parameter interval: Time interval in milliseconds.
-  :repeats: repeats When true, the code is run repeatedly.
-  - returns: callback A closure to be run by the timer.
-  
-  */
-  @discardableResult
-  class func runAfter(_ interval: TimeInterval, repeats: Bool = false,
-    callback: @escaping (MoaTimer)->()) -> MoaTimer {
-      
-    return MoaTimer(interval: interval, repeats: repeats, callback: callback)
-  }
-  
-  @objc func timerFired(_ timer: Timer) {
-    self.callback?(self)
-    if !repeats { cancel() }
+    if hitWidthIncrease < 0 { hitWidthIncrease = 0 }
+    if hitHeightIncrease < 0 { hitHeightIncrease = 0 }
+    
+    let extendedBounds: CGRect = bounds.insetBy(dx: -hitWidthIncrease / 2,
+      dy: -hitHeightIncrease / 2)
+    
+    return extendedBounds
   }
 }
 
 
 // ----------------------------
 //
-// OnTap.swift
+// DodoBarOnTap.swift
 //
 // ----------------------------
 
-import UIKit
-
-/**
-
-Calling tap with closure.
-
-*/
-class OnTap: NSObject {
-  var closure: ()->()
-
-  init(view: UIView, gesture: UIGestureRecognizer, closure: @escaping ()->()) {
-    self.closure = closure
-    super.init()
-    view.addGestureRecognizer(gesture)
-    view.isUserInteractionEnabled = true
-    gesture.addTarget(self, action: #selector(OnTap.didTap(_:)))
-  }
-
-  @objc func didTap(_ gesture: UIGestureRecognizer) {
-    closure()
-  }
-}
-
-
-// ----------------------------
-//
-// SpringAnimationCALayer.swift
-//
-// ----------------------------
-
-import UIKit
-
-/**
-
-Animating CALayer with spring effect in iOS with Swift
-
-https://github.com/evgenyneu/SpringAnimationCALayer
-
-*/
-class SpringAnimationCALayer {
-  // Animates layer with spring effect.
-  class func animate(_ layer: CALayer,
-    keypath: String,
-    duration: CFTimeInterval,
-    usingSpringWithDamping: Double,
-    initialSpringVelocity: Double,
-    fromValue: Double,
-    toValue: Double,
-    onFinished: (()->())?) {
-      
-      CATransaction.begin()
-      CATransaction.setCompletionBlock(onFinished)
-      
-      let animation = create(keypath, duration: duration,
-        usingSpringWithDamping: usingSpringWithDamping,
-        initialSpringVelocity: initialSpringVelocity,
-        fromValue: fromValue, toValue: toValue)
-      
-      layer.add(animation, forKey: keypath + " spring animation")
-      CATransaction.commit()
-  }
-  
-  // Creates CAKeyframeAnimation object
-  class func create(_ keypath: String,
-    duration: CFTimeInterval,
-    usingSpringWithDamping: Double,
-    initialSpringVelocity: Double,
-    fromValue: Double,
-    toValue: Double) -> CAKeyframeAnimation {
-      
-      let dampingMultiplier = Double(10)
-      let velocityMultiplier = Double(10)
-      
-      let values = animationValues(fromValue, toValue: toValue,
-        usingSpringWithDamping: dampingMultiplier * usingSpringWithDamping,
-        initialSpringVelocity: velocityMultiplier * initialSpringVelocity)
-      
-      let animation = CAKeyframeAnimation(keyPath: keypath)
-      animation.values = values
-      animation.duration = duration
-      
-      return animation
-  }
-  
-  class func animationValues(_ fromValue: Double, toValue: Double,
-    usingSpringWithDamping: Double, initialSpringVelocity: Double) -> [Double]{
-      
-      let numOfPoints = 1000
-      var values = [Double](repeating: 0.0, count: numOfPoints)
-      
-      let distanceBetweenValues = toValue - fromValue
-      
-      for point in (0..<numOfPoints) {
-        let x = Double(point) / Double(numOfPoints)
-        let valueNormalized = animationValuesNormalized(x,
-          usingSpringWithDamping: usingSpringWithDamping, initialSpringVelocity: initialSpringVelocity)
-        
-        let value = toValue - distanceBetweenValues * valueNormalized
-        values[point] = value
-      }
-      
-      return values
-  }
-  
-  private class func animationValuesNormalized(_ x: Double, usingSpringWithDamping: Double,
-    initialSpringVelocity: Double) -> Double {
-      
-      return pow(M_E, -usingSpringWithDamping * x) * cos(initialSpringVelocity * x)
-  }
-}
-
-
-// ----------------------------
-//
-// TegAutolayoutConstraints.swift
-//
-// ----------------------------
-
-//
-//  TegAlign.swift
-//
-//  Collection of shortcuts to create autolayout constraints.
-//
-
-import UIKit
-
-class TegAutolayoutConstraints {
-  class func centerX(_ viewOne: UIView, viewTwo: UIView,
-    constraintContainer: UIView) -> [NSLayoutConstraint] {
-      
-      return center(viewOne, viewTwo: viewTwo, constraintContainer: constraintContainer, vertically: false)
-  }
-  
-  @discardableResult
-  class func centerY(_ viewOne: UIView, viewTwo: UIView,
-    constraintContainer: UIView) -> [NSLayoutConstraint] {
-      
-      return center(viewOne, viewTwo: viewTwo, constraintContainer: constraintContainer, vertically: true)
-  }
-  
-  private class func center(_ viewOne: UIView, viewTwo: UIView,
-    constraintContainer: UIView, vertically: Bool = false) -> [NSLayoutConstraint] {
-      
-      let attribute = vertically ? NSLayoutAttribute.centerY : NSLayoutAttribute.centerX
-      
-      let constraint = NSLayoutConstraint(
-        item: viewOne,
-        attribute: attribute,
-        relatedBy: NSLayoutRelation.equal,
-        toItem: viewTwo,
-        attribute: attribute,
-        multiplier: 1,
-        constant: 0)
-      
-      constraintContainer.addConstraint(constraint)
-      
-      return [constraint]
-  }
-  
-  @discardableResult
-  class func alignSameAttributes(_ item: AnyObject, toItem: AnyObject,
-    constraintContainer: UIView, attribute: NSLayoutAttribute, margin: CGFloat = 0) -> [NSLayoutConstraint] {
-      
-      let constraint = NSLayoutConstraint(
-        item: item,
-        attribute: attribute,
-        relatedBy: NSLayoutRelation.equal,
-        toItem: toItem,
-        attribute: attribute,
-        multiplier: 1,
-        constant: margin)
-      
-      constraintContainer.addConstraint(constraint)
-      
-      return [constraint]
-  }
-  
-  class func alignVerticallyToLayoutGuide(_ item: AnyObject, onTop: Bool,
-    layoutGuide: UILayoutSupport, constraintContainer: UIView,
-    margin: CGFloat = 0) -> [NSLayoutConstraint] {
-      
-    let constraint = NSLayoutConstraint(
-      item: layoutGuide,
-      attribute: onTop ? NSLayoutAttribute.bottom : NSLayoutAttribute.top,
-      relatedBy: NSLayoutRelation.equal,
-      toItem: item,
-      attribute: onTop ? NSLayoutAttribute.top : NSLayoutAttribute.bottom,
-      multiplier: 1,
-      constant: margin)
-    
-    constraintContainer.addConstraint(constraint)
-    
-    return [constraint]
-  }
-  
-  class func aspectRatio(_ view: UIView, ratio: CGFloat) {
-    let constraint = NSLayoutConstraint(
-      item: view,
-      attribute: NSLayoutAttribute.width,
-      relatedBy: NSLayoutRelation.equal,
-      toItem: view,
-      attribute: NSLayoutAttribute.height,
-      multiplier: ratio,
-      constant: 0)
-    
-    view.addConstraint(constraint)
-  }
-  
-  class func fillParent(_ view: UIView, parentView: UIView, margin: CGFloat = 0, vertically: Bool = false) {
-    var marginFormat = ""
-    
-    if margin != 0 {
-      marginFormat = "-\(margin)-"
-    }
-    
-    var format = "|\(marginFormat)[view]\(marginFormat)|"
-    
-    if vertically {
-      format = "V:" + format
-    }
-    
-    let constraints = NSLayoutConstraint.constraints(withVisualFormat: format,
-      options: [], metrics: nil,
-      views: ["view": view])
-    
-    parentView.addConstraints(constraints)
-  }
-  
-  @discardableResult
-  class func viewsNextToEachOther(_ views: [UIView],
-    constraintContainer: UIView, margin: CGFloat = 0,
-    vertically: Bool = false) -> [NSLayoutConstraint] {
-      
-    if views.count < 2 { return []  }
-      
-    var constraints = [NSLayoutConstraint]()
-      
-    for (index, view) in views.enumerated() {
-      if index >= views.count - 1 { break }
-      
-      let viewTwo = views[index + 1]
-      
-      constraints += twoViewsNextToEachOther(view, viewTwo: viewTwo,
-        constraintContainer: constraintContainer, margin: margin, vertically: vertically)
-    }
-      
-    return constraints
-  }
-  
-  class func twoViewsNextToEachOther(_ viewOne: UIView, viewTwo: UIView,
-    constraintContainer: UIView, margin: CGFloat = 0,
-    vertically: Bool = false) -> [NSLayoutConstraint] {
-      
-    var marginFormat = ""
-    
-    if margin != 0 {
-      marginFormat = "-\(margin)-"
-    }
-    
-    var format = "[viewOne]\(marginFormat)[viewTwo]"
-    
-    if vertically {
-      format = "V:" + format
-    }
-    
-    let constraints = NSLayoutConstraint.constraints(withVisualFormat: format,
-      options: [], metrics: nil,
-      views: [ "viewOne": viewOne, "viewTwo": viewTwo ])
-        
-    constraintContainer.addConstraints(constraints)
-    
-    return constraints
-  }
-  
-  class func equalWidth(_ viewOne: UIView, viewTwo: UIView,
-    constraintContainer: UIView) -> [NSLayoutConstraint] {
-      
-    let constraints = NSLayoutConstraint.constraints(withVisualFormat: "[viewOne(==viewTwo)]",
-        options: [], metrics: nil,
-        views: ["viewOne": viewOne, "viewTwo": viewTwo])
-          
-          
-    constraintContainer.addConstraints(constraints)
-    
-    return constraints
-  }
-  
-  @discardableResult
-  class func height(_ view: UIView, value: CGFloat) -> [NSLayoutConstraint] {
-    return widthOrHeight(view, value: value, isWidth: false)
-  }
-  
-  @discardableResult
-  class func width(_ view: UIView, value: CGFloat) -> [NSLayoutConstraint] {
-    return widthOrHeight(view, value: value, isWidth: true)
-  }
-  
-  private class func widthOrHeight(_ view: UIView, value: CGFloat,
-    isWidth: Bool) -> [NSLayoutConstraint] {
-    
-    let attribute = isWidth ? NSLayoutAttribute.width : NSLayoutAttribute.height
-      
-    let constraint = NSLayoutConstraint(
-      item: view,
-      attribute: attribute,
-      relatedBy: NSLayoutRelation.equal,
-      toItem: nil,
-      attribute: NSLayoutAttribute.notAnAttribute,
-      multiplier: 1,
-      constant: value)
-    
-    view.addConstraint(constraint)
-    
-    return [constraint]
-  }
-}
-
-
-// ----------------------------
-//
-// UnderKeyboardDistrib.swift
-//
-// ----------------------------
-
-//
-// An iOS libary for moving content from under the keyboard.
-//
-// https://github.com/marketplacer/UnderKeyboard
-//
-// This file was automatically generated by combining multiple Swift source files.
-//
-
-// ----------------------------
-//
-// UnderKeyboardLayoutConstraint.swift
-//
-// ----------------------------
-import UIKit
-
-
-/**
- Adjusts the length (constant value) of the bottom layout constraint when keyboard shows and hides.
- */
-@objc public class UnderKeyboardLayoutConstraint: NSObject {
-  private weak var bottomLayoutConstraint: NSLayoutConstraint?
-  private weak var bottomLayoutGuide: UILayoutSupport?
-  private var keyboardObserver = UnderKeyboardObserver()
-  private var initialConstraintConstant: CGFloat = 0
-  private var minMargin: CGFloat = 10
-  
-  private var viewToAnimate: UIView?
-  
-  /// Creates an instance of the class
-  public override init() {
-    super.init()
-    
-    keyboardObserver.willAnimateKeyboard = keyboardWillAnimate
-    keyboardObserver.animateKeyboard = animateKeyboard
-    keyboardObserver.start()
-  }
-  
-  deinit {
-    stop()
-  }
-  
-  /// Stop listening for keyboard notifications.
-  public func stop() {
-    keyboardObserver.stop()
-  }
-  
-  /**
-   
-   Supply a bottom Auto Layout constraint. Its constant value will be adjusted by the height of the keyboard when it appears and hides.
-   
-   - parameter bottomLayoutConstraint: Supply a bottom layout constraint. Its constant value will be adjusted when keyboard is shown and hidden.
-   
-   - parameter view: Supply a view that will be used to animate the constraint. It is usually the superview containing the view with the constraint.
-   
-   - parameter minMargin: Specify the minimum margin between the keyboard and the bottom of the view the constraint is attached to. Default: 10.
-   
-   - parameter bottomLayoutGuide: Supply an optional bottom layout guide (like a tab bar) that will be taken into account during height calculations.
-   
-   */
-  public func setup(_ bottomLayoutConstraint: NSLayoutConstraint,
-                    view: UIView, minMargin: CGFloat = 10,
-                    bottomLayoutGuide: UILayoutSupport? = nil) {
-    
-    initialConstraintConstant = bottomLayoutConstraint.constant
-    self.bottomLayoutConstraint = bottomLayoutConstraint
-    self.minMargin = minMargin
-    self.bottomLayoutGuide = bottomLayoutGuide
-    self.viewToAnimate = view
-    
-    // Keyboard is already open when setup is called
-    if let currentKeyboardHeight = keyboardObserver.currentKeyboardHeight
-      , currentKeyboardHeight > 0 {
-      
-      keyboardWillAnimate(currentKeyboardHeight)
-    }
-  }
-  
-  func keyboardWillAnimate(_ height: CGFloat) {
-    guard let bottomLayoutConstraint = bottomLayoutConstraint else { return }
-    
-    let layoutGuideHeight = bottomLayoutGuide?.length ?? 0
-    let correctedHeight = height - layoutGuideHeight
-    
-    if height > 0 {
-      let newConstantValue = correctedHeight + minMargin
-      
-      if newConstantValue > initialConstraintConstant {
-        // Keyboard height is bigger than the initial constraint length.
-        // Increase constraint length.
-        bottomLayoutConstraint.constant = newConstantValue
-      } else {
-        // Keyboard height is NOT bigger than the initial constraint length.
-        // Show the initial constraint length.
-        bottomLayoutConstraint.constant = initialConstraintConstant
-      }
-      
-    } else {
-      bottomLayoutConstraint.constant = initialConstraintConstant
-    }
-  }
-  
-  func animateKeyboard(_ height: CGFloat) {
-    guard let viewToAnimate = viewToAnimate else { return }
-    
-    // Check if view is shown, otherwise layoutIfNeeded() will crash
-    if viewToAnimate.window != nil {
-      viewToAnimate.layoutIfNeeded()
-    }
-  }
-}
-
-
-// ----------------------------
-//
-// UnderKeyboardObserver.swift
-//
-// ----------------------------
-import UIKit
-
-/**
- Detects appearance of software keyboard and calls the supplied closures that can be used for changing the layout and moving view from under the keyboard.
- */
-public final class UnderKeyboardObserver: NSObject {
-  public typealias AnimationCallback = (_ height: CGFloat) -> ()
-  
-  let notificationCenter: NotificationCenter
-  
-  /// Function that will be called before the keyboard is shown and before animation is started.
-  public var willAnimateKeyboard: AnimationCallback?
-  
-  /// Function that will be called inside the animation block. This can be used to call `layoutIfNeeded` on the view.
-  public var animateKeyboard: AnimationCallback?
-  
-  /// Current height of the keyboard. Has value `nil` if unknown.
-  public var currentKeyboardHeight: CGFloat?
-  
-  /// Creates an instance of the class
-  public override init() {
-    notificationCenter = NotificationCenter.default
-    super.init()
-  }
-  
-  deinit {
-    stop()
-  }
-  
-  /// Start listening for keyboard notifications.
-  public func start() {
-    stop()
-    
-    notificationCenter.addObserver(self, selector: #selector(UnderKeyboardObserver.keyboardNotification(_:)), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
-    notificationCenter.addObserver(self, selector: #selector(UnderKeyboardObserver.keyboardNotification(_:)), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
-  }
-  
-  /// Stop listening for keyboard notifications.
-  public func stop() {
-    notificationCenter.removeObserver(self)
-  }
-  
-  // MARK: - Notification
-  
-  @objc func keyboardNotification(_ notification: Notification) {
-    let isShowing = notification.name == NSNotification.Name.UIKeyboardWillShow
-    
-    if let userInfo = (notification as NSNotification).userInfo,
-      let height = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height,
-      let duration: TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
-      let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber {
-      
-      let correctedHeight = isShowing ? height : 0
-      willAnimateKeyboard?(correctedHeight)
-      
-      UIView.animate(withDuration: duration,
-                     delay: TimeInterval(0),
-                     options: UIViewAnimationOptions(rawValue: animationCurveRawNSN.uintValue),
-                     animations: { [weak self] in
-                      self?.animateKeyboard?(correctedHeight)
-        },
-                     completion: nil
-      )
-      
-      currentKeyboardHeight = correctedHeight
-    }
-  }
-}
+/// A closure that is called when a bar is tapped
+public typealias DodoBarOnTap = ()->()
 
 
