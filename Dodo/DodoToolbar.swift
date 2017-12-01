@@ -179,8 +179,7 @@ class DodoToolbar: UIView {
       let superview = superview
       , !style.bar.locationTop {
       
-      DodoKeyboardListener.underKeyboardLayoutConstraint.setup(bottomConstraint,
-        view: superview, bottomLayoutGuide: layoutGuide)
+      DodoKeyboardListener.underKeyboardLayoutConstraint.setup(bottomConstraint, view: superview)
     }
   }
 }
