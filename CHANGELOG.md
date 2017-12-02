@@ -2,7 +2,7 @@
 
 ## 11.0.0 (2017-12-02)
 
-* Deprecated layout guides, added `topAnchor`, `bottomAnchor` properties.
+* Deprecated layout guides, added `topAnchor`, `bottomAnchor` properties. Dropped support of iOS 8 and older.
 
 ## 10.0.0 (2017-11-18)
 

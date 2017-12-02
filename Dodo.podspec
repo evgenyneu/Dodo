@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name        = "Dodo"
-  s.version     = "11.0.1"
+  s.version     = "11.0.2"
   s.license     = { :type => "MIT" }
   s.homepage    = "https://github.com/marketplacer/Dodo"
   s.summary     = "A message bar written in Swift."
@@ -18,5 +18,5 @@ Pod::Spec.new do |s|
   s.screenshots  = "https://raw.githubusercontent.com/marketplacer/Dodo/master/Graphics/Paintings/alices_adventures_in_wonderland.png"
   s.source_files = "Dodo/**/*.swift"
   s.resources  = "Dodo/**/*.xcassets"
-  s.ios.deployment_target = "8.0"
+  s.ios.deployment_target = "9.0"
 end
