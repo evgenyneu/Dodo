@@ -75,7 +75,7 @@ If you are showing the bar in the root view you may need to provide top or botto
 ```Swift
 view.dodo.topAnchor = view.safeAreaLayoutGuide.topAnchor
 view.dodo.bottomAnchor = view.safeAreaLayoutGuide.bottomAnchor
-view.dodo.success("Success is how high you bounce when you hit bottom.")
+view.dodo.success("I solemnly swear to avoid the notch.")
 ```
 
 Alternatively, you can specify the anchors from the layout guides:
@@ -83,7 +83,7 @@ Alternatively, you can specify the anchors from the layout guides:
 ```Swift
 view.dodo.topAnchor = topLayoutGuide.bottomAnchor
 view.dodo.bottomAnchor = bottomLayoutGuide.topAnchor
-view.dodo.success("Success is how high you bounce when you hit bottom.")
+view.dodo.success("I solemnly swear to avoid the notch.")
 ```
 
 <img src='https://raw.githubusercontent.com/evgenyneu/Dodo/master/Graphics/presets/success.jpg'
