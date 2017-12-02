@@ -57,20 +57,15 @@ class TegAutolayoutConstraints {
       return [constraint]
   }
   
-  class func alignVerticallyToLayoutGuide(_ item: AnyObject, onTop: Bool,
-    layoutGuide: UILayoutSupport, constraintContainer: UIView,
-    margin: CGFloat = 0) -> [NSLayoutConstraint] {
-      
-    let constraint = NSLayoutConstraint(
-      item: layoutGuide,
-      attribute: onTop ? NSLayoutAttribute.bottom : NSLayoutAttribute.top,
-      relatedBy: NSLayoutRelation.equal,
-      toItem: item,
-      attribute: onTop ? NSLayoutAttribute.top : NSLayoutAttribute.bottom,
-      multiplier: 1,
-      constant: margin)
+  class func alignVerticallyToAnchor(_ item: AnyObject, onTop: Bool,
+                                          anchor: NSLayoutYAxisAnchor,
+                                          margin: CGFloat = 0) -> [NSLayoutConstraint] {
     
-    constraintContainer.addConstraint(constraint)
+    
+    let constraint = onTop ? anchor.constraint(equalTo: item.topAnchor) : anchor.constraint(equalTo: item.bottomAnchor)
+    
+    constraint.constant = margin
+    constraint.isActive = true
     
     return [constraint]
   }

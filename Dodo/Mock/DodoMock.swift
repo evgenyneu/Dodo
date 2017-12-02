@@ -34,11 +34,17 @@ public class DodoMock: DodoInterface {
   /// This property is used in unit tests to verify which messages were displayed in the message bar.
   public var results = DodoMockResults()
   
-  /// Specify optional layout guide for positioning the bar view.
-  public var topLayoutGuide: UILayoutSupport?
+  /**
+   Specify optional anchor for positioning the bar view.
+   This can be an anchor from the safe area.
+   */
+  public var topAnchor: NSLayoutYAxisAnchor?
   
-  /// Specify optional layout guide for positioning the bar view.
-  public var bottomLayoutGuide: UILayoutSupport?
+  /**
+   Specify optional anchor for positioning the bar view.
+   This can be an anchor from the safe area.
+   */
+  public var bottomAnchor: NSLayoutYAxisAnchor?
   
   /// Defines styles for the bar.
   public var style = DodoStyle(parentStyle: DodoPresets.defaultPreset.style)

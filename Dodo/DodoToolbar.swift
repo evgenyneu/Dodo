@@ -1,7 +1,7 @@
 import UIKit
 
 class DodoToolbar: UIView {
-  var layoutGuide: UILayoutSupport?
+  var anchor: NSLayoutYAxisAnchor?
   var style: DodoStyle
   weak var buttonViewDelegate: DodoButtonViewDelegate?
   private var didCallHide = false
@@ -145,23 +145,20 @@ class DodoToolbar: UIView {
       TegAutolayoutConstraints.fillParent(self, parentView: superview,
         margin: style.bar.marginToSuperview.width, vertically: false)
       
-      let vMargin = style.bar.marginToSuperview.height
-      let verticalMargin = style.bar.locationTop ? -vMargin : vMargin
-      
+      var verticalMargin = style.bar.marginToSuperview.height
+      verticalMargin = style.bar.locationTop ? -verticalMargin : verticalMargin
       var verticalConstraints = [NSLayoutConstraint]()
       
-      if let layoutGuide = layoutGuide {
+      if let anchor = anchor {
         
-        // Align the top/bottom edge of the toolbar with the top/bottom layout guide
+        // Align the top/bottom edge of the toolbar with the top/bottom anchor
         // (a tab bar, for example)
-        verticalConstraints = TegAutolayoutConstraints.alignVerticallyToLayoutGuide(self,
-          onTop: style.bar.locationTop,
-          layoutGuide: layoutGuide,
-          constraintContainer: superview,
-          margin: verticalMargin)
+        verticalConstraints = TegAutolayoutConstraints.alignVerticallyToAnchor(self,
+                                                         onTop: style.bar.locationTop,
+                                                         anchor: anchor,
+                                                         margin: verticalMargin)
         
       } else {
-        
         // Align the top/bottom of the toolbar with the top/bottom of its superview
         verticalConstraints = TegAutolayoutConstraints.alignSameAttributes(superview, toItem: self,
           constraintContainer: superview,

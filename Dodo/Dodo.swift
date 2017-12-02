@@ -20,11 +20,17 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
   // Gesture handler that hides the bar when it is tapped
   var onTap: OnTap?
   
-  /// Specify optional layout guide for positioning the bar view.
-  var topLayoutGuide: UILayoutSupport?
+  /**
+  Specify optional anchor for positioning the bar view.
+  This can be an anchor from the safe area.
+  */
+  var topAnchor: NSLayoutYAxisAnchor?
   
-  /// Specify optional layout guide for positioning the bar view.
-  var bottomLayoutGuide: UILayoutSupport?
+  /**
+  Specify optional anchor for positioning the bar view.
+  This can be an anchor from the safe area.
+  */
+  var bottomAnchor: NSLayoutYAxisAnchor?
   
   /// Defines styles for the bar.
   var style = DodoStyle(parentStyle: DodoPresets.defaultPreset.style)
@@ -106,7 +112,7 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
 
     let bar = DodoToolbar(witStyle: style)
     setupHideOnTap(bar)
-    bar.layoutGuide = style.bar.locationTop ? topLayoutGuide : bottomLayoutGuide
+    bar.anchor = style.bar.locationTop ? topAnchor: bottomAnchor
     bar.buttonViewDelegate = self
     bar.show(inSuperview: superview, withMessage: message)
   }

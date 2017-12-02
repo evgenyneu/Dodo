@@ -39,8 +39,10 @@ class ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+        
+    view.dodo.topAnchor = topLayoutGuide.bottomAnchor // Use view.safeAreaLayoutGuide.topAnchor in iOS 11+ instead
+    view.dodo.bottomAnchor = bottomLayoutGuide.topAnchor // Use view.safeAreaLayoutGuide.bittomAnchor in iOS 11+ instead
     
-    view.dodo.topLayoutGuide = topLayoutGuide
     updateShowAnimationButtonTitle()
     updateHideAnimationButtonTitle()
     updateKeyboardToggleButtonTitle()

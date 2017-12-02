@@ -14,11 +14,17 @@ view.dodo.info("Horses are blue?")
 
 */
 public protocol DodoInterface: class {  
-  /// Specify optional layout guide for positioning the bar view.
-  var topLayoutGuide: UILayoutSupport? { get set }
+  /**
+  Specify optional anchor for positioning the bar view.
+  This can be an anchor from the safe area.
+  */
+  var topAnchor: NSLayoutYAxisAnchor? { get set }
   
-  /// Specify optional layout guide for positioning the bar view.
-  var bottomLayoutGuide: UILayoutSupport? { get set }
+  /**
+  Specify optional anchor for positioning the bar view.
+  This can be an anchor from the safe area.
+  */
+  var bottomAnchor: NSLayoutYAxisAnchor? { get set }
   
   /// Defines styles for the bar.
   var style: DodoStyle { get set }
