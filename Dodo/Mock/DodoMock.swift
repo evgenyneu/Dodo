@@ -46,6 +46,20 @@ public class DodoMock: DodoInterface {
    */
   public var bottomAnchor: NSLayoutYAxisAnchor?
   
+  /// Specify optional layout guide for positioning the bar view. Deprecated, use bottomAnchor instead.
+  @available(*, deprecated, message: "Use topAnchor instead")
+  public var topLayoutGuide: UILayoutSupport? {
+    set { self.topAnchor = newValue?.bottomAnchor }
+    get { return nil }
+  }
+  
+  /// Specify optional layout guide for positioning the bar view. Deprecated, use bottomAnchor instead.
+  @available(*, deprecated, message: "Use bottomAnchor instead")
+  public var bottomLayoutGuide: UILayoutSupport? {
+    set { self.topAnchor = newValue?.bottomAnchor }
+    get { return nil }
+  }
+  
   /// Defines styles for the bar.
   public var style = DodoStyle(parentStyle: DodoPresets.defaultPreset.style)
   

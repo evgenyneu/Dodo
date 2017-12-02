@@ -190,6 +190,14 @@ public protocol DodoInterface: class {
   */
   var bottomAnchor: NSLayoutYAxisAnchor? { get set }
   
+  /// Specify optional layout guide for positioning the bar view.
+  @available(*, deprecated, message: "Use topAnchor instead")
+  var topLayoutGuide: UILayoutSupport? { get set }
+  
+  /// Specify optional layout guide for positioning the bar view.
+  @available(*, deprecated, message: "Use bottomAnchor instead")
+  var bottomLayoutGuide: UILayoutSupport? { get set }
+  
   /// Defines styles for the bar.
   var style: DodoStyle { get set }
   
@@ -285,6 +293,20 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
   This can be an anchor from the safe area.
   */
   var bottomAnchor: NSLayoutYAxisAnchor?
+  
+  /// Specify optional layout guide for positioning the bar view. Deprecated, use bottomAnchor instead.
+  @available(*, deprecated, message: "Use topAnchor instead")
+  var topLayoutGuide: UILayoutSupport? {
+    set { self.topAnchor = newValue?.bottomAnchor }
+    get { return nil }
+  }
+  
+  /// Specify optional layout guide for positioning the bar view. Deprecated, use bottomAnchor instead.
+  @available(*, deprecated, message: "Use bottomAnchor instead")
+  var bottomLayoutGuide: UILayoutSupport? {
+    set { self.topAnchor = newValue?.bottomAnchor }
+    get { return nil }
+  }
   
   /// Defines styles for the bar.
   var style = DodoStyle(parentStyle: DodoPresets.defaultPreset.style)
@@ -508,6 +530,20 @@ public class DodoMock: DodoInterface {
    This can be an anchor from the safe area.
    */
   public var bottomAnchor: NSLayoutYAxisAnchor?
+  
+  /// Specify optional layout guide for positioning the bar view. Deprecated, use bottomAnchor instead.
+  @available(*, deprecated, message: "Use topAnchor instead")
+  public var topLayoutGuide: UILayoutSupport? {
+    set { self.topAnchor = newValue?.bottomAnchor }
+    get { return nil }
+  }
+  
+  /// Specify optional layout guide for positioning the bar view. Deprecated, use bottomAnchor instead.
+  @available(*, deprecated, message: "Use bottomAnchor instead")
+  public var bottomLayoutGuide: UILayoutSupport? {
+    set { self.topAnchor = newValue?.bottomAnchor }
+    get { return nil }
+  }
   
   /// Defines styles for the bar.
   public var style = DodoStyle(parentStyle: DodoPresets.defaultPreset.style)
