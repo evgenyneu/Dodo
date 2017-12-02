@@ -13,6 +13,7 @@ This is a UI widget for showing text messages in iOS apps. It is useful for show
 * The bar can have buttons with custom tap handlers.
 * Bar styles can be customized.
 * You can provide custom animations for showing and hiding the bar or use one of the default animation presets.
+* Supports iOS 9+.
 
 <img src='https://raw.githubusercontent.com/evgenyneu/Dodo/master/Graphics/Paintings/alices_adventures_in_wonderland.png'
 width='300' alt="Illustration fromAlice's Adventures in Wonderland by John Tenniel" >
