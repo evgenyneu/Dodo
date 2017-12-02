@@ -1,5 +1,9 @@
 # Dodo version history
 
+## 11.0.0 (2017-12-02)
+
+* Deprecated layout guides, added `topAnchor`, `bottomAnchor` properties.
+
 ## 10.0.0 (2017-11-18)
 
 * Update to Xcode 9.1.
