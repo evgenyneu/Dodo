@@ -191,11 +191,11 @@ public protocol DodoInterface: class {
   var bottomAnchor: NSLayoutYAxisAnchor? { get set }
   
   /// Specify optional layout guide for positioning the bar view.
-  @available(*, deprecated, message: "Use topAnchor instead")
+  @available(*, deprecated, message: "use topAnchor instead")
   var topLayoutGuide: UILayoutSupport? { get set }
   
   /// Specify optional layout guide for positioning the bar view.
-  @available(*, deprecated, message: "Use bottomAnchor instead")
+  @available(*, deprecated, message: "use bottomAnchor instead")
   var bottomLayoutGuide: UILayoutSupport? { get set }
   
   /// Defines styles for the bar.
@@ -295,16 +295,16 @@ final class Dodo: DodoInterface, DodoButtonViewDelegate {
   var bottomAnchor: NSLayoutYAxisAnchor?
   
   /// Specify optional layout guide for positioning the bar view. Deprecated, use bottomAnchor instead.
-  @available(*, deprecated, message: "Use topAnchor instead")
+  @available(*, deprecated, message: "use topAnchor instead")
   var topLayoutGuide: UILayoutSupport? {
     set { self.topAnchor = newValue?.bottomAnchor }
     get { return nil }
   }
   
   /// Specify optional layout guide for positioning the bar view. Deprecated, use bottomAnchor instead.
-  @available(*, deprecated, message: "Use bottomAnchor instead")
+  @available(*, deprecated, message: "use bottomAnchor instead")
   var bottomLayoutGuide: UILayoutSupport? {
-    set { self.topAnchor = newValue?.bottomAnchor }
+    set { self.bottomAnchor = newValue?.topAnchor }
     get { return nil }
   }
   

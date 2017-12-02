@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/Dodo.svg?style=flat)](LICENSE)
 [![Platform](https://img.shields.io/cocoapods/p/Dodo.svg?style=flat)](http://cocoadocs.org/docsets/Dodo)
 
-<img src='https://raw.githubusercontent.com/marketplacer/Dodo/master/Graphics/buttons/dodo_a_message_bar_for_ios_written_in_swift.jpg' alt='Dodo, a message bar for iOS' width='414'>
+<img src='https://raw.githubusercontent.com/evgenyneu/Dodo/master/Graphics/buttons/dodo_a_message_bar_for_ios_written_in_swift.jpg' alt='Dodo, a message bar for iOS' width='414'>
 
 This is a UI widget for showing text messages in iOS apps. It is useful for showing short messages to the user, something like: "Message sent", "Note saved", "No Internet connection".
 
@@ -14,7 +14,7 @@ This is a UI widget for showing text messages in iOS apps. It is useful for show
 * Bar styles can be customized.
 * You can provide custom animations for showing and hiding the bar or use one of the default animation presets.
 
-<img src='https://raw.githubusercontent.com/marketplacer/Dodo/master/Graphics/Paintings/alices_adventures_in_wonderland.png'
+<img src='https://raw.githubusercontent.com/evgenyneu/Dodo/master/Graphics/Paintings/alices_adventures_in_wonderland.png'
 width='300' alt="Illustration fromAlice's Adventures in Wonderland by John Tenniel" >
 
 
@@ -29,11 +29,11 @@ There are three ways you can add Dodo to your project.
 
 **Add source (iOS 7+)**
 
-Simply add [DodoDistrib.swift](https://github.com/marketplacer/Dodo/blob/master/Distrib/DodoDistrib.swift) file into your Xcode project.
+Simply add [DodoDistrib.swift](https://github.com/evgenyneu/Dodo/blob/master/Distrib/DodoDistrib.swift) file into your Xcode project.
 
 **Setup with Carthage (iOS 8+)**
 
-Add `github "marketplacer/Dodo" ~> 10.0` to your Cartfile and run `carthage update`.
+Add `github "evgenyneu/Dodo" ~> 11.0` to your Cartfile and run `carthage update`.
 
 **Setup with CocoaPods (iOS 8+)**
 
@@ -41,13 +41,13 @@ If you are using CocoaPods add this text to your Podfile and run `pod install`.
 
     use_frameworks!
     target 'Your target name'
-    pod 'Dodo', '~> 10.0'
+    pod 'Dodo', '~> 11.0'
 
 
 
 #### Legacy Swift versions
 
-Setup a [previous version](https://github.com/marketplacer/Dodo/wiki/Legacy-Swift-versions) of the library if you use an older version of Swift.
+Setup a [previous version](https://github.com/evgenyneu/Dodo/wiki/Legacy-Swift-versions) of the library if you use an older version of Swift.
 
 
 ## Usage
@@ -69,29 +69,37 @@ view.dodo.error("The perception of beauty is a moral test.")
 view.dodo.hide()
 ```
 
-If you are showing the bar in the root view you may need to provide top or bottom layout guides. This will prevent the message bar from overlapping with the status or the tab bar.
+If you are showing the bar in the root view you may need to provide top or bottom anchors. This will prevent the message bar from overlapping with the status or the tab bar.
 
 ```Swift
-view.dodo.topLayoutGuide = topLayoutGuide
-view.dodo.bottomLayoutGuide = bottomLayoutGuide
+view.dodo.topAnchor = view.safeAreaLayoutGuide.topAnchor
+view.dodo.bottomAnchor = view.safeAreaLayoutGuide.bottomAnchor
 view.dodo.success("Success is how high you bounce when you hit bottom.")
 ```
 
-<img src='https://raw.githubusercontent.com/marketplacer/Dodo/master/Graphics/presets/success.jpg'
+Alternatively, you can specify the anchors from the layout guides:
+
+```Swift
+view.dodo.topAnchor = topLayoutGuide.bottomAnchor
+view.dodo.bottomAnchor = bottomLayoutGuide.topAnchor
+view.dodo.success("Success is how high you bounce when you hit bottom.")
+```
+
+<img src='https://raw.githubusercontent.com/evgenyneu/Dodo/master/Graphics/presets/success.jpg'
 alt='Dodo success presets' width='414'>
 
-<img src='https://raw.githubusercontent.com/marketplacer/Dodo/master/Graphics/presets/info.jpg'
+<img src='https://raw.githubusercontent.com/evgenyneu/Dodo/master/Graphics/presets/info.jpg'
 alt='Dodo info presets' width='414'>
 
-<img src='https://raw.githubusercontent.com/marketplacer/Dodo/master/Graphics/presets/warning.jpg'
+<img src='https://raw.githubusercontent.com/evgenyneu/Dodo/master/Graphics/presets/warning.jpg'
 alt='Dodo warning presets' width='414'>
 
-<img src='https://raw.githubusercontent.com/marketplacer/Dodo/master/Graphics/presets/error.jpg'
+<img src='https://raw.githubusercontent.com/evgenyneu/Dodo/master/Graphics/presets/error.jpg'
 alt='Dodo error presets' width='414'>
 
 ### Styling
 
-Set `dodo.style` property to style the message bar **before** it is shown. See the [styling manual](https://github.com/marketplacer/Dodo/wiki/Styling) for the complete list of configuration options.
+Set `dodo.style` property to style the message bar **before** it is shown. See the [styling manual](https://github.com/evgenyneu/Dodo/wiki/Styling) for the complete list of configuration options.
 
 ```Swift
 // Set the text color
@@ -134,15 +142,15 @@ view.dodo.style.leftButton.onTap = { /* Button tapped */ }
 view.dodo.style.leftButton.hideOnTap = true
 ```
 
-<img src='https://raw.githubusercontent.com/marketplacer/Dodo/master/Graphics/buttons/left_button.jpg'
+<img src='https://raw.githubusercontent.com/evgenyneu/Dodo/master/Graphics/buttons/left_button.jpg'
 alt='Dodo bar with left buttons' width='414'>
 
-<img src='https://raw.githubusercontent.com/marketplacer/Dodo/master/Graphics/buttons/left_and_right_button.jpg'
+<img src='https://raw.githubusercontent.com/evgenyneu/Dodo/master/Graphics/buttons/left_and_right_button.jpg'
 alt='Dodo bar with right and left buttons' width='414'>
 
 ### Customize animation
 
-Configure the animation effect of the bar before it is shown. See the [animation wiki page](https://github.com/marketplacer/Dodo/wiki/Animating) for more information.
+Configure the animation effect of the bar before it is shown. See the [animation wiki page](https://github.com/evgenyneu/Dodo/wiki/Animating) for more information.
 
 
 ```Swift
@@ -159,18 +167,18 @@ view.dodo.style.bar.animationShow = DodoAnimations.noAnimation.show
 Sometimes it is useful to verify which messages were shown by your app in unit tests. It can be done
 by setting an instance of `DodoMock` class to `view.dodo` property.
 
-See the [unit testing manual](https://github.com/marketplacer/Dodo/wiki/Unit-testing) for more details.
+See the [unit testing manual](https://github.com/evgenyneu/Dodo/wiki/Unit-testing) for more details.
 
 
 ## Known limitations
 
-* Dodo messages [can not be shown](https://github.com/marketplacer/Dodo/issues/2) in a `UITableViewController`.
+* Dodo messages [can not be shown](https://github.com/evgenyneu/Dodo/issues/2) in a `UITableViewController`.
 
 
 
 ### Using Dodo from Objective-C
 
-[This manual](https://github.com/marketplacer/Dodo/wiki/Using-Dodo-in-Objective-C-project) describes how to show Dodo messages in Objective-C apps.
+[This manual](https://github.com/evgenyneu/Dodo/wiki/Using-Dodo-in-Objective-C-project) describes how to show Dodo messages in Objective-C apps.
 
 
 
@@ -179,7 +187,7 @@ See the [unit testing manual](https://github.com/marketplacer/Dodo/wiki/Unit-tes
 
 This project includes a demo app.
 
-<img src='https://raw.githubusercontent.com/marketplacer/Dodo/master/Graphics/dodo_demo_ios_app.jpg' width='414' alt='Dodo message bar demo iOS app'>
+<img src='https://raw.githubusercontent.com/evgenyneu/Dodo/master/Graphics/dodo_demo_ios_app.jpg' width='414' alt='Dodo message bar demo iOS app'>
 
 ## Thanks 👍
 
