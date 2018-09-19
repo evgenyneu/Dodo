@@ -44,7 +44,7 @@ class DodoButtonView: UIImageView {
     TegAutolayoutConstraints.height(self, value: style.size.height)
     
     if let superview = superview {
-      let alignAttribute = onLeftSide ? NSLayoutAttribute.left : NSLayoutAttribute.right
+      let alignAttribute = onLeftSide ? NSLayoutConstraint.Attribute.left : NSLayoutConstraint.Attribute.right
       
       let marginHorizontal = onLeftSide ? style.horizontalMarginToBar : -style.horizontalMarginToBar
       
@@ -89,19 +89,19 @@ class DodoButtonView: UIImageView {
     var imageToShow = imageIn
     if let tintColorToShow = style.tintColor {
       // Replace image colors with the specified tint color
-      imageToShow = imageToShow.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+      imageToShow = imageToShow.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
       tintColor = tintColorToShow
     }
     
-    layer.minificationFilter = kCAFilterTrilinear // make the image crisp
+    layer.minificationFilter = CALayerContentsFilter.trilinear // make the image crisp
     image = imageToShow
-    contentMode = UIViewContentMode.scaleAspectFit
+    contentMode = UIView.ContentMode.scaleAspectFit
     
     // Make button accessible
     if let accessibilityLabelToShow = style.accessibilityLabel {
       isAccessibilityElement = true
       accessibilityLabel = accessibilityLabelToShow
-      accessibilityTraits = UIAccessibilityTraitButton
+      accessibilityTraits = UIAccessibilityTraits.button
     }
   }
   

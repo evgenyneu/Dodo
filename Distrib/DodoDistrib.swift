@@ -61,7 +61,7 @@ class DodoButtonView: UIImageView {
     TegAutolayoutConstraints.height(self, value: style.size.height)
     
     if let superview = superview {
-      let alignAttribute = onLeftSide ? NSLayoutAttribute.left : NSLayoutAttribute.right
+      let alignAttribute = onLeftSide ? NSLayoutConstraint.Attribute.left : NSLayoutConstraint.Attribute.right
       
       let marginHorizontal = onLeftSide ? style.horizontalMarginToBar : -style.horizontalMarginToBar
       
@@ -106,19 +106,19 @@ class DodoButtonView: UIImageView {
     var imageToShow = imageIn
     if let tintColorToShow = style.tintColor {
       // Replace image colors with the specified tint color
-      imageToShow = imageToShow.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+      imageToShow = imageToShow.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
       tintColor = tintColorToShow
     }
     
-    layer.minificationFilter = kCAFilterTrilinear // make the image crisp
+    layer.minificationFilter = CALayerContentsFilter.trilinear // make the image crisp
     image = imageToShow
-    contentMode = UIViewContentMode.scaleAspectFit
+    contentMode = UIView.ContentMode.scaleAspectFit
     
     // Make button accessible
     if let accessibilityLabelToShow = style.accessibilityLabel {
       isAccessibilityElement = true
       accessibilityLabel = accessibilityLabelToShow
-      accessibilityTraits = UIAccessibilityTraitButton
+      accessibilityTraits = UIAccessibilityTraits.button
     }
   }
   
@@ -966,7 +966,7 @@ public enum DodoAnimations: String {
       
     UIView.animate(withDuration: actualDuration,
       delay: 0,
-      options: UIViewAnimationOptions.curveEaseOut,
+      options: UIView.AnimationOptions.curveEaseOut,
       animations: {
         view.transform = end
         view.alpha = alphaEnd
@@ -1317,8 +1317,8 @@ public final class UnderKeyboardObserver: NSObject {
   public func start() {
     stop()
     
-    notificationCenter.addObserver(self, selector: #selector(UnderKeyboardObserver.keyboardNotification(_:)), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
-    notificationCenter.addObserver(self, selector: #selector(UnderKeyboardObserver.keyboardNotification(_:)), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
+    notificationCenter.addObserver(self, selector: #selector(UnderKeyboardObserver.keyboardNotification(_:)), name:UIResponder.keyboardWillShowNotification, object: nil);
+    notificationCenter.addObserver(self, selector: #selector(UnderKeyboardObserver.keyboardNotification(_:)), name:UIResponder.keyboardWillHideNotification, object: nil);
   }
   
   /// Stop listening for keyboard notifications.
@@ -1329,19 +1329,19 @@ public final class UnderKeyboardObserver: NSObject {
   // MARK: - Notification
   
   @objc func keyboardNotification(_ notification: Notification) {
-    let isShowing = notification.name == NSNotification.Name.UIKeyboardWillShow
+    let isShowing = notification.name == UIResponder.keyboardWillShowNotification
     
     if let userInfo = (notification as NSNotification).userInfo,
-      let height = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height,
-      let duration: TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
-      let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber {
+      let height = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height,
+      let duration: TimeInterval = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
+      let animationCurveRawNSN = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber {
       
       let correctedHeight = isShowing ? height : 0
       willAnimateKeyboard?(correctedHeight)
       
       UIView.animate(withDuration: duration,
                      delay: TimeInterval(0),
-                     options: UIViewAnimationOptions(rawValue: animationCurveRawNSN.uintValue),
+                     options: UIView.AnimationOptions(rawValue: animationCurveRawNSN.uintValue),
                      animations: { [weak self] in
                       self?.animateKeyboard?(correctedHeight)
         },
@@ -1503,12 +1503,12 @@ class TegAutolayoutConstraints {
   private class func center(_ viewOne: UIView, viewTwo: UIView,
     constraintContainer: UIView, vertically: Bool = false) -> [NSLayoutConstraint] {
       
-      let attribute = vertically ? NSLayoutAttribute.centerY : NSLayoutAttribute.centerX
+      let attribute = vertically ? NSLayoutConstraint.Attribute.centerY : NSLayoutConstraint.Attribute.centerX
       
       let constraint = NSLayoutConstraint(
         item: viewOne,
         attribute: attribute,
-        relatedBy: NSLayoutRelation.equal,
+        relatedBy: NSLayoutConstraint.Relation.equal,
         toItem: viewTwo,
         attribute: attribute,
         multiplier: 1,
@@ -1521,12 +1521,12 @@ class TegAutolayoutConstraints {
   
   @discardableResult
   class func alignSameAttributes(_ item: AnyObject, toItem: AnyObject,
-    constraintContainer: UIView, attribute: NSLayoutAttribute, margin: CGFloat = 0) -> [NSLayoutConstraint] {
+    constraintContainer: UIView, attribute: NSLayoutConstraint.Attribute, margin: CGFloat = 0) -> [NSLayoutConstraint] {
       
       let constraint = NSLayoutConstraint(
         item: item,
         attribute: attribute,
-        relatedBy: NSLayoutRelation.equal,
+        relatedBy: NSLayoutConstraint.Relation.equal,
         toItem: toItem,
         attribute: attribute,
         multiplier: 1,
@@ -1553,10 +1553,10 @@ class TegAutolayoutConstraints {
   class func aspectRatio(_ view: UIView, ratio: CGFloat) {
     let constraint = NSLayoutConstraint(
       item: view,
-      attribute: NSLayoutAttribute.width,
-      relatedBy: NSLayoutRelation.equal,
+      attribute: NSLayoutConstraint.Attribute.width,
+      relatedBy: NSLayoutConstraint.Relation.equal,
       toItem: view,
-      attribute: NSLayoutAttribute.height,
+      attribute: NSLayoutConstraint.Attribute.height,
       multiplier: ratio,
       constant: 0)
     
@@ -1655,14 +1655,14 @@ class TegAutolayoutConstraints {
   private class func widthOrHeight(_ view: UIView, value: CGFloat,
     isWidth: Bool) -> [NSLayoutConstraint] {
     
-    let attribute = isWidth ? NSLayoutAttribute.width : NSLayoutAttribute.height
+    let attribute = isWidth ? NSLayoutConstraint.Attribute.width : NSLayoutConstraint.Attribute.height
       
     let constraint = NSLayoutConstraint(
       item: view,
       attribute: attribute,
-      relatedBy: NSLayoutRelation.equal,
+      relatedBy: NSLayoutConstraint.Relation.equal,
       toItem: nil,
-      attribute: NSLayoutAttribute.notAnAttribute,
+      attribute: NSLayoutConstraint.Attribute.notAnAttribute,
       multiplier: 1,
       constant: value)
     
@@ -2607,7 +2607,7 @@ public struct DodoLabelDefaultStyles {
   // ---------------------------
   
   
-  private static let _font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
+  private static let _font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.headline)
   
   /// Font of the label text.
   public static var font = _font
@@ -2991,7 +2991,7 @@ class DodoToolbar: UIView {
         // Align the top/bottom of the toolbar with the top/bottom of its superview
         verticalConstraints = TegAutolayoutConstraints.alignSameAttributes(superview, toItem: self,
           constraintContainer: superview,
-          attribute: style.bar.locationTop ? NSLayoutAttribute.top : NSLayoutAttribute.bottom,
+          attribute: style.bar.locationTop ? NSLayoutConstraint.Attribute.top : NSLayoutConstraint.Attribute.bottom,
           margin: verticalMargin)
       }
       

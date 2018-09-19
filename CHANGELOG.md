@@ -1,8 +1,14 @@
 # Dodo version history
 
+## 12.0.0 (2018-09-19)
+
+* Updated Swift 4.2.
+
+
 ## 11.0.0 (2017-12-02)
 
 * Deprecated layout guides, added `topAnchor`, `bottomAnchor` properties. Dropped support of iOS 8 and older.
+
 
 ## 10.0.0 (2017-11-18)
 

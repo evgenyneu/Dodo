@@ -69,7 +69,7 @@ class ViewController: UIViewController {
     view.dodo.style.bar.hideOnTap = hideOnTapSwitch.isOn
     view.dodo.style.label.shadowColor = DodoColor.fromHexString("#00000050")
     
-    view.dodo.style.label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
+    view.dodo.style.label.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.headline)
     
     view.dodo.style.bar.animationShow = currentShowAnimation.show
     view.dodo.style.bar.animationHide = currentHideAnimation.hide
@@ -156,7 +156,7 @@ class ViewController: UIViewController {
   
   private func updateKeyboardToggleButtonTitle() {
     let title = showKeyboardTextEdit.isEditing ?  "Hide keyboard" : "Show keyboard"
-     toggleKeyboardButton.setTitle(title, for: UIControlState())
+     toggleKeyboardButton.setTitle(title, for: UIControl.State())
   }
   
   // MARK: - Buttons
@@ -205,12 +205,12 @@ class ViewController: UIViewController {
   
   private func updateShowAnimationButtonTitle() {
     let text = currentShowAnimation.rawValue
-    showAnimationButton.setTitle(text, for: UIControlState())
+    showAnimationButton.setTitle(text, for: UIControl.State())
   }
   
   private func updateHideAnimationButtonTitle() {
     let text = currentHideAnimation.rawValue
-    hideAnimationButton.setTitle(text, for: UIControlState())
+    hideAnimationButton.setTitle(text, for: UIControl.State())
   }
   
   var currentShowAnimation: DodoAnimations {
@@ -262,7 +262,7 @@ class ViewController: UIViewController {
     let newImageView = UIImageView()
     newImageView.translatesAutoresizingMaskIntoConstraints = false
     newImageView.image = newImage
-    newImageView.contentMode = UIViewContentMode.scaleAspectFill
+    newImageView.contentMode = UIView.ContentMode.scaleAspectFill
     view.insertSubview(newImageView, aboveSubview: imageView)
     TegAutolayoutConstraints.fillParent(newImageView, parentView: view, margin: 0, vertically: false)
     TegAutolayoutConstraints.fillParent(newImageView, parentView: view, margin: 0, vertically: true)

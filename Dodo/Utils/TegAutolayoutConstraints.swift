@@ -23,12 +23,12 @@ class TegAutolayoutConstraints {
   private class func center(_ viewOne: UIView, viewTwo: UIView,
     constraintContainer: UIView, vertically: Bool = false) -> [NSLayoutConstraint] {
       
-      let attribute = vertically ? NSLayoutAttribute.centerY : NSLayoutAttribute.centerX
+      let attribute = vertically ? NSLayoutConstraint.Attribute.centerY : NSLayoutConstraint.Attribute.centerX
       
       let constraint = NSLayoutConstraint(
         item: viewOne,
         attribute: attribute,
-        relatedBy: NSLayoutRelation.equal,
+        relatedBy: NSLayoutConstraint.Relation.equal,
         toItem: viewTwo,
         attribute: attribute,
         multiplier: 1,
@@ -41,12 +41,12 @@ class TegAutolayoutConstraints {
   
   @discardableResult
   class func alignSameAttributes(_ item: AnyObject, toItem: AnyObject,
-    constraintContainer: UIView, attribute: NSLayoutAttribute, margin: CGFloat = 0) -> [NSLayoutConstraint] {
+    constraintContainer: UIView, attribute: NSLayoutConstraint.Attribute, margin: CGFloat = 0) -> [NSLayoutConstraint] {
       
       let constraint = NSLayoutConstraint(
         item: item,
         attribute: attribute,
-        relatedBy: NSLayoutRelation.equal,
+        relatedBy: NSLayoutConstraint.Relation.equal,
         toItem: toItem,
         attribute: attribute,
         multiplier: 1,
@@ -73,10 +73,10 @@ class TegAutolayoutConstraints {
   class func aspectRatio(_ view: UIView, ratio: CGFloat) {
     let constraint = NSLayoutConstraint(
       item: view,
-      attribute: NSLayoutAttribute.width,
-      relatedBy: NSLayoutRelation.equal,
+      attribute: NSLayoutConstraint.Attribute.width,
+      relatedBy: NSLayoutConstraint.Relation.equal,
       toItem: view,
-      attribute: NSLayoutAttribute.height,
+      attribute: NSLayoutConstraint.Attribute.height,
       multiplier: ratio,
       constant: 0)
     
@@ -175,14 +175,14 @@ class TegAutolayoutConstraints {
   private class func widthOrHeight(_ view: UIView, value: CGFloat,
     isWidth: Bool) -> [NSLayoutConstraint] {
     
-    let attribute = isWidth ? NSLayoutAttribute.width : NSLayoutAttribute.height
+    let attribute = isWidth ? NSLayoutConstraint.Attribute.width : NSLayoutConstraint.Attribute.height
       
     let constraint = NSLayoutConstraint(
       item: view,
       attribute: attribute,
-      relatedBy: NSLayoutRelation.equal,
+      relatedBy: NSLayoutConstraint.Relation.equal,
       toItem: nil,
-      attribute: NSLayoutAttribute.notAnAttribute,
+      attribute: NSLayoutConstraint.Attribute.notAnAttribute,
       multiplier: 1,
       constant: value)
     

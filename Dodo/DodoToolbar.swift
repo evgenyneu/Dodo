@@ -162,7 +162,7 @@ class DodoToolbar: UIView {
         // Align the top/bottom of the toolbar with the top/bottom of its superview
         verticalConstraints = TegAutolayoutConstraints.alignSameAttributes(superview, toItem: self,
           constraintContainer: superview,
-          attribute: style.bar.locationTop ? NSLayoutAttribute.top : NSLayoutAttribute.bottom,
+          attribute: style.bar.locationTop ? NSLayoutConstraint.Attribute.top : NSLayoutConstraint.Attribute.bottom,
           margin: verticalMargin)
       }
       

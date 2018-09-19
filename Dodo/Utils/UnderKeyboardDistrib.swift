@@ -145,8 +145,8 @@ public final class UnderKeyboardObserver: NSObject {
   public func start() {
     stop()
     
-    notificationCenter.addObserver(self, selector: #selector(UnderKeyboardObserver.keyboardNotification(_:)), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
-    notificationCenter.addObserver(self, selector: #selector(UnderKeyboardObserver.keyboardNotification(_:)), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
+    notificationCenter.addObserver(self, selector: #selector(UnderKeyboardObserver.keyboardNotification(_:)), name:UIResponder.keyboardWillShowNotification, object: nil);
+    notificationCenter.addObserver(self, selector: #selector(UnderKeyboardObserver.keyboardNotification(_:)), name:UIResponder.keyboardWillHideNotification, object: nil);
   }
   
   /// Stop listening for keyboard notifications.
@@ -157,19 +157,19 @@ public final class UnderKeyboardObserver: NSObject {
   // MARK: - Notification
   
   @objc func keyboardNotification(_ notification: Notification) {
-    let isShowing = notification.name == NSNotification.Name.UIKeyboardWillShow
+    let isShowing = notification.name == UIResponder.keyboardWillShowNotification
     
     if let userInfo = (notification as NSNotification).userInfo,
-      let height = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height,
-      let duration: TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
-      let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber {
+      let height = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height,
+      let duration: TimeInterval = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
+      let animationCurveRawNSN = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber {
       
       let correctedHeight = isShowing ? height : 0
       willAnimateKeyboard?(correctedHeight)
       
       UIView.animate(withDuration: duration,
                      delay: TimeInterval(0),
-                     options: UIViewAnimationOptions(rawValue: animationCurveRawNSN.uintValue),
+                     options: UIView.AnimationOptions(rawValue: animationCurveRawNSN.uintValue),
                      animations: { [weak self] in
                       self?.animateKeyboard?(correctedHeight)
         },

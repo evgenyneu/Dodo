@@ -34,7 +34,7 @@ Simply add [DodoDistrib.swift](https://github.com/evgenyneu/Dodo/blob/master/Dis
 
 **Setup with Carthage**
 
-Add `github "evgenyneu/Dodo" ~> 11.0` to your Cartfile and run `carthage update`.
+Add `github "evgenyneu/Dodo" ~> 12.0` to your Cartfile and run `carthage update`.
 
 **Setup with CocoaPods**
 
@@ -42,7 +42,7 @@ If you are using CocoaPods add this text to your Podfile and run `pod install`.
 
     use_frameworks!
     target 'Your target name'
-    pod 'Dodo', '~> 11.0'
+    pod 'Dodo', '~> 12.0'
 
 
 

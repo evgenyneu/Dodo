@@ -97,7 +97,7 @@ class DodoButtonViewTests: XCTestCase {
     view.setup()
     
     XCTAssertEqual(67, view.image!.size.width)
-    XCTAssertEqual(UIViewContentMode.scaleAspectFit, view.contentMode)
+    XCTAssertEqual(UIView.ContentMode.scaleAspectFit, view.contentMode)
   }
   
   func testSetupView_no_image() {
@@ -119,7 +119,7 @@ class DodoButtonViewTests: XCTestCase {
     let view = DodoButtonView(style: style)
     view.setup()
     
-    XCTAssertEqual(UIImageRenderingMode.alwaysTemplate, view.image!.renderingMode)
+    XCTAssertEqual(UIImage.RenderingMode.alwaysTemplate, view.image!.renderingMode)
     XCTAssertEqual(UIColor.purple, view.tintColor)
   }
   
@@ -134,7 +134,7 @@ class DodoButtonViewTests: XCTestCase {
     let view = DodoButtonView(style: style)
     view.setup()
     
-    XCTAssertEqual(UIImageRenderingMode.automatic, view.image!.renderingMode)
+    XCTAssertEqual(UIImage.RenderingMode.automatic, view.image!.renderingMode)
   }
   
   func testSetupView_withIcon() {
@@ -157,7 +157,7 @@ class DodoButtonViewTests: XCTestCase {
     view.setup()
     
     XCTAssertEqual("Test bar button", view.accessibilityLabel!)
-    XCTAssertEqual(UIAccessibilityTraitButton, view.accessibilityTraits)
+    XCTAssertEqual(UIAccessibilityTraits.button, view.accessibilityTraits)
     XCTAssert(view.isAccessibilityElement)
   }
   
@@ -171,7 +171,7 @@ class DodoButtonViewTests: XCTestCase {
     view.setup()
     
     XCTAssert(view.accessibilityLabel == nil)
-    XCTAssertEqual(0, view.accessibilityTraits)
+    XCTAssertEqual(0, Int(view.accessibilityTraits.rawValue))
     XCTAssertFalse(view.isAccessibilityElement)
   }
   

@@ -203,7 +203,7 @@ public enum DodoAnimations: String {
       
     UIView.animate(withDuration: actualDuration,
       delay: 0,
-      options: UIViewAnimationOptions.curveEaseOut,
+      options: UIView.AnimationOptions.curveEaseOut,
       animations: {
         view.transform = end
         view.alpha = alphaEnd

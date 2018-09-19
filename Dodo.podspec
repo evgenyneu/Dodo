@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name        = "Dodo"
-  s.version     = "11.0.2"
+  s.version     = "12.0.0"
   s.license     = { :type => "MIT" }
   s.homepage    = "https://github.com/marketplacer/Dodo"
   s.summary     = "A message bar written in Swift."
@@ -19,4 +19,5 @@ Pod::Spec.new do |s|
   s.source_files = "Dodo/**/*.swift"
   s.resources  = "Dodo/**/*.xcassets"
   s.ios.deployment_target = "9.0"
+  s.swift_version = '4.2'
 end

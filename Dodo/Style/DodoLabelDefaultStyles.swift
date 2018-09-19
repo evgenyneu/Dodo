@@ -30,7 +30,7 @@ public struct DodoLabelDefaultStyles {
   // ---------------------------
   
   
-  private static let _font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
+  private static let _font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.headline)
   
   /// Font of the label text.
   public static var font = _font
