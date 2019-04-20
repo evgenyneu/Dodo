@@ -1,5 +1,10 @@
 # Dodo version history
 
+## 13.0.0 (2019-04-20)
+
+* Updated Swift 5.0.
+
+
 ## 12.0.0 (2018-09-19)
 
 * Updated Swift 4.2.

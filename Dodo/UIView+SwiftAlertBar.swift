@@ -20,7 +20,7 @@ public extension UIView {
       view.dodo.show("Hello World!")
   
   */
-  public var dodo: DodoInterface {
+  var dodo: DodoInterface {
     get {
       if let value = objc_getAssociatedObject(self, &sabAssociationKey) as? DodoInterface {
         return value
