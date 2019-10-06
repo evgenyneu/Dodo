@@ -60,7 +60,7 @@ Setup a [previous version](https://github.com/evgenyneu/Dodo/wiki/Legacy-Swift-v
 
 ## Usage
 
-Add `import Dodo` to your source code if you used Carthage or CocoaPods setup methods.
+Add `import Dodo` to your source code (unless you used the file setup method).
 
 Dodo is an extension of UIView class. You can reach it by using using the `dodo` property in any instance of UIView or its subclass. It can be, for example, the `view` property of your view controller.
 
