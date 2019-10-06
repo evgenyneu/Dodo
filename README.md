@@ -27,7 +27,7 @@ width='300' alt="Illustration fromAlice's Adventures in Wonderland by John Tenni
 
 ## Setup
 
-There are three ways you can add Dodo to your project.
+There are multiple ways you can add Dodo to your project.
 
 **Add source**
 
