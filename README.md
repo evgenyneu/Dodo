@@ -2,6 +2,7 @@
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CocoaPods Version](https://img.shields.io/cocoapods/v/Dodo.svg?style=flat)](http://cocoadocs.org/docsets/Dodo)
+[![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 [![License](https://img.shields.io/cocoapods/l/Dodo.svg?style=flat)](LICENSE)
 [![Platform](https://img.shields.io/cocoapods/p/Dodo.svg?style=flat)](http://cocoadocs.org/docsets/Dodo)
 
@@ -43,6 +44,12 @@ If you are using CocoaPods add this text to your Podfile and run `pod install`.
     use_frameworks!
     target 'Your target name'
     pod 'Dodo', '~> 13.0'
+
+
+#### Setup with Swift Package Manager
+
+* In Xcode 11+ select *File > Packages > Add Package Dependency...*.
+* Enter this project's URL: https://github.com/evgenyneu/Dodo.git
 
 
 
@@ -259,5 +266,3 @@ Dodo is released under the [MIT License](LICENSE).
 ## •ᴥ•
 
 This project is dedicated to [the dodo](https://en.wikipedia.org/wiki/Dodo), species of flightless birds that lived on the island of Mauritius and became extinct in the 17th century.
-
-
